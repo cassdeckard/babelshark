@@ -217,15 +217,19 @@
 				<Filter
 					Name="InstructionElement"
 					>
+					<File
+						RelativePath="..\..\..\src\InstructionElement.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\InstructionElement.h"
+						>
+					</File>
 					<Filter
 						Name="headers"
 						>
 						<File
 							RelativePath="..\..\..\AsciiElement.h"
-							>
-						</File>
-						<File
-							RelativePath="..\..\..\InstructionElement.h"
 							>
 						</File>
 					</Filter>
@@ -234,10 +238,6 @@
 						>
 						<File
 							RelativePath="..\..\..\src\AsciiElement.cpp"
-							>
-						</File>
-						<File
-							RelativePath="..\..\..\src\InstructionElement.cpp"
 							>
 						</File>
 					</Filter>
