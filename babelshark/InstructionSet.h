@@ -8,6 +8,8 @@ namespace BabelShark
 	class InstructionSet: public Instruction
 	{
 		public:
+			InstructionSet();
+			~InstructionSet();
 			//returns the first Child of the InstructionSet list.
 			Instruction* GetChild();
 			//Adds a child Instruction to the list.
@@ -19,8 +21,7 @@ namespace BabelShark
 			//Creates an iterator used to traverse the direct children.
 			void CreateIterator();
 		private:
-			IteratorList* Iterator;
-	}
+	};
 }
 
 #endif//INSTRUCTION_SET_H
