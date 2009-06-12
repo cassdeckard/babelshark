@@ -18,22 +18,22 @@ namespace BabelShark
 
 	}
 
-	//virtual function, no implementation in base class
-	//used in the InstructionList class.
+	//Recall we are using the composite pattern
+	//Since this is the parent class for all leaf nodes it won't have a child in any case and can always return 0
 	Instruction* GetChild()
 	{
 		return 0;
 	}
 
-	//virtual function, no implementation in base class
-	//used in the InstructionList class.
+	//Recall we are using the composite pattern
+	//Since this is the parent class for all leaf nodes it won't have the ability to add children
 	void Add(Instruction*)
 	{
 
 	}
 
-	//virtual function, no implementation in base class
-	//used in the InstructionList class.
+	//Recall we are using the composite pattern
+	//Since this is the parent class for all leaf nodes it won't have the ability to remove children
 	void Remove(Instruction*)
 	{
 
