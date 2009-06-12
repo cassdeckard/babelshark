@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir)3rdParty\include"
+				AdditionalIncludeDirectories="&quot;$(SolutionDir)3rdParty\include&quot;;&quot;$(SolutionDir)..\..\&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				ExceptionHandling="2"
@@ -174,7 +174,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\src\Instruction-UT.cpp"
+				RelativePath=".\src\InstructionSet-UT.cpp"
 				>
 			</File>
 			<File
@@ -187,6 +187,62 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<Filter
+				Name="InstructionHierarchy"
+				>
+				<Filter
+					Name="headers"
+					>
+					<File
+						RelativePath="..\..\..\Instruction.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\InstructionSet.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="source"
+					>
+					<File
+						RelativePath="..\..\..\src\Instruction.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\src\InstructionSet.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="InstructionElement"
+					>
+					<Filter
+						Name="headers"
+						>
+						<File
+							RelativePath="..\..\..\AsciiElement.h"
+							>
+						</File>
+						<File
+							RelativePath="..\..\..\InstructionElement.h"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="source"
+						>
+						<File
+							RelativePath="..\..\..\src\AsciiElement.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\..\src\InstructionElement.cpp"
+							>
+						</File>
+					</Filter>
+				</Filter>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"

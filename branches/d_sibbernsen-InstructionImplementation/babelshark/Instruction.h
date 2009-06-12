@@ -21,7 +21,7 @@ namespace BabelShark
 		
 		//virtual function, base definition does nothing.
 		//will be used to Display data to the WireShark output
-		virtual void Display();
+		virtual char* Display();
 		
 		//virtual function, no implementation in base class
 		//used in the InstructionList class.
@@ -38,7 +38,17 @@ namespace BabelShark
 		//virtual function, no implementation in base class
 		//used in the InstructionList class.
 		virtual void CreateIterator();
-	}
+
+		protected:
+			//Iterator has not been implemented yet.  When it is
+			//this is to be used to construct the different
+			//Iterator objects in InstructionElement and InstructionSet classes
+			//Iterator* _Iter;
+
+		private:
+	};
 
 
 }
+
+#endif //INSTRUCTION_H
