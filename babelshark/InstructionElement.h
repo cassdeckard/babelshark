@@ -1,6 +1,3 @@
-#ifndef INSTRUCTION_ELEMENT_H
-#define INSTRUCTION_ELEMENT_H
-
 #include "Instruction.h"
 
 namespace BabelShark
@@ -35,4 +32,3 @@ namespace BabelShark
 	};
 }
 
-#endif //INSTRUCTION_ELEMENT_H
