@@ -1,15 +1,15 @@
-#ifndef ASCII_ELEMENT_H
-#define ASCII_ELEMENT_H
+#ifndef UNIT_ELEMENT_H
+#define UINT_ELEMENT_H
 
 #include "InstructionElement.h"
 
 namespace BabelShark
 {
-	class AsciiElement: public InstructionElement
+	class UintElement: public InstructionElement
 	{
 		public:
-			AsciiElement();
-			~AsciiElement();
+			UintElement();
+			~UintElement();
 			
 			//TODO -- Implement this
 			//Will be used to read in data from packet (I think??)
@@ -35,4 +35,4 @@ namespace BabelShark
 }
 
 
-#endif //ASCII_ELEMENT_H
+#endif //UINT_ELEMENT_H

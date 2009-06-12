@@ -232,12 +232,20 @@
 							RelativePath="..\..\..\AsciiElement.h"
 							>
 						</File>
+						<File
+							RelativePath="..\..\..\UintElement.h"
+							>
+						</File>
 					</Filter>
 					<Filter
 						Name="source"
 						>
 						<File
 							RelativePath="..\..\..\src\AsciiElement.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\..\src\UintElement.cpp"
 							>
 						</File>
 					</Filter>
