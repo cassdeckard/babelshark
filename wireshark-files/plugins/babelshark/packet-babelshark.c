@@ -1,7 +1,7 @@
 /* packet-babelshark.c
  * Routines for babelshark dissection
  *
- * $Id: $
+ * $Id$
  *
  * Wireshark - Network traffic analyzer
  * By Gerald Combs <gerald@wireshark.org>
@@ -26,7 +26,7 @@
 #include "config.h"
 #endif
 
-#include "packet-rpc.h"
+#include <epan/packet.h>
 #include "packet-babelshark.h"
 
 static int proto_babelshark = -1;
@@ -39,6 +39,28 @@ static const value_string babelshark_vals[] = {
    { 1,   "ONE" },
    { 0,    NULL }
 };
+
+static void
+dissect_babelshark(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
+{
+   if (check_col(pinfo->cinfo, COL_PROTOCOL)) {
+      col_set_str(pinfo->cinfo, COL_PROTOCOL, "BABELSHARK");
+   }
+   /* Clear out stuff in the info column */
+   if (check_col(pinfo->cinfo,COL_INFO)) {
+      col_clear(pinfo->cinfo,COL_INFO);
+   }
+   
+   if (tree) { /* we are being asked for details */
+      proto_item *ti = NULL;
+      proto_tree *babelshark_tree = NULL;
+
+      ti = proto_tree_add_item(tree, proto_babelshark, tvb, 0, -1, FALSE);
+      babelshark_tree = proto_item_add_subtree(ti, ett_babelshark);
+      proto_tree_add_item(babelshark_tree, hf_babelshark_pdu, tvb, 0, 1, FALSE);
+   }
+
+}
 
 void
 proto_register_babelshark(void)
@@ -72,28 +94,7 @@ proto_reg_handoff_babelshark(void)
 {  
    static dissector_handle_t babelshark_handle;
 
-   foo_handle = create_dissector_handle(dissect_babelshark, proto_babelshark);
+   babelshark_handle = create_dissector_handle(dissect_babelshark, proto_babelshark);
    dissector_add("udp.port", BABELSHARK_PORT, babelshark_handle);
 }
 
-static void
-dissect_babelshark(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
-{
-   if (check_col(pinfo->cinfo, COL_PROTOCOL)) {
-      col_set_str(pinfo->cinfo, COL_PROTOCOL, "BABELSHARK");
-   }
-   /* Clear out stuff in the info column */
-   if (check_col(pinfo->cinfo,COL_INFO)) {
-      col_clear(pinfo->cinfo,COL_INFO);
-   }
-   
-   if (tree) { /* we are being asked for details */
-      proto_item *ti = NULL;
-      proto_tree *babelshark_tree = NULL;
-
-      ti = proto_tree_add_item(tree, proto_babelshark, tvb, 0, -1, FALSE);
-      babelshark_tree = proto_item_add_subtree(ti, ett_babelshark);
-      proto_tree_add_item(babelshark_tree, hf_babelshark_pdu, tvb, 0, 1, FALSE);
-   }
-
-}

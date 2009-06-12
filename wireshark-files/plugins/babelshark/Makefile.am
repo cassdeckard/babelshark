@@ -1,7 +1,7 @@
 # Makefile.am
 # Automake file for BABELSHARK plugin
 #
-# $Id: Makefile.am 25863 2008-07-29 22:06:37Z morriss $
+# $Id$
 #
 # Wireshark - Network traffic analyzer
 # By Gerald Combs <gerald@wireshark.org>
