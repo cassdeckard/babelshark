@@ -4,7 +4,7 @@
 #include <bitset>
 #include "InstructionElement.h"
 
-
+#define BIT_MASK_MAX_SIZE 64
 
 namespace BabelShark
 {
@@ -21,19 +21,12 @@ namespace BabelShark
 			//TODO -- Implement this
 			//will be used to Display data to the WireShark output
 			char* Display();
-			
-			//Creates a NullIterator because an InstructionElement
-			//should have no children.
-			void CreateIterator();
 
-			std::bitset<64> GetBitMask(){ return _BitMask;}
+			std::bitset<BIT_MASK_MAX_SIZE> GetBitMask(){ return _BitMask;}
 		private:
+			//takes our Input Size and forms the _BitMask based on it.
 			void SetupBitMask(unsigned int val);
-			std::bitset<64> _BitMask;
-			//NullIterator has not been implented yet.
-			//when it is, this class is to construct an object
-			//of type NullIterator
-			//NullIterator* nullIterator;	
+			std::bitset<BIT_MASK_MAX_SIZE> _BitMask;
 	};
 }
 

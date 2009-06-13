@@ -8,7 +8,7 @@ namespace BabelShark
 	class AsciiElement: public InstructionElement
 	{
 		public:
-			AsciiElement();
+			AsciiElement(unsigned int size, char* name);
 			~AsciiElement();
 			
 			//TODO -- Implement this
@@ -18,15 +18,8 @@ namespace BabelShark
 			//TODO -- Implement this
 			//will be used to Display data to the WireShark output
 			char* Display();
-			
-			//virtual function, no implementation in base class
-			//used in the InstructionList class.
-			Instruction* GetChild();
-			
-			//Creates a NullIterator because an InstructionElement
-			//should have no children.
-			void CreateIterator();
 		private:
+			std::string _InterpretedData;
 			//NullIterator has not been implented yet.
 			//when it is, this class is to construct an object
 			//of type NullIterator
