@@ -5,7 +5,7 @@
 #endif
 
 /* Name of package */
-#define PACKAGE "babelplug"
+#define PACKAGE "babelshark"
 
 
 #ifdef VERSION
