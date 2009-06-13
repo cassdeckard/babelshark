@@ -1,6 +1,6 @@
-/* packet-babelshark.h
+/* packet-babelplug.h
  *
- * $Id$
+ * $Id: packet-babelplug.h 18 2009-06-12 22:22:31Z histumness $
  *
  * Wireshark - Network traffic analyzer
  * By Gerald Combs <gerald@wireshark.org>
@@ -21,9 +21,22 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-#ifndef PACKET_BABELSHARK_H
-#define PACKET_BABELSHARK_H
+#ifndef PACKET_BABELPLUG_H
+#define PACKET_BABELPLUG_H
 
-#define BABELSHARK_PORT 1234
+#define BABELPLUG_UDP_PORT 443
+
+struct _babelplug_prefs
+{
+    guint udp_port;
+};
+
+void babelplug_prefs_register(struct _babelplug_prefs *prefs, module_t *module);
+
+// these functions must be defined here as extern "C"
+// but this header should be read in as extern "C" by packet-babelplug.cpp anyway
+// so no worries!
+void proto_register_babelplug(void);
+void proto_reg_handoff_babelplug(void);
 
 #endif
