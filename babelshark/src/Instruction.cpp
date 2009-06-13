@@ -3,9 +3,8 @@
 namespace BabelShark
 {
 	Instruction::Instruction(unsigned int size, char* name)
+		:_Size(size), _Name(name)
 	{
-		_Size = size;
-		_Name = name;
 	}
 
 	Instruction::~Instruction()

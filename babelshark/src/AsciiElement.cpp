@@ -8,11 +8,25 @@ namespace BabelShark
 
 //If anyone can figure out why the semicolon up on line 2 is required it would be much appreciated
 
+	AsciiElement::AsciiElement(unsigned int size, char* name)
+		:InstructionElement(size, name)
+	{
+	}
 
+	AsciiElement::~AsciiElement()
+	{
+
+	}
 	//TODO -- Implement this
 	//Will be used to read in data from packet (I think??)
 	void AsciiElement::Interpret(char* buffer)
 	{
+		_InterpretedData.clear();
+		for(size_t i = 0; i < _Size; ++i)
+		{
+			_InterpretedData += buffer[0];
+			buffer++;
+		}
 		//Implement me!
 	}
 
@@ -21,37 +35,7 @@ namespace BabelShark
 	char* AsciiElement::Display()
 	{
 		//Implement me!
-		return 0;
-	}
-
-
-/*  Commenting out the three functions below since we should be able to let it default to the 
-*   parent object
-	//Since this is a leaf node it won't have a child
-	Instruction* AsciiElement::GetChild()
-	{
-		return 0;
-	}
-
-	//Since this is a leaf node it won't have a child
-	void AsciiElement::Add(Instruction*)
-	{
-		return;
-	}
-
-	//Since this is a leaf node it won't have a child
-	void AsciiElement::Remove(Instruction*)
-	{
-		return;
-	}
-*/
-	//TODO
-	//I don't understand why this is returning a null iterator, but parent class did. :)
-	//creates a NULL iterator from the object defined in Instruction
-	void AsciiElement::CreateIterator()
-	{
-		//_Iter = new NullIterator();
-		return;
+		return const_cast<char*>(_InterpretedData.c_str());
 	}
 	
 }

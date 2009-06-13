@@ -2,6 +2,18 @@
 
 namespace BabelShark
 {
+
+	InstructionSet::InstructionSet(unsigned int size, char* name)
+		:Instruction(size, name)
+	{
+
+	}
+
+	InstructionSet::~InstructionSet()
+	{
+		CreateIterator();
+
+	}
 	//returns the first Child of the InstructionSet list.
 	Instruction* InstructionSet::GetChild()
 	{
@@ -9,31 +21,25 @@ namespace BabelShark
 	}
 
 	//Adds a child Instruction to the list.
-	void InstructionSet::Add(Instruction*)
+	void InstructionSet::Add(Instruction* instruction)
 	{
-
-	}
-
-	//Removes a child Instruction from the list.
-	void InstructionSet::Remove(Instruction*)
-	{
-		
+		_List.push_back(instruction);
 	}
 
 	//attempts to Interpret the buffer according to the children.
 	void InstructionSet::Interpret(char* buffer)
 	{
-		//while(Iterator)
+		CreateIterator();
+		
+		for(_ListIter; _ListIter != _List.end(); ++_ListIter)
 		{
-			//call display on each Instruction pointed to by the Iterator.
+			(*_ListIter)->Interpret(buffer);
 		}
 	}
 
 	//Creates an iterator used to traverse the direct children.
 	void InstructionSet::CreateIterator()
 	{
-		//InstructionList (i.e. iterator that will traverse down the 1st level of children of this InstructionSet)
-		//has not been implemented yet.  When it is, have it be initialized here.
-		//_Iter = new InstructionList();
+		_ListIter = _List.begin();
 	}
 }

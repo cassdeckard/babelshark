@@ -41,31 +41,4 @@ namespace BabelShark
 		//Implement me!
 		return 0;
 	}
-/*
-	//Since this is a leaf node it won't have a child
-	Instruction* UintElement::GetChild()
-	{
-		return 0;
-	}
-
-	//Since this is a leaf node it won't have a child
-	void UintElement::Add(Instruction*)
-	{
-		return;
-	}
-
-	//Since this is a leaf node it won't have a child
-	void UintElement::Remove(Instruction*)
-	{
-		return;
-	}
-*/
-	//TODO
-	//I don't understand why this is returning a null iterator, but parent class did. :)
-	//creates a NULL iterator from the object defined in Instruction
-	void UintElement::CreateIterator()
-	{
-		//_Iter = new NullIterator();
-		return;
-	}
 }
