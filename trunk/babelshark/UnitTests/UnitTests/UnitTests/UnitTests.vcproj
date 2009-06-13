@@ -88,6 +88,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description="Executing Unit Tests...."
+				CommandLine="$(TargetPath)"
 			/>
 		</Configuration>
 		<Configuration
@@ -175,6 +177,10 @@
 			>
 			<File
 				RelativePath=".\src\InstructionSet-UT.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\UintElement-UT.cpp"
 				>
 			</File>
 			<File

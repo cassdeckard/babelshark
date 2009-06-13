@@ -2,9 +2,10 @@
 
 namespace BabelShark
 {
-	Instruction::Instruction()
+	Instruction::Instruction(unsigned int size, char* name)
 	{
-
+		_Size = size;
+		_Name = name;
 	}
 
 	Instruction::~Instruction()
