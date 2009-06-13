@@ -1,4 +1,4 @@
-# Makefile.common for BABELSHARK plugin
+# Makefile.common for Babelplug plugin
 #     Contains the stuff from Makefile.am and Makefile.nmake that is
 #     a) common to both files and
 #     b) portable between both files
@@ -24,11 +24,11 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 # the name of the plugin
-PLUGIN_NAME = babelshark
+PLUGIN_NAME = babelplug
 
 # the dissector sources (without any helpers)
 DISSECTOR_SRC = \
-	packet-babelshark.c
+	packet-babelplug.cpp
 
 # corresponding headers
 DISSECTOR_INCLUDES =
