@@ -383,13 +383,6 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
          Parse(json_cast<String&>(element), tokenStream);
          break;
 
-/*
-      case TOKEN_NUMBER:
-         // This will be used for the ArraySize.
-         Parse(json_cast<Number&>(element), tokenStream);
-         break;
-*/
-
       case TOKEN_NULL:
          element = Null();
          Parse(json_cast<Null&>(element), tokenStream);
@@ -477,26 +470,6 @@ void Reader::Parse(String& string, Reader::TokenStream& tokenStream)
    string = MatchExpectedToken(TOKEN_STRING, tokenStream);
 }
 
-/*
-void Reader::Parse(Number& number, Reader::TokenStream& tokenStream)
-{
-   const Token& currentToken = tokenStream.Peek(); // might need this later for throwing exception
-   const std::string& sValue = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
-
-   std::istringstream iStr(sValue);
-   double dValue;
-   iStr >> dValue;
-
-   // did we consume all characters in the token?
-   if (iStr.eof() == false)
-   {
-      std::string sMessage = "Unexpected character in NUMBER token: " + iStr.peek();
-      throw ParseException(sMessage, currentToken.locBegin, currentToken.locEnd);
-   }
-
-   number = dValue;
-}
-*/
 
 void Reader::Parse(Null& null, Reader::TokenStream& tokenStream)
 {
