@@ -63,7 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="unittest++.vsnet2005.lib"
-				AdditionalLibraryDirectories="$(SolutionDir)3rdParty\libs"
+				AdditionalLibraryDirectories="$(SolutionDir)3rdParty\libs\debug"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -137,7 +137,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="unittest++.vsnet2005.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(SolutionDir)3rdParty\libs\release"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -164,6 +166,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description="Executing Unit Tests...."
+				CommandLine="$(TargetPath)"
 			/>
 		</Configuration>
 	</Configurations>
