@@ -51,8 +51,6 @@ private:
    void Parse(Object& object, TokenStream& tokenStream);
    void Parse(Array& array, TokenStream& tokenStream);
    void Parse(String& string, TokenStream& tokenStream);
-   void Parse(Number& number, TokenStream& tokenStream);
-   void Parse(Boolean& boolean, TokenStream& tokenStream);
    void Parse(Null& null, TokenStream& tokenStream);
 
    const std::string& MatchExpectedToken(TokenType nExpected, TokenStream& tokenStream);

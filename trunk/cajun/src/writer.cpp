@@ -78,14 +78,12 @@ void Writer::Visit(const Object& object) {
    }
 }
 
+/*
+// This will be used for the ArraySize.
 void Writer::Visit(const Number& number) {
    m_ostr << number;
 }
-
-void Writer::Visit(const Boolean& booleanElement) {
-   m_ostr << (booleanElement ? "true" : "false");
-}
-
+*/
 void Writer::Visit(const Null& nullElement) {
    m_ostr << "null";
 }

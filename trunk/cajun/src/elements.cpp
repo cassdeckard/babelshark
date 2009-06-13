@@ -366,52 +366,48 @@ class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 
 
 ////////////////////////
-// TrivialType_T members
+// String members
 
-template <typename DataTypeT, ElementType TYPE>
-class TrivialImpType_T : public ElementImp_T<TrivialType_T<DataTypeT, TYPE>, TrivialImpType_T<DataTypeT, TYPE>, TYPE>
+class StringImp : public ElementImp_T<String, StringImp, STRING_ELEMENT>
 {
 public:
-   TrivialImpType_T& operator = (const DataTypeT& t) { 
-      m_tValue = t; 
+   StringImp& operator = (const std::string& s) { 
+      m_sValue = s; 
+      m_iSizeToExtractFromBuffer = 1;
       return *this;
    }
 
-   operator DataTypeT&() { return m_tValue; }
-   operator const DataTypeT&() const { return m_tValue; }
+   operator std::string&() { return m_sValue; }
+   operator const std::string&() const { return m_sValue; }
 
 private:
-   DataTypeT m_tValue;
+   std::string m_sValue;
+   unsigned int m_iSizeToExtractFromBuffer; // Size read in from the PDI file which will be used by instruction
+   // class in order to extract a field from the buffer read in by Wireshark.
+   // For some types this size will represent bits.  For others it may be bytes.
+   // To keep separation of logic for PDI instructions from the logic of the PDI parser, this code will just 
+   // pass the value along, and will not have different logic for bits versus bytes.
 };
 
 
-template <typename DataTypeT, ElementType TYPE>
-TrivialType_T<DataTypeT, TYPE>::TrivialType_T(const DataTypeT& t)
+String::String(const std::string& s)
 {
    //Imp().SetValue(t);
-   Imp().operator=(t);
+   Imp().operator=(s);
 }
 
-template <typename DataTypeT, ElementType TYPE>
-TrivialType_T<DataTypeT, TYPE>& TrivialType_T<DataTypeT, TYPE>::operator = (const DataTypeT& t) {
-   Imp().operator=(t);
+String& String::operator = (const std::string& s) {
+   Imp().operator=(s);
    return *this;
 }
 
-template <typename DataTypeT, ElementType TYPE>
-TrivialType_T<DataTypeT, TYPE>::operator const DataTypeT&() const {
-   return Imp().operator const DataTypeT&();
+String::operator const std::string&() const {
+   return Imp().operator const std::string&();
 }
 
-template <typename DataTypeT, ElementType TYPE>
-TrivialType_T<DataTypeT, TYPE>::operator DataTypeT&() {
-   return Imp().operator DataTypeT&();
+String::operator std::string&() {
+   return Imp().operator std::string&();
 }
-
-// explicit template instantiations
-template class TrivialType_T<double, NUMBER_ELEMENT>;
-template class TrivialType_T<bool, BOOLEAN_ELEMENT>;
-template class TrivialType_T<std::string, STRING_ELEMENT>;
 
 
 } // End namespace

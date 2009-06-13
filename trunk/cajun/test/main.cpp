@@ -7,6 +7,7 @@
 #include "reader.h"
 #include "cast.h"
 #include "exception.h"
+#include "TreeVisitor.h"
 
 #include <iostream>
 #include <fstream>
@@ -17,168 +18,41 @@ int main()
 {
    using namespace json;
 
-   /* we'll generate: 
-      {
-         "Driver" : {
-            "Name" : "Terry"
-            "Age" : 28,
-            "Cars" : [
-               {
-                  "MakeModel" : "Ford Tempo",
-                  "Year" : 1990
-               },
-               {
-                  "MakeModel" : "Volkswagen Passat",
-                  "Year" : 2003
-               }
-            ]
-         }
-      }
-   */
-
-   // function scope, since we'll (re)use this repeatedly
-   Object objRoot;
-
-   //////////////////////////////////////////////
-   // "verbose" construction, the traditional way
    {
-      Object objCar1;
-      objCar1["MakeModel"] = String("Ford Tempo");
-      objCar1["Year"] = Number(1990);
+      // AvatarsInRoom example
+      // Currently this file is still in a JSON like format.
+      // It will eventually be changed to the PDI format.
+      // That will be done after we get the TreeVisitor to create an instruction tree.
+      // Some items may be hard-coded so instruction tree creation can be completed (for example size).
+      std::cout << "Read the AvatarInRoom.txt file..." << std::endl;
+      Element elemRoot = String();
+      Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
+      std::cout << "Done." << std::endl;
 
-      Object objCar2;
-      objCar2["MakeModel"] = String("Volkswagen Passat");
-      objCar2["Year"] = Number(2003);
+      // Write data to screen. (This just verifies that we read in the data correctly.)
+      QuickInterpreter interpeter(elemRoot);
+      const std::string& sId = interpeter["ListAvatars_Message"]["ListAvatarsMessageId"].As<String>();
+      std::cout << "Message Id: " << sId << std::endl;
+      const std::string& sRoom = interpeter["ListAvatars_Message"]["Room"].As<String>();
+      std::cout << "Room: " << sRoom << std::endl;
+      const std::string& sName = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Name"].As<String>();
+      std::cout << "Name0: " << sName << std::endl;
+      const std::string& sMale = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Male"].As<String>();
+      std::cout << "Male0: " << sMale << std::endl;
+      const std::string& sName1 = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][1]["Name"].As<String>();
+      std::cout << "Name1: " << sName1 << std::endl;
+      const std::string& sMale1 = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][1]["Male"].As<String>();
+      std::cout << "Male1: " << sMale1 << std::endl;
 
-      Array arrayCars;
-      arrayCars.Insert(objCar1);
-      arrayCars.Insert(objCar2);
-
-      Object objDriver;
-      objDriver["Name"] = String("Terry");
-      objDriver["Age"] = Number(28);
-      objDriver["Cars"] = arrayCars;
-
-      objRoot["Driver"] = objDriver;
-
-      // what's it look like?
-      Writer::Write(objRoot, std::cout);
-   }
-
-   //////////////////////////////////////////////
-   // "quick" construction, with the helper class
-   {
-      objRoot.Clear(); // reset it
-      QuickBuilder builder(objRoot);
-
-      builder["Driver"]["Name"] = String("Terry");
-      builder["Driver"]["Age"] = Number(28);
-      builder["Driver"]["Cars"][0]["MakeModel"] = String("Ford Tempo");
-      builder["Driver"]["Cars"][0]["Year"] = Number(1990);
-      builder["Driver"]["Cars"][1]["MakeModel"] = String("Volkswagen Passat");
-      builder["Driver"]["Cars"][1]["Year"] = Number(2003);
-
-      // we'll verify the contents in the intpretation test below
-   }
-
-   
-   ///////////////////////////
-   // "verbose" interpretation
-   {
-      // get the element we want, and cast it to the expected type
-      const Element& elemDriver = objRoot["Driver"];
-      const Object& objDriver = json_cast<const Object&>(elemDriver);
-
-      // we can combine the two operations of course
-      const Array& arrayCars = json_cast<const Array&>(objDriver["Cars"]);
-      const Object& objCar0 = json_cast<const Object&>(arrayCars[0]);
-      const Number& numCarYear0 = json_cast<const Number&>(objCar0["Year"]);
-      std::cout << "Year of driver's Cars[0]: " << numCarYear0 << std::endl;
-
-      const std::string& strCarMake0 = json_cast<const String&>(objCar0["MakeModel"]);
-      std::cout << "MakeModel of driver's Cars[0]: " << strCarMake0 << std::endl;
-      
-      // everything's happy until we get here, since arrayCars[0] is an object not a string
-      try
-      {
-         const String& str = json_cast<const String&>(arrayCars[0]);
-      }
-      catch (const Exception& e)
-      {
-         std::cout << "Caught expected json::Exception: " << e.what() << std::endl;
-      }
-   }
-
-
-   /////////////////////////
-   // "quick" interpretation
-   {
-      QuickInterpreter interpeter(objRoot);
-      const std::string& sDriverName = interpeter["Driver"]["Name"].As<String>(); // implicit cast from String to std::string
-      std::cout << "Driver's name: " << sDriverName << std::endl;
-
-      const Number& numYear = interpeter["Driver"]["Cars"][0]["Year"].As<Number>();
-      std::cout << "Year of driver's Cars[0]: " << int(numYear) << std::endl;
-
-      try 
-      {
-         // exception thrown again when expected data not found, since there's no "Color" member of Cars[0]
-         const String& strColor = interpeter["Driver"]["Cars"][0]["Color"].As<String>();
-      }
-      catch (const Exception& e)
-      {
-         std::cout << "Caught expected json::Exception: " << e.what() << std::endl;
-      }
-   }
-
-   ///////////////////////
-   // document deep copying
-   {
-      // we can make an exact duplicate too
-      Element objRoot2 = objRoot; 
-      QuickBuilder builder2(objRoot2);
-
-      // prove objRoot2 is a deep copy of objRoot:
-      //  change year of Cars[0]
-      //  remove Cars[1]
-      builder2["Driver"]["Cars"][0]["Year"] = Number(1991);
-      Array& array = builder2["Driver"]["Cars"].As<Array>();
-      array.Resize(1); // trim it down to one. this leaves objRoot the same
-
-      try
-      {
-         // objRoot["Driver"]["Cars"][0] still exists...
-         QuickInterpreter interpreter(objRoot);
-         std::cout << interpreter["Driver"]["Cars"][0]["Year"].As<Number>() << std::endl;
-
-         // but objRoot2["Driver"]["Cars"][1] no longer does...
-         QuickInterpreter interpreter2(objRoot2);
-         std::cout << interpreter2["Driver"]["Cars"][1]["Year"].As<Number>() << std::endl;
-      }
-      catch (const Exception& e)
-      {
-         std::cout << "Caught expected json::Exception: " << e.what() << std::endl;
-      }
-   }
-
-
-   //////////////////////////
-   // read/write sanity check
-   {
-      // write it out to a file....
+      // Write it out to a file....
       std::cout << "Writing file out...";
-      Writer::Write(objRoot, std::ofstream("json.txt"));
+      Writer::Write(elemRoot, std::ofstream("AvatarsInRoomOutput.txt"));
+      std::cout << "Done." << std::endl;
 
-      // ...then read it back in
-      std::cout << "then reading it back in." << std::endl;
-      Element elemRootFile = String();
-      Reader::Read(elemRootFile, std::ifstream("json.txt"));
+      // When the accept function is called, it iterates over every element in the PDI tree.
+      TreeVisitor treeVisitor;
+      elemRoot.Accept(treeVisitor);
 
-      // still look right?
-      QuickInterpreter interpeter(elemRootFile);
-      const std::string& sName = interpeter["Driver"]["Name"].As<String>();
-
-      std::cout << "Driver's name is still: " << sName << std::endl;
    }
 
    return 0;

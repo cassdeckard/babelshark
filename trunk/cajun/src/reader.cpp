@@ -42,8 +42,7 @@ enum Reader::TokenType
    TOKEN_NEXT_ELEMENT,  //    ,
    TOKEN_MEMBER_ASSIGN, //    :
    TOKEN_STRING,        //    "xxx"
-   TOKEN_NUMBER,        //    [+/-]000.000e[+/-]000
-   TOKEN_BOOLEAN,       //    true -or- false
+   TOKEN_NUMBER,        //    000
    TOKEN_NULL,          //    null
    TOKEN_COMMENT        //    // ......
 };
@@ -241,20 +240,8 @@ void Reader::Scan(Tokens& tokens, InputStream& inputStream)
          case '7':
          case '8':
          case '9':
-            MatchNumber(token.sValue,inputStream);
+            MatchNumber(token.sValue, inputStream);
             token.nType = TOKEN_NUMBER;
-            break;
-
-         case 't':
-            token.sValue = "true";
-            MatchExpectedString(token.sValue, inputStream);
-            token.nType = TOKEN_BOOLEAN;
-            break;
-
-         case 'f':
-            token.sValue = "false";
-            MatchExpectedString(token.sValue, inputStream);
-            token.nType = TOKEN_BOOLEAN;
             break;
 
          case 'n':
@@ -358,7 +345,7 @@ void Reader::MatchString(std::string& string, InputStream& inputStream)
 
 void Reader::MatchNumber(std::string& sNumber, InputStream& inputStream)
 {
-   const char sNumericChars[] = "0123456789.eE-+";
+   const char sNumericChars[] = "0123456789";
    std::set<char> numericChars;
    numericChars.insert(sNumericChars, sNumericChars + sizeof(sNumericChars));
 
@@ -396,15 +383,12 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
          Parse(json_cast<String&>(element), tokenStream);
          break;
 
+/*
       case TOKEN_NUMBER:
-         element = Number();
+         // This will be used for the ArraySize.
          Parse(json_cast<Number&>(element), tokenStream);
          break;
-
-      case TOKEN_BOOLEAN:
-         element = Boolean();
-         Parse(json_cast<Boolean&>(element), tokenStream);
-         break;
+*/
 
       case TOKEN_NULL:
          element = Null();
@@ -493,7 +477,7 @@ void Reader::Parse(String& string, Reader::TokenStream& tokenStream)
    string = MatchExpectedToken(TOKEN_STRING, tokenStream);
 }
 
-
+/*
 void Reader::Parse(Number& number, Reader::TokenStream& tokenStream)
 {
    const Token& currentToken = tokenStream.Peek(); // might need this later for throwing exception
@@ -512,14 +496,7 @@ void Reader::Parse(Number& number, Reader::TokenStream& tokenStream)
 
    number = dValue;
 }
-
-
-void Reader::Parse(Boolean& boolean, Reader::TokenStream& tokenStream)
-{
-   const std::string& sValue = MatchExpectedToken(TOKEN_BOOLEAN, tokenStream);
-   boolean = (sValue == "true" ? true : false);
-}
-
+*/
 
 void Reader::Parse(Null& null, Reader::TokenStream& tokenStream)
 {

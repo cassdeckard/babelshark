@@ -33,9 +33,7 @@ enum ElementType
 {
    OBJECT_ELEMENT,
    ARRAY_ELEMENT,
-   NUMBER_ELEMENT,
    STRING_ELEMENT,
-   BOOLEAN_ELEMENT,
    NULL_ELEMENT
 };
 
@@ -169,23 +167,17 @@ public:
 
 
 
-template <typename DataTypeT, ElementType TYPE>
-class TrivialImpType_T;
-
-template <typename DataTypeT, ElementType TYPE>
-class TrivialType_T : public Element_T<TrivialImpType_T<DataTypeT, TYPE> >
+class StringImp;
+class String : public Element_T<StringImp>
 {
 public:
-   TrivialType_T(const DataTypeT& t = DataTypeT());
-   TrivialType_T& operator = (const DataTypeT& t);
+   String(const std::string& s = std::string());
+   String& operator = (const std::string& s);
 
-   operator const DataTypeT&() const;
-   operator DataTypeT&();
+   operator const std::string&() const;
+   operator std::string&();
 };
 
-typedef TrivialType_T<double, NUMBER_ELEMENT> Number;
-typedef TrivialType_T<bool, BOOLEAN_ELEMENT> Boolean;
-typedef TrivialType_T<std::string, STRING_ELEMENT> String;
 
 
 
