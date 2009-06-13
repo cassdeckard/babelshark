@@ -7,7 +7,7 @@ namespace BabelShark
 	class InstructionElement: public Instruction
 	{
 		public:
-			InstructionElement();
+			InstructionElement(unsigned int size, char* name);
 			~InstructionElement();
 			
 			//virtual function, base definition does nothing.
@@ -22,19 +22,11 @@ namespace BabelShark
 			//used in the InstructionList class.
 			Instruction* GetChild();
 
-			//Recall we are using the composite pattern
-			//Since this is the parent class for all leaf nodes it won't have the ability to add children
-			void InstructionElement::Add(Instruction*);
-
-			//Recall we are using the composite pattern
-			//Since this is the parent class for all leaf nodes it won't have the ability to remove children
-			void InstructionElement::Remove(Instruction*);
-
 			//Creates a NullIterator because an InstructionElement
 			//should have no children.
 			void CreateIterator();
 		private:
-			unsigned int _Size;
+
 			//NullIterator has not been implented yet.
 			//when it is, this class is to construct an object
 			//of type NullIterator

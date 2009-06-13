@@ -1,14 +1,17 @@
 #ifndef UNIT_ELEMENT_H
 #define UINT_ELEMENT_H
 
+#include <bitset>
 #include "InstructionElement.h"
+
+
 
 namespace BabelShark
 {
 	class UintElement: public InstructionElement
 	{
 		public:
-			UintElement();
+			UintElement(unsigned int size, char* name);
 			~UintElement();
 			
 			//TODO -- Implement this
@@ -19,14 +22,14 @@ namespace BabelShark
 			//will be used to Display data to the WireShark output
 			char* Display();
 			
-			//virtual function, no implementation in base class
-			//used in the InstructionList class.
-			Instruction* GetChild();
-			
 			//Creates a NullIterator because an InstructionElement
 			//should have no children.
 			void CreateIterator();
+
+			std::bitset<64> GetBitMask(){ return _BitMask;}
 		private:
+			void SetupBitMask(unsigned int val);
+			std::bitset<64> _BitMask;
 			//NullIterator has not been implented yet.
 			//when it is, this class is to construct an object
 			//of type NullIterator

@@ -2,7 +2,15 @@
 
 namespace BabelShark
 {
+	InstructionElement::InstructionElement(unsigned int size, char* name)
+		:Instruction(size, name)
+	{
 
+	}
+	InstructionElement::~InstructionElement()
+	{
+
+	}
 
 	//virtual function, base definition does nothing.
 	//should be implemented by any class inheriting from it.
@@ -25,19 +33,6 @@ namespace BabelShark
 		return 0;
 	}
 
-	//Recall we are using the composite pattern
-	//Since this is the parent class for all leaf nodes it won't have the ability to add children
-	void InstructionElement::Add(Instruction*)
-	{
-		return;
-	}
-
-	//Recall we are using the composite pattern
-	//Since this is the parent class for all leaf nodes it won't have the ability to remove children
-	void InstructionElement::Remove(Instruction*)
-	{
-		return;
-	}
 
 	//creates a NULL iterator from the object defined in Instruction
 	void InstructionElement::CreateIterator()
