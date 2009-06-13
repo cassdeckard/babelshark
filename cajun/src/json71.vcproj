@@ -140,6 +140,9 @@
 				RelativePath="..\include\reader.h">
 			</File>
 			<File
+				RelativePath="..\include\TreeVisitor.h">
+			</File>
+			<File
 				RelativePath="..\include\visitor.h">
 			</File>
 			<File
