@@ -1,5 +1,5 @@
-#ifndef UINT_ELEMENT_H
-#define UINT_ELEMENT_H
+#ifndef BOOL_ELEMENT_H
+#define BOOL_ELEMENT_H
 
 #include <bitset>
 #include "InstructionElement.h"
@@ -8,11 +8,11 @@
 
 namespace BabelShark
 {
-	class UintElement: public InstructionElement
+	class BoolElement: public InstructionElement
 	{
 		public:
-			UintElement(unsigned int size, char* name);
-			~UintElement();
+			BoolElement(unsigned int size, char* name);
+			~BoolElement();
 			
 			//TODO -- Implement this
 			//Will be used to read in data from packet (I think??)
@@ -31,4 +31,4 @@ namespace BabelShark
 }
 
 
-#endif //UINT_ELEMENT_H
+#endif //BOOL_ELEMENT_H
