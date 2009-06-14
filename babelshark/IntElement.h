@@ -1,3 +1,5 @@
+// $Id$
+
 #ifndef INT_ELEMENT_H
 #define INT_ELEMENT_H
 
@@ -13,11 +15,11 @@ namespace BabelShark
 		public:
 			IntElement(unsigned int size, char* name);
 			~IntElement();
-			
+
 			//TODO -- Implement this
 			//Will be used to read in data from packet (I think??)
 			void Interpret(char* buffer);
-			
+
 			//TODO -- Implement this
 			//will be used to Display data to the WireShark output
 			char* Display();

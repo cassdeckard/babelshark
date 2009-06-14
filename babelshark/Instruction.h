@@ -1,3 +1,5 @@
+// $Id$
+
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
@@ -17,27 +19,27 @@ namespace BabelShark
 		public:
 			Instruction(unsigned int size, char* name);
 			virtual ~Instruction();
-			
+
 			//virtual function, base definition does nothing.
 			//should be implemented by any class inheriting from it.
 			virtual void Interpret(char* buffer);
-			
+
 			//virtual function, base definition does nothing.
 			//will be used to Display data to the WireShark output
 			virtual char* Display();
-			
+
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
 			virtual Instruction* GetChild();
-			
+
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
 			virtual void Add(Instruction*);
-			
+
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
 			virtual void Remove(Instruction*);
-			
+
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
 			virtual void CreateIterator();

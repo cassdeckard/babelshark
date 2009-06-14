@@ -1,3 +1,5 @@
+// $Id$
+
 #include "..\BoolElement.h"
 
 namespace BabelShark
