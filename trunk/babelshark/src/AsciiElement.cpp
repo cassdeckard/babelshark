@@ -44,22 +44,24 @@ namespace BabelShark
 	//Will be used to read in data from packet
 	void AsciiElement::Interpret(char* buffer)
     {
-
 		_InterpretedData.clear();
-        _InterpretedData += _Name + " : '";
 
 		for(size_t i = 0; i < _Size; ++i)
 		{
 			_InterpretedData += Printable(buffer[i]);
         }
 
-        _InterpretedData +="'";
 	}
 
 	//will be used to Display data to the WireShark output
 	char* AsciiElement::Display()
-	{
-		return const_cast<char*>(_InterpretedData.c_str());
+    {
+        static char* result;
+        std::string resultStr = _Name + " : '" +  _InterpretedData + "'";
+        result = new char[resultStr.length() + 1];
+        memcpy(result, resultStr.c_str(), resultStr.length());
+        result[resultStr.length()] = 0; // null terminator
+        return result;
 	}
 
 }

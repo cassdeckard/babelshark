@@ -1,6 +1,7 @@
 // $Id$
 
 #include "..\UintElement.h"
+#include <sstream>
 
 namespace BabelShark
 {
@@ -20,22 +21,27 @@ namespace BabelShark
 	//Will be used to read in data from packet
 	void UintElement::Interpret(char* buffer)
     {
-        char          tempDisplay[255];
+        std::stringstream result;
+
         unsigned long intVal = 0;
         unsigned long intMask = _BitMask.to_ulong();
-		_InterpretedData.clear();
-		_InterpretedData += _Name + " : ";
 
-       memcpy(&intVal, buffer, _SizeInBytes);
-       sprintf(tempDisplay, "%u", intVal & intMask);
+        memcpy(&intVal, buffer, _SizeInBytes);
+        intVal &= intMask;
+        result << intVal;
 
-       _InterpretedData += tempDisplay;
+        _InterpretedData = result.str();
 	}
 
 	//will be used to Display data to the WireShark output
 	char* UintElement::Display()
     {
-        return const_cast<char*>(_InterpretedData.c_str());
+        static char* result;
+        std::string resultStr = _Name + " : " +  _InterpretedData;
+        result = new char[resultStr.length() + 1];
+        memcpy(result, resultStr.c_str(), resultStr.length());
+        result[resultStr.length()] = 0; // null terminator
+        return result;
 	}
 
 }
