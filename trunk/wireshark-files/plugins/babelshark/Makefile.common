@@ -43,4 +43,5 @@ DISSECTOR_SUPPORT_SRC = \
 	AsciiElement.cpp \
 	UintElement.cpp \
 	BoolElement.cpp \
+	PadElement.cpp \
 	Dissector.cpp

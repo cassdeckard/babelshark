@@ -27,7 +27,7 @@ namespace BabelShark
 		_InterpretedData += _Name + " : ";
 
        memcpy(&intVal, buffer, _SizeInBytes);
-       sprintf(tempDisplay, "%u\0", intVal & intMask);
+       sprintf(tempDisplay, "%u", intVal & intMask);
 
        _InterpretedData += tempDisplay;
 	}
