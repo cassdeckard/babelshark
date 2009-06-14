@@ -1,8 +1,13 @@
 #pragma once
 
+
 #include "UintElement.h"
-#include "AsciiElement.h"
+#include "IntElement.h"
 #include "BoolElement.h"
+#include "FloatElement.h"
+#include "AsciiElement.h"
+#include "PadElement.h"
+
 
 #include <algorithm>
 #include <map>
@@ -29,12 +34,12 @@ public:
    //A parameter should be added to the constructor that specifies how long the buffer is and checked appropriately.
    TreeVisitor()
    {
-//      m_CreateInstructionFuncMap["INT"] = &TreeVisitor::CreateInstruction<BabelShark::IntElement>;
+      m_CreateInstructionFuncMap["INT"] = &TreeVisitor::CreateInstruction<BabelShark::IntElement>;
       m_CreateInstructionFuncMap["UINT"] = &TreeVisitor::CreateInstruction<BabelShark::UintElement>;
       m_CreateInstructionFuncMap["BOOL"] = &TreeVisitor::CreateInstruction<BabelShark::BoolElement>;
-//      m_CreateInstructionFuncMap["FLOAT"] = &TreeVisitor::CreateInstruction<BabelShark::FloatElement>;
+      m_CreateInstructionFuncMap["FLOAT"] = &TreeVisitor::CreateInstruction<BabelShark::FloatElement>;
       m_CreateInstructionFuncMap["ASCII"] = &TreeVisitor::CreateInstruction<BabelShark::AsciiElement>;
-//      m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
+      m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
    }
 
 private:
