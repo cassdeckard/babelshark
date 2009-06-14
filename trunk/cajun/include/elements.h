@@ -3,6 +3,7 @@
 License: BSD
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 Author: Terry Caton, tcaton(a)hotmail.com
+Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
 
 TODO: additional documentation. See class headers for additional
 info.
@@ -23,7 +24,7 @@ TODO:
 
 */
 
-namespace json
+namespace PDI
 {
 
 class Visitor;
@@ -51,8 +52,11 @@ public:
    ~Element();
 
    Element& operator= (const Element& element);
-
+   
    ElementType Type() const;
+
+   void SetName(const std::string& nameIn);
+   std::string GetName() const;
 
    // const & non-const visitor interfaces
    void Accept(Visitor& visitor);

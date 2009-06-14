@@ -13,7 +13,7 @@ TODO: additional documentation.
 #include "elements.h"
 #include "visitor.h"
 
-namespace json
+namespace PDI
 {
 
 

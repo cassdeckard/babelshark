@@ -1,3 +1,8 @@
+/**********************************************
+
+Author: Julie Betlach, julie.betlach(a)gmail.com
+
+***********************************************/
 #pragma once
 
 
@@ -19,7 +24,7 @@
 #include <fstream>
 
 
-class TreeVisitor : public json::ConstVisitor
+class TreeVisitor : public PDI::ConstVisitor
 {
 public:
 /*type     := 'UINT'
@@ -53,8 +58,8 @@ private:
       
    }
 
-   virtual void Visit(const json::Array& array) {
-      json::Array::const_iterator it(array.Begin()),
+   virtual void Visit(const PDI::Array& array) {
+      PDI::Array::const_iterator it(array.Begin()),
                                   itEnd(array.End());
       for (; it != itEnd; ++it)
       {
@@ -62,8 +67,8 @@ private:
       }
    }
 
-   virtual void Visit(const json::Object& object) {
-      json::Object::const_iterator it(object.Begin()),
+   virtual void Visit(const PDI::Object& object) {
+      PDI::Object::const_iterator it(object.Begin()),
                                    itEnd(object.End());
       for (; it != itEnd; ++it)
       {
@@ -72,7 +77,7 @@ private:
    }
 
    // For PDI, we will always use strings for the values.
-   virtual void Visit(const json::String& string) {
+   virtual void Visit(const PDI::String& string) {
       std::istringstream ss(string);
 
       std::string sType;
@@ -87,11 +92,11 @@ private:
       }
       else
       {
-         std::cout << "This leaf node has been visited " << sType << std::endl;
+         std::cout << "This leaf node has been visited " << string.GetName() << " " << sType << " " << nSize << std::endl;
       }
       
       CreateInstructionFunc func = it->second;
-      (this->*func)(nSize, sType);
+      (this->*func)(nSize, string.GetName());
 
 
       
@@ -103,7 +108,7 @@ private:
 
 
    // For PDI, we won't need any of these.
-   virtual void Visit(const json::Null& null) {}
+   virtual void Visit(const PDI::Null& null) {}
 
    typedef void (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&);
    typedef std::map<std::string, CreateInstructionFunc> CreateInstructionFuncMap;

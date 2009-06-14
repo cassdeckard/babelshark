@@ -38,7 +38,7 @@ builder["XYZ"][ABC][0] = Number(1);
 #include "elements.h"
 
 
-namespace json
+namespace PDI
 {
 
 
@@ -61,7 +61,7 @@ public:
    operator const Element& () const { return m_Element; }
 
    template <typename ElementTypeT>
-   const ElementTypeT& As() const { return json_cast<const ElementTypeT&>(m_Element); }
+   const ElementTypeT& As() const { return PDI_cast<const ElementTypeT&>(m_Element); }
 
 private:
    const Element& m_Element;
@@ -97,7 +97,7 @@ public:
    operator Element& () { return m_Element; }
 
    template <typename ElementTypeT>
-   ElementTypeT& As() { return json_cast<ElementTypeT&>(m_Element); }
+   ElementTypeT& As() { return PDI_cast<ElementTypeT&>(m_Element); }
 
    template <typename ElementTypeT>
    ElementTypeT& Convert() {

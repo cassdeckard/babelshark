@@ -1,5 +1,6 @@
-// json.cpp : Defines the entry point for the console application.
+// PDI.cpp : Defines the entry point for the console application.
 //
+// Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
 
 #include "elements.h"
 #include "quick.h"
@@ -16,7 +17,7 @@
 
 int main()
 {
-   using namespace json;
+   using namespace PDI;
 
    {
       // AvatarsInRoom example

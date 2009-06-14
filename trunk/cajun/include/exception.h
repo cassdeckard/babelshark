@@ -13,7 +13,7 @@ info.
 
 #include "reader.h"
 
-namespace json
+namespace PDI
 {
 
 class Exception : public std::runtime_error
