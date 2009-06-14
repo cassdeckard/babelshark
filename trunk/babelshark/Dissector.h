@@ -15,6 +15,7 @@ extern "C" {
 
 // C++ headers
 #include "Instruction.h"
+#include "InstructionSet.h"  //note: won't need later
 #include "AsciiElement.h" //note: won't need later
 #include "UintElement.h"  //note: won't need later
 #include "BoolElement.h"  //note: won't need later
@@ -32,6 +33,7 @@ namespace BabelShark
             void Test();
 
 		private:
+            Instruction* _RootInstruction;
             Instruction* _instruction;
             Instruction* _instruction2;
             Instruction* _instruction3;
