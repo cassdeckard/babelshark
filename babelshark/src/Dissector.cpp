@@ -10,8 +10,8 @@ namespace BabelShark
 
     Dissector::Dissector(gint* ett, int proto)
         : _instruction(new AsciiElement(4, "test_ascii")),
-          _instruction2(new UintElement(8, "test_uint")),
-          _instruction3(new BoolElement(8, "test_bool")),
+          _instruction2(new UintElement(7, "test_uint")),
+          _instruction3(new BoolElement(1, "test_bool")),
           _instruction4(new PadElement(16,  "test_padding")),
           _ett(ett),
           _proto(proto)

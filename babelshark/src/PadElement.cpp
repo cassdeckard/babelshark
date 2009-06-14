@@ -1,6 +1,7 @@
 // $Id$
 
 #include "..\PadElement.h"
+#include <sstream>
 
 namespace BabelShark
 {
@@ -24,18 +25,20 @@ namespace BabelShark
 	//Will be used to read in data from packet
 	void PadElement::Interpret(char* buffer)
     {
-        char tempDisplay[255];
-        _InterpretedData.clear();
-        _InterpretedData += _Name + " : ";
-
-        sprintf(tempDisplay, "(%i bits of padding)", _Size);
-        _InterpretedData += tempDisplay;
+        std::stringstream result;
+        result << "(" << _Size << " bits of padding)";
+        _InterpretedData = result.str();
 	}
 
 	//will be used to Display data to the WireShark output
 	char* PadElement::Display()
-	{
-		return const_cast<char*>(_InterpretedData.c_str());
+    {
+        static char* result;
+        std::string resultStr = _Name + " : " +  _InterpretedData;
+        result = new char[resultStr.length() + 1];
+        memcpy(result, resultStr.c_str(), resultStr.length());
+        result[resultStr.length()] = 0; // null terminator
+        return result;
 	}
 
 }
