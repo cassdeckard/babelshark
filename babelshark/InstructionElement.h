@@ -2,6 +2,10 @@
 
 #ifndef INSTRUCTION_ELEMENT_H
 #define INSTRUCTION_ELEMENT_H
+
+#define BIT_MASK_MAX_SIZE 64
+
+#include <bitset>
 #include "Instruction.h"
 
 namespace BabelShark
@@ -26,13 +30,23 @@ namespace BabelShark
 
 			//Creates a NullIterator because an InstructionElement
 			//should have no children.
-			void CreateIterator();
-		private:
+            void CreateIterator();
 
+            // takes an Input Size and forms a bitmask based on it.
+            static std::bitset<BIT_MASK_MAX_SIZE> SetupBitMask(unsigned int val);
+
+            // rounds up bit size to byte size
+            unsigned int DetermineSizeInBytes(int bits);
+
+        protected:
+            std::string _InterpretedData;
+
+		private:
 			//NullIterator has not been implented yet.
 			//when it is, this class is to construct an object
 			//of type NullIterator
-			//NullIterator* nullIterator;
+            //NullIterator* nullIterator;
+
 	};
 }
 

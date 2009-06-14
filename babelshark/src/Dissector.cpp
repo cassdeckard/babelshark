@@ -9,9 +9,10 @@ namespace BabelShark
 {
 
     Dissector::Dissector(gint* ett, int proto)
-        : _instruction(new AsciiElement(8, "test_ascii")),
-          _instruction2(new UintElement(4, "test_uint")),
-          _instruction3(new UintElement(5, "test_uint2")),
+        : _instruction(new AsciiElement(4, "test_ascii")),
+          _instruction2(new AsciiElement(4, "test_ascii2")),
+          _instruction3(new AsciiElement(4, "test_ascii3")),
+          _instruction4(new AsciiElement(4, "test_ascii4")),
           _ett(ett),
           _proto(proto)
 	{
@@ -48,6 +49,7 @@ namespace BabelShark
         _instruction->Interpret(buffer + offset);  offset += _instruction->GetSizeInBytes();
         _instruction2->Interpret(buffer + offset); offset += _instruction2->GetSizeInBytes();
         _instruction3->Interpret(buffer + offset); offset += _instruction3->GetSizeInBytes();
+        _instruction4->Interpret(buffer + offset); offset += _instruction4->GetSizeInBytes();
         offset = 0;
 
         if (tree) { // we are being asked for details
@@ -66,6 +68,7 @@ namespace BabelShark
            proto_tree_add_text(babelshark_tree, tvb, offset, _instruction->GetSizeInBytes(), _instruction->Display()); offset +=_instruction->GetSizeInBytes();
            proto_tree_add_text(babelshark_tree, tvb, offset, _instruction2->GetSizeInBytes(), _instruction2->Display()); offset +=_instruction2->GetSizeInBytes();
            proto_tree_add_text(babelshark_tree, tvb, offset, _instruction3->GetSizeInBytes(), _instruction3->Display()); offset +=_instruction3->GetSizeInBytes();
+           proto_tree_add_text(babelshark_tree, tvb, offset, _instruction4->GetSizeInBytes(), _instruction4->Display()); offset +=_instruction4->GetSizeInBytes();
 
        }
 

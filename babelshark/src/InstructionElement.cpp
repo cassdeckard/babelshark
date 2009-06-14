@@ -41,4 +41,34 @@ namespace BabelShark
 	{
 		//_Iter = new NullIterator();
 	}
+
+
+    // takes an Input Size and forms a bitmask based on it.
+    std::bitset<BIT_MASK_MAX_SIZE> InstructionElement::SetupBitMask(unsigned int val)
+    {
+        std::bitset<BIT_MASK_MAX_SIZE> result;
+        size_t bitMaskIndex = 0;
+        while(bitMaskIndex < result.size())
+        {
+            if(val > 0)
+            {
+                result.set(bitMaskIndex, 1);
+                val--;
+            }
+            bitMaskIndex++;
+        }
+        return result;
+    }
+
+    // rounds up bit size to byte size
+    unsigned int InstructionElement::DetermineSizeInBytes(int bits)
+    {
+        int sizeInBytes = 0;
+        while(bits > 0)
+        {
+            sizeInBytes++;
+            bits -=8;
+        }
+        return sizeInBytes;
+    }
 }

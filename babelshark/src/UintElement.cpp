@@ -8,7 +8,7 @@ namespace BabelShark
 	UintElement::UintElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
-		SetupBitMask(_Size);
+		_BitMask = SetupBitMask(_Size);
 		_SizeInBytes = DetermineSizeInBytes(size);
 	}
 
@@ -32,34 +32,10 @@ namespace BabelShark
        _InterpretedData += tempDisplay;
 	}
 
-	void UintElement::SetupBitMask(unsigned int val)
-	{
-		size_t bitMaskIndex = 0;
-		while(bitMaskIndex < _BitMask.size())
-		{
-			if(val > 0)
-			{
-				_BitMask.set(bitMaskIndex, 1);
-				val--;
-			}
-			bitMaskIndex++;
-		}
-	}
-
 	//will be used to Display data to the WireShark output
 	char* UintElement::Display()
     {
         return const_cast<char*>(_InterpretedData.c_str());
 	}
 
-	unsigned int UintElement::DetermineSizeInBytes(int bits)
-	{
-		int sizeInBytes = 0;
-		while(bits > 0)
-		{
-			sizeInBytes++;
-			bits -=8;
-		}
-		return sizeInBytes;
-	}
 }

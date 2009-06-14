@@ -8,7 +8,7 @@ namespace BabelShark
 	IntElement::IntElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
-		SetupBitMask(_Size);
+		_BitMask = SetupBitMask(_Size);
 	}
 
 	IntElement::~IntElement()
@@ -20,20 +20,6 @@ namespace BabelShark
 	void IntElement::Interpret(char* buffer)
 	{
 		//Implement me!
-	}
-
-	void IntElement::SetupBitMask(unsigned int val)
-	{
-		size_t bitMaskIndex = 0;
-		while(bitMaskIndex < _BitMask.size())
-		{
-			if(val > 0)
-			{
-				_BitMask.set(bitMaskIndex, 1);
-				val--;
-			}
-			bitMaskIndex++;
-		}
 	}
 
 	//TODO -- Implement this

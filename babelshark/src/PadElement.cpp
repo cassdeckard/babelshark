@@ -32,11 +32,9 @@ namespace BabelShark
 		//Implement me!
 	}
 
-	//TODO -- Implement this
 	//will be used to Display data to the WireShark output
 	char* PadElement::Display()
 	{
-		//Implement me!
 		return const_cast<char*>(_InterpretedData.c_str());
 	}
 
