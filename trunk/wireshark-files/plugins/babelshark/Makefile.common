@@ -42,4 +42,5 @@ DISSECTOR_SUPPORT_SRC = \
 	InstructionSet.cpp \
 	AsciiElement.cpp \
 	UintElement.cpp \
+	BoolElement.cpp \
 	Dissector.cpp
