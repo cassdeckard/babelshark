@@ -26,6 +26,10 @@
 
 #define BABELSHARK_UDP_PORT 443
 
+#include "Dissector.h"
+
+static BabelShark::Dissector* babelshark_dissector;
+
 struct _babelshark_prefs
 {
     guint udp_port;
@@ -34,9 +38,10 @@ struct _babelshark_prefs
 void babelshark_prefs_register(struct _babelshark_prefs *prefs, module_t *module);
 
 // these functions must be defined here as extern "C"
-// but this header should be read in as extern "C" by packet-babelshark.cpp anyway
-// so no worries!
-void proto_register_babelshark(void);
-void proto_reg_handoff_babelshark(void);
+extern "C"
+{
+    void proto_register_babelshark(void);
+    void proto_reg_handoff_babelshark(void);
+}
 
 #endif

@@ -22,11 +22,13 @@ namespace BabelShark
 	void AsciiElement::Interpret(char* buffer)
 	{
 		_InterpretedData.clear();
+        _InterpretedData += _Name + " : '";
 		for(size_t i = 0; i < _Size; ++i)
 		{
 			_InterpretedData += buffer[0];
 			buffer++;
-		}
+        }
+        _InterpretedData += "'";
 		//Implement me!
 	}
 
