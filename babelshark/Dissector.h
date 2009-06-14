@@ -18,6 +18,7 @@ extern "C" {
 #include "AsciiElement.h" //note: won't need later
 #include "UintElement.h"  //note: won't need later
 #include "BoolElement.h"  //note: won't need later
+#include "PadElement.h"  //note: won't need later
 
 namespace BabelShark
 {

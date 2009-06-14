@@ -12,24 +12,24 @@ namespace BabelShark
 
 	PadElement::PadElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
-	{
+    {
+        _SizeInBytes = DetermineSizeInBytes(size);
 	}
 
 	PadElement::~PadElement()
 	{
 
 	}
-	//TODO -- Implement this
-	//Will be used to read in data from packet (I think??)
+
+	//Will be used to read in data from packet
 	void PadElement::Interpret(char* buffer)
-	{
-		_InterpretedData.clear();
-		for(size_t i = 0; i < _Size; ++i)
-		{
-			_InterpretedData += buffer[0];
-			buffer++;
-		}
-		//Implement me!
+    {
+        char tempDisplay[255];
+        _InterpretedData.clear();
+        _InterpretedData += _Name + " : ";
+
+        sprintf(tempDisplay, "(%i bits of padding)", _Size);
+        _InterpretedData += tempDisplay;
 	}
 
 	//will be used to Display data to the WireShark output
