@@ -1,11 +1,13 @@
 /**********************************************
 
-License: BSD
-Project Webpage: http://cajun-jsonapi.sourceforge.net/
-Author: Terry Caton, tcaton(a)hotmail.com
-Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
+Author: Julie Betlach
 
-TODO: additional documentation. 
+Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
+Project Webpage: http://cajun-jsonapi.sourceforge.net/
+
+Original code parsed files in json format.
+Code now parses files in PDI format for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 ***********************************************/
 
@@ -50,7 +52,7 @@ private:
    // parsing token sequence into element structure
    void Parse(Element& element, TokenStream& tokenStream);
    void Parse(Array& array, TokenStream& tokenStream);
-   void Parse(String& string, TokenStream& tokenStream);
+   void Parse(DisplayElement& string, TokenStream& tokenStream);
    void Parse(Null& null, TokenStream& tokenStream);
 
    const std::string& MatchExpectedToken(TokenType nExpected, TokenStream& tokenStream);

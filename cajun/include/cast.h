@@ -1,13 +1,18 @@
 /******************************************************************************
 
-License: BSD
+Author: Julie Betlach
+
+Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
-Author: Terry Caton, tcaton(a)hotmail.com
+
+Original code parsed files in json format.
+Code now parses files in PDI format for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 functions: PDI_cast
 
 PDI_cast is intended as a alternatives to static_cast and dynamic_cast. The
-symantics are identical: one can cast a const/nonconst poitner/reference, and 
+symantics are identical: one can cast a const/nonconst pointer/reference, and 
 all conventional rules regarding casting are preserved. It is similar to 
 static_cast in that it simply returns a "reinterpretation" of the pointer or
 reference passed in. However, it is closer in functionality to dynamic_cast,

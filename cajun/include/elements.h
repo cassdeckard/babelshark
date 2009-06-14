@@ -1,12 +1,13 @@
 /**********************************************
 
-License: BSD
-Project Webpage: http://cajun-jsonapi.sourceforge.net/
-Author: Terry Caton, tcaton(a)hotmail.com
-Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
+Author: Julie Betlach
 
-TODO: additional documentation. See class headers for additional
-info.
+Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
+Project Webpage: http://cajun-jsonapi.sourceforge.net/
+
+Original code parsed files in json format.
+Code now parses files in PDI format for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 ***********************************************/
 
@@ -134,11 +135,11 @@ public:
 
 
 class StringImp;
-class String : public Element_T<StringImp>
+class DisplayElement : public Element_T<StringImp>
 {
 public:
-   String(const std::string& s = std::string());
-   String& operator = (const std::string& s);
+   DisplayElement(const std::string& s = std::string());
+   DisplayElement& operator = (const std::string& s);
 
    operator const std::string&() const;
    operator std::string&();

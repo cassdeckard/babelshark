@@ -1,11 +1,13 @@
 /**********************************************
 
-License: BSD
-Project Webpage: http://cajun-jsonapi.sourceforge.net/
-Author: Terry Caton, tcaton(a)hotmail.com
-Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
+Author: Julie Betlach
 
-TODO: additional documentation. 
+Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
+Project Webpage: http://cajun-jsonapi.sourceforge.net/
+
+Original code parsed files in json format.
+Code now parses files in PDI format for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 ***********************************************/
 
@@ -296,9 +298,9 @@ class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 
 
 ////////////////////////
-// String members
+// DisplayElement members
 
-class StringImp : public ElementImp_T<String, StringImp, DISPLAY_ELEMENT>
+class StringImp : public ElementImp_T<DisplayElement, StringImp, DISPLAY_ELEMENT>
 {
 public:
    StringImp& operator = (const std::string& s) { 
@@ -320,22 +322,22 @@ private:
 };
 
 
-String::String(const std::string& s)
+DisplayElement::DisplayElement(const std::string& s)
 {
    //Imp().SetValue(t);
    Imp().operator=(s);
 }
 
-String& String::operator = (const std::string& s) {
+DisplayElement& DisplayElement::operator = (const std::string& s) {
    Imp().operator=(s);
    return *this;
 }
 
-String::operator const std::string&() const {
+DisplayElement::operator const std::string&() const {
    return Imp().operator const std::string&();
 }
 
-String::operator std::string&() {
+DisplayElement::operator std::string&() {
    return Imp().operator std::string&();
 }
 

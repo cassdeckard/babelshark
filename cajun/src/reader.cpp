@@ -1,11 +1,13 @@
 /**********************************************
 
-License: BSD
-Project Webpage: http://cajun-jsonapi.sourceforge.net/
-Author: Terry Caton, tcaton(a)hotmail.com
-Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
+Author: Julie Betlach
 
-TODO: additional documentation. 
+Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
+Project Webpage: http://cajun-jsonapi.sourceforge.net/
+
+Original code parsed files in json format.
+Code now parses files in PDI format for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 ***********************************************/
 
@@ -366,8 +368,8 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
          break;
 
       case TOKEN_STRING:
-         element = String();
-         Parse(PDI_cast<String&>(element), tokenStream);
+         element = DisplayElement();
+         Parse(PDI_cast<DisplayElement&>(element), tokenStream);
          break;
 
       case TOKEN_NULL:
@@ -426,7 +428,7 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
 
 
 
-void Reader::Parse(String& string, Reader::TokenStream& tokenStream)
+void Reader::Parse(DisplayElement& string, Reader::TokenStream& tokenStream)
 {
    string = MatchExpectedToken(TOKEN_STRING, tokenStream);
 }
