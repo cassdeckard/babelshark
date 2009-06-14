@@ -9,11 +9,11 @@ include moduleinfo.nmake
 
 include Makefile.common
 
-WIRESHARK_PLUGIN_DIR=M:\wireshark-dev\wireshark-gtk2\plugins\1.3.0-deckard_dev
+WIRESHARK_PLUGIN_DIR=..\..\$(INSTALL_DIR)\plugins\$(VERSION)
 
 CFLAGS=/WX /DHAVE_CONFIG_H /I../.. $(GLIB_CFLAGS) \
 	/I$(PCAP_DIR)\include -D_U_="" $(LOCAL_CFLAGS) \
-	/I./cajun/include /EHsc
+	/I./ /I./cajun/include /EHsc
 
 .c.obj::
 	$(CC) $(CFLAGS) -Fd.\ -c $<
