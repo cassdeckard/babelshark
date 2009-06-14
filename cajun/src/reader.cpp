@@ -3,6 +3,7 @@
 License: BSD
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 Author: Terry Caton, tcaton(a)hotmail.com
+Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
 
 TODO: additional documentation. 
 
@@ -23,7 +24,7 @@ TODO:
 
 */
 
-namespace json
+namespace PDI
 {
 
 
@@ -370,22 +371,22 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
    {
       case TOKEN_OBJECT_BEGIN:
          element = Object();
-         Parse(json_cast<Object&>(element), tokenStream);
+         Parse(PDI_cast<Object&>(element), tokenStream);
          break;
 
       case TOKEN_ARRAY_BEGIN:
          element = Array();
-         Parse(json_cast<Array&>(element), tokenStream);
+         Parse(PDI_cast<Array&>(element), tokenStream);
          break;
 
       case TOKEN_STRING:
          element = String();
-         Parse(json_cast<String&>(element), tokenStream);
+         Parse(PDI_cast<String&>(element), tokenStream);
          break;
 
       case TOKEN_NULL:
          element = Null();
-         Parse(json_cast<Null&>(element), tokenStream);
+         Parse(PDI_cast<Null&>(element), tokenStream);
          break;
 
       case TOKEN_COMMENT:
@@ -420,6 +421,9 @@ void Reader::Parse(Object& object, Reader::TokenStream& tokenStream)
 
       // ...then the value itself (can be anything).
       Parse(member.element, tokenStream);
+
+      // Add the name to the element.
+      member.element.SetName(member.name);
 
       // try adding it to the object (this could throw)
       try

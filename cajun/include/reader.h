@@ -3,6 +3,7 @@
 License: BSD
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 Author: Terry Caton, tcaton(a)hotmail.com
+Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
 
 TODO: additional documentation. 
 
@@ -12,7 +13,7 @@ TODO: additional documentation.
 
 #include "elements.h"
 
-namespace json
+namespace PDI
 {
 
 class Reader

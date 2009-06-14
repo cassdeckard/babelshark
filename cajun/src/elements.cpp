@@ -3,6 +3,7 @@
 License: BSD
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 Author: Terry Caton, tcaton(a)hotmail.com
+Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
 
 TODO: additional documentation. 
 
@@ -21,7 +22,7 @@ TODO:
 
 */
 
-namespace json
+namespace PDI
 {
 
 //////////////////
@@ -37,8 +38,9 @@ public:
 
    virtual void Accept(const Element& element, ConstVisitor& visitor) const = 0;
    virtual void Accept(Element& element, Visitor& visitor) = 0;
+   virtual void SetName(const std::string& nameIn) = 0;
+   virtual std::string GetName() const = 0;
 };
-
 
 Element::Element() :
    m_pElementImp(0) {
@@ -85,7 +87,9 @@ const ElementImp& Element::ImpBase() const {
    return *m_pElementImp;
 }
 
-
+// I don't know what to do for these next two functions.
+void Element::SetName(const std::string& nameIn){ ImpBase().SetName(nameIn); }
+std::string Element::GetName() const { return ImpBase().GetName(); }
 
 ////////////////////
 // Element_T members
@@ -120,6 +124,11 @@ public:
    }
 
    virtual ElementType Type() const { return TYPE; }
+
+   virtual void SetName(const std::string& nameIn){ name = nameIn; }
+   virtual std::string GetName() const { return name; }
+private:
+   std::string name;
 };
 
 

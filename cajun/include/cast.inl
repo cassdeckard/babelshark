@@ -8,7 +8,7 @@ TODO: additional documentation.
 
 ***********************************************/
 
-namespace json
+namespace PDI
 {
 
 
@@ -25,13 +25,13 @@ public:
 
    static ReturnType cast_i(Element& element) {
       if (element.Type() != ElementTypeT::Type_i())
-         throw Exception("Bad json_cast");
+         throw Exception("Bad PDI_cast");
       return static_cast<ReturnType>(element);
    }
 };
 
 template <typename ElementTypeQualifiedT>
-ElementTypeQualifiedT json_cast(Element& element) {
+ElementTypeQualifiedT PDI_cast(Element& element) {
    return ElementCastImp<ElementTypeQualifiedT>::cast_i(element);   
 }
 
@@ -45,13 +45,13 @@ public:
 
    static ReturnType cast_i(const Element& element) {
       if (element.Type() != ElementTypeT::Type_i())
-         throw Exception("Bad json_cast");
+         throw Exception("Bad PDI_cast");
       return static_cast<ReturnType>(element);
    }
 };
 
 template <typename ElementTypeQualifiedT>
-ElementTypeQualifiedT json_cast(const Element& element) {
+ElementTypeQualifiedT PDI_cast(const Element& element) {
    return ElementCastImp<ElementTypeQualifiedT>::cast_i(element);   
 }
 
@@ -68,7 +68,7 @@ public:
 };
 
 template <typename ElementTypeQualifiedT>
-ElementTypeQualifiedT json_cast(Element* pElement) {
+ElementTypeQualifiedT PDI_cast(Element* pElement) {
    return ElementCastImp<ElementTypeQualifiedT>::cast_i(pElement);   
 }
 
@@ -85,7 +85,7 @@ public:
 };
 
 template <typename ElementTypeQualifiedT>
-ElementTypeQualifiedT json_cast(const Element* pElement) {
+ElementTypeQualifiedT PDI_cast(const Element* pElement) {
    return ElementCastImp<ElementTypeQualifiedT>::cast_i(pElement);   
 }
 

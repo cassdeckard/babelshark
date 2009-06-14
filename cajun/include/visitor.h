@@ -12,7 +12,7 @@ TODO: additional documentation.
 
 #include "elements.h"
 
-namespace json
+namespace PDI
 {
 
 
