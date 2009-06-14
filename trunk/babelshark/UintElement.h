@@ -25,8 +25,10 @@ namespace BabelShark
 			std::bitset<BIT_MASK_MAX_SIZE> GetBitMask(){ return _BitMask;}
 		private:
 			//takes our Input Size and forms the _BitMask based on it.
+			unsigned int DetermineSizeInBytes(int bits);
 			void SetupBitMask(unsigned int val);
 			std::bitset<BIT_MASK_MAX_SIZE> _BitMask;
+			std::string _InterpretedData;
 	};
 }
 

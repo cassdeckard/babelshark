@@ -47,9 +47,11 @@ namespace BabelShark
 
 			unsigned int GetSize() { return _Size;}
 			char* GetName(){ return (char*)(_Name.c_str());}
+			unsigned int GetSizeInBytes(){return _SizeInBytes;}
 
 		protected:
 			unsigned int _Size;
+			unsigned int _SizeInBytes;
 			std::string _Name;
 			//Iterator has not been implemented yet.  When it is
 			//this is to be used to construct the different
