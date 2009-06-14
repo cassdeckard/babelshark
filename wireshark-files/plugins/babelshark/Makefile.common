@@ -44,4 +44,10 @@ DISSECTOR_SUPPORT_SRC = \
 	UintElement.cpp \
 	BoolElement.cpp \
 	PadElement.cpp \
-	Dissector.cpp
+	IntElement.cpp \
+	FloatElement.cpp \
+	Dissector.cpp \
+	elements.cpp \
+	reader.cpp \
+	writer.cpp \
+	PdiParser.cpp
