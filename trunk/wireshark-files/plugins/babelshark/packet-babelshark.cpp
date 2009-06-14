@@ -31,11 +31,10 @@ extern "C" {
 
 #include <epan/packet.h>
 #include <epan/prefs.h>
-#include "packet-babelshark.h"
 }
 
 // C++ headers
-//#include "test.h"
+#include "packet-babelshark.h"
 
 static int proto_babelshark = -1;
 static int hf_babelshark_pdu = -1;
@@ -53,51 +52,15 @@ static const value_string babelshark_vals[] = {
    { 0,    NULL }
 };
 
+static void create_dissector(gint *ett, int proto)
+{
+    babelshark_dissector = new BabelShark::Dissector(ett, proto);
+}
+
 static void dissect_babelshark(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
 {
-   guint8 packet_type = tvb_get_guint8(tvb, 0);
-
-   if (check_col(pinfo->cinfo, COL_PROTOCOL)) {
-      col_set_str(pinfo->cinfo, COL_PROTOCOL, "BABELSHARK");
-   }
-   /* Clear out stuff in the info column */
-   if (check_col(pinfo->cinfo,COL_INFO)) {
-      col_clear(pinfo->cinfo,COL_INFO);
-   }
-   if (check_col(pinfo->cinfo, COL_INFO)) {
-       col_add_fstr(pinfo->cinfo, COL_INFO, "TYPE %s",
-              val_to_str(packet_type, babelshark_vals, "UNKNOWN (0x%02x)"));
-   }
-
-
-   if (tree) { /* we are being asked for details */
-      proto_item *ti = NULL;
-      proto_tree *babelshark_tree = NULL;
-      proto_tree *babelshark_test_tree = NULL;
-      proto_tree *babelshark_test_node = NULL;
-      proto_tree *babelshark_test_tree2 = NULL;
-      proto_tree *babelshark_test_node2 = NULL;
-      gint offset = 0;
-
-      ti = proto_tree_add_item(tree, proto_babelshark, tvb, 0, -1, FALSE);
-
-      /* proto-level text */
-      proto_item_append_text(ti, ", Type %s", val_to_str(packet_type, babelshark_vals, "Unknown (0x%02x)"));
-
-      /* subtree */
-      babelshark_tree = proto_item_add_subtree(ti, ett_babelshark);
-      babelshark_test_node = proto_tree_add_text(babelshark_tree, tvb, 0, 8, "Top level PDU");
-
-      /* another subtree ? */
-      babelshark_test_tree = proto_item_add_subtree(babelshark_test_node, ett_babelshark_test);
-      proto_tree_add_item(babelshark_test_tree, hf_babelshark_testtype, tvb, offset, 4, FALSE); offset += 4;
-      babelshark_test_node2 = proto_tree_add_item(babelshark_test_tree, hf_babelshark_testtype, tvb, offset, 4, FALSE);
-
-      babelshark_test_tree2 = proto_item_add_subtree(babelshark_test_node2, ett_babelshark_test2);
-      proto_tree_add_item(babelshark_test_tree2, hf_babelshark_testtype, tvb, offset, 2, FALSE); offset += 2;
-      proto_tree_add_text(babelshark_test_tree2, tvb, offset, 2, "this is a test"); offset += 2;
-   }
-
+    babelshark_dissector->Test();
+    babelshark_dissector->Dissect(tvb, pinfo, tree);
 }
 
 void babelshark_prefs_register(struct _babelshark_prefs *prefs, module_t *module)
@@ -171,6 +134,8 @@ proto_register_babelshark(void)
    proto_babelshark = proto_register_protocol("Babelshark",  /* name       */
                                               "Babelshark",  /* short name */
                                               "babelshark"); /* abbrev     */
+
+   create_dissector(&ett_babelshark, proto_babelshark);
 
    proto_register_field_array(proto_babelshark, hf, array_length(hf));
    proto_register_subtree_array(ett, array_length(ett));

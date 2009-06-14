@@ -10,12 +10,16 @@ include moduleinfo.nmake
 include Makefile.common
 
 CFLAGS=/WX /DHAVE_CONFIG_H /I../.. $(GLIB_CFLAGS) \
-	/I$(PCAP_DIR)\include -D_U_="" $(LOCAL_CFLAGS)
+	/I$(PCAP_DIR)\include -D_U_="" $(LOCAL_CFLAGS) \
+	/EHsc
 
 .c.obj::
 	$(CC) $(CFLAGS) -Fd.\ -c $<
 
 .cpp.obj::
+	$(CC) $(CFLAGS) -Fd.\ -c $<
+
+{.\src}.cpp.obj::
 	$(CC) $(CFLAGS) -Fd.\ -c $<
 
 LDFLAGS = $(PLUGIN_LDFLAGS)
