@@ -21,7 +21,6 @@ namespace BabelShark
 			//will be used to Display data to the WireShark output
 			char* Display();
 		private:
-			std::string _InterpretedData;
 			//NullIterator has not been implented yet.
 			//when it is, this class is to construct an object
 			//of type NullIterator
