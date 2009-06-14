@@ -36,8 +36,8 @@ Reader::Location::Location() :
 
 enum Reader::TokenType
 {
-   TOKEN_ARRAY_BEGIN,  //    {
-   TOKEN_ARRAY_END,    //    }
+   TOKEN_ARRAY_BEGIN,  //    [
+   TOKEN_ARRAY_END,    //    ]
    TOKEN_NEXT_ELEMENT,  //    ,
    TOKEN_MEMBER_ASSIGN, //    :
    TOKEN_STRING,        //    "xxx"
@@ -175,7 +175,7 @@ void Reader::Read(Element& elementRoot, std::istream& istr)
 
 void Reader::Scan(Tokens& tokens, InputStream& inputStream)
 {
-   while (EatWhiteSpace(inputStream),              // ignore any leading white space...
+   while (EatWhiteSpace(inputStream), // ignore any leading white space...
           inputStream.EOS() == false) // ...before checking for EOS
    {
       // if all goes well, we'll create a token each pass
@@ -354,6 +354,9 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
       throw ParseException(sMessage, Location(), Location()); // nowhere to point to
    }
 
+   const std::string& sName = MatchExpectedToken(TOKEN_STRING, tokenStream);
+   MatchExpectedToken(TOKEN_MEMBER_ASSIGN, tokenStream);
+
    const Token& token = tokenStream.Peek();
    switch (token.nType)
    {
@@ -382,6 +385,8 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
          throw ParseException(sMessage, token.locBegin, token.locEnd);
       }
    }
+
+   element.SetName(sName);
 }
 
 
@@ -393,29 +398,12 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
                      tokenStream.Peek().nType != TOKEN_ARRAY_END);
    while (bContinue)
    {
-      Array::Member member;
+      Element element;
 
-      // first the member name. save the token in case we have to throw an exception
-      const Token& tokenName = tokenStream.Peek();
-      member.name = MatchExpectedToken(TOKEN_STRING, tokenStream);
-
-      // ...then the key/value separator...
-      MatchExpectedToken(TOKEN_MEMBER_ASSIGN, tokenStream);
-
-      // ...then the value itself (can be anything).
-      Parse(member.element, tokenStream);
+      Parse(element, tokenStream);
 
       // try adding it to the array (this could throw)
-      try
-      {
-         array.Insert(member);
-      }
-      catch (Exception&)
-      {
-         // must be a duplicate name
-         std::string sMessage = "Duplicate array member token: " + member.name; 
-         throw ParseException(sMessage, tokenName.locBegin, tokenName.locEnd);
-      }
+      array.Insert(element);
 
       bContinue = (tokenStream.EOS() == false &&
                    tokenStream.Peek().nType == TOKEN_NEXT_ELEMENT);
@@ -425,7 +413,7 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
 
    MatchExpectedToken(TOKEN_ARRAY_END, tokenStream);
 
-   // finally, look for the dimension of this array (array!)
+   // finally, look for the dimension of this array
    std::string sNumber = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
 
    std::istringstream ss(sNumber);

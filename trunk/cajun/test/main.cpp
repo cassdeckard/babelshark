@@ -28,31 +28,35 @@ int main()
       std::cout << "Read the AvatarInRoom.txt file..." << std::endl;
       Element elemRoot = String();
       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
-      std::cout << "Done." << std::endl;
+      std::cout << "Done." << std::endl << std::endl;
 
       // Write data to screen. (This just verifies that we read in the data correctly.)
+      std::cout << "Testing the QuickInterpreter..." << std::endl;
       QuickInterpreter interpeter(elemRoot);
-      const std::string& sId = interpeter["ListAvatars_Message"]["ListAvatarsMessageId"].As<String>();
+      const std::string& sId = interpeter["ListAvatarsMessageId"].As<String>();
       std::cout << "Message Id: " << sId << std::endl;
-      const std::string& sRoom = interpeter["ListAvatars_Message"]["Room"].As<String>();
+      const std::string& sRoom = interpeter["Room"].As<String>();
       std::cout << "Room: " << sRoom << std::endl;
-/*      const std::string& sName = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Name"].As<String>();
-      std::cout << "Name0: " << sName << std::endl;
-      const std::string& sMale = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Male"].As<String>();
-      std::cout << "Male0: " << sMale << std::endl;
-      const std::string& sName1 = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][1]["Name"].As<String>();
-      std::cout << "Name1: " << sName1 << std::endl;
-      const std::string& sMale1 = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][1]["Male"].As<String>();
-      std::cout << "Male1: " << sMale1 << std::endl;
-*/
+      const std::string& sName = interpeter["AvatarsInTheRoom"]["Name"].As<String>();
+      std::cout << "Name: " << sName << std::endl;
+      const std::string& sMale = interpeter["AvatarsInTheRoom"]["Male"].As<String>();
+      std::cout << "Male: " << sMale << std::endl;
+      std::cout << "Done." << std::endl << std::endl;
+
       // Write it out to a file....
-      std::cout << "Writing file out...";
+      std::cout << "Writing file out..." << std::endl;
       Writer::Write(elemRoot, std::ofstream("AvatarsInRoomOutput.txt"));
-      std::cout << "Done." << std::endl;
+      std::cout << "Done." << std::endl << std::endl;
 
       // When the accept function is called, it iterates over every element in the PDI tree.
-      TreeVisitor treeVisitor("root");
+      std::cout << "Testing TreeVisitor..." << std::endl;
+      // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.
+//      TreeVisitor treeVisitor(elemRoot.Name(), true);
+ 
+      // Don't include the second arguement (or pass false) to prevent statements from being written to the screen.
+      TreeVisitor treeVisitor(elemRoot.Name());
       elemRoot.Accept(treeVisitor);
+      std::cout << "Done." << std::endl << std::endl;
 
       BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
 
