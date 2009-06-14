@@ -20,7 +20,6 @@ Author: Julie Betlach, julie.betlach(a)gmail.com
 #include <sstream>
 #include <string>
 
-// delete these later when I remove the std::cout calls.
 #include <iostream>
 #include <fstream>
 
@@ -38,8 +37,9 @@ public:
 */
 
    //A parameter should be added to the constructor that specifies how long the buffer is and checked appropriately.
-   TreeVisitor(const std::string& sName) : 
+   TreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) : 
       m_sName(sName),
+      m_bDisplayOutputToScreen(bDisplayOutputToScreen),
       m_pInstruction(0)
    {
       m_CreateInstructionFuncMap["INT"] = &TreeVisitor::CreateInstruction<BabelShark::IntElement>;
@@ -62,15 +62,18 @@ private:
    }
 
    virtual void Visit(const PDI::Array& array) {
-      std::cout << "This array node has been visited " << m_sName << ", dimension " << array.Dimension() << std::endl;
+      if (m_bDisplayOutputToScreen)
+      {
+         std::cout << "This array node has been visited " << m_sName << ", dimension " << array.Dimension() << std::endl;
+      }
 
       BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(array.Dimension(), (char*)m_sName.c_str()); // TODO: fix "char*"
       PDI::Array::const_iterator it(array.Begin()),
                                    itEnd(array.End());
       for (; it != itEnd; ++it)
       {
-         TreeVisitor visitor(it->name);
-         it->element.Accept(visitor);
+         TreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);
+         it->Accept(visitor);
 
          pInstructionSet->Add(visitor.GetInstruction());
       }
@@ -94,7 +97,10 @@ private:
       }
       else
       {
-         std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << std::endl;
+         if (m_bDisplayOutputToScreen)
+         {
+            std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << std::endl;
+         }
       }
       
       CreateInstructionFunc func = it->second;
@@ -112,4 +118,5 @@ private:
 
    std::string m_sName;
    BabelShark::Instruction* m_pInstruction;
+   bool m_bDisplayOutputToScreen;
 };

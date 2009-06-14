@@ -38,6 +38,8 @@ public:
 
    virtual void Accept(const Element& element, ConstVisitor& visitor) const = 0;
    virtual void Accept(Element& element, Visitor& visitor) = 0;
+   virtual void SetName(const std::string& nameIn) = 0;
+   virtual const std::string& Name() const = 0;
 };
 
 Element::Element() :
@@ -85,6 +87,13 @@ const ElementImp& Element::ImpBase() const {
    return *m_pElementImp;
 }
 
+void Element::SetName(const std::string& nameIn) { 
+   ImpBase().SetName(nameIn); 
+}
+
+const std::string& Element::Name() const { 
+   return ImpBase().Name(); 
+}
 ////////////////////
 // Element_T members
 
@@ -118,6 +127,12 @@ public:
    }
 
    virtual ElementType Type() const { return TYPE; }
+
+   virtual void SetName(const std::string& nameIn){ m_sName = nameIn; }
+   virtual const std::string& Name() const { return m_sName; }
+
+private:
+   std::string m_sName;
 };
 
 
@@ -160,12 +175,12 @@ public:
       return std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
    }
 
-   Array::iterator Insert(const Array::Member& member, Array::iterator itWhere) {
-      Array::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(member.name));
+   Array::iterator Insert(const Element& element, Array::iterator itWhere) {
+      Array::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(element.Name()));
       if (it != m_Members.end())
-         throw Exception("Array member already exists: " + member.name);
+         throw Exception("Array element already exists: " + element.Name());
 
-      return m_Members.insert(itWhere, member);
+      return m_Members.insert(itWhere, element);
    }
 
    Array::iterator Erase(Array::iterator itWhere) {
@@ -176,28 +191,28 @@ public:
       Array::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
       if (it == m_Members.end())
       {
-         it = m_Members.insert(m_Members.end(), Array::Member());
-         it->name = name;
+         it = m_Members.insert(m_Members.end(), Element());
       }
-      return it->element;      
+
+      return *it;
    }
 
    const Element& operator [](const std::string& name) const {
       Array::Members::const_iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
       if (it == m_Members.end())
          throw Exception("Array name not found: " + name);
-      return it->element;
+      return *it;
    }
 
    void Clear() { m_Members.clear(); }
 
 private:
-   class Finder : public std::unary_function<Array::Member, bool>
+   class Finder : public std::unary_function<Element, bool>
    {
    public:
       Finder(const std::string& name) : m_name(name) {}
-      bool operator () (const Array::Member& member) {
-         return member.name == m_name;
+      bool operator () (const Element& element) {
+         return element.Name() == m_name;
       }
 
    private:
@@ -251,12 +266,12 @@ Array::const_iterator Array::Find(const std::string& name) const {
    return Imp().Find(name);
 }
 
-Array::iterator Array::Insert(const Member& member) {
-   return Imp().Insert(member, End());
+Array::iterator Array::Insert(const Element& element) {
+   return Imp().Insert(element, End());
 }
 
-Array::iterator Array::Insert(const Member& member, Array::iterator itWhere) {
-   return Imp().Insert(member, itWhere);
+Array::iterator Array::Insert(const Element& element, Array::iterator itWhere) {
+   return Imp().Insert(element, itWhere);
 }
 
 Element& Array::operator [] (const std::string& name) {

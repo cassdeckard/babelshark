@@ -41,8 +41,8 @@ void Writer::Visit(const Array& array) {
       Array::const_iterator it(array.Begin()),
                              itEnd(array.End());
       while (it != itEnd) {
-         m_ostr << std::string(m_nTabDepth, '\t') << '"' << it->name << "\" : ";
-         it->element.Accept(*this); 
+         m_ostr << std::string(m_nTabDepth, '\t') << '"' << it->Name() << "\" : ";
+         it->Accept(*this); 
 
          if (++it != itEnd)
             m_ostr << ',';

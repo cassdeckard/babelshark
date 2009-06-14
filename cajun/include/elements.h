@@ -58,6 +58,9 @@ public:
    void Accept(Visitor& visitor);
    void Accept(ConstVisitor& visitor) const;
 
+   void SetName(const std::string& nameIn);
+   const std::string& Name() const;
+
 protected:
    Element(ElementImp* elementImp);
 
@@ -98,15 +101,7 @@ class ArrayImp;
 class Array : public Element_T<ArrayImp>
 {
 public:
-   struct Member {
-      Member(const std::string& nameIn = std::string(), const Element& elementIn = Element()) :
-         name(nameIn), element(elementIn) {}
-
-      std::string name;
-      Element element;
-   };
-
-   typedef std::list<Member> Members; // map faster, but does not preserve order
+   typedef std::list<Element> Members; // map faster, but does not preserve order
    typedef Members::iterator iterator;
    typedef Members::const_iterator const_iterator;
 
@@ -126,8 +121,8 @@ public:
    iterator Find(const std::string& name);
    const_iterator Find(const std::string& name) const;
 
-   iterator Insert(const Member& member);
-   iterator Insert(const Member& member, iterator itWhere);
+   iterator Insert(const Element& element);
+   iterator Insert(const Element& element, iterator itWhere);
    iterator Erase(iterator itWhere);
 
    Element& operator [] (const std::string& name);
