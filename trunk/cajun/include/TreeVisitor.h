@@ -12,6 +12,7 @@ Author: Julie Betlach, julie.betlach(a)gmail.com
 #include "FloatElement.h"
 #include "AsciiElement.h"
 #include "PadElement.h"
+#include "InstructionSet.h"
 
 
 #include <algorithm>
@@ -37,7 +38,9 @@ public:
 */
 
    //A parameter should be added to the constructor that specifies how long the buffer is and checked appropriately.
-   TreeVisitor()
+   TreeVisitor(const std::string& sName) : 
+      m_sName(sName),
+      m_pInstruction(0)
    {
       m_CreateInstructionFuncMap["INT"] = &TreeVisitor::CreateInstruction<BabelShark::IntElement>;
       m_CreateInstructionFuncMap["UINT"] = &TreeVisitor::CreateInstruction<BabelShark::UintElement>;
@@ -47,33 +50,32 @@ public:
       m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
    }
 
-private:
+   BabelShark::Instruction* GetInstruction() { return m_pInstruction; }
 
+private:
    template <typename InstructionTypeT>
-   void CreateInstruction(unsigned int nSize, const std::string& sName)
+   BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName)
    {
       char* s = const_cast<char*>(sName.c_str()); 
 	  // This would be easier if std::string was the parameter type rather than char*.
-      InstructionTypeT* pInstruction = new InstructionTypeT(nSize, s);
-      
+      return new InstructionTypeT(nSize, s);
    }
 
    virtual void Visit(const PDI::Array& array) {
-      PDI::Array::const_iterator it(array.Begin()),
-                                  itEnd(array.End());
-      for (; it != itEnd; ++it)
-      {
-         it->Accept(*this); // indirectly recursive
-      }
-   }
+      std::cout << "This array node has been visited " << m_sName << ", dimension " << array.Dimension() << std::endl;
 
-   virtual void Visit(const PDI::Object& object) {
-      PDI::Object::const_iterator it(object.Begin()),
-                                   itEnd(object.End());
+      BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(array.Dimension(), (char*)m_sName.c_str()); // TODO: fix "char*"
+      PDI::Array::const_iterator it(array.Begin()),
+                                   itEnd(array.End());
       for (; it != itEnd; ++it)
       {
-         it->element.Accept(*this); // indirectly recursive
+         TreeVisitor visitor(it->name);
+         it->element.Accept(visitor);
+
+         pInstructionSet->Add(visitor.GetInstruction());
       }
+
+      m_pInstruction = pInstructionSet;
    }
 
    // For PDI, we will always use strings for the values.
@@ -92,27 +94,22 @@ private:
       }
       else
       {
-         std::cout << "This leaf node has been visited " << string.GetName() << " " << sType << " " << nSize << std::endl;
+         std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << std::endl;
       }
       
       CreateInstructionFunc func = it->second;
-      (this->*func)(nSize, string.GetName());
-
-
-      
-
-      // case UINT
-
-      // case ASCII
+      m_pInstruction = (this->*func)(nSize, m_sName);
    }
 
 
    // For PDI, we won't need any of these.
-   virtual void Visit(const PDI::Null& null) {}
+   virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
 
-   typedef void (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&);
+   typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&);
    typedef std::map<std::string, CreateInstructionFunc> CreateInstructionFuncMap;
 
    CreateInstructionFuncMap m_CreateInstructionFuncMap;
 
+   std::string m_sName;
+   BabelShark::Instruction* m_pInstruction;
 };

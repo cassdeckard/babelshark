@@ -32,38 +32,14 @@ void Writer::Write(const Element& elementRoot, std::ostream& ostr) {
 
 void Writer::Visit(const Array& array) {
    if (array.Empty())
-      m_ostr << "[]";
-   else
-   {
-      m_ostr << '[' << std::endl;
-      ++m_nTabDepth;
-
-      Array::const_iterator it(array.Begin()),
-                            itEnd(array.End());
-      while (it != itEnd) {
-         m_ostr << std::string(m_nTabDepth, '\t');
-         it->Accept(*this); 
-
-         if (++it != itEnd)
-            m_ostr << ',';
-         m_ostr << std::endl;
-      }
-
-      --m_nTabDepth;
-      m_ostr << std::string(m_nTabDepth, '\t') << ']';
-   }
-}
-
-void Writer::Visit(const Object& object) {
-   if (object.Empty())
       m_ostr << "{}";
    else
    {
       m_ostr << '{' << std::endl;
       ++m_nTabDepth;
 
-      Object::const_iterator it(object.Begin()),
-                             itEnd(object.End());
+      Array::const_iterator it(array.Begin()),
+                             itEnd(array.End());
       while (it != itEnd) {
          m_ostr << std::string(m_nTabDepth, '\t') << '"' << it->name << "\" : ";
          it->element.Accept(*this); 

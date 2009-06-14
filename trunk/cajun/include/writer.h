@@ -28,7 +28,6 @@ private:
       m_nTabDepth(0) {}
 
    virtual void Visit(const Array& array);
-   virtual void Visit(const Object& object);
    virtual void Visit(const String& string);
    virtual void Visit(const Null& null);
 
