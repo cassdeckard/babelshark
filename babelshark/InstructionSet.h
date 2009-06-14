@@ -20,7 +20,6 @@ namespace BabelShark
 			void Interpret(char* buffer);
 			//Creates an iterator used to traverse the direct children.
 			void CreateIterator();
-
 			InstructionCollection::iterator GetIterator(){ return _ListIter;}
 		private:
 			InstructionCollection _List;

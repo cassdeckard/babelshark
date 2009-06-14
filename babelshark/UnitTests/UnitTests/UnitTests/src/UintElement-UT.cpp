@@ -24,3 +24,10 @@ TEST(bitMaskSetting)
 		CHECK_EQUAL(bitMask.at(i), UT1.GetBitMask().at(i));
 	}
 }
+
+TEST(DeterminingByteSize)
+{
+	size_t size = 5;
+	BabelShark::UintElement UT1(size, "UtilityTest");
+	CHECK_EQUAL(1, UT1.GetSizeInBytes());
+}

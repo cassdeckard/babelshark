@@ -24,7 +24,10 @@ namespace BabelShark
 	void InstructionSet::Add(Instruction* instruction)
 	{
 		_List.push_back(instruction);
+		_SizeInBytes += instruction->GetSizeInBytes();
 	}
+
+
 
 	//attempts to Interpret the buffer according to the children.
 	void InstructionSet::Interpret(char* buffer)
