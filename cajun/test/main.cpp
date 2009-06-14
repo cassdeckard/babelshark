@@ -36,7 +36,7 @@ int main()
       std::cout << "Message Id: " << sId << std::endl;
       const std::string& sRoom = interpeter["ListAvatars_Message"]["Room"].As<String>();
       std::cout << "Room: " << sRoom << std::endl;
-      const std::string& sName = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Name"].As<String>();
+/*      const std::string& sName = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Name"].As<String>();
       std::cout << "Name0: " << sName << std::endl;
       const std::string& sMale = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][0]["Male"].As<String>();
       std::cout << "Male0: " << sMale << std::endl;
@@ -44,15 +44,17 @@ int main()
       std::cout << "Name1: " << sName1 << std::endl;
       const std::string& sMale1 = interpeter["ListAvatars_Message"]["AvatarsInTheRoom"][1]["Male"].As<String>();
       std::cout << "Male1: " << sMale1 << std::endl;
-
+*/
       // Write it out to a file....
       std::cout << "Writing file out...";
       Writer::Write(elemRoot, std::ofstream("AvatarsInRoomOutput.txt"));
       std::cout << "Done." << std::endl;
 
       // When the accept function is called, it iterates over every element in the PDI tree.
-      TreeVisitor treeVisitor;
+      TreeVisitor treeVisitor("root");
       elemRoot.Accept(treeVisitor);
+
+      BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
 
    }
 

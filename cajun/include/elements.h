@@ -32,9 +32,8 @@ class ConstVisitor;
 
 enum ElementType
 {
-   OBJECT_ELEMENT,
    ARRAY_ELEMENT,
-   STRING_ELEMENT,
+   DISPLAY_ELEMENT,
    NULL_ELEMENT
 };
 
@@ -54,9 +53,6 @@ public:
    Element& operator= (const Element& element);
    
    ElementType Type() const;
-
-   void SetName(const std::string& nameIn);
-   std::string GetName() const;
 
    // const & non-const visitor interfaces
    void Accept(Visitor& visitor);
@@ -93,45 +89,13 @@ protected:
 };
 
 
+
 /////////////////////////////////////////////////////////////////////////////////
-// Array - mimics std::vector, except the array contents are effectively 
-// heterogeneous thanks to the Element base class
+// Array - mimics std::map<std::string, Element>, except the array contents are 
+// effectively heterogeneous thanks to the Element base class
 
 class ArrayImp;
 class Array : public Element_T<ArrayImp>
-{
-public:
-   typedef std::list<Element> Elements;
-   typedef Elements::iterator iterator;
-   typedef Elements::const_iterator const_iterator;
-
-   Array(); // necessary, or we get linker errors... ?
-
-   iterator Begin();
-   iterator End();
-   const_iterator Begin() const;
-   const_iterator End() const;
-
-   size_t Size() const;
-   bool Empty() const;
-
-   void Resize(size_t newSize);
-
-   iterator Insert(const Element& element);
-   iterator Insert(const Element& element, iterator itWhere);
-   iterator Erase(iterator itWhere);
-
-   Element& operator [] (size_t index);
-   const Element& operator [] (size_t index) const;
-};
-
-
-/////////////////////////////////////////////////////////////////////////////////
-// Object - mimics std::map<std::string, Element>, except the array contents are 
-// effectively heterogeneous thanks to the Element base class
-
-class ObjectImp;
-class Object : public Element_T<ObjectImp>
 {
 public:
    struct Member {
@@ -146,7 +110,7 @@ public:
    typedef Members::iterator iterator;
    typedef Members::const_iterator const_iterator;
 
-   Object(); // necessary, or we get linker errors... ?
+   Array(); // necessary, or we get linker errors... ?
 
    iterator Begin();
    iterator End();
@@ -155,6 +119,9 @@ public:
 
    size_t Size() const;
    bool Empty() const;
+
+   size_t Dimension() const;
+   void SetDimension(size_t nDimension);
 
    iterator Find(const std::string& name);
    const_iterator Find(const std::string& name) const;

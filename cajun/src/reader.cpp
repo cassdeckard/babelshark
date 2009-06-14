@@ -36,10 +36,8 @@ Reader::Location::Location() :
 
 enum Reader::TokenType
 {
-   TOKEN_OBJECT_BEGIN,  //    {
-   TOKEN_OBJECT_END,    //    }
-   TOKEN_ARRAY_BEGIN,   //    [
-   TOKEN_ARRAY_END,     //    ]
+   TOKEN_ARRAY_BEGIN,  //    {
+   TOKEN_ARRAY_END,    //    }
    TOKEN_NEXT_ELEMENT,  //    ,
    TOKEN_MEMBER_ASSIGN, //    :
    TOKEN_STRING,        //    "xxx"
@@ -190,16 +188,6 @@ void Reader::Scan(Tokens& tokens, InputStream& inputStream)
 
       switch (sChar[0])
       {
-         case '{':
-            MatchExpectedString(sChar, inputStream);
-            token.nType = TOKEN_OBJECT_BEGIN;
-            break;
-
-         case '}':
-            MatchExpectedString(sChar, inputStream);
-            token.nType = TOKEN_OBJECT_END;
-            break;
-
          case '[':
             MatchExpectedString(sChar, inputStream);
             token.nType = TOKEN_ARRAY_BEGIN;
@@ -369,11 +357,6 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
    const Token& token = tokenStream.Peek();
    switch (token.nType)
    {
-      case TOKEN_OBJECT_BEGIN:
-         element = Object();
-         Parse(PDI_cast<Object&>(element), tokenStream);
-         break;
-
       case TOKEN_ARRAY_BEGIN:
          element = Array();
          Parse(PDI_cast<Array&>(element), tokenStream);
@@ -402,15 +385,15 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
 }
 
 
-void Reader::Parse(Object& object, Reader::TokenStream& tokenStream)
+void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
 {
-   MatchExpectedToken(TOKEN_OBJECT_BEGIN, tokenStream);
+   MatchExpectedToken(TOKEN_ARRAY_BEGIN, tokenStream);
 
    bool bContinue = (tokenStream.EOS() == false &&
-                     tokenStream.Peek().nType != TOKEN_OBJECT_END);
+                     tokenStream.Peek().nType != TOKEN_ARRAY_END);
    while (bContinue)
    {
-      Object::Member member;
+      Array::Member member;
 
       // first the member name. save the token in case we have to throw an exception
       const Token& tokenName = tokenStream.Peek();
@@ -422,18 +405,15 @@ void Reader::Parse(Object& object, Reader::TokenStream& tokenStream)
       // ...then the value itself (can be anything).
       Parse(member.element, tokenStream);
 
-      // Add the name to the element.
-      member.element.SetName(member.name);
-
-      // try adding it to the object (this could throw)
+      // try adding it to the array (this could throw)
       try
       {
-         object.Insert(member);
+         array.Insert(member);
       }
       catch (Exception&)
       {
          // must be a duplicate name
-         std::string sMessage = "Duplicate object member token: " + member.name; 
+         std::string sMessage = "Duplicate array member token: " + member.name; 
          throw ParseException(sMessage, tokenName.locBegin, tokenName.locEnd);
       }
 
@@ -443,30 +423,19 @@ void Reader::Parse(Object& object, Reader::TokenStream& tokenStream)
          MatchExpectedToken(TOKEN_NEXT_ELEMENT, tokenStream);
    }
 
-   MatchExpectedToken(TOKEN_OBJECT_END, tokenStream);
-}
-
-
-void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
-{
-   MatchExpectedToken(TOKEN_ARRAY_BEGIN, tokenStream);
-
-   bool bContinue = (tokenStream.EOS() == false &&
-                     tokenStream.Peek().nType != TOKEN_ARRAY_END);
-   while (bContinue)
-   {
-      // ...what's next? could be anything
-      Array::iterator itElement = array.Insert(Element());
-      Parse(*itElement, tokenStream);
-
-      bContinue = (tokenStream.EOS() == false &&
-                   tokenStream.Peek().nType == TOKEN_NEXT_ELEMENT);
-      if (bContinue)
-         MatchExpectedToken(TOKEN_NEXT_ELEMENT, tokenStream);
-   }
-
    MatchExpectedToken(TOKEN_ARRAY_END, tokenStream);
+
+   // finally, look for the dimension of this array (array!)
+   std::string sNumber = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
+
+   std::istringstream ss(sNumber);
+
+   size_t nDimension;
+   ss >> nDimension;
+
+   array.SetDimension(nDimension);
 }
+
 
 
 void Reader::Parse(String& string, Reader::TokenStream& tokenStream)

@@ -20,7 +20,6 @@ class Visitor
 {
 public:
    virtual void Visit(Array& array) = 0;
-   virtual void Visit(Object& object) = 0;
    virtual void Visit(String& string) = 0;
    virtual void Visit(Null& null) = 0;
 };
@@ -29,7 +28,6 @@ class ConstVisitor
 {
 public:
    virtual void Visit(const Array& array) = 0;
-   virtual void Visit(const Object& object) = 0;
    virtual void Visit(const String& string) = 0;
    virtual void Visit(const Null& null) = 0;
 };

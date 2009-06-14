@@ -38,8 +38,6 @@ public:
 
    virtual void Accept(const Element& element, ConstVisitor& visitor) const = 0;
    virtual void Accept(Element& element, Visitor& visitor) = 0;
-   virtual void SetName(const std::string& nameIn) = 0;
-   virtual std::string GetName() const = 0;
 };
 
 Element::Element() :
@@ -87,10 +85,6 @@ const ElementImp& Element::ImpBase() const {
    return *m_pElementImp;
 }
 
-// I don't know what to do for these next two functions.
-void Element::SetName(const std::string& nameIn){ ImpBase().SetName(nameIn); }
-std::string Element::GetName() const { return ImpBase().GetName(); }
-
 ////////////////////
 // Element_T members
 
@@ -124,11 +118,6 @@ public:
    }
 
    virtual ElementType Type() const { return TYPE; }
-
-   virtual void SetName(const std::string& nameIn){ name = nameIn; }
-   virtual std::string GetName() const { return name; }
-private:
-   std::string name;
 };
 
 
@@ -144,49 +133,79 @@ ElementType Element_T<ElementImpTypeT>::Type_i() {
 }
 
 
-/////////////////
+//////////////////
 // Array members
 
 class ArrayImp : public ElementImp_T<Array, ArrayImp, ARRAY_ELEMENT>
 {
 public:
-   Array::iterator Begin() { return m_Elements.begin(); }
-   Array::iterator End() { return m_Elements.end(); }
-   Array::const_iterator Begin() const { return m_Elements.begin(); }
-   Array::const_iterator End() const { return m_Elements.end(); }
-   
-   Array::iterator Insert(const Element& element, Array::iterator itWhere) { 
-      return m_Elements.insert(itWhere, element);
+   ArrayImp() : m_nDimension(1) {} // suitable default?
+
+   Array::iterator Begin() { return m_Members.begin(); }
+   Array::iterator End() { return m_Members.end(); }
+   Array::const_iterator Begin() const { return m_Members.begin(); }
+   Array::const_iterator End() const { return m_Members.end(); }
+
+   size_t Size() const { return m_Members.size(); }
+   bool Empty() const { return m_Members.empty(); }
+
+   size_t Dimension() const { return m_nDimension; }
+   void SetDimension(size_t nDimension) { m_nDimension = nDimension; }
+
+   Array::iterator Find(const std::string& name) {
+      return std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
    }
 
-   Array::iterator Erase(Array::iterator itWhere) { 
-      return m_Elements.erase(itWhere);
+   Array::const_iterator Find(const std::string& name) const {
+      return std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
    }
 
-   void Resize(size_t newSize) {
-      m_Elements.resize(newSize);
+   Array::iterator Insert(const Array::Member& member, Array::iterator itWhere) {
+      Array::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(member.name));
+      if (it != m_Members.end())
+         throw Exception("Array member already exists: " + member.name);
+
+      return m_Members.insert(itWhere, member);
    }
 
-   size_t Size() const { return m_Elements.size(); }
-   bool Empty() const { return m_Elements.empty(); }
+   Array::iterator Erase(Array::iterator itWhere) {
+      return m_Members.erase(itWhere);
+   }
 
-   Element& operator[] (size_t index) {
-      if (index >= m_Elements.size())
-         throw Exception("Array out of bounds");
-      Array::iterator it = m_Elements.begin();
-      std::advance(it, index);
-      return *it; 
+   Element& operator [](const std::string& name) { 
+      Array::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
+      if (it == m_Members.end())
+      {
+         it = m_Members.insert(m_Members.end(), Array::Member());
+         it->name = name;
+      }
+      return it->element;      
    }
-   const Element& operator[] (size_t index) const {
-      if (index >= m_Elements.size())
-         throw Exception("Array out of bounds");
-      Array::const_iterator it = m_Elements.begin();
-      std::advance(it, index);
-      return *it; 
+
+   const Element& operator [](const std::string& name) const {
+      Array::Members::const_iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
+      if (it == m_Members.end())
+         throw Exception("Array name not found: " + name);
+      return it->element;
    }
+
+   void Clear() { m_Members.clear(); }
 
 private:
-   Array::Elements m_Elements;
+   class Finder : public std::unary_function<Array::Member, bool>
+   {
+   public:
+      Finder(const std::string& name) : m_name(name) {}
+      bool operator () (const Array::Member& member) {
+         return member.name == m_name;
+      }
+
+   private:
+      std::string m_name;
+   };
+
+   Array::Members m_Members;
+   size_t m_nDimension;
 };
 
 
@@ -205,23 +224,7 @@ Array::const_iterator Array::Begin() const {
 }
 
 Array::const_iterator Array::End() const {
-   return Imp().End(); 
-}
-
-Array::iterator Array::Insert(const Element& element) {
-   return Imp().Insert(element, End()); 
-}
-
-Array::iterator Array::Insert(const Element& element, Array::iterator itWhere) {
-   return Imp().Insert(element, itWhere); 
-}
-
-Array::iterator Array::Erase(Array::iterator itWhere) {
-   return Imp().Erase(itWhere); 
-}
-
-void Array::Resize(size_t newSize) {
-   Imp().Resize(newSize); 
+   return Imp().End();
 }
 
 size_t Array::Size() const {
@@ -229,139 +232,42 @@ size_t Array::Size() const {
 }
 
 bool Array::Empty() const {
-   return Imp().Empty();
-}
-
-Element& Array::operator [] (size_t index) {
-   return Imp()[index]; 
-}
-
-const Element& Array::operator [] (size_t index) const {
-   return Imp()[index]; 
-}
-
-
-//////////////////
-// Object members
-
-class ObjectImp : public ElementImp_T<Object, ObjectImp, OBJECT_ELEMENT>
-{
-public:
-   Object::iterator Begin() { return m_Members.begin(); }
-   Object::iterator End() { return m_Members.end(); }
-   Object::const_iterator Begin() const { return m_Members.begin(); }
-   Object::const_iterator End() const { return m_Members.end(); }
-
-   size_t Size() const { return m_Members.size(); }
-   bool Empty() const { return m_Members.empty(); }
-
-   Object::iterator Find(const std::string& name) {
-      return std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
-   }
-
-   Object::const_iterator Find(const std::string& name) const {
-      return std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
-   }
-
-   Object::iterator Insert(const Object::Member& member, Object::iterator itWhere) {
-      Object::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(member.name));
-      if (it != m_Members.end())
-         throw Exception("Object member already exists: " + member.name);
-
-      return m_Members.insert(itWhere, member);
-   }
-
-   Object::iterator Erase(Object::iterator itWhere) {
-      return m_Members.erase(itWhere);
-   }
-
-   Element& operator [](const std::string& name) { 
-      Object::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
-      if (it == m_Members.end())
-      {
-         it = m_Members.insert(m_Members.end(), Object::Member());
-         it->name = name;
-      }
-      return it->element;      
-   }
-
-   const Element& operator [](const std::string& name) const {
-      Object::Members::const_iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
-      if (it == m_Members.end())
-         throw Exception("Object name not found: " + name);
-      return it->element;
-   }
-
-   void Clear() { m_Members.clear(); }
-
-private:
-   class Finder : public std::unary_function<Object::Member, bool>
-   {
-   public:
-      Finder(const std::string& name) : m_name(name) {}
-      bool operator () (const Object::Member& member) {
-         return member.name == m_name;
-      }
-
-   private:
-      std::string m_name;
-   };
-
-   Object::Members m_Members;
-};
-
-
-Object::Object() {}
-
-Object::iterator Object::Begin() {
-   return Imp().Begin(); 
-}
-
-Object::iterator Object::End() {
-   return Imp().End(); 
-}
-
-Object::const_iterator Object::Begin() const {
-   return Imp().Begin(); 
-}
-
-Object::const_iterator Object::End() const {
-   return Imp().End();
-}
-
-size_t Object::Size() const {
-   return Imp().Size(); 
-}
-
-bool Object::Empty() const {
    return Imp().Empty(); 
 }
 
-Object::iterator Object::Find(const std::string& name) {
+size_t Array::Dimension() const {
+   return Imp().Dimension(); 
+}
+
+void Array::SetDimension(size_t nDimension) {
+   Imp().SetDimension(nDimension); 
+}
+
+Array::iterator Array::Find(const std::string& name) {
    return Imp().Find(name);
 }
 
-Object::const_iterator Object::Find(const std::string& name) const {
+Array::const_iterator Array::Find(const std::string& name) const {
    return Imp().Find(name);
 }
 
-Object::iterator Object::Insert(const Member& member) {
+Array::iterator Array::Insert(const Member& member) {
    return Imp().Insert(member, End());
 }
 
-Object::iterator Object::Insert(const Member& member, Object::iterator itWhere) {
+Array::iterator Array::Insert(const Member& member, Array::iterator itWhere) {
    return Imp().Insert(member, itWhere);
 }
 
-Element& Object::operator [] (const std::string& name) {
+Element& Array::operator [] (const std::string& name) {
    return Imp()[name]; 
 }
 
-const Element& Object::operator [] (const std::string& name) const {
+const Element& Array::operator [] (const std::string& name) const {
    return Imp()[name]; 
 }
 
-void Object::Clear() {
+void Array::Clear() {
    Imp().Clear();
 }
 
@@ -377,7 +283,7 @@ class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 ////////////////////////
 // String members
 
-class StringImp : public ElementImp_T<String, StringImp, STRING_ELEMENT>
+class StringImp : public ElementImp_T<String, StringImp, DISPLAY_ELEMENT>
 {
 public:
    StringImp& operator = (const std::string& s) { 

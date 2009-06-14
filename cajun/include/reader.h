@@ -49,7 +49,6 @@ private:
 
    // parsing token sequence into element structure
    void Parse(Element& element, TokenStream& tokenStream);
-   void Parse(Object& object, TokenStream& tokenStream);
    void Parse(Array& array, TokenStream& tokenStream);
    void Parse(String& string, TokenStream& tokenStream);
    void Parse(Null& null, TokenStream& tokenStream);

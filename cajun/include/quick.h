@@ -22,7 +22,7 @@ structure. For examples, given the document...
 }
 
 QuickInterpreter interpreter(elemRoot); // elemRoot containing above structure
-const Object& object = interpreter["XYZ"];
+const Array& array = interpreter["XYZ"];
 const Array& array = interpreter["XYZ"]["ABC"];
 const Number& num = interpreter["XYZ"]["ABC"][0];
 
@@ -49,13 +49,8 @@ public:
       m_Element(element) {}
 
    QuickInterpreter operator[] (const std::string& key) const {
-      const Object& obj = As<Object>();
+      const Array& obj = As<Array>();
       return obj[key];
-   }
-
-   QuickInterpreter operator[] (int index) const {
-      const Array& array = As<Array>();
-      return array[index];
    }
 
    operator const Element& () const { return m_Element; }
@@ -75,18 +70,8 @@ public:
       m_Element(element) {}
 
    QuickBuilder operator[] (const std::string& key) {
-      Object& obj = Convert<Object>();
+      Array& obj = Convert<Array>();
       return obj[key];
-   }
-
-   // how should we handle out of bounds? error? string [] implicitly 
-   //  creates a new key/value. we'll implicitly resize
-   QuickBuilder operator[] (size_t index) {
-      Array& array = Convert<Array>();
-      size_t nMinSize = index + 1; // zero indexed
-      if (array.Size() < nMinSize)
-         array.Resize(nMinSize);
-      return array[index];
    }
 
    QuickBuilder& operator = (const Element& element) {
