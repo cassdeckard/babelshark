@@ -1,6 +1,9 @@
 /**********************************************
 
-Author: Julie Betlach, julie.betlach(a)gmail.com
+Author: Julie Betlach
+
+Code written for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 ***********************************************/
 #pragma once
@@ -82,7 +85,7 @@ private:
    }
 
    // For PDI, we will always use strings for the values.
-   virtual void Visit(const PDI::String& string) {
+   virtual void Visit(const PDI::DisplayElement& string) {
       std::istringstream ss(string);
 
       std::string sType;

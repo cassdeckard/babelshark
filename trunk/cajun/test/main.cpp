@@ -1,6 +1,15 @@
-// PDI.cpp : Defines the entry point for the console application.
-//
-// Modifications for Wireshark Dissector Project: Julie Betlach, julie.betlach(a)gmail.com
+/**********************************************
+
+Author: Julie Betlach
+
+Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
+Project Webpage: http://cajun-jsonapi.sourceforge.net/
+
+Original code parsed files in json format.
+Code now parses files in PDI format for a project for Washington University, 
+course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
+
+***********************************************/
 
 #include "elements.h"
 #include "quick.h"
@@ -26,20 +35,20 @@ int main()
       // That will be done after we get the TreeVisitor to create an instruction tree.
       // Some items may be hard-coded so instruction tree creation can be completed (for example size).
       std::cout << "Read the AvatarInRoom.txt file..." << std::endl;
-      Element elemRoot = String();
+      Element elemRoot = DisplayElement();
       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
       std::cout << "Done." << std::endl << std::endl;
 
       // Write data to screen. (This just verifies that we read in the data correctly.)
       std::cout << "Testing the QuickInterpreter..." << std::endl;
       QuickInterpreter interpeter(elemRoot);
-      const std::string& sId = interpeter["ListAvatarsMessageId"].As<String>();
+      const std::string& sId = interpeter["ListAvatarsMessageId"].As<DisplayElement>();
       std::cout << "Message Id: " << sId << std::endl;
-      const std::string& sRoom = interpeter["Room"].As<String>();
+      const std::string& sRoom = interpeter["Room"].As<DisplayElement>();
       std::cout << "Room: " << sRoom << std::endl;
-      const std::string& sName = interpeter["AvatarsInTheRoom"]["Name"].As<String>();
+      const std::string& sName = interpeter["AvatarsInTheRoom"]["Name"].As<DisplayElement>();
       std::cout << "Name: " << sName << std::endl;
-      const std::string& sMale = interpeter["AvatarsInTheRoom"]["Male"].As<String>();
+      const std::string& sMale = interpeter["AvatarsInTheRoom"]["Male"].As<DisplayElement>();
       std::cout << "Male: " << sMale << std::endl;
       std::cout << "Done." << std::endl << std::endl;
 
