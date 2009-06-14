@@ -27,7 +27,7 @@ BabelShark::Instruction* Parse()
       // That will be done after we get the TreeVisitor to create an instruction tree.
       // Some items may be hard-coded so instruction tree creation can be completed (for example size).
       std::cout << "Read the AvatarInRoom.txt file..." << std::endl;
-      Element elemRoot = String();
+      Element elemRoot = DisplayElement();
       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
       std::cout << "Done." << std::endl;
 
