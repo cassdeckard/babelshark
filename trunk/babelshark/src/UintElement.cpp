@@ -1,3 +1,5 @@
+// $Id$
+
 #include "..\UintElement.h"
 
 namespace BabelShark
@@ -14,20 +16,20 @@ namespace BabelShark
 	{
 
 	}
-	//TODO -- Implement this
-	//Will be used to read in data from packet (I think??)
+
+	//Will be used to read in data from packet
 	void UintElement::Interpret(char* buffer)
-	{
+    {
+        char          tempDisplay[255];
+        unsigned long intVal = 0;
+        unsigned long intMask = _BitMask.to_ulong();
 		_InterpretedData.clear();
-		_InterpretedData += _Name + " : '";
-		unsigned int value = 0;
-		for(size_t i = 0; i < _SizeInBytes; ++i)
-		{
-			static_cast<std::bitset<BIT_MASK_MAX_SIZE>>(buffer[0]) &= _BitMask;
-			_InterpretedData += buffer[0];
-			buffer++;
-		}
-		_InterpretedData += "'";
+		_InterpretedData += _Name + " : ";
+
+       memcpy(&intVal, buffer, _SizeInBytes);
+       sprintf(tempDisplay, "%u\0", intVal & intMask);
+
+       _InterpretedData += tempDisplay;
 	}
 
 	void UintElement::SetupBitMask(unsigned int val)
@@ -44,12 +46,10 @@ namespace BabelShark
 		}
 	}
 
-	//TODO -- Implement this
 	//will be used to Display data to the WireShark output
 	char* UintElement::Display()
-	{
-		//Implement me!
-		return 0;
+    {
+        return const_cast<char*>(_InterpretedData.c_str());
 	}
 
 	unsigned int UintElement::DetermineSizeInBytes(int bits)

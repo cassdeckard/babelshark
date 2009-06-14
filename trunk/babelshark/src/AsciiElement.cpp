@@ -1,3 +1,5 @@
+// $Id$
+
 #include "..\AsciiElement.h"
 
 namespace BabelShark
@@ -10,15 +12,16 @@ namespace BabelShark
 
 	AsciiElement::AsciiElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
-	{
+    {
+        _SizeInBytes = size;
 	}
 
 	AsciiElement::~AsciiElement()
 	{
 
 	}
-	//TODO -- Implement this
-	//Will be used to read in data from packet (I think??)
+
+	//Will be used to read in data from packet
 	void AsciiElement::Interpret(char* buffer)
 	{
 		_InterpretedData.clear();
@@ -29,15 +32,12 @@ namespace BabelShark
 			buffer++;
         }
         _InterpretedData += "'";
-		//Implement me!
 	}
 
-	//TODO -- Implement this
 	//will be used to Display data to the WireShark output
 	char* AsciiElement::Display()
 	{
-		//Implement me!
 		return const_cast<char*>(_InterpretedData.c_str());
 	}
-	
+
 }

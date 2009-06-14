@@ -1,3 +1,5 @@
+// $Id$
+
 #include "..\InstructionSet.h"
 
 namespace BabelShark
@@ -33,7 +35,7 @@ namespace BabelShark
 	void InstructionSet::Interpret(char* buffer)
 	{
 		CreateIterator();
-		
+
 		for(_ListIter; _ListIter != _List.end(); ++_ListIter)
 		{
 			(*_ListIter)->Interpret(buffer);

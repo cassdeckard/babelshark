@@ -1,3 +1,5 @@
+// $Id$
+
 #ifndef ASCII_ELEMENT_H
 #define ASCII_ELEMENT_H
 
@@ -10,11 +12,11 @@ namespace BabelShark
 		public:
 			AsciiElement(unsigned int size, char* name);
 			~AsciiElement();
-			
+
 			//TODO -- Implement this
 			//Will be used to read in data from packet (I think??)
 			void Interpret(char* buffer);
-			
+
 			//TODO -- Implement this
 			//will be used to Display data to the WireShark output
 			char* Display();
@@ -23,7 +25,7 @@ namespace BabelShark
 			//NullIterator has not been implented yet.
 			//when it is, this class is to construct an object
 			//of type NullIterator
-			//NullIterator* nullIterator;	
+			//NullIterator* nullIterator;
 	};
 }
 

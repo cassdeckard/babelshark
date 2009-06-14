@@ -1,3 +1,5 @@
+// $Id$
+
 #include "..\PadElement.h"
 
 namespace BabelShark
@@ -37,5 +39,5 @@ namespace BabelShark
 		//Implement me!
 		return const_cast<char*>(_InterpretedData.c_str());
 	}
-	
+
 }

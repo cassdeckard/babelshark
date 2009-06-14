@@ -1,3 +1,5 @@
+// $Id$
+
 #ifndef DISSECTOR_H
 #define DISSECTOR_H
 
@@ -14,6 +16,7 @@ extern "C" {
 // C++ headers
 #include "Instruction.h"
 #include "AsciiElement.h" //note: won't need later
+#include "UintElement.h" //note: won't need later
 
 namespace BabelShark
 {
@@ -28,6 +31,8 @@ namespace BabelShark
 
 		private:
             Instruction* _instruction;
+            Instruction* _instruction2;
+            Instruction* _instruction3;
             int          _proto;
             gint*        _ett;
 	};
