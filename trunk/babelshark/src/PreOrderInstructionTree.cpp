@@ -19,7 +19,9 @@ namespace BabelShark
 
 		if(i) {
 			i->First();
-			_iterators.pop();
+			while(_iterators.size() > 0){
+				_iterators.pop();
+			}
 			_iterators.push(i);
 		}
 		return;
