@@ -16,11 +16,7 @@ extern "C" {
 
 // C++ headers
 #include "Instruction.h"
-#include "InstructionSet.h"  //note: won't need later
-#include "AsciiElement.h" //note: won't need later
-#include "UintElement.h"  //note: won't need later
-#include "BoolElement.h"  //note: won't need later
-#include "PadElement.h"  //note: won't need later
+#include "InstructionSet.h"
 
 namespace BabelShark
 {
@@ -37,10 +33,6 @@ namespace BabelShark
 
 		private:
             Instruction* _RootInstruction;
-            Instruction* _instruction;
-            Instruction* _instruction2;
-            Instruction* _instruction3;
-            Instruction* _instruction4;
             int*         _proto;
             gint**       _ett;
             std::string  _protoName;

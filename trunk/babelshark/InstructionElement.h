@@ -7,7 +7,6 @@
 
 #include <bitset>
 #include "Instruction.h"
-#include "InstructionSet.h"
 
 namespace BabelShark
 {
@@ -31,15 +30,13 @@ namespace BabelShark
 
 			//Creates a NullIterator because an InstructionElement
 			//should have no children.
-            InstructionTree* CreateIterator();
+            void CreateIterator();
 
             // takes an Input Size and forms a bitmask based on it.
             static std::bitset<BIT_MASK_MAX_SIZE> SetupBitMask(unsigned int val);
 
             // rounds up bit size to byte size
             unsigned int DetermineSizeInBytes(int bits);
-			
-			InstructionCollection::iterator GetIterator();
 
         protected:
             std::string _InterpretedData;
