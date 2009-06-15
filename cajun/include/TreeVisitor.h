@@ -5,6 +5,11 @@ Author: Julie Betlach
 Code written for a project for Washington University, 
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
+File Name: TreeVisitor.h
+
+File Description: The TreeVisitor.h file is a part of the PDI parser.  It provides the implementation
+of the TreeVisitor class.
+
 ***********************************************/
 #pragma once
 
@@ -26,7 +31,25 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include <iostream>
 #include <fstream>
 
+/**********************************************
+Class Name: TreeVisitor
+Class Description: The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by 
+reading in a file in PDI format.  When a node on the tree is visited, an instruction is created 
+in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
 
+Usage: After a file has been read in by calling the following parser functions...
+      Element elemRoot = DisplayElement();
+      Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
+then the following function can be called to create an instruction tree.
+      TreeVisitor treeVisitor(elemRoot.Name());
+Note that the root element name must be passed into the TreeVisitor in order to get the first
+name from the file to be included in the first instruction in the instruction tree.
+
+If a second parameter is provided, which is boolean, this will be used to determine if 
+unit test / debug data should be written to cout.  If the parameter is true then data will
+be displayed.  If the parameter is false, or is not provided, then data will not be displayed.
+
+***********************************************/
 class TreeVisitor : public PDI::ConstVisitor
 {
 public:
@@ -39,7 +62,17 @@ public:
          |  array
 */
 
-   //A parameter should be added to the constructor that specifies how long the buffer is and checked appropriately.
+/**********************
+Function Name: TreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false)
+Function Description: This is the constructor for TreeVisitor class.
+
+First parameter should be the name of the root node.
+Second parameter is optional.  It should be true if you want output to the screen for testing.
+
+A function map is initialized in the constructor using a template.
+This will make the addition of new types easier.
+
+***********************/
    TreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) : 
       m_sName(sName),
       m_bDisplayOutputToScreen(bDisplayOutputToScreen),
@@ -53,9 +86,20 @@ public:
       m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
    }
 
+   /**********************
+   Function Name: BabelShark::Instruction* GetInstruction() 
+   Function Description: This function returns a pointer to an instruction.
+   ***********************/
    BabelShark::Instruction* GetInstruction() { return m_pInstruction; }
 
 private:
+   /**********************
+   Function Name: BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName)
+   Function Description: This function uses a template to reduce code size and to make it easier to
+   add new types.  There are 3 pieces of data that an instruction needs: name, type, size.
+   Size and name are passed in as parameters.  The Type is known because this is a template function
+   and it is InstructionTypeT.
+   ***********************/
    template <typename InstructionTypeT>
    BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName)
    {
@@ -64,6 +108,14 @@ private:
       return new InstructionTypeT(nSize, s);
    }
 
+   /**********************
+   Function Name: virtual void Visit(const PDI::Array& array)
+   Function Description: This function uses iterates over all items in the array. It calls a visit function
+   on each item.  It passes in the name of the array for the same reason that we needed to pass the name of
+   the root node into the constructor.  So that it would be available to use when we create the instruction.
+
+   Each item in the array is added to an instruction set.
+   ***********************/
    virtual void Visit(const PDI::Array& array) {
       if (m_bDisplayOutputToScreen)
       {
@@ -84,7 +136,15 @@ private:
       m_pInstruction = pInstructionSet;
    }
 
-   // For PDI, we will always use strings for the values.
+   /**********************
+   Function Name: virtual void Visit(const PDI::DisplayElement& string)
+   Function Description: This function is used to visit a DisplayElement.  
+   It creates one instruction for the DisplayElement.  It uses a template
+   in order to reduce code.  It looks in the function map for a known type
+   and then calls the appropriate function to create the instruction that
+   matches the desired type.  For example, if ASCII is the type, then an
+   AsciiElement instruction is created and added to the instruction tree.
+   ***********************/
    virtual void Visit(const PDI::DisplayElement& string) {
       std::istringstream ss(string);
 
@@ -110,8 +170,12 @@ private:
       m_pInstruction = (this->*func)(nSize, m_sName);
    }
 
-
-   // For PDI, we won't need any of these.
+   /**********************
+   Function Name: virtual void Visit(const PDI::Null& null)
+   Function Description: This function is used to visit a NULL_ELEMENT.  This was kept in for completeness.
+   It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to
+   NULL_ELEMENT.  However, we should never be visiting a NULL_ELEMENT, so an exception in thrown.
+   ***********************/
    virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
 
    typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&);
@@ -120,6 +184,6 @@ private:
    CreateInstructionFuncMap m_CreateInstructionFuncMap;
 
    std::string m_sName;
-   BabelShark::Instruction* m_pInstruction;
+   BabelShark::Instruction* m_pInstruction;  // This is used so that one visit function may see the instruction from another.
    bool m_bDisplayOutputToScreen;
 };
