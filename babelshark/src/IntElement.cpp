@@ -17,7 +17,7 @@ namespace BabelShark
 
 	}
 	//TODO -- Implement this
-	//Will be used to read in data from packet (I think??)
+	//Will be used to read in data from packet
 	void IntElement::Interpret(char* buffer)
 	{
         //Implement me!

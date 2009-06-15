@@ -5,6 +5,15 @@
 
 #include "InstructionElement.h"
 
+/*
+	Design Pattern Used: Composite
+	Class: PadElement
+	Parent: InstructionElement
+	One of the Leaf(s) in the Composite Structure.
+	Processes Pad type elements
+*/
+
+
 namespace BabelShark
 {
 	class PadElement: public InstructionElement
@@ -12,19 +21,13 @@ namespace BabelShark
 		public:
 			PadElement(unsigned int size, char* name);
 			~PadElement();
-
-			//TODO -- Implement this
-			//Will be used to read in data from packet (I think??)
+			
+			//used to read in data from packet
 			void Interpret(char* buffer);
 
-			//TODO -- Implement this
-			//will be used to Display data to the WireShark output
+			//used to Display data to the WireShark output
 			char* Display();
 		private:
-			//NullIterator has not been implented yet.
-			//when it is, this class is to construct an object
-			//of type NullIterator
-			//NullIterator* nullIterator;
 	};
 }
 

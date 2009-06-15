@@ -5,6 +5,16 @@
 
 #include "InstructionElement.h"
 
+/*
+	Design Pattern Used: Composite
+	Class: AsciiElement
+	Parent: InstructionElement
+	One of the Leaf(s) in the Composite Structure.
+	Processes Ascii type elements
+*/
+
+
+
 namespace BabelShark
 {
 	class AsciiElement: public InstructionElement
@@ -13,19 +23,15 @@ namespace BabelShark
 			AsciiElement(unsigned int size, char* name);
 			~AsciiElement();
 
-			//Will be used to read in data from packet (I think??)
+			//Will be used to read in data from packet
 			void Interpret(char* buffer);
 
 			//will be used to Display data to the WireShark output
 			char* Display();
 		private:
-			//NullIterator has not been implented yet.
-			//when it is, this class is to construct an object
-			//of type NullIterator
-			//NullIterator* nullIterator;
-
-
-            // TODO: DESCRIPTION
+            // Checks to see if a character is printable.  if it is, it returns
+			//a string with that character stored in it.
+			//if not, it returns a string with a single space in it.
             std::string AsciiElement::Printable(char inChar);
 	};
 }

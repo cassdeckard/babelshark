@@ -17,7 +17,7 @@ namespace BabelShark
 
 	}
 
-	//Will be used to read in data from packet (I think??)
+	//Will be used to read in data from packet
 	void BoolElement::Interpret(char* buffer)
     {
         unsigned long intVal = 0;

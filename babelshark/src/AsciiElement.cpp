@@ -21,7 +21,7 @@ namespace BabelShark
 
 	}
 
-    // TODO: DESCRIPTION
+    // Verifies that the character we're printing is printable in Ascii
     std::string AsciiElement::Printable(char inChar)
     {
         std::string result;
@@ -41,7 +41,7 @@ namespace BabelShark
         return result;
     }
 
-	//Will be used to read in data from packet
+
 	void AsciiElement::Interpret(char* buffer)
     {
 		_InterpretedData.clear();
@@ -53,7 +53,6 @@ namespace BabelShark
 
 	}
 
-	//will be used to Display data to the WireShark output
 	char* AsciiElement::Display()
     {
         static char* result;

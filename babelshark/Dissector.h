@@ -18,6 +18,15 @@ extern "C" {
 #include "Instruction.h"
 #include "InstructionSet.h"
 
+/*
+	Design Pattern Used: Chain of Responsibility
+	Class: Dissector
+	Handles Dissection of a packet at a level lower than TCP/UDP.
+	Calls on the Cajun Parser that reads in an input file.
+	Calls on Instruction objects to Interpret() a packet.
+*/
+
+
 namespace BabelShark
 {
 	class Dissector

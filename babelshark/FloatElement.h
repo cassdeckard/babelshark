@@ -8,6 +8,17 @@
 
 #define BIT_MASK_MAX_SIZE 64
 
+/*
+	Design Pattern Used: Composite
+	Class: FloatElement
+	Parent: InstructionElement
+	One of the Leaf(s) in the Composite Structure.
+	Processes Float type elements
+	
+	Notes: not completed in Phase I.
+*/
+
+
 namespace BabelShark
 {
 	class FloatElement: public InstructionElement
@@ -17,7 +28,7 @@ namespace BabelShark
 			~FloatElement();
 
 			//TODO -- Implement this
-			//Will be used to read in data from packet (I think??)
+			//Will be used to read in data from packet
 			void Interpret(char* buffer);
 
 			//TODO -- Implement this
