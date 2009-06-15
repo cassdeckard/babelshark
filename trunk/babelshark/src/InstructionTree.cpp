@@ -6,7 +6,7 @@ namespace BabelShark
 {
 	InstructionTree::InstructionTree(Instruction* root){
 		_root = root;
-		_iterators = std::stack<InstructionCollection::iterator*>();
+		_iterators = std::stack<InstructionTree*>();
 		return;
 	}
 

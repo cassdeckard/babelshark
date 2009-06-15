@@ -5,7 +5,6 @@
 
 #include <string>
 #include <vector>
-#include <stack>
 #include "Instruction.h"
 #include "InstructionSet.h"
 
@@ -21,31 +20,6 @@
 
 namespace BabelShark
 {
-	class InstructionTree
-	{
-		public:
-			InstructionTree(Instruction* root);
-
-			~InstructionTree();
-
-			virtual void First(){ }
-
-			virtual Instruction* CurrentItem(){return 0;} 
-
-			virtual void Next(){ }
-
-			virtual bool IsDone(){return true;}
-
-
-		protected:
-			Instruction* _root;
-			std::stack<InstructionCollection::iterator*> _iterators;
-	
-		private:
-
-
-	};
-
 
 }
 

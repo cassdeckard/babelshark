@@ -15,36 +15,35 @@ namespace BabelShark
 	}
 
 	void PreOrderInstructionTree::First(){
-		/*InstructionCollection::iterator i = _root->GetIterator();
+		InstructionTree* i = _root->CreateIterator();
 
 		if(i) {
 			i->First();
-			_iterators.RemoveAll();
-			_iterators.Push(i);
-		}*/
+			_iterators.pop();
+			_iterators.push(i);
+		}
 		return;
 	}
 
 	Instruction* PreOrderInstructionTree::CurrentItem(){
-		//return _iterators.Size() >0 ? _iterators.Top()->CurrentItem() : 0;
-		return 0;
+		return _iterators.size() >0 ? _iterators.top()->CurrentItem() : 0;
 	}
 
 	void PreOrderInstructionTree::Next(){
-		/*InstructionCollection::iterator i = _iterators.Top()->CurrentItem()->CreateIterator();
+		InstructionTree* i = _iterators.top()->CurrentItem()->CreateIterator();
 		i->First();
-		_iterators.Push(i);
+		_iterators.push(i);
 
-		while(_iterators.Size() > 0 && _iterators.Top()->IsDone()){
-			delete _iterators.Pop();
-			_iterators.Top()->Next();
-		}*/
+		while(_iterators.size() > 0 && _iterators.top()->IsDone()){
+			//delete _iterators.pop();
+			//TODO This is not working but should be.  Its returning a pointer
+			_iterators.top()->Next();
+		}
 		return;
 	}
 
 	bool PreOrderInstructionTree::IsDone(){
-		//TODO
-		return false;
+		return _iterators.size() >0 ? false : true;
 	}
 
 }

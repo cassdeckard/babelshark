@@ -28,7 +28,7 @@ namespace BabelShark
             char* Display();
 
 			//Creates an iterator used to traverse the direct children.
-			void CreateIterator();
+			InstructionTree* CreateIterator();
 			InstructionCollection::iterator GetIterator(){ return _ListIter;}
 
             // Override
