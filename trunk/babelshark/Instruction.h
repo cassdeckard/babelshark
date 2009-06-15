@@ -4,6 +4,7 @@
 #define INSTRUCTION_H
 
 #include <string>
+#include <vector>
 /*
 	Class:Instruction
 		used purely as a Composite portion of the Composite Design Pattern
@@ -14,6 +15,10 @@
 
 namespace BabelShark
 {
+	class Instruction;
+
+	typedef std::vector<Instruction*> InstructionCollection;
+
 	class Instruction
 	{
 		public:
@@ -50,6 +55,8 @@ namespace BabelShark
 			unsigned int GetSize() { return _Size;}
 			char* GetName(){ return (char*)(_Name.c_str());}
 			unsigned int GetSizeInBytes(){return _SizeInBytes;}
+
+			InstructionCollection::iterator GetIterator();
 
 		protected:
 			unsigned int _Size;
