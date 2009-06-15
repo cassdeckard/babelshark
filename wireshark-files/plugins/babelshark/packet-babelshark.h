@@ -25,6 +25,7 @@
 #define PACKET_BABELSHARK_H
 
 #define BABELSHARK_UDP_PORT 443
+#define BABELSHARK_IN_FILE  "babelshark.pdi"
 
 #include "Dissector.h"
 
@@ -32,7 +33,8 @@ static BabelShark::Dissector* babelshark_dissector;
 
 struct _babelshark_prefs
 {
-    guint udp_port;
+    guint       udp_port;
+    const char* in_file;
 };
 
 void babelshark_prefs_register(struct _babelshark_prefs *prefs, module_t *module);

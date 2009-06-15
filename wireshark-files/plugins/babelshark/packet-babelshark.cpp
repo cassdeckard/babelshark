@@ -38,12 +38,20 @@ extern "C" {
 
 static int proto_babelshark = -1;
 
-static struct _babelshark_prefs babelshark_preferences = { BABELSHARK_UDP_PORT };
+static struct _babelshark_prefs babelshark_preferences = { BABELSHARK_UDP_PORT,
+                                                           BABELSHARK_IN_FILE };
 
 static void create_dissector()
 {
    // Create Dissector
-   babelshark_dissector = new BabelShark::Dissector(&proto_babelshark);
+   babelshark_dissector = new BabelShark::Dissector(babelshark_preferences.in_file, &proto_babelshark);
+
+}
+
+static void update_dissector(const char* inFile)
+{
+   // Create Dissector
+   babelshark_dissector->ReparseTree(inFile);
 
 }
 
@@ -61,6 +69,12 @@ void babelshark_prefs_register(struct _babelshark_prefs *prefs, module_t *module
         "Babelshark will be handed off packets that come in on this port",
         10,
         &prefs->udp_port);
+
+    prefs_register_string_preference(module,
+        "pdi_file",
+        "Input PDI file",
+        "File in PDI format describing the packet structure",
+        &prefs->in_file);
 }
 
 /* REMEMBER: This is a C function, called directly by Wireshark */
@@ -79,13 +93,14 @@ proto_reg_handoff_babelshark(void)
    else
    {
        dissector_delete("udp.port", prev_prefs.udp_port, babelshark_handle);
+       update_dissector(babelshark_preferences.in_file);
    }
 
    printf("proto_reg_handoff_babelshark\n");
    printf("udp_port : %u\n", babelshark_preferences.udp_port);
    dissector_add("udp.port", babelshark_preferences.udp_port, babelshark_handle);
 
-   // save previous preferences
+   // save previous udp port
    prev_prefs.udp_port = babelshark_preferences.udp_port;
 }
 

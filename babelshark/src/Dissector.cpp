@@ -4,21 +4,22 @@
 #include "..\Dissector.h"
 #include <sstream>
 
-#define PDI_FILE "AvatarsInRoom.txt"
-
 BabelShark::Instruction* Parse(std::string inFile); // delcaration; this is defined in PdiParser.cpp
 
 namespace BabelShark
 {
 
-    Dissector::Dissector(int* proto)
+    Dissector::Dissector(const char* inFile, int* proto)
         : _instruction(new AsciiElement(4, "test_ascii")),
           _instruction2(new UintElement(7, "test_uint")),
           _instruction3(new BoolElement(1, "test_bool")),
-          _instruction4(new PadElement(16,  "test_padding")),
-          _proto(proto)
+          _instruction4(new PadElement(16, "test_padding")),
+          _proto(proto),
+          _nameChanged(true)
     {
-        _RootInstruction = Parse(PDI_FILE); // TODO: get this from preferences
+
+        _RootInstruction = Parse(inFile); // TODO: get this from preferences
+        //printf("construct name: %s\n\n", _RootInstruction->GetName());
         _protoName       = _RootInstruction->GetName();
 
         /* Setup protocol subtree array */
@@ -26,7 +27,7 @@ namespace BabelShark
         *_ett[0] = -1;
 
         *_proto = proto_register_protocol(_protoName.c_str(),  /* name       */
-                                          _protoName.c_str(),  /* short name */
+                                          "Babelshark",        /* short name */
                                           "babelshark");       /* abbrev     */
 
         proto_register_field_array(*_proto, NULL, 0);
@@ -39,12 +40,23 @@ namespace BabelShark
 
 	}
 
+    void Dissector::ReparseTree(const char* inFile)
+    {
+        // NOTE: This will not change the registered name of the protocol
+        // Reparse Instruction tree
+        _RootInstruction = Parse(inFile);
+        _protoName       = _RootInstruction->GetName();
+        _nameChanged     = true;
+        printf("name: %s\n\n", _RootInstruction->GetName());
+    }
+
     void Dissector::Dissect(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
     {
         guint8 packet_type = tvb_get_guint8(tvb, 0);
 
-        if (check_col(pinfo->cinfo, COL_PROTOCOL)) {
+        if (check_col(pinfo->cinfo, COL_PROTOCOL) || _nameChanged) {
            col_set_str(pinfo->cinfo, COL_PROTOCOL, _protoName.c_str());
+           _nameChanged = false;
         }
         /* Clear out stuff in the info column */
         if (check_col(pinfo->cinfo,COL_INFO)) {
