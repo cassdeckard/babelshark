@@ -16,7 +16,7 @@
 #include <iostream>
 #include <fstream>
 
-BabelShark::Instruction* Parse()
+BabelShark::Instruction* Parse(std::string inFile)
 {
    using namespace PDI;
 
@@ -28,7 +28,7 @@ BabelShark::Instruction* Parse()
       // Some items may be hard-coded so instruction tree creation can be completed (for example size).
       std::cout << "Read the AvatarInRoom.txt file..." << std::endl;
       Element elemRoot = DisplayElement();
-      Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
+      Reader::Read(elemRoot, std::ifstream(inFile.c_str()));
       std::cout << "Done." << std::endl;
 
       // Write data to screen. (This just verifies that we read in the data correctly.)
@@ -36,11 +36,12 @@ BabelShark::Instruction* Parse()
 
       // Write it out to a file....
       std::cout << "Writing file out...";
-      Writer::Write(elemRoot, std::ofstream("AvatarsInRoomOutput.txt"));
+      std::string outFile(inFile + "_out");
+      Writer::Write(elemRoot, std::ofstream(outFile.c_str()));
       std::cout << "Done." << std::endl;
 
       // When the accept function is called, it iterates over every element in the PDI tree.
-      TreeVisitor treeVisitor("root");
+      TreeVisitor treeVisitor(elemRoot.Name());
       elemRoot.Accept(treeVisitor);
 
       BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();

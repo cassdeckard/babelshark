@@ -11,6 +11,7 @@ extern "C" {
 #endif
 
 #include <epan/packet.h>
+#include <epan/prefs.h>
 }
 
 // C++ headers
@@ -26,7 +27,7 @@ namespace BabelShark
 	class Dissector
 	{
 		public:
-			Dissector(gint* ett, int proto);
+            Dissector(int* proto);
             ~Dissector();
 
             void Dissect(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree);
@@ -38,8 +39,9 @@ namespace BabelShark
             Instruction* _instruction2;
             Instruction* _instruction3;
             Instruction* _instruction4;
-            int          _proto;
-            gint*        _ett;
+            int*         _proto;
+            gint**       _ett;
+            std::string  _protoName;
 	};
 }
 
