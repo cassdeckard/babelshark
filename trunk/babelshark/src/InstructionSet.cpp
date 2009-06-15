@@ -54,7 +54,8 @@ namespace BabelShark
 	}
 
     //Override
-    unsigned int InstructionSet::GetSizeInBytes() {
+    unsigned int InstructionSet::GetSizeInBytes() 
+	{
         unsigned int result = 0;
 
         CreateIterator();

@@ -8,6 +8,15 @@
 #include <bitset>
 #include "Instruction.h"
 
+/*
+	Design Pattern Used: Composite
+    Class: InstructionElement
+	         The Leaf portion of the Composite pattern.
+			 Handles processing at the lowest level.
+*/
+
+
+
 namespace BabelShark
 {
 	class InstructionElement: public Instruction

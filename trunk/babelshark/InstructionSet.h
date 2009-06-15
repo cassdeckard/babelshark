@@ -6,6 +6,13 @@
 
 #include <vector>
 
+/*
+	Design Pattern Used: Composite
+	Class: InstructionSet
+		The Composite portion of the Composite pattern.
+		This contains Instruction* children.
+*/
+
 namespace BabelShark
 {
 	typedef std::vector<Instruction*> InstructionCollection;

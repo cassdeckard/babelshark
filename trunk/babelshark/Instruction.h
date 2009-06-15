@@ -5,9 +5,11 @@
 
 #include <string>
 /*
+	Design Pattern Used: Composite
 	Class:Instruction
 		used purely as a Composite portion of the Composite Design Pattern
 		inherited by InstructionElement and InstructionSet
+		Composite allows objects to be treated uniformly.
 */
 
 
@@ -32,7 +34,7 @@ namespace BabelShark
 			//used in the InstructionList class.
 			virtual Instruction* GetChild();
 
-			//virtual function, no implementation in base class
+			//virtual function, implementation does nothing.
 			//used in the InstructionList class.
 			virtual void Add(Instruction*);
 
