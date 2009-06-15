@@ -37,29 +37,19 @@ extern "C" {
 #include "packet-babelshark.h"
 
 static int proto_babelshark = -1;
-static int hf_babelshark_pdu = -1;
-static int hf_babelshark_testtype = -1;
-
-static gint ett_babelshark = -1;
-static gint ett_babelshark_test = -1;
-static gint ett_babelshark_test2 = -1;
 
 static struct _babelshark_prefs babelshark_preferences = { BABELSHARK_UDP_PORT };
 
-static const value_string babelshark_vals[] = {
-   { 1,   "ONE" },
-   { 2,   "TWO" },
-   { 0,    NULL }
-};
-
-static void create_dissector(gint *ett, int proto)
+static void create_dissector()
 {
-    babelshark_dissector = new BabelShark::Dissector(ett, proto);
+   // Create Dissector
+   babelshark_dissector = new BabelShark::Dissector(&proto_babelshark);
+
 }
 
 static void dissect_babelshark(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
 {
-    babelshark_dissector->Test();
+    babelshark_dissector->Test(); // TODO: Remove
     babelshark_dissector->Dissect(tvb, pinfo, tree);
 }
 
@@ -104,41 +94,8 @@ void
 proto_register_babelshark(void)
 {
    module_t *module;
-   static hf_register_info hf[] = {
-      { &hf_babelshark_pdu,
-         {"Babelshark defined PDU",
-          "babelshark.pdu",
-          FT_UINT32, BASE_DEC,
-          VALS(babelshark_vals), 0,
-          "Babelshark PDU", HFILL
-         }
-      },
-      { &hf_babelshark_testtype,
-         {"Babelshark Test Type",
-          "babelshark.test",
-          FT_UINT32, BASE_DEC,
-          NULL, 0,
-          "Babelshark TEST", HFILL
-         }
-      }
-   };
 
-   /* Setup protocol subtree array */
-   static gint *ett[] = {
-      &ett_babelshark,
-      &ett_babelshark_test,
-      &ett_babelshark_test2
-   };
-
-   printf("proto_register_babelshark\n");
-   proto_babelshark = proto_register_protocol("Babelshark",  /* name       */
-                                              "Babelshark",  /* short name */
-                                              "babelshark"); /* abbrev     */
-
-   create_dissector(&ett_babelshark, proto_babelshark);
-
-   proto_register_field_array(proto_babelshark, hf, array_length(hf));
-   proto_register_subtree_array(ett, array_length(ett));
+   create_dissector();
 
    /* preferences */
    module = prefs_register_protocol(proto_babelshark, proto_reg_handoff_babelshark);
