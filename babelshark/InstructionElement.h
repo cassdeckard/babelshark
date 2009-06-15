@@ -7,6 +7,7 @@
 
 #include <bitset>
 #include "Instruction.h"
+#include "InstructionSet.h"
 
 namespace BabelShark
 {
@@ -37,6 +38,8 @@ namespace BabelShark
 
             // rounds up bit size to byte size
             unsigned int DetermineSizeInBytes(int bits);
+			
+			InstructionCollection::iterator GetIterator();
 
         protected:
             std::string _InterpretedData;

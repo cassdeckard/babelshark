@@ -54,4 +54,14 @@ namespace BabelShark
 	{
 
 	}
+
+	//Return a null iterator
+	InstructionCollection::iterator GetIterator()
+	{
+		Instruction* temp = 0;
+		InstructionCollection tempList;
+		tempList.push_back(temp);
+		return tempList.begin();
+	}
+
 }
