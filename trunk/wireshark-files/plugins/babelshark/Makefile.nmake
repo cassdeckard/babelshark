@@ -41,7 +41,7 @@ OBJECTS = $(DISSECTOR_OBJECTS) $(DISSECTOR_SUPPORT_OBJECTS) plugin.obj
 
 RESOURCE=$(PLUGIN_NAME).res
 
-all: $(PLUGIN_NAME).dll
+all: $(WIRESHARK_PLUGIN_DIR)\$(PLUGIN_NAME).dll
 
 $(PLUGIN_NAME).rc : moduleinfo.nmake
 	sed -e s/@PLUGIN_NAME@/$(PLUGIN_NAME)/ \
@@ -53,9 +53,11 @@ $(PLUGIN_NAME).rc : moduleinfo.nmake
 	-e s/@MSVC_VARIANT@/$(MSVC_VARIANT)/ \
 	< plugin.rc.in > $@
 
-$(PLUGIN_NAME).dll $(PLUGIN_NAME).exp $(PLUGIN_NAME).lib : $(OBJECTS) $(LINK_PLUGIN_WITH) $(RESOURCE) $(WIRESHARK_PLUGIN_DIR)\$(PLUGIN_NAME).dll
+$(PLUGIN_NAME).dll $(PLUGIN_NAME).exp $(PLUGIN_NAME).lib : $(OBJECTS) $(LINK_PLUGIN_WITH) $(RESOURCE)
 	link -dll /out:$(PLUGIN_NAME).dll $(LDFLAGS) $(OBJECTS) $(LINK_PLUGIN_WITH) \
 	$(GLIB_LIBS) $(RESOURCE)
+	
+$(WIRESHARK_PLUGIN_DIR)\$(PLUGIN_NAME).dll : $(PLUGIN_NAME).dll
 	@echo Copying to plugin directory
 	cp $(PLUGIN_NAME).dll $(WIRESHARK_PLUGIN_DIR)\$(PLUGIN_NAME).dll
 
