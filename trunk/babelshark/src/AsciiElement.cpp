@@ -46,7 +46,7 @@ namespace BabelShark
     {
 		_InterpretedData.clear();
 
-		for(size_t i = 0; i < _Size; ++i)
+        for(size_t i = 0; i < _Size && buffer[i] != 0; ++i)
 		{
 			_InterpretedData += Printable(buffer[i]);
         }

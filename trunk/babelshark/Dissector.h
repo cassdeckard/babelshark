@@ -27,11 +27,13 @@ namespace BabelShark
 	class Dissector
 	{
 		public:
-            Dissector(int* proto);
+            Dissector(const char* inFile, int* proto);
             ~Dissector();
 
             void Dissect(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree);
             void Test();
+
+            void ReparseTree(const char* inFile);
 
 		private:
             Instruction* _RootInstruction;
@@ -42,6 +44,7 @@ namespace BabelShark
             int*         _proto;
             gint**       _ett;
             std::string  _protoName;
+            bool         _nameChanged;
 	};
 }
 

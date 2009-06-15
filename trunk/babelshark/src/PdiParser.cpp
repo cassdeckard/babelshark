@@ -21,14 +21,24 @@ BabelShark::Instruction* Parse(std::string inFile)
    using namespace PDI;
 
    {
-      // AvatarsInRoom example
-      // Currently this file is still in a JSON like format.
-      // It will eventually be changed to the PDI format.
-      // That will be done after we get the TreeVisitor to create an instruction tree.
-      // Some items may be hard-coded so instruction tree creation can be completed (for example size).
+       /*
+      // First things first! Check to make sure we didn't get a null pointer
+      if (&inFile == NULL)
+      {
+          // Those bastards...
+          return new BabelShark::Instruction(0, "ERR_NULL_FILENAME");
+      }*/
+
+      // First things first! Check to make sure the file exists. If it doesn't, erupt into a frenzied rage!
+      std::ifstream fin(inFile.c_str());
+      if (fin.fail())
+      {
+          return new BabelShark::Instruction(0, "ERR_FILE_NOT_FOUND");
+      }
+
       std::cout << "Read the AvatarInRoom.txt file..." << std::endl;
       Element elemRoot = DisplayElement();
-      Reader::Read(elemRoot, std::ifstream(inFile.c_str()));
+      Reader::Read(elemRoot, fin);
       std::cout << "Done." << std::endl;
 
       // Write data to screen. (This just verifies that we read in the data correctly.)
