@@ -300,10 +300,10 @@ class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 ////////////////////////
 // DisplayElement members
 
-class StringImp : public ElementImp_T<DisplayElement, StringImp, DISPLAY_ELEMENT>
+class DisplayElementImp : public ElementImp_T<DisplayElement, DisplayElementImp, DISPLAY_ELEMENT>
 {
 public:
-   StringImp& operator = (const std::string& s) { 
+   DisplayElementImp& operator = (const std::string& s) { 
       m_sValue = s; 
       m_iSizeToExtractFromBuffer = 1;
       return *this;

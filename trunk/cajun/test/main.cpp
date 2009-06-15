@@ -40,7 +40,7 @@ int main()
       std::cout << "Done." << std::endl << std::endl;
 
       // Write data to screen. (This just verifies that we read in the data correctly.)
-      std::cout << "Testing the QuickInterpreter..." << std::endl;
+/*      std::cout << "Testing the QuickInterpreter..." << std::endl;
       QuickInterpreter interpeter(elemRoot);
       const std::string& sId = interpeter["ListAvatarsMessageId"].As<DisplayElement>();
       std::cout << "Message Id: " << sId << std::endl;
@@ -51,7 +51,7 @@ int main()
       const std::string& sMale = interpeter["AvatarsInTheRoom"]["Male"].As<DisplayElement>();
       std::cout << "Male: " << sMale << std::endl;
       std::cout << "Done." << std::endl << std::endl;
-
+*/
       // Write it out to a file....
       std::cout << "Writing file out..." << std::endl;
       Writer::Write(elemRoot, std::ofstream("AvatarsInRoomOutput.txt"));
@@ -60,10 +60,10 @@ int main()
       // When the accept function is called, it iterates over every element in the PDI tree.
       std::cout << "Testing TreeVisitor..." << std::endl;
       // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.
-//      TreeVisitor treeVisitor(elemRoot.Name(), true);
+      TreeVisitor treeVisitor(elemRoot.Name(), true);
  
       // Don't include the second arguement (or pass false) to prevent statements from being written to the screen.
-      TreeVisitor treeVisitor(elemRoot.Name());
+//      TreeVisitor treeVisitor(elemRoot.Name());
       elemRoot.Accept(treeVisitor);
       std::cout << "Done." << std::endl << std::endl;
 
