@@ -52,7 +52,7 @@ namespace BabelShark
 	//used in the InstructionList class.
 	InstructionTree* Instruction::CreateIterator()
 	{
-		return 0;
+		return &NullOrderInstructionTree(this);
 	}
 
 	//Return a null iterator

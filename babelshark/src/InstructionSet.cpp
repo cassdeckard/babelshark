@@ -51,8 +51,7 @@ namespace BabelShark
 	InstructionTree* InstructionSet::CreateIterator()
 	{
 		_ListIter = _List.begin();
-		InstructionTree myTree = PreOrderInstructionTree(this);
-		return 0;
+		return &PreOrderInstructionTree(this);
 	}
 
     //Override

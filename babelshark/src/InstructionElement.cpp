@@ -39,7 +39,7 @@ namespace BabelShark
 	//creates a NULL iterator from the object defined in Instruction
 	InstructionTree* InstructionElement::CreateIterator()
 	{
-		return 0;
+		return &NullOrderInstructionTree(this);
 	}
 
 
