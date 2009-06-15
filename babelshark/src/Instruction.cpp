@@ -50,18 +50,8 @@ namespace BabelShark
 
 	//virtual function, no implementation in base class
 	//used in the InstructionList class.
-	InstructionTree* Instruction::CreateIterator()
+	void Instruction::CreateIterator()
 	{
-		return &NullOrderInstructionTree(this);
-	}
 
-	//Return a null iterator
-	InstructionCollection::iterator GetIterator()
-	{
-		Instruction* temp = 0;
-		InstructionCollection tempList;
-		tempList.push_back(temp);
-		return tempList.begin();
 	}
-
 }

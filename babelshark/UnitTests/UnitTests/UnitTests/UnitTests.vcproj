@@ -225,18 +225,6 @@
 						RelativePath="..\..\..\InstructionSet.h"
 						>
 					</File>
-					<File
-						RelativePath="..\..\..\InstructionTree.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\NullInstructionTree.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\PreOrderInstructionTree.h"
-						>
-					</File>
 				</Filter>
 				<Filter
 					Name="source"
@@ -247,18 +235,6 @@
 					</File>
 					<File
 						RelativePath="..\..\..\src\InstructionSet.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\src\InstructionTree.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\src\NullInstructionTree.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\src\PreOrderInstructionTree.cpp"
 						>
 					</File>
 				</Filter>
