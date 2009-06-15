@@ -5,6 +5,8 @@
 
 #include <string>
 #include <vector>
+#include <stack>
+
 /*
 	Class:Instruction
 		used purely as a Composite portion of the Composite Design Pattern
@@ -16,6 +18,7 @@
 namespace BabelShark
 {
 	class Instruction;
+	class InstructionTree;
 
 	typedef std::vector<Instruction*> InstructionCollection;
 
@@ -47,7 +50,7 @@ namespace BabelShark
 
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
-			virtual void CreateIterator();
+			virtual InstructionTree* CreateIterator();
 
 			void SetSize(unsigned int size){ _Size = size;}
 			void SetName(char* name){ _Name = name;}
@@ -70,7 +73,37 @@ namespace BabelShark
 		private:
 	};
 
+		class InstructionTree
+	{
+		public:
+			InstructionTree(Instruction* root);
+
+			~InstructionTree();
+
+			virtual void First(){ }
+
+			virtual Instruction* CurrentItem(){return 0;} 
+
+			virtual void Next(){ }
+
+			virtual bool IsDone(){return true;}
+
+
+		protected:
+			Instruction* _root;
+			std::stack<InstructionTree*> _iterators;
+	
+		private:
+
+
+	};
+
+
 
 }
+
+#include <InstructionTree.h>
+#include <NullInstructionTree.h>
+#include <PreOrderInstructionTree.h>
 
 #endif //INSTRUCTION_H
