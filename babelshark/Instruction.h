@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include "Iterator.h"
 /*
 	Design Pattern Used: Composite
 	Class:Instruction
@@ -17,10 +18,7 @@
 
 namespace BabelShark
 {
-	class Iterator;
-	class Instruction;
-	typedef std::vector<Instruction*> InstructionCollection;
-
+    class Iterator; // forward declaration
 	class Instruction
 	{
 		public:
@@ -70,27 +68,6 @@ namespace BabelShark
 		private:
 	};
 
-		class Iterator
-	{
-		public:
-			Iterator(Instruction* root);
-
-			~Iterator();
-
-			void First() {return;}
-
-			Instruction* CurrentItem() {return _rootNode;}
-
-			void Next() {return;}
-
-			bool IsDone() { return true;}
-
-		protected:
-			Instruction* _rootNode;
-		private:
-	};
 }
-#include "NullIterator.h"
-#include "ListIterator.h"
 
 #endif //INSTRUCTION_H

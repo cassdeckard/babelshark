@@ -50,11 +50,11 @@ namespace BabelShark
 	//Creates an iterator used to traverse the direct children.
 	Iterator* InstructionSet::CreateIterator()
 	{
-		return &ListIterator(this, _List);
+		return new ListIterator(this, _List);
 	}
 
     //Override
-    unsigned int InstructionSet::GetSizeInBytes() 
+    unsigned int InstructionSet::GetSizeInBytes()
 	{
         unsigned int result = 0;
 
