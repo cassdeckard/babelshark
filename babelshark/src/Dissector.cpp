@@ -83,28 +83,23 @@ namespace BabelShark
 
            // Interpret things
            gint offset = 0;
-           InstructionSet* topSet;
            Instruction* currentIns;
-           InstructionCollection::iterator it;
+           //Iterator* it;
 
            /* subtree */
            babelshark_tree = proto_item_add_subtree(ti, *_ett[0]);
-           topSet = dynamic_cast<InstructionSet*>(_RootInstruction);
-           topSet->Interpret(buffer);
-
+           _RootInstruction->Interpret(buffer);
 
            // interpret children
-           topSet->CreateIterator();
-           it = topSet->GetIterator();
-           for (int i = 0; i < 5; i++)
+           printf("_RootInstruction: %s\n\n", _RootInstruction->GetName());
+           for (Iterator* it = _RootInstruction->CreateIterator(); ! it->IsDone(); it->Next())
            {
-              currentIns = *it;
+              currentIns = it->CurrentItem();
               currentIns->Interpret(buffer + offset);
               proto_tree_add_text(babelshark_tree, tvb, offset, currentIns->GetSizeInBytes(), currentIns->Display());
               offset += currentIns->GetSizeInBytes();
-              it++;
            }
-
+/*
            // subtrees
            currentIns = *it; // this now points to an InstructionSet
            InstructionSet* level1Set;
@@ -132,8 +127,8 @@ namespace BabelShark
                   level1It++;
                }
            }
+*/
        }
-
        // free dynamically allocated memory
        delete [] buffer;
     }
