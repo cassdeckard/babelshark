@@ -37,9 +37,9 @@ namespace BabelShark
 
 
 	//creates a NULL iterator from the object defined in Instruction
-	void InstructionElement::CreateIterator()
+	Iterator* InstructionElement::CreateIterator()
 	{
-		//_Iter = new NullIterator();
+		return &NullIterator(this);
 	}
 
 
