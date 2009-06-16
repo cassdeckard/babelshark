@@ -17,6 +17,7 @@ extern "C" {
 // C++ headers
 #include "Instruction.h"
 #include "InstructionSet.h"
+//#include "Iterator.h"
 
 /*
 	Design Pattern Used: Chain of Responsibility
