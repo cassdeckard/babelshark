@@ -275,6 +275,38 @@
 					</Filter>
 				</Filter>
 			</Filter>
+			<Filter
+				Name="InstructionIterator"
+				>
+				<Filter
+					Name="HeaderFiles"
+					>
+					<File
+						RelativePath="..\..\..\ListIterator.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\NullIterator.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="SourceCode"
+					>
+					<File
+						RelativePath="..\..\..\src\Iterator.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\src\ListIterator.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\src\NullIterator.cpp"
+						>
+					</File>
+				</Filter>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>

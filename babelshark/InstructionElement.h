@@ -39,7 +39,7 @@ namespace BabelShark
 
 			//Creates a NullIterator because an InstructionElement
 			//should have no children.
-            void CreateIterator();
+            Iterator*  CreateIterator();
 
             // takes an Input Size and forms a bitmask based on it.
             static std::bitset<BIT_MASK_MAX_SIZE> SetupBitMask(unsigned int val);

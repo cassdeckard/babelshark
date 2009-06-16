@@ -50,8 +50,8 @@ namespace BabelShark
 
 	//virtual function, no implementation in base class
 	//used in the InstructionList class.
-	void Instruction::CreateIterator()
+	Iterator* Instruction::CreateIterator()
 	{
-
+		return &NullIterator(this);
 	}
 }

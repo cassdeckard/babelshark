@@ -4,6 +4,7 @@
 #define INSTRUCTION_H
 
 #include <string>
+#include <vector>
 /*
 	Design Pattern Used: Composite
 	Class:Instruction
@@ -16,6 +17,10 @@
 
 namespace BabelShark
 {
+	class Iterator;
+	class Instruction;
+	typedef std::vector<Instruction*> InstructionCollection;
+
 	class Instruction
 	{
 		public:
@@ -44,7 +49,7 @@ namespace BabelShark
 
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
-			virtual void CreateIterator();
+			virtual Iterator* CreateIterator();
 
 			void SetSize(unsigned int size){ _Size = size;}
 			void SetName(char* name){ _Name = name;}
@@ -65,7 +70,27 @@ namespace BabelShark
 		private:
 	};
 
+		class Iterator
+	{
+		public:
+			Iterator(Instruction* root);
 
+			~Iterator();
+
+			void First() {return;}
+
+			Instruction* CurrentItem() {return _rootNode;}
+
+			void Next() {return;}
+
+			bool IsDone() { return true;}
+
+		protected:
+			Instruction* _rootNode;
+		private:
+	};
 }
+#include "NullIterator.h"
+#include "ListIterator.h"
 
 #endif //INSTRUCTION_H

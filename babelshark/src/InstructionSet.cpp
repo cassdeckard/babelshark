@@ -48,9 +48,9 @@ namespace BabelShark
     }
 
 	//Creates an iterator used to traverse the direct children.
-	void InstructionSet::CreateIterator()
+	Iterator* InstructionSet::CreateIterator()
 	{
-		_ListIter = _List.begin();
+		return &ListIterator(this, _List);
 	}
 
     //Override
