@@ -20,7 +20,7 @@ namespace BabelShark
 
 			void First() {return;}
 
-			Instruction* CurrentItem() {return _rootNode;}
+			Instruction* CurrentItem() {return NULL;}
 
 			void Next() {return;}
 

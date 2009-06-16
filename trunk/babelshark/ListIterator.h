@@ -11,6 +11,7 @@
 
 namespace BabelShark
 {
+    typedef std::vector<Instruction*> InstructionCollection;
 	class ListIterator : public Iterator
 	{
 		public:
