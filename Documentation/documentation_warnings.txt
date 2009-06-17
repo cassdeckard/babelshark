@@ -1,48 +1,29 @@
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/NullIterator.h:15: Warning: Compound BabelShark::NullIterator is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/quick.h:72: Warning: Compound PDI::QuickBuilder is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/reader.cpp:56: Warning: Compound PDI::Reader::InputStream is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/exception.h:31: Warning: Compound PDI::ScanException is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/Iterator.h:12: Warning: Compound BabelShark::Iterator is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/reader.h:22: Warning: Compound PDI::Reader is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/visitor.h:31: Warning: Compound PDI::ConstVisitor is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/elements.h:182: Warning: Compound PDI::DisplayElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/elements.cpp:105: Warning: Compound PDI::ElementImp_T is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/elements.h:204: Warning: Compound PDI::Null is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/InstructionElement.h:23: Warning: Compound BabelShark::InstructionElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/cast.inl:65: Warning: Compound PDI::ElementCastImp< ElementTypeT * > is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/cast.inl:25: Warning: Compound PDI::ElementCastImp< ElementTypeT & > is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/exception.h:22: Warning: Compound PDI::Exception is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/Instruction.h:23: Warning: Compound BabelShark::Instruction is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/writer.h:24: Warning: Compound PDI::Writer is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/visitor.h:23: Warning: Compound PDI::Visitor is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/UintElement.h:19: Warning: Compound BabelShark::UintElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/ListIterator.h:16: Warning: Compound BabelShark::ListIterator is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/elements.cpp:213: Warning: Compound PDI::ArrayImp::Finder is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/elements.cpp:34: Warning: Compound PDI::ElementImp is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/Dissector.h:34: Warning: Compound BabelShark::Dissector is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/elements.h:58: Warning: Compound PDI::Element is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/InstructionSet.h:20: Warning: Compound BabelShark::InstructionSet is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/TreeVisitor.h:54: Warning: Compound TreeVisitor is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/wireshark-files/plugins/babelshark/packet-babelshark.h:35: Warning: Compound _babelshark_prefs is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/IntElement.h:24: Warning: Compound BabelShark::IntElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/quick.h:51: Warning: Compound PDI::QuickInterpreter is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/BoolElement.h:24: Warning: Compound BabelShark::BoolElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/elements.cpp:296: Warning: Compound PDI::NullImp is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/FloatElement.h:25: Warning: Compound BabelShark::FloatElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/elements.h:136: Warning: Compound PDI::Array is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/PadElement.h:20: Warning: Compound BabelShark::PadElement is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/reader.h:25: Warning: Compound PDI::Reader::Location is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/elements.h:99: Warning: Compound PDI::Element_T is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/elements.cpp:304: Warning: Compound PDI::DisplayElementImp is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/elements.cpp:157: Warning: Compound PDI::ArrayImp is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/cast.inl:45: Warning: Compound PDI::ElementCastImp< const ElementTypeT & > is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/cast.inl:82: Warning: Compound PDI::ElementCastImp< const ElementTypeT * > is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/reader.cpp:121: Warning: Compound PDI::Reader::TokenStream is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/include/exception.h:41: Warning: Compound PDI::ParseException is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/cajun/src/reader.cpp:106: Warning: Compound PDI::Reader::Token is not documented.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/src/AsciiElement.cpp:24: Warning: documented function `std::string BabelShark::AsciiElement::Printable' was not declared or defined.
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/ListIterator.h:14: Warning: Member InstructionCollection (typedef) of namespace BabelShark is not documented.
+C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/wireshark-files/plugins/babelshark/src/AsciiElement.cpp:24: Warning: documented function `std::string BabelShark::AsciiElement::Printable' was not declared or defined.
 Error: Problems running epstopdf. Check your TeX installation!
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/src/AsciiElement.cpp:8: Warning: parameters of member BabelShark::AsciiElement::AsciiElement are not (all) documented
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/AsciiElement.h:45: Warning: parameters of member BabelShark::AsciiElement::Printable are not (all) documented
-C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/AsciiElement.h:33: Warning: parameters of member BabelShark::AsciiElement::Interpret are not (all) documented
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!

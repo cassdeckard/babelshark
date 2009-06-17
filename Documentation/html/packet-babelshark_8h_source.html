@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Babelshark: wireshark-files/plugins/babelshark/packet-babelshark.h Source File</title>
+<title>Babelshark: packet-babelshark.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -18,13 +18,10 @@
   <div class="tabs">
     <ul>
       <li><a href="files.html"><span>File&nbsp;List</span></a></li>
+      <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_903716e3bf400e012867a11e142bbcde.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_87f43afe092431d3d10eb29f400ad7cc.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_869c813f349a8435dcb227b2721e01f9.html">babelshark</a>
-  </div>
-</div>
-<div class="contents">
-<h1>packet-babelshark.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* packet-babelshark.h</span>
+<h1>packet-babelshark.h</h1><a href="packet-babelshark_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* packet-babelshark.h</span>
 <a name="l00002"></a>00002 <span class="comment"> *</span>
 <a name="l00003"></a>00003 <span class="comment"> * $Id: packet-babelshark.h 18 2009-06-12 22:22:31Z histumness $</span>
 <a name="l00004"></a>00004 <span class="comment"> *</span>
@@ -50,31 +47,31 @@
 <a name="l00024"></a>00024 <span class="preprocessor">#ifndef PACKET_BABELSHARK_H</span>
 <a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#define PACKET_BABELSHARK_H</span>
 <a name="l00026"></a>00026 <span class="preprocessor"></span>
-<a name="l00027"></a>00027 <span class="preprocessor">#define BABELSHARK_UDP_PORT 443</span>
-<a name="l00028"></a>00028 <span class="preprocessor"></span><span class="preprocessor">#define BABELSHARK_IN_FILE  "babelshark.pdi"</span>
+<a name="l00027"></a><a class="code" href="packet-babelshark_8h.html#2d89c0d071de8d92c8eb4fe1f6541409">00027</a> <span class="preprocessor">#define BABELSHARK_UDP_PORT 443</span>
+<a name="l00028"></a><a class="code" href="packet-babelshark_8h.html#a74d255116acf8751ee04f315292cb7e">00028</a> <span class="preprocessor"></span><span class="preprocessor">#define BABELSHARK_IN_FILE  "babelshark.pdi"</span>
 <a name="l00029"></a>00029 <span class="preprocessor"></span>
-<a name="l00030"></a>00030 <span class="preprocessor">#include "Dissector.h"</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include "<a class="code" href="_dissector_8h.html">Dissector.h</a>"</span>
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="keyword">static</span> BabelShark::Dissector* babelshark_dissector;
+<a name="l00032"></a><a class="code" href="packet-babelshark_8h.html#00b7dc7a84ab7405c059f20c834186cc">00032</a> <span class="keyword">static</span> <a class="code" href="class_babel_shark_1_1_dissector.html">BabelShark::Dissector</a>* <a class="code" href="packet-babelshark_8h.html#00b7dc7a84ab7405c059f20c834186cc">babelshark_dissector</a>;
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="keyword">struct </span>_babelshark_prefs
+<a name="l00034"></a><a class="code" href="struct__babelshark__prefs.html">00034</a> <span class="keyword">struct </span><a class="code" href="struct__babelshark__prefs.html">_babelshark_prefs</a>
 <a name="l00035"></a>00035 {
-<a name="l00036"></a>00036     guint       udp_port;
-<a name="l00037"></a>00037     <span class="keyword">const</span> <span class="keywordtype">char</span>* in_file;
+<a name="l00036"></a><a class="code" href="struct__babelshark__prefs.html#7903e6255e73bcc4caa150d38ddd4694">00036</a>     guint       <a class="code" href="struct__babelshark__prefs.html#7903e6255e73bcc4caa150d38ddd4694">udp_port</a>;
+<a name="l00037"></a><a class="code" href="struct__babelshark__prefs.html#81ea74338ab12014ff27a443b30fc1e3">00037</a>     <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="struct__babelshark__prefs.html#81ea74338ab12014ff27a443b30fc1e3">in_file</a>;
 <a name="l00038"></a>00038 };
 <a name="l00039"></a>00039 
-<a name="l00040"></a>00040 <span class="keywordtype">void</span> babelshark_prefs_register(<span class="keyword">struct</span> _babelshark_prefs *prefs, module_t *module);
+<a name="l00040"></a>00040 <span class="keywordtype">void</span> <a class="code" href="packet-babelshark_8cpp.html#a7da879121dfba7477ae8adae7edf144">babelshark_prefs_register</a>(<span class="keyword">struct</span> <a class="code" href="struct__babelshark__prefs.html">_babelshark_prefs</a> *prefs, module_t *module);
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 <span class="comment">// these functions must be defined here as extern "C"</span>
 <a name="l00043"></a>00043 <span class="keyword">extern</span> <span class="stringliteral">"C"</span>
 <a name="l00044"></a>00044 {
-<a name="l00045"></a>00045     <span class="keywordtype">void</span> proto_register_babelshark(<span class="keywordtype">void</span>);
-<a name="l00046"></a>00046     <span class="keywordtype">void</span> proto_reg_handoff_babelshark(<span class="keywordtype">void</span>);
+<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="packet-babelshark_8cpp.html#da335c2a9b50ba9605c8a5bd5209e50e">proto_register_babelshark</a>(<span class="keywordtype">void</span>);
+<a name="l00046"></a>00046     <span class="keywordtype">void</span> <a class="code" href="packet-babelshark_8cpp.html#05f79f4658db9ccfb4172678458b2d21">proto_reg_handoff_babelshark</a>(<span class="keywordtype">void</span>);
 <a name="l00047"></a>00047 }
 <a name="l00048"></a>00048 
 <a name="l00049"></a>00049 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Jun 16 23:02:31 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 00:19:00 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

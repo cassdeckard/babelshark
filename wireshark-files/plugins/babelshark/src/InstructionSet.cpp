@@ -14,6 +14,9 @@ namespace BabelShark
 
 	}
 
+	/**
+	 *Destructor
+	 */
 	InstructionSet::~InstructionSet()
 	{
 

@@ -32,6 +32,8 @@ Inheritance diagram for BabelShark::AsciiElement:</div>
 
 <p><center><img src="class_babel_shark_1_1_ascii_element.png" usemap="#BabelShark::AsciiElement_map" border="0" alt=""></center>
 <map name="BabelShark::AsciiElement_map">
+<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="0,56,185,80">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,185,24">
 </map>
 </div>
 
@@ -52,7 +54,7 @@ Inheritance diagram for BabelShark::AsciiElement:</div>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Parent: InstructionElement Design Pattern Used: Composite One of the Leaf(s) in the Composite Structure. Processes Ascii type elements <hr><h2>Constructor &amp; Destructor Documentation</h2>
+Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> Design Pattern Used: Composite One of the Leaf(s) in the Composite Structure. Processes Ascii type elements <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="d634e18161b86d3f0da9215606c6ce24"></a><!-- doxytag: member="BabelShark::AsciiElement::AsciiElement" ref="d634e18161b86d3f0da9215606c6ce24" args="(unsigned int size, char *name)" -->
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +134,7 @@ Checks to see if a character is printable. if it is, it returns a string with th
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -140,6 +142,8 @@ Checks to see if a character is printable. if it is, it returns a string with th
 
 <p>
 Display function for Ascii; will just print the bytes as a character 
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#6c98ad187a2a12399eb90a8cf9e2aec0">BabelShark::InstructionElement</a>.</p>
+
 </div>
 </div><p>
 <a class="anchor" name="452958c460980a70b80d02b659c11057"></a><!-- doxytag: member="BabelShark::AsciiElement::Interpret" ref="452958c460980a70b80d02b659c11057" args="(char *buffer)" -->
@@ -152,7 +156,7 @@ Display function for Ascii; will just print the bytes as a character
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -160,12 +164,14 @@ Display function for Ascii; will just print the bytes as a character
 
 <p>
 Interpret function for Ascii; will just read in the correct number of characters 
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">BabelShark::InstructionElement</a>.</p>
+
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>babelshark/<a class="el" href="_ascii_element_8h_source.html">AsciiElement.h</a><li>babelshark/src/AsciiElement.cpp</ul>
+<li>include/<a class="el" href="_ascii_element_8h_source.html">AsciiElement.h</a><li>src/<a class="el" href="_ascii_element_8cpp.html">AsciiElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Jun 16 23:02:32 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 00:19:07 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

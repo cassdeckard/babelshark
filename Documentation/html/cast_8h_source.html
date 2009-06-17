@@ -18,13 +18,14 @@
   <div class="tabs">
     <ul>
       <li><a href="files.html"><span>File&nbsp;List</span></a></li>
+      <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f9cfae957c7b6574f810f2c82ecbb310.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_31b9b9df30f6d23539e7b99c7c816c90.html">include</a>
+  <div class="navpath"><a class="el" href="dir_695d018eef480f4777bdebbf7259bb64.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_7211984e619e727b60b8e91402bf6742.html">include</a>
   </div>
 </div>
 <div class="contents">
-<h1>cast.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/******************************************************************************</span>
+<h1>cast.h</h1><a href="cast_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/******************************************************************************</span>
 <a name="l00002"></a>00002 <span class="comment"></span>
 <a name="l00003"></a>00003 <span class="comment">Author: Julie Betlach</span>
 <a name="l00004"></a>00004 <span class="comment"></span>
@@ -59,34 +60,34 @@
 <a name="l00033"></a>00033 <span class="preprocessor">#pragma once</span>
 <a name="l00034"></a>00034 <span class="preprocessor"></span>
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="keyword">namespace </span>PDI
+<a name="l00036"></a><a class="code" href="namespace_p_d_i.html">00036</a> <span class="keyword">namespace </span>PDI
 <a name="l00037"></a>00037 {
 <a name="l00038"></a>00038 
 <a name="l00039"></a>00039 
-<a name="l00040"></a>00040 <span class="keyword">class </span>Element;
+<a name="l00040"></a>00040 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element.html">Element</a>;
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 <span class="comment">// reference to non-const</span>
 <a name="l00043"></a>00043 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00044"></a>00044 ElementTypeQualifiedT PDI_cast(Element&amp; element);
+<a name="l00044"></a>00044 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 <span class="comment">// reference to const</span>
 <a name="l00047"></a>00047 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00048"></a>00048 ElementTypeQualifiedT PDI_cast(<span class="keyword">const</span> Element&amp; element);
+<a name="l00048"></a>00048 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050 <span class="comment">// pointer to non-const</span>
 <a name="l00051"></a>00051 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00052"></a>00052 ElementTypeQualifiedT PDI_cast(Element* pElement);
+<a name="l00052"></a>00052 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>* pElement);
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 <span class="comment">// pointer to const</span>
 <a name="l00055"></a>00055 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00056"></a>00056 ElementTypeQualifiedT PDI_cast(<span class="keyword">const</span> Element* pElement);
+<a name="l00056"></a>00056 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>* pElement);
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058 } <span class="comment">// End namespace</span>
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="preprocessor">#include "cast.inl"</span>
+<a name="l00060"></a>00060 <span class="preprocessor">#include "<a class="code" href="cast_8inl.html">cast.inl</a>"</span>
 <a name="l00061"></a>00061 
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Jun 16 23:02:28 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 00:18:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
