@@ -7,7 +7,7 @@
 
 #include <vector>
 
-/*
+/**
 	Design Pattern Used: Composite
 	Class: InstructionSet
 		The Composite portion of the Composite pattern.
