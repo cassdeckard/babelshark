@@ -72,4 +72,13 @@ namespace BabelShark
         }
         return sizeInBytes;
     }
+
+
+    // OVERRIDE
+    unsigned int InstructionElement::NumSubtrees()
+    {
+        // This is a leaf, so it has no subtrees!
+        return 0;
+    }
+
 }

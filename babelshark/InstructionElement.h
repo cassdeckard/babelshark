@@ -47,6 +47,9 @@ namespace BabelShark
             // rounds up bit size to byte size
             unsigned int DetermineSizeInBytes(int bits);
 
+            // override
+            unsigned int NumSubtrees();
+
         protected:
             std::string _InterpretedData;
 

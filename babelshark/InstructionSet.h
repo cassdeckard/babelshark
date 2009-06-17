@@ -40,6 +40,7 @@ namespace BabelShark
 
             // Override
             unsigned int GetSizeInBytes();
+            unsigned int NumSubtrees();
 		private:
 			InstructionCollection _List;
 			InstructionCollection::iterator _ListIter;

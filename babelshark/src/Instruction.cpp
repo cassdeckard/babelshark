@@ -55,4 +55,19 @@ namespace BabelShark
 	{
 		return new NullIterator(this);
 	}
+
+    //virtual function, overridden by InstructionElement
+    // For keeping track of subtrees
+    unsigned int Instruction::NumSubtrees()
+    {
+        unsigned int result = 0; // don't count this! It might not be a subtree
+
+        // for all my children
+        for (Iterator* it = this->CreateIterator(); ! it->IsDone(); it->Next())
+        {
+            result += it->CurrentItem()->NumSubtrees();
+        }
+
+        return result;
+    }
 }

@@ -66,4 +66,36 @@ namespace BabelShark
 
         return result;
     }
+
+    // OVERRIDE
+    // For keeping track of subtrees
+    unsigned int InstructionSet::NumSubtrees()
+    {
+        unsigned int result = 0;
+        unsigned int size = this->GetSize();
+
+
+        // for all my children
+        for (Iterator* it = this->CreateIterator(); ! it->IsDone(); it->Next())
+        {
+            result += it->CurrentItem()->NumSubtrees();
+        }
+
+        printf("%s has %u arrays with %u subtrees\n",
+               this->GetName(),
+               size,
+               result
+              );
+
+        // if this array is > 1 then it has an extra subtree
+        // for each element in the array
+        if (size > 1)
+        {
+            return size * result + size + 1;
+        }
+        else
+        {
+            return size * result + 1;
+        }
+    }
 }
