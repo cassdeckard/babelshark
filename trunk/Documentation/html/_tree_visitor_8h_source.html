@@ -18,13 +18,14 @@
   <div class="tabs">
     <ul>
       <li><a href="files.html"><span>File&nbsp;List</span></a></li>
+      <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f9cfae957c7b6574f810f2c82ecbb310.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_31b9b9df30f6d23539e7b99c7c816c90.html">include</a>
+  <div class="navpath"><a class="el" href="dir_695d018eef480f4777bdebbf7259bb64.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_7211984e619e727b60b8e91402bf6742.html">include</a>
   </div>
 </div>
 <div class="contents">
-<h1>TreeVisitor.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/**********************************************</span>
+<h1>TreeVisitor.h</h1><a href="_tree_visitor_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/**********************************************</span>
 <a name="l00002"></a>00002 <span class="comment"></span>
 <a name="l00003"></a>00003 <span class="comment">Author: Julie Betlach</span>
 <a name="l00004"></a>00004 <span class="comment"></span>
@@ -40,13 +41,13 @@
 <a name="l00014"></a>00014 <span class="preprocessor">#pragma once</span>
 <a name="l00015"></a>00015 <span class="preprocessor"></span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#include "UintElement.h"</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include "IntElement.h"</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include "BoolElement.h"</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include "FloatElement.h"</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include "AsciiElement.h"</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include "PadElement.h"</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include "InstructionSet.h"</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include "<a class="code" href="_uint_element_8h.html">UintElement.h</a>"</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include "<a class="code" href="_int_element_8h.html">IntElement.h</a>"</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include "<a class="code" href="_bool_element_8h.html">BoolElement.h</a>"</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include "<a class="code" href="_float_element_8h.html">FloatElement.h</a>"</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include "<a class="code" href="_ascii_element_8h.html">AsciiElement.h</a>"</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include "<a class="code" href="_pad_element_8h.html">PadElement.h</a>"</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="_instruction_set_8h.html">InstructionSet.h</a>"</span>
 <a name="l00024"></a>00024 
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026 <span class="preprocessor">#include &lt;algorithm&gt;</span>
@@ -76,7 +77,7 @@
 <a name="l00050"></a>00050 <span class="comment">be displayed.  If the parameter is false, or is not provided, then data will not be displayed.</span>
 <a name="l00051"></a>00051 <span class="comment"></span>
 <a name="l00052"></a>00052 <span class="comment">***********************************************/</span>
-<a name="l00053"></a>00053 <span class="keyword">class </span>TreeVisitor : <span class="keyword">public</span> PDI::ConstVisitor
+<a name="l00053"></a><a class="code" href="class_tree_visitor.html">00053</a> <span class="keyword">class </span><a class="code" href="class_tree_visitor.html">TreeVisitor</a> : <span class="keyword">public</span> PDI::ConstVisitor
 <a name="l00054"></a>00054 {
 <a name="l00055"></a>00055 <span class="keyword">public</span>:
 <a name="l00056"></a>00056 <span class="comment">/*type     := 'UINT'</span>
@@ -99,24 +100,24 @@
 <a name="l00073"></a>00073 <span class="comment">This will make the addition of new types easier.</span>
 <a name="l00074"></a>00074 <span class="comment"></span>
 <a name="l00075"></a>00075 <span class="comment">***********************/</span>
-<a name="l00076"></a>00076    TreeVisitor(<span class="keyword">const</span> std::string&amp; sName, <span class="keywordtype">bool</span> bDisplayOutputToScreen = <span class="keyword">false</span>) : 
-<a name="l00077"></a>00077       m_sName(sName),
-<a name="l00078"></a>00078       m_bDisplayOutputToScreen(bDisplayOutputToScreen),
-<a name="l00079"></a>00079       m_pInstruction(0)
+<a name="l00076"></a><a class="code" href="class_tree_visitor.html#83c6b4c595156e7364646894e8063d4d">00076</a>    <a class="code" href="class_tree_visitor.html#83c6b4c595156e7364646894e8063d4d">TreeVisitor</a>(<span class="keyword">const</span> std::string&amp; sName, <span class="keywordtype">bool</span> bDisplayOutputToScreen = <span class="keyword">false</span>) : 
+<a name="l00077"></a>00077       <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a>(sName),
+<a name="l00078"></a>00078       <a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>(bDisplayOutputToScreen),
+<a name="l00079"></a>00079       <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a>(0)
 <a name="l00080"></a>00080    {
-<a name="l00081"></a>00081       m_CreateInstructionFuncMap[<span class="stringliteral">"INT"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::IntElement&gt;;
-<a name="l00082"></a>00082       m_CreateInstructionFuncMap[<span class="stringliteral">"UINT"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::UintElement&gt;;
-<a name="l00083"></a>00083       m_CreateInstructionFuncMap[<span class="stringliteral">"BOOL"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::BoolElement&gt;;
-<a name="l00084"></a>00084       m_CreateInstructionFuncMap[<span class="stringliteral">"FLOAT"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::FloatElement&gt;;
-<a name="l00085"></a>00085       m_CreateInstructionFuncMap[<span class="stringliteral">"ASCII"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::AsciiElement&gt;;
-<a name="l00086"></a>00086       m_CreateInstructionFuncMap[<span class="stringliteral">"PAD"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::PadElement&gt;;
+<a name="l00081"></a>00081       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"INT"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::IntElement&gt;;
+<a name="l00082"></a>00082       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"UINT"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::UintElement&gt;;
+<a name="l00083"></a>00083       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"BOOL"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::BoolElement&gt;;
+<a name="l00084"></a>00084       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"FLOAT"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::FloatElement&gt;;
+<a name="l00085"></a>00085       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"ASCII"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::AsciiElement&gt;;
+<a name="l00086"></a>00086       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"PAD"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::PadElement&gt;;
 <a name="l00087"></a>00087    }
 <a name="l00088"></a>00088 
 <a name="l00089"></a>00089    <span class="comment">/**********************</span>
 <a name="l00090"></a>00090 <span class="comment">   Function Name: BabelShark::Instruction* GetInstruction() </span>
 <a name="l00091"></a>00091 <span class="comment">   Function Description: This function returns a pointer to an instruction.</span>
 <a name="l00092"></a>00092 <span class="comment">   ***********************/</span>
-<a name="l00093"></a>00093    BabelShark::Instruction* GetInstruction() { <span class="keywordflow">return</span> m_pInstruction; }
+<a name="l00093"></a><a class="code" href="class_tree_visitor.html#5aec3878d33d8942c16e1cfe38ca9371">00093</a>    <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* <a class="code" href="class_tree_visitor.html#5aec3878d33d8942c16e1cfe38ca9371">GetInstruction</a>() { <span class="keywordflow">return</span> <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a>; }
 <a name="l00094"></a>00094 
 <a name="l00095"></a>00095 <span class="keyword">private</span>:
 <a name="l00096"></a>00096    <span class="comment">/**********************</span>
@@ -127,7 +128,7 @@
 <a name="l00101"></a>00101 <span class="comment">   and it is InstructionTypeT.</span>
 <a name="l00102"></a>00102 <span class="comment">   ***********************/</span>
 <a name="l00103"></a>00103    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> InstructionTypeT&gt;
-<a name="l00104"></a>00104    BabelShark::Instruction* CreateInstruction(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nSize, <span class="keyword">const</span> std::string&amp; sName)
+<a name="l00104"></a><a class="code" href="class_tree_visitor.html#a319857c169e37d66b46a4810279789e">00104</a>    <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* <a class="code" href="class_tree_visitor.html#a319857c169e37d66b46a4810279789e">CreateInstruction</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nSize, <span class="keyword">const</span> std::string&amp; sName)
 <a name="l00105"></a>00105    {
 <a name="l00106"></a>00106       <span class="keywordtype">char</span>* s = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(sName.c_str()); 
 <a name="l00107"></a>00107           <span class="comment">// This would be easier if std::string was the parameter type rather than char*.</span>
@@ -142,24 +143,24 @@
 <a name="l00116"></a>00116 <span class="comment"></span>
 <a name="l00117"></a>00117 <span class="comment">   Each item in the array is added to an instruction set.</span>
 <a name="l00118"></a>00118 <span class="comment">   ***********************/</span>
-<a name="l00119"></a>00119    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Visit(<span class="keyword">const</span> PDI::Array&amp; array) {
-<a name="l00120"></a>00120       <span class="keywordflow">if</span> (m_bDisplayOutputToScreen)
+<a name="l00119"></a><a class="code" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">00119</a>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">Visit</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_array.html">PDI::Array</a>&amp; array) {
+<a name="l00120"></a>00120       <span class="keywordflow">if</span> (<a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>)
 <a name="l00121"></a>00121       {
-<a name="l00122"></a>00122          std::cout &lt;&lt; <span class="stringliteral">"This array node has been visited "</span> &lt;&lt; m_sName &lt;&lt; <span class="stringliteral">", dimension "</span> &lt;&lt; array.Dimension() &lt;&lt; std::endl;
+<a name="l00122"></a>00122          std::cout &lt;&lt; <span class="stringliteral">"This array node has been visited "</span> &lt;&lt; <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a> &lt;&lt; <span class="stringliteral">", dimension "</span> &lt;&lt; array.<a class="code" href="class_p_d_i_1_1_array.html#d17e03ace992a6d0e57bab451fd0dda6">Dimension</a>() &lt;&lt; std::endl;
 <a name="l00123"></a>00123       }
 <a name="l00124"></a>00124 
-<a name="l00125"></a>00125       BabelShark::InstructionSet* pInstructionSet = <span class="keyword">new</span> BabelShark::InstructionSet(array.Dimension(), (<span class="keywordtype">char</span>*)m_sName.c_str()); <span class="comment">// TODO: fix "char*"</span>
-<a name="l00126"></a>00126       PDI::Array::const_iterator it(array.Begin()),
-<a name="l00127"></a>00127                                    itEnd(array.End());
+<a name="l00125"></a>00125       <a class="code" href="class_babel_shark_1_1_instruction_set.html">BabelShark::InstructionSet</a>* pInstructionSet = <span class="keyword">new</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html">BabelShark::InstructionSet</a>(array.<a class="code" href="class_p_d_i_1_1_array.html#d17e03ace992a6d0e57bab451fd0dda6">Dimension</a>(), (<span class="keywordtype">char</span>*)<a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a>.c_str()); <span class="comment">// TODO: fix "char*"</span>
+<a name="l00126"></a>00126       <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">PDI::Array::const_iterator</a> it(array.<a class="code" href="class_p_d_i_1_1_array.html#f110c3266836cccdf9b6d52131386d07">Begin</a>()),
+<a name="l00127"></a>00127                                    itEnd(array.<a class="code" href="class_p_d_i_1_1_array.html#a1300755f06a94db2df66b3fb45c93a4">End</a>());
 <a name="l00128"></a>00128       <span class="keywordflow">for</span> (; it != itEnd; ++it)
 <a name="l00129"></a>00129       {
-<a name="l00130"></a>00130          TreeVisitor visitor(it-&gt;Name(), m_bDisplayOutputToScreen);
+<a name="l00130"></a>00130          <a class="code" href="class_tree_visitor.html">TreeVisitor</a> visitor(it-&gt;Name(), <a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>);
 <a name="l00131"></a>00131          it-&gt;Accept(visitor);
 <a name="l00132"></a>00132 
-<a name="l00133"></a>00133          pInstructionSet-&gt;Add(visitor.GetInstruction());
+<a name="l00133"></a>00133          pInstructionSet-&gt;<a class="code" href="class_babel_shark_1_1_instruction_set.html#0e95013b914e2f4bdda8b0f94ab87712">Add</a>(visitor.GetInstruction());
 <a name="l00134"></a>00134       }
 <a name="l00135"></a>00135 
-<a name="l00136"></a>00136       m_pInstruction = pInstructionSet;
+<a name="l00136"></a>00136       <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a> = pInstructionSet;
 <a name="l00137"></a>00137    }
 <a name="l00138"></a>00138 
 <a name="l00139"></a>00139    <span class="comment">/**********************</span>
@@ -171,29 +172,29 @@
 <a name="l00145"></a>00145 <span class="comment">   matches the desired type.  For example, if ASCII is the type, then an</span>
 <a name="l00146"></a>00146 <span class="comment">   AsciiElement instruction is created and added to the instruction tree.</span>
 <a name="l00147"></a>00147 <span class="comment">   ***********************/</span>
-<a name="l00148"></a>00148    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Visit(<span class="keyword">const</span> PDI::DisplayElement&amp; <span class="keywordtype">string</span>) {
+<a name="l00148"></a><a class="code" href="class_tree_visitor.html#743376c17f517556962c3eb18645a78e">00148</a>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tree_visitor.html#743376c17f517556962c3eb18645a78e">Visit</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_display_element.html">PDI::DisplayElement</a>&amp; <span class="keywordtype">string</span>) {
 <a name="l00149"></a>00149       std::istringstream ss(<span class="keywordtype">string</span>);
 <a name="l00150"></a>00150 
 <a name="l00151"></a>00151       std::string sType;
 <a name="l00152"></a>00152       <span class="keywordtype">int</span> nSize;
 <a name="l00153"></a>00153       ss &gt;&gt; sType &gt;&gt; nSize;
 <a name="l00154"></a>00154 
-<a name="l00155"></a>00155       CreateInstructionFuncMap::const_iterator it = m_CreateInstructionFuncMap.find(sType);
-<a name="l00156"></a>00156       <span class="keywordflow">if</span> (it == m_CreateInstructionFuncMap.end())
+<a name="l00155"></a>00155       CreateInstructionFuncMap::const_iterator it = <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>.find(sType);
+<a name="l00156"></a>00156       <span class="keywordflow">if</span> (it == <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>.end())
 <a name="l00157"></a>00157       {
 <a name="l00158"></a>00158          std::string sException = <span class="stringliteral">"use of undefined type: "</span> + sType;
 <a name="l00159"></a>00159          <span class="keywordflow">throw</span> std::exception(sException.c_str());
 <a name="l00160"></a>00160       }
 <a name="l00161"></a>00161       <span class="keywordflow">else</span>
 <a name="l00162"></a>00162       {
-<a name="l00163"></a>00163          <span class="keywordflow">if</span> (m_bDisplayOutputToScreen)
+<a name="l00163"></a>00163          <span class="keywordflow">if</span> (<a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>)
 <a name="l00164"></a>00164          {
-<a name="l00165"></a>00165             std::cout &lt;&lt; <span class="stringliteral">"This leaf node has been visited "</span> &lt;&lt; m_sName &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; sType &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; nSize &lt;&lt; std::endl;
+<a name="l00165"></a>00165             std::cout &lt;&lt; <span class="stringliteral">"This leaf node has been visited "</span> &lt;&lt; <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a> &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; sType &lt;&lt; <span class="stringliteral">" "</span> &lt;&lt; nSize &lt;&lt; std::endl;
 <a name="l00166"></a>00166          }
 <a name="l00167"></a>00167       }
 <a name="l00168"></a>00168       
-<a name="l00169"></a>00169       CreateInstructionFunc func = it-&gt;second;
-<a name="l00170"></a>00170       m_pInstruction = (this-&gt;*func)(nSize, m_sName);
+<a name="l00169"></a>00169       <a class="code" href="class_tree_visitor.html#3d331880b4ea827c6ff144c9fee88f7b">CreateInstructionFunc</a> func = it-&gt;second;
+<a name="l00170"></a>00170       <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a> = (this-&gt;*func)(nSize, <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a>);
 <a name="l00171"></a>00171    }
 <a name="l00172"></a>00172 
 <a name="l00173"></a>00173    <span class="comment">/**********************</span>
@@ -202,19 +203,19 @@
 <a name="l00176"></a>00176 <span class="comment">   It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to</span>
 <a name="l00177"></a>00177 <span class="comment">   NULL_ELEMENT.  However, we should never be visiting a NULL_ELEMENT, so an exception in thrown.</span>
 <a name="l00178"></a>00178 <span class="comment">   ***********************/</span>
-<a name="l00179"></a>00179    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Visit(<span class="keyword">const</span> PDI::Null&amp; null) { <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"ERROR: should never see NULL element"</span>); }
+<a name="l00179"></a><a class="code" href="class_tree_visitor.html#43a9f62cc523fba70fd69177ae9efe00">00179</a>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tree_visitor.html#43a9f62cc523fba70fd69177ae9efe00">Visit</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_null.html">PDI::Null</a>&amp; null) { <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"ERROR: should never see NULL element"</span>); }
 <a name="l00180"></a>00180 
-<a name="l00181"></a>00181    <span class="keyword">typedef</span> BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> std::string&amp;);
-<a name="l00182"></a>00182    <span class="keyword">typedef</span> std::map&lt;std::string, CreateInstructionFunc&gt; CreateInstructionFuncMap;
+<a name="l00181"></a><a class="code" href="class_tree_visitor.html#3d331880b4ea827c6ff144c9fee88f7b">00181</a>    <span class="keyword">typedef</span> <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* (<a class="code" href="class_tree_visitor.html">TreeVisitor</a>::*<a class="code" href="class_tree_visitor.html#3d331880b4ea827c6ff144c9fee88f7b">CreateInstructionFunc</a>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> std::string&amp;);
+<a name="l00182"></a><a class="code" href="class_tree_visitor.html#67a93ec07faec8f86504e14f741cd43d">00182</a>    <span class="keyword">typedef</span> std::map&lt;std::string, CreateInstructionFunc&gt; <a class="code" href="class_tree_visitor.html#67a93ec07faec8f86504e14f741cd43d">CreateInstructionFuncMap</a>;
 <a name="l00183"></a>00183 
-<a name="l00184"></a>00184    CreateInstructionFuncMap m_CreateInstructionFuncMap;
+<a name="l00184"></a><a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">00184</a>    <a class="code" href="class_tree_visitor.html#67a93ec07faec8f86504e14f741cd43d">CreateInstructionFuncMap</a> <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>;
 <a name="l00185"></a>00185 
-<a name="l00186"></a>00186    std::string m_sName;
-<a name="l00187"></a>00187    BabelShark::Instruction* m_pInstruction;  <span class="comment">// This is used so that one visit function may see the instruction from another.</span>
-<a name="l00188"></a>00188    <span class="keywordtype">bool</span> m_bDisplayOutputToScreen;
+<a name="l00186"></a><a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">00186</a>    std::string <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a>;
+<a name="l00187"></a><a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">00187</a>    <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a>;  <span class="comment">// This is used so that one visit function may see the instruction from another.</span>
+<a name="l00188"></a><a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">00188</a>    <span class="keywordtype">bool</span> <a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>;
 <a name="l00189"></a>00189 };
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Jun 16 23:02:28 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 00:18:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

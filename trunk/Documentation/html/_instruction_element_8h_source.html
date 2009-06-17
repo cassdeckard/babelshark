@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Babelshark: babelshark/InstructionElement.h Source File</title>
+<title>Babelshark: include/InstructionElement.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -18,21 +18,22 @@
   <div class="tabs">
     <ul>
       <li><a href="files.html"><span>File&nbsp;List</span></a></li>
+      <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4546708fecd3f6d5d8d57828a3b0e1d9.html">babelshark</a>
+  <div class="navpath"><a class="el" href="dir_e748473a93f63cfb7f473c1d449168ea.html">include</a>
   </div>
 </div>
 <div class="contents">
-<h1>InstructionElement.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: InstructionElement.h 69 2009-06-17 02:19:00Z histumness $</span>
+<h1>InstructionElement.h</h1><a href="_instruction_element_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: InstructionElement.h 69 2009-06-17 02:19:00Z histumness $</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef INSTRUCTION_ELEMENT_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define INSTRUCTION_ELEMENT_H</span>
 <a name="l00005"></a>00005 <span class="preprocessor"></span>
-<a name="l00006"></a>00006 <span class="preprocessor">#define BIT_MASK_MAX_SIZE 64</span>
+<a name="l00006"></a><a class="code" href="_instruction_element_8h.html#390019d1e3d9dc887de6d9c340be3073">00006</a> <span class="preprocessor">#define BIT_MASK_MAX_SIZE 64</span>
 <a name="l00007"></a>00007 <span class="preprocessor"></span>
 <a name="l00008"></a>00008 <span class="preprocessor">#include &lt;bitset&gt;</span>
-<a name="l00009"></a>00009 <span class="preprocessor">#include "Instruction.h"</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include "<a class="code" href="_instruction_8h.html">Instruction.h</a>"</span>
 <a name="l00010"></a>00010 
 <a name="l00011"></a>00011 <span class="comment">/*</span>
 <a name="l00012"></a>00012 <span class="comment">        Design Pattern Used: Composite</span>
@@ -45,39 +46,39 @@
 <a name="l00019"></a>00019 
 <a name="l00020"></a>00020 <span class="keyword">namespace </span>BabelShark
 <a name="l00021"></a>00021 {
-<a name="l00022"></a>00022         <span class="keyword">class </span>InstructionElement: <span class="keyword">public</span> Instruction
+<a name="l00022"></a><a class="code" href="class_babel_shark_1_1_instruction_element.html">00022</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a>: <span class="keyword">public</span> <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>
 <a name="l00023"></a>00023         {
 <a name="l00024"></a>00024                 <span class="keyword">public</span>:
-<a name="l00025"></a>00025                         InstructionElement(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
-<a name="l00026"></a>00026                         ~InstructionElement();
+<a name="l00025"></a>00025                         <a class="code" href="class_babel_shark_1_1_instruction_element.html#1eba7f61aa5a545d9a18c5f43260a183">InstructionElement</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
+<a name="l00026"></a>00026                         <a class="code" href="class_babel_shark_1_1_instruction_element.html#f1cfd6c4aa3851ea72839b8486f6861f">~InstructionElement</a>();
 <a name="l00027"></a>00027 
 <a name="l00028"></a>00028                         <span class="comment">//virtual function, base definition does nothing.</span>
 <a name="l00029"></a>00029                         <span class="comment">//should be implemented by any class inheriting from it.</span>
-<a name="l00030"></a>00030                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> Interpret(<span class="keywordtype">char</span>* buffer);
+<a name="l00030"></a>00030                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">Interpret</a>(<span class="keywordtype">char</span>* buffer);
 <a name="l00031"></a>00031 
 <a name="l00032"></a>00032                         <span class="comment">//virtual function, base definition does nothing.</span>
 <a name="l00033"></a>00033                         <span class="comment">//will be used to Display data to the WireShark output</span>
-<a name="l00034"></a>00034                         <span class="keyword">virtual</span> <span class="keywordtype">char</span>* Display();
+<a name="l00034"></a>00034                         <span class="keyword">virtual</span> <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction_element.html#6c98ad187a2a12399eb90a8cf9e2aec0">Display</a>();
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036                         <span class="comment">//virtual function, no implementation in base class</span>
 <a name="l00037"></a>00037                         <span class="comment">//used in the InstructionList class.</span>
-<a name="l00038"></a>00038                         Instruction* GetChild();
+<a name="l00038"></a>00038                         <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_instruction_element.html#747402ebce23651b77cad508c223ba62">GetChild</a>();
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040                         <span class="comment">//Creates a NullIterator because an InstructionElement</span>
 <a name="l00041"></a>00041                         <span class="comment">//should have no children.</span>
-<a name="l00042"></a>00042             Iterator*  CreateIterator();
+<a name="l00042"></a>00042             <a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>*  <a class="code" href="class_babel_shark_1_1_instruction_element.html#dfff8921ea8a00004193d2fec17e9a04">CreateIterator</a>();
 <a name="l00043"></a>00043 
 <a name="l00044"></a>00044             <span class="comment">// takes an Input Size and forms a bitmask based on it.</span>
-<a name="l00045"></a>00045             <span class="keyword">static</span> std::bitset&lt;BIT_MASK_MAX_SIZE&gt; SetupBitMask(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> val);
+<a name="l00045"></a>00045             <span class="keyword">static</span> std::bitset&lt;BIT_MASK_MAX_SIZE&gt; <a class="code" href="class_babel_shark_1_1_instruction_element.html#c1c5ebe0551be16e29ea91fd46b39339">SetupBitMask</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> val);
 <a name="l00046"></a>00046 
 <a name="l00047"></a>00047             <span class="comment">// rounds up bit size to byte size</span>
-<a name="l00048"></a>00048             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> DetermineSizeInBytes(<span class="keywordtype">int</span> bits);
+<a name="l00048"></a>00048             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction_element.html#db84b955eae4071334e72bfb8b15145d">DetermineSizeInBytes</a>(<span class="keywordtype">int</span> bits);
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050             <span class="comment">// override</span>
-<a name="l00051"></a>00051             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> NumSubtrees();
+<a name="l00051"></a>00051             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction_element.html#a99dae4733a6937c0d7f0232526b8db5">NumSubtrees</a>();
 <a name="l00052"></a>00052 
 <a name="l00053"></a>00053         <span class="keyword">protected</span>:
-<a name="l00054"></a>00054             std::string _InterpretedData;
+<a name="l00054"></a><a class="code" href="class_babel_shark_1_1_instruction_element.html#01c033e3d23cf2ecc64807520ac706aa">00054</a>             std::string <a class="code" href="class_babel_shark_1_1_instruction_element.html#01c033e3d23cf2ecc64807520ac706aa">_InterpretedData</a>;
 <a name="l00055"></a>00055 
 <a name="l00056"></a>00056                 <span class="keyword">private</span>:
 <a name="l00057"></a>00057                         <span class="comment">//NullIterator has not been implented yet.</span>
@@ -90,7 +91,7 @@
 <a name="l00064"></a>00064 
 <a name="l00065"></a>00065 <span class="preprocessor">#endif //INSTRUCTION_ELEMENT_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Tue Jun 16 23:02:28 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 00:18:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
