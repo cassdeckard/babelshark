@@ -14,7 +14,11 @@ namespace BabelShark
           _nameChanged(true)
     {
 
-        _RootInstruction = Parse(inFile); // TODO: get this from preferences
+        _RootInstruction = Parse(inFile);
+        if (_RootInstruction == NULL)
+        {
+            _RootInstruction = new BabelShark::Instruction(0, "ERR_BAD_PARSE");
+        }
         _protoName       = _RootInstruction->GetName();
 
         /* Setup protocol subtree array */
@@ -31,8 +35,9 @@ namespace BabelShark
 	}
 
     Dissector::~Dissector()
-	{
-
+    {
+        // free dynamically allocated memory
+        delete [] *_ett;
 	}
 
     void Dissector::ReparseTree(const char* inFile)
@@ -40,6 +45,10 @@ namespace BabelShark
         // NOTE: This will not change the registered name of the protocol
         // Reparse Instruction tree
         _RootInstruction = Parse(inFile);
+        if (_RootInstruction == NULL)
+        {
+            _RootInstruction = new BabelShark::Instruction(0, "ERR_BAD_PARSE");
+        }
         _protoName       = _RootInstruction->GetName();
         _nameChanged     = true;
         printf("name: %s\n\n", _RootInstruction->GetName());

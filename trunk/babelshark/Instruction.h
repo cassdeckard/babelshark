@@ -58,14 +58,13 @@ namespace BabelShark
 			unsigned int GetSize() { return _Size;}
 			char* GetName(){ return (char*)(_Name.c_str());}
 
+            // For keeping track of subtrees
+            virtual unsigned int NumSubtrees();
+
 		protected:
 			unsigned int _Size;
 			unsigned int _SizeInBytes;
 			std::string _Name;
-			//Iterator has not been implemented yet.  When it is
-			//this is to be used to construct the different
-			//Iterator objects in InstructionElement and InstructionSet classes
-			//Iterator* _Iter;
 
 		private:
 	};
