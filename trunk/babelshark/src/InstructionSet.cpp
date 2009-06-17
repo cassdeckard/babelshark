@@ -57,11 +57,11 @@ namespace BabelShark
     unsigned int InstructionSet::GetSizeInBytes()
 	{
         unsigned int result = 0;
+        int i = 1;
 
-        CreateIterator();
-        for(_ListIter; _ListIter != _List.end(); ++_ListIter)
+        for(Iterator* it = this->CreateIterator(); ! it->IsDone(); it->Next())
         {
-            result += (*_ListIter)->GetSizeInBytes();
+            result += it->CurrentItem()->GetSizeInBytes();
         }
 
         return result;

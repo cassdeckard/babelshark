@@ -15,7 +15,6 @@ namespace BabelShark
     {
 
         _RootInstruction = Parse(inFile); // TODO: get this from preferences
-        //printf("construct name: %s\n\n", _RootInstruction->GetName());
         _protoName       = _RootInstruction->GetName();
 
         /* Setup protocol subtree array */
@@ -72,63 +71,25 @@ namespace BabelShark
            proto_item *ti = NULL;
            proto_tree *babelshark_tree = NULL;
 
-           // trees
-           proto_tree *sub_tree = NULL;
-           proto_tree *sub_node = NULL;
-
            ti = proto_tree_add_item(tree, *_proto, tvb, 0, -1, FALSE);
 
-           /* proto-level text */
+           // proto-level text
            proto_item_append_text(ti, " (decoded by Babelshark)");
 
-           // Interpret things
+           // Init byte offset
            gint offset = 0;
-           Instruction* currentIns;
-           //Iterator* it;
 
-           /* subtree */
+           // Create root node
            babelshark_tree = proto_item_add_subtree(ti, *_ett[0]);
-           _RootInstruction->Interpret(buffer);
 
-           // interpret children
-           printf("_RootInstruction: %s\n\n", _RootInstruction->GetName());
-           for (Iterator* it = _RootInstruction->CreateIterator(); ! it->IsDone(); it->Next())
+           // Parse it
+           if (_RootInstruction->GetSize() > 0)
            {
-              currentIns = it->CurrentItem();
-              currentIns->Interpret(buffer + offset);
-              proto_tree_add_text(babelshark_tree, tvb, offset, currentIns->GetSizeInBytes(), currentIns->Display());
-              offset += currentIns->GetSizeInBytes();
+              ParseInstructions(_RootInstruction, tvb, babelshark_tree, buffer, offset);
            }
-/*
-           // subtrees
-           currentIns = *it; // this now points to an InstructionSet
-           InstructionSet* level1Set;
-           InstructionCollection::iterator level1It;
 
-           level1Set = dynamic_cast<InstructionSet*>(currentIns);
-
-           for (unsigned int i = 0; i < level1Set->GetSize(); i++)
-           {
-               level1Set->Interpret(buffer + offset);
-               std::stringstream treeDisplay;
-               treeDisplay << level1Set->Display() << "[" << i << "]";
-               sub_node = proto_tree_add_text(babelshark_tree, tvb, offset, level1Set->GetSizeInBytes(), treeDisplay.str().c_str());
-               sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
-
-               // interpret children
-               level1Set->CreateIterator();
-               level1It = level1Set->GetIterator();
-               for (int j = 0; j < 2; j++)
-               {
-                  currentIns = *level1It;
-                  currentIns->Interpret(buffer + offset);
-                  proto_tree_add_text(sub_tree, tvb, offset, currentIns->GetSizeInBytes(), currentIns->Display());
-                  offset += currentIns->GetSizeInBytes();
-                  level1It++;
-               }
-           }
-*/
        }
+
        // free dynamically allocated memory
        delete [] buffer;
     }
@@ -136,10 +97,84 @@ namespace BabelShark
     void Dissector::Test()
     {
         //printf("Dissector::Test\n _ett: %i\n _proto: %u\n", _ett[0], *_proto);
-        printf("_RootInstruction:\n Name     : %s\n Size     : %u\n ByteSize : %u\n Display  : %s\n\n",
-               _RootInstruction->GetName(),
-               _RootInstruction->GetSize(),
-               _RootInstruction->GetSizeInBytes(),
-               _RootInstruction->Display());
     }
-}
+
+    void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
+    {
+        // interpret children
+        for (Iterator* it = in->CreateIterator(); ! it->IsDone(); it->Next())
+        {
+
+           Instruction* currentIns = it->CurrentItem();
+           currentIns->Interpret(buffer + offset);
+
+           // find out if this instruction is a leaf or a node
+           if (currentIns->CreateIterator()->IsDone())
+           {
+               // BASE CASE
+               // currentIns is a leaf, move forward in the buffer
+               proto_tree_add_text(tree,
+                                   tvb,
+                                   offset,
+                                   currentIns->GetSizeInBytes(),
+                                   currentIns->Display()
+                                  );
+               offset += currentIns->GetSizeInBytes();
+           }
+           else
+           {
+               // RESURSION
+               // currentIns is a node with children
+               proto_tree *sub_node = proto_tree_add_text(tree,
+                                                          tvb,
+                                                          offset,
+                                                          currentIns->GetSizeInBytes() * currentIns->GetSize(),
+                                                          currentIns->Display()
+                                                         );
+
+               // create a new subtree
+               proto_tree *sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
+
+               // parse this set
+               ParseSet(currentIns, tvb, sub_tree, buffer, offset);
+           }
+        }
+    }
+
+    void Dissector::ParseSet(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
+    {
+        // in is a subtree
+        proto_tree *sub_tree = NULL;
+        proto_tree *sub_node = NULL;
+        unsigned int size = in->GetSize();
+
+        if (size > 1)
+        {
+            // for each instance of this subtree
+            for (unsigned int count = 0; count < size; count++)
+            {
+                // create another subtree
+                std::stringstream treeDisplay;
+                treeDisplay << "[" << count << "]";
+                sub_node = proto_tree_add_text(tree,
+                                               tvb,
+                                               offset,
+                                               in->GetSizeInBytes(),
+                                               treeDisplay.str().c_str()
+                                              );
+                sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
+
+                // parse the children
+                ParseInstructions(in, tvb, sub_tree, buffer, offset);
+            }
+        }
+        else
+        {
+            // only one instance, just put it directly under the subtree
+            ParseInstructions(in, tvb, tree, buffer, offset);
+        }
+    }
+
+
+} // namespace BabelShark
+

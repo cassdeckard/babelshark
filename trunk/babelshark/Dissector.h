@@ -42,6 +42,9 @@ namespace BabelShark
             void ReparseTree(const char* inFile);
 
 		private:
+            void ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset);
+            void ParseSet(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset);
+
             Instruction* _RootInstruction;
             int*         _proto;
             gint**       _ett;

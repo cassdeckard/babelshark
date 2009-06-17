@@ -47,14 +47,16 @@ namespace BabelShark
 
 			//virtual function, no implementation in base class
 			//used in the InstructionList class.
-			virtual Iterator* CreateIterator();
+            virtual Iterator* CreateIterator();
+
+            //virtual function, no implementation in base class
+            virtual unsigned int GetSizeInBytes(){return _SizeInBytes; }
 
 			void SetSize(unsigned int size){ _Size = size;}
 			void SetName(char* name){ _Name = name;}
 
 			unsigned int GetSize() { return _Size;}
 			char* GetName(){ return (char*)(_Name.c_str());}
-			unsigned int GetSizeInBytes(){return _SizeInBytes;}
 
 		protected:
 			unsigned int _Size;
