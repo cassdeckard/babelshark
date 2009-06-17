@@ -13,7 +13,7 @@ WIRESHARK_PLUGIN_DIR=../../$(INSTALL_DIR)/plugins/$(VERSION)
 
 CFLAGS=/WX /DHAVE_CONFIG_H /I../.. $(GLIB_CFLAGS) \
 	/I$(PCAP_DIR)\include -D_U_="" $(LOCAL_CFLAGS) \
-	/I./ /I./cajun/include /EHsc
+	/I./ /I./include /I./cajun/include /EHsc
 	
 .c.obj::
 	$(CC) $(CFLAGS) -Fd.\ -c $<

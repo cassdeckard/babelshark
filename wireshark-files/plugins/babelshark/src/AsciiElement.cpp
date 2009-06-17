@@ -1,6 +1,6 @@
 // $Id$
 
-#include "..\AsciiElement.h"
+#include "AsciiElement.h"
 
 namespace BabelShark
 {

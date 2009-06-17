@@ -1,7 +1,7 @@
 // $Id$
 
-#include "..\Instruction.h"
-#include "..\NullIterator.h"
+#include "Instruction.h"
+#include "NullIterator.h"
 
 namespace BabelShark
 {

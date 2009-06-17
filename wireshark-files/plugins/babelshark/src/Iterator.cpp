@@ -1,6 +1,6 @@
 // $Id: Iterator.cpp 37 2009-06-14 15:22:55Z thegordonemail $
 
-#include "..\Iterator.h"
+#include "Iterator.h"
 
 namespace BabelShark
 {

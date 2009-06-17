@@ -32,19 +32,19 @@ DISSECTOR_SRC = \
 
 # corresponding headers
 DISSECTOR_INCLUDES = \
-	AsciiElement.h \
-	BoolElement.h \
-	Dissector.h \
-	FloatElement.h \
-	Instruction.h \
-	InstructionElement.h \
-	InstructionSet.h \
-	IntElement.h \
-	Iterator.h \
-	ListIterator.h \
-	NullIterator.h \
-	PadElement.h \
-	UintElement.h
+	include/AsciiElement.h \
+	include/BoolElement.h \
+	include/Dissector.h \
+	include/FloatElement.h \
+	include/Instruction.h \
+	include/InstructionElement.h \
+	include/InstructionSet.h \
+	include/IntElement.h \
+	include/Iterator.h \
+	include/ListIterator.h \
+	include/NullIterator.h \
+	include/PadElement.h \
+	include/UintElement.h
 
 # Dissector helpers.  They're included in the source files in this
 # directory, but they're not dissectors themselves, i.e. they're not

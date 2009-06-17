@@ -1,6 +1,6 @@
 // $Id$
 
-#include "..\BoolElement.h"
+#include "BoolElement.h"
 
 namespace BabelShark
 {
