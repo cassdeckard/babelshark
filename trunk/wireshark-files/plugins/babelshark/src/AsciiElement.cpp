@@ -4,12 +4,10 @@
 
 namespace BabelShark
 {
-//Chris's note - Dan had this out there, but I suspect the easiest element to implement will be
-//an unsigned int so it might be best to start with that one first.  After we get that working we
-//can probably just mimic the same approach in the sibling classes
 
-//If anyone can figure out why the semicolon up on line 2 is required it would be much appreciated
-
+	/**
+	 * Constructor for AsciiElement
+	 */
 	AsciiElement::AsciiElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
     {
