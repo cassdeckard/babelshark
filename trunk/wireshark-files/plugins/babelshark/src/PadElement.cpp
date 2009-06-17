@@ -1,6 +1,6 @@
 // $Id$
 
-#include "..\PadElement.h"
+#include "PadElement.h"
 #include <sstream>
 
 namespace BabelShark

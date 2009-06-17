@@ -1,6 +1,6 @@
 // $Id$
 
-#include "..\FloatElement.h"
+#include "FloatElement.h"
 
 namespace BabelShark
 {

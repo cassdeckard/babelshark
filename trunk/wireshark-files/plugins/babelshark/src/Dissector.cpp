@@ -1,7 +1,7 @@
 // $Id$
 
 // C++ headers
-#include "..\Dissector.h"
+#include "Dissector.h"
 #include <sstream>
 
 BabelShark::Instruction* Parse(std::string inFile); // delcaration; this is defined in PdiParser.cpp

@@ -1,6 +1,6 @@
 // $Id$
 
-#include "..\InstructionSet.h"
+#include "InstructionSet.h"
 
 namespace BabelShark
 {

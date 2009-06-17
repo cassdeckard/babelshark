@@ -1,6 +1,6 @@
 // $Id$
 
-#include "..\IntElement.h"
+#include "IntElement.h"
 
 namespace BabelShark
 {
