@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir)\include; $(SolutionDir)\..\BabelShark"
+				AdditionalIncludeDirectories="$(SolutionDir)\include; $(SolutionDir)\..\include;$(SolutionDir)\..\src;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -60,7 +60,7 @@
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(SolutionDir)\include; $(SolutionDir)\..\BabelShark"
+				AdditionalIncludeDirectories="$(SolutionDir)\include; $(SolutionDir)\..\include;$(SolutionDir)\..\src;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="4"
 				UsePrecompiledHeader="0"
@@ -100,31 +100,43 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
-				RelativePath="..\..\babelshark\src\AsciiElement.cpp">
+				RelativePath="..\..\src\AsciiElement.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\BoolElement.cpp">
+				RelativePath="..\..\src\BoolElement.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\FloatElement.cpp">
+				RelativePath="..\..\src\FloatElement.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\Instruction.cpp">
+				RelativePath="..\..\src\Instruction.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\InstructionElement.cpp">
+				RelativePath="..\..\src\InstructionElement.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\InstructionSet.cpp">
+				RelativePath="..\..\src\InstructionSet.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\IntElement.cpp">
+				RelativePath="..\..\src\IntElement.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\PadElement.cpp">
+				RelativePath="..\..\src\Iterator.cpp">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\src\UintElement.cpp">
+				RelativePath="..\..\src\ListIterator.cpp">
+			</File>
+			<File
+				RelativePath="..\..\src\NullIterator.cpp">
+			</File>
+			<File
+				RelativePath="..\..\src\PadElement.cpp">
+			</File>
+			<File
+				RelativePath="..\..\src\PdiParser.cpp">
+			</File>
+			<File
+				RelativePath="..\..\src\UintElement.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -132,31 +144,40 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
-				RelativePath="..\..\babelshark\AsciiElement.h">
+				RelativePath="..\..\include\AsciiElement.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\BoolElement.h">
+				RelativePath="..\..\include\BoolElement.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\FloatElement.h">
+				RelativePath="..\..\include\FloatElement.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\Instruction.h">
+				RelativePath="..\..\include\Instruction.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\InstructionElement.h">
+				RelativePath="..\..\include\InstructionElement.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\InstructionSet.h">
+				RelativePath="..\..\include\InstructionSet.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\IntElement.h">
+				RelativePath="..\..\include\IntElement.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\PadElement.h">
+				RelativePath="..\..\include\Iterator.h">
 			</File>
 			<File
-				RelativePath="..\..\babelshark\UintElement.h">
+				RelativePath="..\..\include\ListIterator.h">
+			</File>
+			<File
+				RelativePath="..\..\include\NullIterator.h">
+			</File>
+			<File
+				RelativePath="..\..\include\PadElement.h">
+			</File>
+			<File
+				RelativePath="..\..\include\UintElement.h">
 			</File>
 		</Filter>
 		<Filter
