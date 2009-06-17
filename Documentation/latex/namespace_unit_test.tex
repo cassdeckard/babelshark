@@ -1,0 +1,187 @@
+\hypertarget{namespace_unit_test}{
+\section{UnitTest Namespace Reference}
+\label{namespace_unit_test}\index{UnitTest@{UnitTest}}
+}
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespace_unit_test_1_1_current_test}{CurrentTest}
+\item 
+namespace \hyperlink{namespace_unit_test_1_1_time_helpers}{TimeHelpers}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class \hyperlink{class_unit_test_1_1_assert_exception}{AssertException}
+\item 
+class \hyperlink{class_unit_test_1_1_deferred_test_reporter}{DeferredTestReporter}
+\item 
+struct \hyperlink{struct_unit_test_1_1_deferred_test_result}{DeferredTestResult}
+\item 
+class \hyperlink{class_unit_test_1_1_memory_out_stream}{MemoryOutStream}
+\item 
+class \hyperlink{class_unit_test_1_1_test}{Test}
+\item 
+class \hyperlink{class_unit_test_1_1_test_details}{TestDetails}
+\item 
+class \hyperlink{class_unit_test_1_1_test_list}{TestList}
+\item 
+class \hyperlink{class_unit_test_1_1_list_adder}{ListAdder}
+\item 
+class \hyperlink{class_unit_test_1_1_test_reporter}{TestReporter}
+\item 
+class \hyperlink{class_unit_test_1_1_test_reporter_stdout}{TestReporterStdout}
+\item 
+class \hyperlink{class_unit_test_1_1_test_results}{TestResults}
+\item 
+struct \hyperlink{struct_unit_test_1_1_true}{True}
+\item 
+class \hyperlink{class_unit_test_1_1_test_runner}{TestRunner}
+\item 
+class \hyperlink{class_unit_test_1_1_time_constraint}{TimeConstraint}
+\item 
+class \hyperlink{class_unit_test_1_1_timer}{Timer}
+\item 
+class \hyperlink{class_unit_test_1_1_xml_test_reporter}{XmlTestReporter}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename Value $>$ }\\bool \hyperlink{namespace_unit_test_82fb37498b485a4ba7ec60d2b2505d60}{Check} (Value const value)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual $>$ }\\void \hyperlink{namespace_unit_test_da1d55be7d7f0be93e7e18b7153306bb}{CheckEqual} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, Expected const \&expected, Actual const \&actual, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+void \hyperlink{namespace_unit_test_a1d95c47467cdc478fd4a3310060c62e}{CheckEqual} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, char const $\ast$expected, char const $\ast$actual, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+void \hyperlink{namespace_unit_test_6220237fc4a12beb675d834cc0062aa8}{CheckEqual} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, char $\ast$expected, char $\ast$actual, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+void \hyperlink{namespace_unit_test_bfd1f36d8211da65b2fbd37fdc2b2329}{CheckEqual} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, char $\ast$expected, char const $\ast$actual, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+void \hyperlink{namespace_unit_test_229093d68e4f13b6afd140dc17573446}{CheckEqual} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, char const $\ast$expected, char $\ast$actual, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\bool \hyperlink{namespace_unit_test_afe3bb3286a28db229c210679f35a90b}{AreClose} (Expected const \&expected, Actual const \&actual, Tolerance const \&tolerance)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\void \hyperlink{namespace_unit_test_4086d446da4d2df0cb8fd6f121f74b8b}{CheckClose} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, Expected const \&expected, Actual const \&actual, Tolerance const \&tolerance, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual $>$ }\\void \hyperlink{namespace_unit_test_dc09d2b88bb76b95ad22c8ddad4a3b2e}{CheckArrayEqual} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, Expected const \&expected, Actual const \&actual, int const count, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\bool \hyperlink{namespace_unit_test_85e7f57e6cfff23ff830301a81d6f09f}{ArrayAreClose} (Expected const \&expected, Actual const \&actual, int const count, Tolerance const \&tolerance)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\void \hyperlink{namespace_unit_test_695643a3df5c6f3cb60d428dcda22fcb}{CheckArrayClose} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, Expected const \&expected, Actual const \&actual, int const count, Tolerance const \&tolerance, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\void \hyperlink{namespace_unit_test_1e2cb7cf282dcd896cc2c3810576fd8b}{CheckArray2DClose} (\hyperlink{class_unit_test_1_1_test_results}{TestResults} \&results, Expected const \&expected, Actual const \&actual, int const rows, int const columns, Tolerance const \&tolerance, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{namespace_unit_test_ef3cc9905021eb7ee6909a1bfd156bc5}{ExecuteTest} (T \&testObject, \hyperlink{class_unit_test_1_1_test_details}{TestDetails} const \&details)
+\item 
+void \hyperlink{namespace_unit_test_891668df864d7e73585fa7699398ee07}{ReportAssert} (char const $\ast$description, char const $\ast$filename, int lineNumber)
+\item 
+int \hyperlink{namespace_unit_test_00270e02336149dfb00bf0374587521c}{RunAllTests} ()
+\end{CompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespace_unit_test_afe3bb3286a28db229c210679f35a90b}{
+\index{UnitTest@{UnitTest}!AreClose@{AreClose}}
+\index{AreClose@{AreClose}!UnitTest@{UnitTest}}
+\subsubsection[{AreClose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual , typename Tolerance $>$ bool UnitTest::AreClose (Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  Tolerance const \& {\em tolerance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_afe3bb3286a28db229c210679f35a90b}
+
+
+\hypertarget{namespace_unit_test_85e7f57e6cfff23ff830301a81d6f09f}{
+\index{UnitTest@{UnitTest}!ArrayAreClose@{ArrayAreClose}}
+\index{ArrayAreClose@{ArrayAreClose}!UnitTest@{UnitTest}}
+\subsubsection[{ArrayAreClose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual , typename Tolerance $>$ bool UnitTest::ArrayAreClose (Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  int const  {\em count}, \/  Tolerance const \& {\em tolerance})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_85e7f57e6cfff23ff830301a81d6f09f}
+
+
+\hypertarget{namespace_unit_test_82fb37498b485a4ba7ec60d2b2505d60}{
+\index{UnitTest@{UnitTest}!Check@{Check}}
+\index{Check@{Check}!UnitTest@{UnitTest}}
+\subsubsection[{Check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Value $>$ bool UnitTest::Check (Value const  {\em value})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_82fb37498b485a4ba7ec60d2b2505d60}
+
+
+\hypertarget{namespace_unit_test_1e2cb7cf282dcd896cc2c3810576fd8b}{
+\index{UnitTest@{UnitTest}!CheckArray2DClose@{CheckArray2DClose}}
+\index{CheckArray2DClose@{CheckArray2DClose}!UnitTest@{UnitTest}}
+\subsubsection[{CheckArray2DClose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual , typename Tolerance $>$ void UnitTest::CheckArray2DClose (TestResults \& {\em results}, \/  Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  int const  {\em rows}, \/  int const  {\em columns}, \/  Tolerance const \& {\em tolerance}, \/  TestDetails const \& {\em details})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_1e2cb7cf282dcd896cc2c3810576fd8b}
+
+
+\hypertarget{namespace_unit_test_695643a3df5c6f3cb60d428dcda22fcb}{
+\index{UnitTest@{UnitTest}!CheckArrayClose@{CheckArrayClose}}
+\index{CheckArrayClose@{CheckArrayClose}!UnitTest@{UnitTest}}
+\subsubsection[{CheckArrayClose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual , typename Tolerance $>$ void UnitTest::CheckArrayClose (TestResults \& {\em results}, \/  Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  int const  {\em count}, \/  Tolerance const \& {\em tolerance}, \/  TestDetails const \& {\em details})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_695643a3df5c6f3cb60d428dcda22fcb}
+
+
+\hypertarget{namespace_unit_test_dc09d2b88bb76b95ad22c8ddad4a3b2e}{
+\index{UnitTest@{UnitTest}!CheckArrayEqual@{CheckArrayEqual}}
+\index{CheckArrayEqual@{CheckArrayEqual}!UnitTest@{UnitTest}}
+\subsubsection[{CheckArrayEqual}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual $>$ void UnitTest::CheckArrayEqual (TestResults \& {\em results}, \/  Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  int const  {\em count}, \/  TestDetails const \& {\em details})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_dc09d2b88bb76b95ad22c8ddad4a3b2e}
+
+
+\hypertarget{namespace_unit_test_4086d446da4d2df0cb8fd6f121f74b8b}{
+\index{UnitTest@{UnitTest}!CheckClose@{CheckClose}}
+\index{CheckClose@{CheckClose}!UnitTest@{UnitTest}}
+\subsubsection[{CheckClose}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual , typename Tolerance $>$ void UnitTest::CheckClose (TestResults \& {\em results}, \/  Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  Tolerance const \& {\em tolerance}, \/  TestDetails const \& {\em details})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_4086d446da4d2df0cb8fd6f121f74b8b}
+
+
+\hypertarget{namespace_unit_test_229093d68e4f13b6afd140dc17573446}{
+\index{UnitTest@{UnitTest}!CheckEqual@{CheckEqual}}
+\index{CheckEqual@{CheckEqual}!UnitTest@{UnitTest}}
+\subsubsection[{CheckEqual}]{\setlength{\rightskip}{0pt plus 5cm}void UnitTest::CheckEqual (TestResults \& {\em results}, \/  char const $\ast$ {\em expected}, \/  char $\ast$ {\em actual}, \/  TestDetails const \& {\em details})}}
+\label{namespace_unit_test_229093d68e4f13b6afd140dc17573446}
+
+
+\hypertarget{namespace_unit_test_bfd1f36d8211da65b2fbd37fdc2b2329}{
+\index{UnitTest@{UnitTest}!CheckEqual@{CheckEqual}}
+\index{CheckEqual@{CheckEqual}!UnitTest@{UnitTest}}
+\subsubsection[{CheckEqual}]{\setlength{\rightskip}{0pt plus 5cm}void UnitTest::CheckEqual (TestResults \& {\em results}, \/  char $\ast$ {\em expected}, \/  char const $\ast$ {\em actual}, \/  TestDetails const \& {\em details})}}
+\label{namespace_unit_test_bfd1f36d8211da65b2fbd37fdc2b2329}
+
+
+\hypertarget{namespace_unit_test_6220237fc4a12beb675d834cc0062aa8}{
+\index{UnitTest@{UnitTest}!CheckEqual@{CheckEqual}}
+\index{CheckEqual@{CheckEqual}!UnitTest@{UnitTest}}
+\subsubsection[{CheckEqual}]{\setlength{\rightskip}{0pt plus 5cm}void UnitTest::CheckEqual (TestResults \& {\em results}, \/  char $\ast$ {\em expected}, \/  char $\ast$ {\em actual}, \/  TestDetails const \& {\em details})}}
+\label{namespace_unit_test_6220237fc4a12beb675d834cc0062aa8}
+
+
+\hypertarget{namespace_unit_test_a1d95c47467cdc478fd4a3310060c62e}{
+\index{UnitTest@{UnitTest}!CheckEqual@{CheckEqual}}
+\index{CheckEqual@{CheckEqual}!UnitTest@{UnitTest}}
+\subsubsection[{CheckEqual}]{\setlength{\rightskip}{0pt plus 5cm}void UnitTest::CheckEqual (TestResults \& {\em results}, \/  char const $\ast$ {\em expected}, \/  char const $\ast$ {\em actual}, \/  TestDetails const \& {\em details})}}
+\label{namespace_unit_test_a1d95c47467cdc478fd4a3310060c62e}
+
+
+\hypertarget{namespace_unit_test_da1d55be7d7f0be93e7e18b7153306bb}{
+\index{UnitTest@{UnitTest}!CheckEqual@{CheckEqual}}
+\index{CheckEqual@{CheckEqual}!UnitTest@{UnitTest}}
+\subsubsection[{CheckEqual}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Expected , typename Actual $>$ void UnitTest::CheckEqual (TestResults \& {\em results}, \/  Expected const \& {\em expected}, \/  Actual const \& {\em actual}, \/  TestDetails const \& {\em details})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_da1d55be7d7f0be93e7e18b7153306bb}
+
+
+\hypertarget{namespace_unit_test_ef3cc9905021eb7ee6909a1bfd156bc5}{
+\index{UnitTest@{UnitTest}!ExecuteTest@{ExecuteTest}}
+\index{ExecuteTest@{ExecuteTest}!UnitTest@{UnitTest}}
+\subsubsection[{ExecuteTest}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void UnitTest::ExecuteTest (T \& {\em testObject}, \/  TestDetails const \& {\em details})\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{namespace_unit_test_ef3cc9905021eb7ee6909a1bfd156bc5}
+
+
+\hypertarget{namespace_unit_test_891668df864d7e73585fa7699398ee07}{
+\index{UnitTest@{UnitTest}!ReportAssert@{ReportAssert}}
+\index{ReportAssert@{ReportAssert}!UnitTest@{UnitTest}}
+\subsubsection[{ReportAssert}]{\setlength{\rightskip}{0pt plus 5cm}void UnitTest::ReportAssert (char const $\ast$ {\em description}, \/  char const $\ast$ {\em filename}, \/  int {\em lineNumber})}}
+\label{namespace_unit_test_891668df864d7e73585fa7699398ee07}
+
+
+\hypertarget{namespace_unit_test_00270e02336149dfb00bf0374587521c}{
+\index{UnitTest@{UnitTest}!RunAllTests@{RunAllTests}}
+\index{RunAllTests@{RunAllTests}!UnitTest@{UnitTest}}
+\subsubsection[{RunAllTests}]{\setlength{\rightskip}{0pt plus 5cm}int UnitTest::RunAllTests ()}}
+\label{namespace_unit_test_00270e02336149dfb00bf0374587521c}
+
+

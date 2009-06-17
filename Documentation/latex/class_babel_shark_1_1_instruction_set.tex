@@ -1,0 +1,131 @@
+\hypertarget{class_babel_shark_1_1_instruction_set}{
+\section{BabelShark::InstructionSet Class Reference}
+\label{class_babel_shark_1_1_instruction_set}\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+}
+{\tt \#include $<$InstructionSet.h$>$}
+
+Inheritance diagram for BabelShark::InstructionSet::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{class_babel_shark_1_1_instruction_set}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+\hyperlink{class_babel_shark_1_1_instruction_set_b1d22c7566a5693c6cc44746a4a58d40}{InstructionSet} (unsigned int size, char $\ast$name)
+\item 
+\hyperlink{class_babel_shark_1_1_instruction_set_10f68c55831ae571354753c15487e8e0}{$\sim$InstructionSet} ()
+\item 
+\hyperlink{class_babel_shark_1_1_instruction}{Instruction} $\ast$ \hyperlink{class_babel_shark_1_1_instruction_set_3c5af90b398f3ec28bc4248630f87c63}{GetChild} ()
+\item 
+void \hyperlink{class_babel_shark_1_1_instruction_set_0e95013b914e2f4bdda8b0f94ab87712}{Add} (\hyperlink{class_babel_shark_1_1_instruction}{Instruction} $\ast$)
+\item 
+void \hyperlink{class_babel_shark_1_1_instruction_set_4d4c66b375e0f15de7775b295e15b558}{Interpret} (char $\ast$buffer)
+\item 
+char $\ast$ \hyperlink{class_babel_shark_1_1_instruction_set_8456f55059620a8a971b3f1f39d62fc0}{Display} ()
+\item 
+\hyperlink{class_babel_shark_1_1_iterator}{Iterator} $\ast$ \hyperlink{class_babel_shark_1_1_instruction_set_0ab5a7495470214060e64f9f7bc2ac72}{CreateIterator} ()
+\item 
+InstructionCollection::iterator \hyperlink{class_babel_shark_1_1_instruction_set_e6717a54fcb2da5282b52fbf506fa8bb}{GetIterator} ()
+\item 
+unsigned int \hyperlink{class_babel_shark_1_1_instruction_set_5f11c971baf5eba34cc825a65ab51ba9}{GetSizeInBytes} ()
+\item 
+unsigned int \hyperlink{class_babel_shark_1_1_instruction_set_663c141979af83f6b7e5188d0d105fad}{NumSubtrees} ()
+\end{CompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_babel_shark_1_1_instruction_set_b1d22c7566a5693c6cc44746a4a58d40}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!InstructionSet@{InstructionSet}}
+\index{InstructionSet@{InstructionSet}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{InstructionSet}]{\setlength{\rightskip}{0pt plus 5cm}BabelShark::InstructionSet::InstructionSet (unsigned int {\em size}, \/  char $\ast$ {\em name})}}
+\label{class_babel_shark_1_1_instruction_set_b1d22c7566a5693c6cc44746a4a58d40}
+
+
+\hypertarget{class_babel_shark_1_1_instruction_set_10f68c55831ae571354753c15487e8e0}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!$\sim$InstructionSet@{$\sim$InstructionSet}}
+\index{$\sim$InstructionSet@{$\sim$InstructionSet}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{$\sim$InstructionSet}]{\setlength{\rightskip}{0pt plus 5cm}BabelShark::InstructionSet::$\sim$InstructionSet ()}}
+\label{class_babel_shark_1_1_instruction_set_10f68c55831ae571354753c15487e8e0}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_babel_shark_1_1_instruction_set_0e95013b914e2f4bdda8b0f94ab87712}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!Add@{Add}}
+\index{Add@{Add}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{Add}]{\setlength{\rightskip}{0pt plus 5cm}void BabelShark::InstructionSet::Add ({\bf Instruction} $\ast$ {\em instruction})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_0e95013b914e2f4bdda8b0f94ab87712}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_9d74c7c3cb5e2d85e065b8633a3f395a}{BabelShark::Instruction}.\hypertarget{class_babel_shark_1_1_instruction_set_0ab5a7495470214060e64f9f7bc2ac72}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!CreateIterator@{CreateIterator}}
+\index{CreateIterator@{CreateIterator}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{CreateIterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iterator} $\ast$ BabelShark::InstructionSet::CreateIterator ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_0ab5a7495470214060e64f9f7bc2ac72}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_46ee71e94270716e917ad7293fee5aca}{BabelShark::Instruction}.\hypertarget{class_babel_shark_1_1_instruction_set_8456f55059620a8a971b3f1f39d62fc0}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!Display@{Display}}
+\index{Display@{Display}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{Display}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ BabelShark::InstructionSet::Display ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_8456f55059620a8a971b3f1f39d62fc0}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_a1d1dd6ff30235fd6842fcf4204f7698}{BabelShark::Instruction}.\hypertarget{class_babel_shark_1_1_instruction_set_3c5af90b398f3ec28bc4248630f87c63}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!GetChild@{GetChild}}
+\index{GetChild@{GetChild}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{GetChild}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Instruction} $\ast$ BabelShark::InstructionSet::GetChild ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_3c5af90b398f3ec28bc4248630f87c63}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_709aac58cbdc516fcedc3bbcdd94795d}{BabelShark::Instruction}.\hypertarget{class_babel_shark_1_1_instruction_set_e6717a54fcb2da5282b52fbf506fa8bb}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!GetIterator@{GetIterator}}
+\index{GetIterator@{GetIterator}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{GetIterator}]{\setlength{\rightskip}{0pt plus 5cm}InstructionCollection::iterator BabelShark::InstructionSet::GetIterator ()\hspace{0.3cm}{\tt  \mbox{[}inline\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_e6717a54fcb2da5282b52fbf506fa8bb}
+
+
+\hypertarget{class_babel_shark_1_1_instruction_set_5f11c971baf5eba34cc825a65ab51ba9}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!GetSizeInBytes@{GetSizeInBytes}}
+\index{GetSizeInBytes@{GetSizeInBytes}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{GetSizeInBytes}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int BabelShark::InstructionSet::GetSizeInBytes ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_5f11c971baf5eba34cc825a65ab51ba9}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_4d24b597fc26a85423d9f9cf79dc9709}{BabelShark::Instruction}.\hypertarget{class_babel_shark_1_1_instruction_set_4d4c66b375e0f15de7775b295e15b558}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!Interpret@{Interpret}}
+\index{Interpret@{Interpret}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{Interpret}]{\setlength{\rightskip}{0pt plus 5cm}void BabelShark::InstructionSet::Interpret (char $\ast$ {\em buffer})\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_4d4c66b375e0f15de7775b295e15b558}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_bfbceb493d151b2e255c7c8cbac7a476}{BabelShark::Instruction}.\hypertarget{class_babel_shark_1_1_instruction_set_663c141979af83f6b7e5188d0d105fad}{
+\index{BabelShark::InstructionSet@{BabelShark::InstructionSet}!NumSubtrees@{NumSubtrees}}
+\index{NumSubtrees@{NumSubtrees}!BabelShark::InstructionSet@{BabelShark::InstructionSet}}
+\subsubsection[{NumSubtrees}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int BabelShark::InstructionSet::NumSubtrees ()\hspace{0.3cm}{\tt  \mbox{[}virtual\mbox{]}}}}
+\label{class_babel_shark_1_1_instruction_set_663c141979af83f6b7e5188d0d105fad}
+
+
+
+
+Reimplemented from \hyperlink{class_babel_shark_1_1_instruction_da0c4af8c73c7aae8b8d3a32a09f11e4}{BabelShark::Instruction}.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/\hyperlink{_instruction_set_8h}{InstructionSet.h}\item 
+C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/src/\hyperlink{_instruction_set_8cpp}{InstructionSet.cpp}\end{CompactItemize}
