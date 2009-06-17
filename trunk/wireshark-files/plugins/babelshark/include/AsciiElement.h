@@ -5,33 +5,48 @@
 
 #include "InstructionElement.h"
 
-/*
-	Design Pattern Used: Composite
-	Class: AsciiElement
-	Parent: InstructionElement
-	One of the Leaf(s) in the Composite Structure.
-	Processes Ascii type elements
-*/
 
 
 
 namespace BabelShark
 {
+/**
+ * \class AsciiElement
+ * Parent: InstructionElement
+ * Design Pattern Used: Composite
+ * One of the Leaf(s) in the Composite Structure.
+ * Processes Ascii type elements
+ */
 	class AsciiElement: public InstructionElement
 	{
 		public:
+			/**
+			 * Constructor
+			 */
 			AsciiElement(unsigned int size, char* name);
+
+			/**
+			 * Destructor
+			 */
 			~AsciiElement();
 
-			//Will be used to read in data from packet
+			/**
+			 * Interpret function for Ascii;
+			 * will just read in the correct number of characters
+			 */
 			void Interpret(char* buffer);
 
-			//will be used to Display data to the WireShark output
+			/**
+			 * Display function for Ascii;
+			 * will just print the bytes as a character
+			 */
 			char* Display();
 		private:
-            // Checks to see if a character is printable.  if it is, it returns
-			//a string with that character stored in it.
-			//if not, it returns a string with a single space in it.
+            /**
+			 * Checks to see if a character is printable.  if it is, it returns
+			 * a string with that character stored in it.
+			 * if not, it returns a string with a single space in it.
+			 */
             std::string AsciiElement::Printable(char inChar);
 	};
 }
