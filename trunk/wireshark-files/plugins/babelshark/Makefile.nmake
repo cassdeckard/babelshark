@@ -14,7 +14,7 @@ WIRESHARK_PLUGIN_DIR=../../$(INSTALL_DIR)/plugins/$(VERSION)
 CFLAGS=/WX /DHAVE_CONFIG_H /I../.. $(GLIB_CFLAGS) \
 	/I$(PCAP_DIR)\include -D_U_="" $(LOCAL_CFLAGS) \
 	/I./ /I./cajun/include /EHsc
-
+	
 .c.obj::
 	$(CC) $(CFLAGS) -Fd.\ -c $<
 
@@ -26,6 +26,7 @@ CFLAGS=/WX /DHAVE_CONFIG_H /I../.. $(GLIB_CFLAGS) \
 	
 {.\cajun\src}.cpp.obj::
 	$(CC) $(CFLAGS) -Fd.\ -c $<
+	
 
 LDFLAGS = $(PLUGIN_LDFLAGS)
 
@@ -53,7 +54,7 @@ $(PLUGIN_NAME).rc : moduleinfo.nmake
 	-e s/@MSVC_VARIANT@/$(MSVC_VARIANT)/ \
 	< plugin.rc.in > $@
 
-$(PLUGIN_NAME).dll $(PLUGIN_NAME).exp $(PLUGIN_NAME).lib : $(OBJECTS) $(LINK_PLUGIN_WITH) $(RESOURCE)
+$(PLUGIN_NAME).dll $(PLUGIN_NAME).exp $(PLUGIN_NAME).lib : $(OBJECTS) $(LINK_PLUGIN_WITH) $(RESOURCE) $(DISSECTOR_INCLUDES)
 	link -dll /out:$(PLUGIN_NAME).dll $(LDFLAGS) $(OBJECTS) $(LINK_PLUGIN_WITH) \
 	$(GLIB_LIBS) $(RESOURCE)
 	
