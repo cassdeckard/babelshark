@@ -53,6 +53,6 @@ namespace BabelShark
 	//used in the InstructionList class.
 	Iterator* Instruction::CreateIterator()
 	{
-		return &NullIterator(this);
+		return new NullIterator(this);
 	}
 }
