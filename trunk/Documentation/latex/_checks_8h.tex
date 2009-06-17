@@ -1,0 +1,39 @@
+\hypertarget{_checks_8h}{
+\section{C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/UnitTests/UnitTests/3rdParty/include/unittest++/Checks.h File Reference}
+\label{_checks_8h}\index{C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/UnitTests/UnitTests/3rdParty/include/unittest++/Checks.h@{C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/babelshark/UnitTests/UnitTests/3rdParty/include/unittest++/Checks.h}}
+}
+{\tt \#include \char`\"{}Config.h\char`\"{}}\par
+{\tt \#include \char`\"{}TestResults.h\char`\"{}}\par
+{\tt \#include \char`\"{}MemoryOutStream.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace \hyperlink{namespace_unit_test}{UnitTest}
+\end{CompactItemize}
+\subsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\footnotesize template$<$typename Value $>$ }\\bool \hyperlink{namespace_unit_test_82fb37498b485a4ba7ec60d2b2505d60}{UnitTest::Check} (Value const value)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual $>$ }\\void \hyperlink{namespace_unit_test_da1d55be7d7f0be93e7e18b7153306bb}{UnitTest::CheckEqual} (TestResults \&results, Expected const \&expected, Actual const \&actual, TestDetails const \&details)
+\item 
+void \hyperlink{namespace_unit_test_a1d95c47467cdc478fd4a3310060c62e}{UnitTest::CheckEqual} (TestResults \&results, char const $\ast$expected, char const $\ast$actual, TestDetails const \&details)
+\item 
+void \hyperlink{namespace_unit_test_6220237fc4a12beb675d834cc0062aa8}{UnitTest::CheckEqual} (TestResults \&results, char $\ast$expected, char $\ast$actual, TestDetails const \&details)
+\item 
+void \hyperlink{namespace_unit_test_bfd1f36d8211da65b2fbd37fdc2b2329}{UnitTest::CheckEqual} (TestResults \&results, char $\ast$expected, char const $\ast$actual, TestDetails const \&details)
+\item 
+void \hyperlink{namespace_unit_test_229093d68e4f13b6afd140dc17573446}{UnitTest::CheckEqual} (TestResults \&results, char const $\ast$expected, char $\ast$actual, TestDetails const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\bool \hyperlink{namespace_unit_test_afe3bb3286a28db229c210679f35a90b}{UnitTest::AreClose} (Expected const \&expected, Actual const \&actual, Tolerance const \&tolerance)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\void \hyperlink{namespace_unit_test_4086d446da4d2df0cb8fd6f121f74b8b}{UnitTest::CheckClose} (TestResults \&results, Expected const \&expected, Actual const \&actual, Tolerance const \&tolerance, TestDetails const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual $>$ }\\void \hyperlink{namespace_unit_test_dc09d2b88bb76b95ad22c8ddad4a3b2e}{UnitTest::CheckArrayEqual} (TestResults \&results, Expected const \&expected, Actual const \&actual, int const count, TestDetails const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\bool \hyperlink{namespace_unit_test_85e7f57e6cfff23ff830301a81d6f09f}{UnitTest::ArrayAreClose} (Expected const \&expected, Actual const \&actual, int const count, Tolerance const \&tolerance)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\void \hyperlink{namespace_unit_test_695643a3df5c6f3cb60d428dcda22fcb}{UnitTest::CheckArrayClose} (TestResults \&results, Expected const \&expected, Actual const \&actual, int const count, Tolerance const \&tolerance, TestDetails const \&details)
+\item 
+{\footnotesize template$<$typename Expected , typename Actual , typename Tolerance $>$ }\\void \hyperlink{namespace_unit_test_1e2cb7cf282dcd896cc2c3810576fd8b}{UnitTest::CheckArray2DClose} (TestResults \&results, Expected const \&expected, Actual const \&actual, int const rows, int const columns, Tolerance const \&tolerance, TestDetails const \&details)
+\end{CompactItemize}
