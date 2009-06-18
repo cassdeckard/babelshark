@@ -7,3 +7,4 @@ Babelshark is a customizable packet dissector plugin for the [http://www.wiresha
 
 = Links=
   * [http://www.4221klein.com/dokuwiki/doku.php?id=babel_shark_requirements Design Documentation Wiki]
+  * [http://babelshark.googlecode.com/svn/trunk/Documentation/html/index.html Latest Doxygen documentation]
