@@ -24,20 +24,6 @@ namespace BabelShark
         _InterpretedData = "(not implemented yet)";
 	}
 
-	void FloatElement::SetupBitMask(unsigned int val)
-	{
-		size_t bitMaskIndex = 0;
-		while(bitMaskIndex < _BitMask.size())
-		{
-			if(val > 0)
-			{
-				_BitMask.set(bitMaskIndex, 1);
-				val--;
-			}
-			bitMaskIndex++;
-		}
-	}
-
 	//will be used to Display data to the WireShark output
 	char* FloatElement::Display()
     {
