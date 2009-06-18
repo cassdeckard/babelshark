@@ -1,10 +1,13 @@
-#summary Wiki homepage for Babelshark
+#summary Babelshark
 
-= Introduction =
+=== Introduction ===
 
 Babelshark is a customizable packet dissector plugin for the [http://www.wireshark.org Wireshark] network protocol analyzer.
 
 
-= Links=
+=== Links ===
   * [http://www.4221klein.com/dokuwiki/doku.php?id=babel_shark_requirements Design Documentation Wiki]
   * [http://babelshark.googlecode.com/svn/trunk/Documentation/html/index.html Latest Doxygen documentation]
+
+=== Edit ===
+([http://code.google.com/p/babelshark/w/edit/Babelshark Edit this page])
