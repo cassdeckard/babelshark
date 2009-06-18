@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>Instruction.h</h1><a href="_instruction_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: Instruction.h -1   $</span>
+<h1>Instruction.h</h1><a href="_instruction_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: Instruction.h 92 2009-06-18 01:46:29Z histumness $</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef INSTRUCTION_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define INSTRUCTION_H</span>
@@ -33,74 +33,53 @@
 <a name="l00006"></a>00006 <span class="preprocessor">#include &lt;string&gt;</span>
 <a name="l00007"></a>00007 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00008"></a>00008 <span class="preprocessor">#include "<a class="code" href="_iterator_8h.html">Iterator.h</a>"</span>
-<a name="l00009"></a>00009 <span class="comment">/*</span>
-<a name="l00010"></a>00010 <span class="comment">        Design Pattern Used: Composite</span>
-<a name="l00011"></a>00011 <span class="comment">        Class:Instruction</span>
-<a name="l00012"></a>00012 <span class="comment">                used purely as a Composite portion of the Composite Design Pattern</span>
-<a name="l00013"></a>00013 <span class="comment">                inherited by InstructionElement and InstructionSet</span>
-<a name="l00014"></a>00014 <span class="comment">                Composite allows objects to be treated uniformly.</span>
-<a name="l00015"></a>00015 <span class="comment">*/</span>
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">namespace </span>BabelShark
-<a name="l00020"></a>00020 {
-<a name="l00021"></a>00021     <span class="keyword">class </span>Iterator; <span class="comment">// forward declaration</span>
-<a name="l00022"></a><a class="code" href="class_babel_shark_1_1_instruction.html">00022</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>
-<a name="l00023"></a>00023         {
-<a name="l00024"></a>00024                 <span class="keyword">public</span>:
-<a name="l00025"></a>00025                         <a class="code" href="class_babel_shark_1_1_instruction.html#db56af133f39de0e46b4ff08b17de68d">Instruction</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
-<a name="l00026"></a>00026                         <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_instruction.html#e3894f3dfd5fbde200f94a90dfd64791">~Instruction</a>();
-<a name="l00027"></a>00027 
-<a name="l00028"></a>00028                         <span class="comment">//virtual function, base definition does nothing.</span>
-<a name="l00029"></a>00029                         <span class="comment">//should be implemented by any class inheriting from it.</span>
-<a name="l00030"></a>00030                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#bfbceb493d151b2e255c7c8cbac7a476">Interpret</a>(<span class="keywordtype">char</span>* buffer);
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032                         <span class="comment">//virtual function, base definition does nothing.</span>
-<a name="l00033"></a>00033                         <span class="comment">//will be used to Display data to the WireShark output</span>
-<a name="l00034"></a>00034                         <span class="keyword">virtual</span> <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction.html#a1d1dd6ff30235fd6842fcf4204f7698">Display</a>();
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036                         <span class="comment">//virtual function, no implementation in base class</span>
-<a name="l00037"></a>00037                         <span class="comment">//used in the InstructionList class.</span>
-<a name="l00038"></a>00038                         <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_instruction.html#709aac58cbdc516fcedc3bbcdd94795d">GetChild</a>();
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040                         <span class="comment">//virtual function, implementation does nothing.</span>
-<a name="l00041"></a>00041                         <span class="comment">//used in the InstructionList class.</span>
-<a name="l00042"></a>00042                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#9d74c7c3cb5e2d85e065b8633a3f395a">Add</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>*);
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044                         <span class="comment">//virtual function, no implementation in base class</span>
-<a name="l00045"></a>00045                         <span class="comment">//used in the InstructionList class.</span>
-<a name="l00046"></a>00046                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#74d0712f8c94ea4e32b3cb202d9bd06d">Remove</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>*);
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048                         <span class="comment">//virtual function, no implementation in base class</span>
-<a name="l00049"></a>00049                         <span class="comment">//used in the InstructionList class.</span>
-<a name="l00050"></a>00050             <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>* <a class="code" href="class_babel_shark_1_1_instruction.html#46ee71e94270716e917ad7293fee5aca">CreateIterator</a>();
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052             <span class="comment">//virtual function, no implementation in base class</span>
-<a name="l00053"></a><a class="code" href="class_babel_shark_1_1_instruction.html#4d24b597fc26a85423d9f9cf79dc9709">00053</a>             <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#4d24b597fc26a85423d9f9cf79dc9709">GetSizeInBytes</a>(){<span class="keywordflow">return</span> <a class="code" href="class_babel_shark_1_1_instruction.html#7cdc8ffade0294ee675c62d13cd01adb">_SizeInBytes</a>; }
-<a name="l00054"></a>00054 
-<a name="l00055"></a><a class="code" href="class_babel_shark_1_1_instruction.html#3ff4244bf92b6f03860be548b13a639e">00055</a>                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#3ff4244bf92b6f03860be548b13a639e">SetSize</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size){ <a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">_Size</a> = size;}
-<a name="l00056"></a><a class="code" href="class_babel_shark_1_1_instruction.html#40c2bee9e484dcce78222c275030f3eb">00056</a>                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#40c2bee9e484dcce78222c275030f3eb">SetName</a>(<span class="keywordtype">char</span>* name){ <a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">_Name</a> = name;}
-<a name="l00057"></a>00057 
-<a name="l00058"></a><a class="code" href="class_babel_shark_1_1_instruction.html#fe7f043dc99a5c72c8ac5e3ae23ab35a">00058</a>                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#fe7f043dc99a5c72c8ac5e3ae23ab35a">GetSize</a>() { <span class="keywordflow">return</span> <a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">_Size</a>;}
-<a name="l00059"></a><a class="code" href="class_babel_shark_1_1_instruction.html#681336e7e2ff12cfbe4a67ac657108da">00059</a>                         <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction.html#681336e7e2ff12cfbe4a67ac657108da">GetName</a>(){ <span class="keywordflow">return</span> (<span class="keywordtype">char</span>*)(<a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">_Name</a>.c_str());}
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061             <span class="comment">// For keeping track of subtrees</span>
-<a name="l00062"></a>00062             <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#da0c4af8c73c7aae8b8d3a32a09f11e4">NumSubtrees</a>();
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="keyword">namespace </span>BabelShark
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012     <span class="keyword">class </span>Iterator; <span class="comment">// forward declaration</span>
+<a name="l00013"></a>00013 
+<a name="l00032"></a><a class="code" href="class_babel_shark_1_1_instruction.html">00032</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>
+<a name="l00033"></a>00033         {
+<a name="l00034"></a>00034                 <span class="keyword">public</span>:
+<a name="l00035"></a>00035                         <a class="code" href="class_babel_shark_1_1_instruction.html#db56af133f39de0e46b4ff08b17de68d">Instruction</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
+<a name="l00036"></a>00036                         <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_instruction.html#e3894f3dfd5fbde200f94a90dfd64791">~Instruction</a>();
+<a name="l00037"></a>00037 
+<a name="l00047"></a>00047                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#bfbceb493d151b2e255c7c8cbac7a476">Interpret</a>(<span class="keywordtype">char</span>* buffer);
+<a name="l00048"></a>00048 
+<a name="l00054"></a>00054                         <span class="keyword">virtual</span> <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction.html#a1d1dd6ff30235fd6842fcf4204f7698">Display</a>();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00062"></a>00062                         <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_instruction.html#709aac58cbdc516fcedc3bbcdd94795d">GetChild</a>();
 <a name="l00063"></a>00063 
-<a name="l00064"></a>00064                 <span class="keyword">protected</span>:
-<a name="l00065"></a><a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">00065</a>                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">_Size</a>;
-<a name="l00066"></a><a class="code" href="class_babel_shark_1_1_instruction.html#7cdc8ffade0294ee675c62d13cd01adb">00066</a>                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#7cdc8ffade0294ee675c62d13cd01adb">_SizeInBytes</a>;
-<a name="l00067"></a><a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">00067</a>                         std::string <a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">_Name</a>;
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069                 <span class="keyword">private</span>:
-<a name="l00070"></a>00070         };
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074 <span class="preprocessor">#endif //INSTRUCTION_H</span>
+<a name="l00071"></a>00071                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#9d74c7c3cb5e2d85e065b8633a3f395a">Add</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>*);
+<a name="l00072"></a>00072 
+<a name="l00080"></a>00080                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#74d0712f8c94ea4e32b3cb202d9bd06d">Remove</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>*);
+<a name="l00081"></a>00081 
+<a name="l00090"></a>00090             <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>* <a class="code" href="class_babel_shark_1_1_instruction.html#46ee71e94270716e917ad7293fee5aca">CreateIterator</a>();
+<a name="l00091"></a>00091 
+<a name="l00097"></a><a class="code" href="class_babel_shark_1_1_instruction.html#4d24b597fc26a85423d9f9cf79dc9709">00097</a>             <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#4d24b597fc26a85423d9f9cf79dc9709">GetSizeInBytes</a>(){<span class="keywordflow">return</span> <a class="code" href="class_babel_shark_1_1_instruction.html#7cdc8ffade0294ee675c62d13cd01adb">_SizeInBytes</a>; }
+<a name="l00098"></a>00098 
+<a name="l00099"></a><a class="code" href="class_babel_shark_1_1_instruction.html#3ff4244bf92b6f03860be548b13a639e">00099</a>                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#3ff4244bf92b6f03860be548b13a639e">SetSize</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size){ <a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">_Size</a> = size;}
+<a name="l00100"></a><a class="code" href="class_babel_shark_1_1_instruction.html#40c2bee9e484dcce78222c275030f3eb">00100</a>                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction.html#40c2bee9e484dcce78222c275030f3eb">SetName</a>(<span class="keywordtype">char</span>* name){ <a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">_Name</a> = name;}
+<a name="l00101"></a>00101 
+<a name="l00102"></a><a class="code" href="class_babel_shark_1_1_instruction.html#fe7f043dc99a5c72c8ac5e3ae23ab35a">00102</a>                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#fe7f043dc99a5c72c8ac5e3ae23ab35a">GetSize</a>() { <span class="keywordflow">return</span> <a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">_Size</a>;}
+<a name="l00103"></a><a class="code" href="class_babel_shark_1_1_instruction.html#681336e7e2ff12cfbe4a67ac657108da">00103</a>                         <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction.html#681336e7e2ff12cfbe4a67ac657108da">GetName</a>(){ <span class="keywordflow">return</span> (<span class="keywordtype">char</span>*)(<a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">_Name</a>.c_str());}
+<a name="l00104"></a>00104 
+<a name="l00112"></a>00112             <span class="keyword">virtual</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#da0c4af8c73c7aae8b8d3a32a09f11e4">NumSubtrees</a>();
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114                 <span class="keyword">protected</span>:
+<a name="l00115"></a><a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">00115</a>                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#fc2e2c16ce0c0430c1afa0ea0a420117">_Size</a>;
+<a name="l00116"></a><a class="code" href="class_babel_shark_1_1_instruction.html#7cdc8ffade0294ee675c62d13cd01adb">00116</a>                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction.html#7cdc8ffade0294ee675c62d13cd01adb">_SizeInBytes</a>;
+<a name="l00117"></a><a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">00117</a>                         std::string <a class="code" href="class_babel_shark_1_1_instruction.html#5633af541e0014aa9797279b9ce387db">_Name</a>;
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119                 <span class="keyword">private</span>:
+<a name="l00120"></a>00120         };
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="preprocessor">#endif //INSTRUCTION_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:53:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:20:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

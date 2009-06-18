@@ -94,6 +94,7 @@ Class: <a class="el" href="class_babel_shark_1_1_instruction_set.html">Instructi
 <div class="memdoc">
 
 <p>
+Constructor Just calls parent constructor, nothing specific to this class<p>
 Constructor 
 </div>
 </div><p>
@@ -113,6 +114,7 @@ Constructor
 <div class="memdoc">
 
 <p>
+Destructor Empty desctructor class<p>
 Destructor 
 </div>
 </div><p>
@@ -134,7 +136,7 @@ Destructor
 <div class="memdoc">
 
 <p>
-Adds a child <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to the list. 
+Add Adds a child <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to the list. Standard add of the composite pattern 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#9d74c7c3cb5e2d85e065b8633a3f395a">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -155,7 +157,7 @@ Adds a child <a class="el" href="class_babel_shark_1_1_instruction.html">Instruc
 <div class="memdoc">
 
 <p>
-Creates an iterator used to traverse the direct children. 
+CreateIterator This is taking the part of the ConcreteList in the iterator pattern Although we haven't done append/remove we don't need to since our list is static when we are iterating over it 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#46ee71e94270716e917ad7293fee5aca">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -176,7 +178,7 @@ Creates an iterator used to traverse the direct children.
 <div class="memdoc">
 
 <p>
-will be used to Display data to the WireShark output 
+Display For the instruction set this just prints out the name of the set the printing out of the names/content of the children will be handled by the dissector calling the display function one at a time for each child 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#a1d1dd6ff30235fd6842fcf4204f7698">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -197,7 +199,8 @@ will be used to Display data to the WireShark output
 <div class="memdoc">
 
 <p>
-returns the first Child of the <a class="el" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a> list regardless of number of children present. 
+GetChild Returns the first Child of the <a class="el" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a> list regardless of number of children present. This was mainly for testing for the presence of children but is no longer used May be taken out at some point in the future<p>
+Does not match the standard pattern definition since we're using an iterator instead 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#709aac58cbdc516fcedc3bbcdd94795d">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -218,7 +221,7 @@ returns the first Child of the <a class="el" href="class_babel_shark_1_1_instruc
 <div class="memdoc">
 
 <p>
-
+GetIterator Returns the stl::iterator 
 </div>
 </div><p>
 <a class="anchor" name="5f11c971baf5eba34cc825a65ab51ba9"></a><!-- doxytag: member="BabelShark::InstructionSet::GetSizeInBytes" ref="5f11c971baf5eba34cc825a65ab51ba9" args="()" -->
@@ -237,7 +240,7 @@ returns the first Child of the <a class="el" href="class_babel_shark_1_1_instruc
 <div class="memdoc">
 
 <p>
-Returns the sum of calling GetSizeInBytes on all children Override the function defined in instruction 
+GetSizeInBytes Returns the sum of calling GetSizeInBytes on all children Override the function defined in instruction 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#4d24b597fc26a85423d9f9cf79dc9709">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -259,7 +262,7 @@ Returns the sum of calling GetSizeInBytes on all children Override the function 
 <div class="memdoc">
 
 <p>
-attempts to Interpret the buffer according to the children. 
+Interpret Currently an empty function since the dissector will just look directly at the children 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#bfbceb493d151b2e255c7c8cbac7a476">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -280,7 +283,7 @@ attempts to Interpret the buffer according to the children.
 <div class="memdoc">
 
 <p>
-Returns the sum of calling NumSubTrees on all children Override the [dummy] function defined in instruction 
+NumSubTrees Returns the sum of calling NumSubTrees on all children Override the [dummy] function defined in instruction 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#da0c4af8c73c7aae8b8d3a32a09f11e4">BabelShark::Instruction</a>.</p>
 
 </div>
@@ -319,7 +322,7 @@ Creates an stl::iterator used to traverse the direct children.
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_instruction_set_8h_source.html">InstructionSet.h</a><li>src/<a class="el" href="_instruction_set_8cpp.html">InstructionSet.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:54:00 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:00 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

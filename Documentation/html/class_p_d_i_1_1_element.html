@@ -75,7 +75,9 @@ Inheritance diagram for PDI::Element:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_element_imp.html">ElementImp</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_element.html#65ef3a3ba44e62b375a1a8fd786a85f0">m_pElementImp</a></td></tr>
 
 </table>
-<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+<a class="el" href="class_p_d_i_1_1_element.html">Element</a> is the base class for the element type classes. The <a class="el" href="class_p_d_i_1_1_element.html">Element</a> class and <a class="el" href="class_p_d_i_1_1_element_imp.html">ElementImp</a> class follow the Pimple Design Pattern. The majority of this class existed in the CAJUN JSON parser. However, it has been modified to suit our needs as explained below.<p>
+Each <a class="el" href="class_p_d_i_1_1_display_element.html">DisplayElement</a> has three components: Name, Type, Size. The interface for the SetName function (used to place the name into the member variable) and the Name function (used to obtain the value of the member variable) have been defined here. The actual member variable that holds the Name is not in the <a class="el" href="class_p_d_i_1_1_element.html">Element</a> class. It is in the <a class="el" href="class_p_d_i_1_1_element_imp___t.html">ElementImp_T</a> class. This was done because the <a class="el" href="class_p_d_i_1_1_element.html">Element</a> class did not need to know about the member variable. <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="8bff5e34dcb706745872315786d889fe"></a><!-- doxytag: member="PDI::Element::Element" ref="8bff5e34dcb706745872315786d889fe" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -330,7 +332,7 @@ Inheritance diagram for PDI::Element:</div>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>cajun/include/<a class="el" href="elements_8h_source.html">elements.h</a><li>cajun/src/<a class="el" href="elements_8cpp.html">elements.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:54:03 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:04 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

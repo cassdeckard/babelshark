@@ -33,7 +33,7 @@
 <a name="l00006"></a>00006 <span class="comment">Project Webpage: http://cajun-jsonapi.sourceforge.net/</span>
 <a name="l00007"></a>00007 <span class="comment"></span>
 <a name="l00008"></a>00008 <span class="comment">Original code parsed files in json format.</span>
-<a name="l00009"></a>00009 <span class="comment">Code now parses files in PDI format for a project for Washington University, </span>
+<a name="l00009"></a>00009 <span class="comment">Code now parses files in PDI format for a project for Washington University,</span>
 <a name="l00010"></a>00010 <span class="comment">course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.</span>
 <a name="l00011"></a>00011 <span class="comment"></span>
 <a name="l00012"></a>00012 <span class="comment">***********************************************/</span>
@@ -52,43 +52,43 @@
 <a name="l00025"></a>00025    {
 <a name="l00026"></a>00026       <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#c44d90358a728fb97c3d6a1fc7122389">Location</a>();
 <a name="l00027"></a>00027 
-<a name="l00028"></a><a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#1b8a831608aa150afbc0c497c889f820">00028</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#1b8a831608aa150afbc0c497c889f820">m_nLine</a>;       <span class="comment">// document line, zero-indexed</span>
-<a name="l00029"></a><a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#3b4e677a48b5d935168ba35a94475e77">00029</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#3b4e677a48b5d935168ba35a94475e77">m_nLineOffset</a>; <span class="comment">// character offset from beginning of line, zero indexed</span>
-<a name="l00030"></a><a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#5c2e66e60aa0683da75aeeccef81b549">00030</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#5c2e66e60aa0683da75aeeccef81b549">m_nDocOffset</a>;  <span class="comment">// character offset from entire document, zero indexed</span>
-<a name="l00031"></a>00031    };
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#f4bd913b90e3e0c8e7c0b38579a0f357">Read</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; elementRoot, std::istream&amp; istr);
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="keyword">private</span>:
-<a name="l00036"></a>00036    <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>;
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038    <span class="keyword">enum</span> <a class="code" href="class_p_d_i_1_1_reader.html#1763e50e90708afa61cd3b69979772e9">TokenType</a>;
-<a name="l00039"></a><a class="code" href="class_p_d_i_1_1_reader.html#88a0e974774de1fcf7366becc6bbfb8c">00039</a>    <span class="keyword">struct </span><a class="code" href="struct_p_d_i_1_1_reader_1_1_token.html">Token</a>;
-<a name="l00040"></a>00040    <span class="keyword">typedef</span> std::vector&lt;Token&gt; <a class="code" href="class_p_d_i_1_1_reader.html#88a0e974774de1fcf7366becc6bbfb8c">Tokens</a>;
-<a name="l00041"></a>00041    <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>;
+<a name="l00030"></a><a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#1b8a831608aa150afbc0c497c889f820">00030</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#1b8a831608aa150afbc0c497c889f820">m_nLine</a>;
+<a name="l00031"></a>00031 
+<a name="l00034"></a><a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#3b4e677a48b5d935168ba35a94475e77">00034</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#3b4e677a48b5d935168ba35a94475e77">m_nLineOffset</a>;
+<a name="l00035"></a>00035 
+<a name="l00038"></a><a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#5c2e66e60aa0683da75aeeccef81b549">00038</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_d_i_1_1_reader_1_1_location.html#5c2e66e60aa0683da75aeeccef81b549">m_nDocOffset</a>;
+<a name="l00039"></a>00039    };
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#f4bd913b90e3e0c8e7c0b38579a0f357">Read</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; elementRoot, std::istream&amp; istr);
 <a name="l00042"></a>00042 
-<a name="l00043"></a>00043    <span class="comment">// scanning istream into token sequence</span>
-<a name="l00044"></a>00044    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#a1e2f47c631d4197789e467250529121">Scan</a>(<a class="code" href="class_p_d_i_1_1_reader.html#88a0e974774de1fcf7366becc6bbfb8c">Tokens</a>&amp; tokens, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
+<a name="l00043"></a>00043 <span class="keyword">private</span>:
+<a name="l00044"></a>00044    <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>;
 <a name="l00045"></a>00045 
-<a name="l00046"></a>00046    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#8dc8b5022637351e596b35279659361a">EatWhiteSpace</a>(<a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
-<a name="l00047"></a>00047    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#e763f7bc34c185b8f6acd763ea59e591">MatchComment</a>(std::string&amp; sComment, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
-<a name="l00048"></a>00048    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#cf510e4c002230d954ecf7bfaaea09a5">MatchString</a>(std::string&amp; sValue, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
-<a name="l00049"></a>00049    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#41dd1971b7982e9e72f54e0901799cc6">MatchNumber</a>(std::string&amp; sNumber, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
-<a name="l00050"></a>00050    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#400522bbd255cda5aab873cc42465e17">MatchExpectedString</a>(<span class="keyword">const</span> std::string&amp; sExpected, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052    <span class="comment">// parsing token sequence into element structure</span>
-<a name="l00053"></a>00053    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
-<a name="l00054"></a>00054    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_array.html">Array</a>&amp; array, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
-<a name="l00055"></a>00055    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a>&amp; <span class="keywordtype">string</span>, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
-<a name="l00056"></a>00056    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_null.html">Null</a>&amp; null, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_reader.html#3229fee20b3fc15bd1031cbdf9b2a536">MatchExpectedToken</a>(<a class="code" href="class_p_d_i_1_1_reader.html#1763e50e90708afa61cd3b69979772e9">TokenType</a> nExpected, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
-<a name="l00059"></a>00059 };
+<a name="l00046"></a>00046    <span class="keyword">enum</span> <a class="code" href="class_p_d_i_1_1_reader.html#1763e50e90708afa61cd3b69979772e9">TokenType</a>;
+<a name="l00047"></a><a class="code" href="class_p_d_i_1_1_reader.html#88a0e974774de1fcf7366becc6bbfb8c">00047</a>    <span class="keyword">struct </span><a class="code" href="struct_p_d_i_1_1_reader_1_1_token.html">Token</a>;
+<a name="l00048"></a>00048    <span class="keyword">typedef</span> std::vector&lt;Token&gt; <a class="code" href="class_p_d_i_1_1_reader.html#88a0e974774de1fcf7366becc6bbfb8c">Tokens</a>;
+<a name="l00049"></a>00049    <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>;
+<a name="l00050"></a>00050 
+<a name="l00053"></a>00053    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#a1e2f47c631d4197789e467250529121">Scan</a>(<a class="code" href="class_p_d_i_1_1_reader.html#88a0e974774de1fcf7366becc6bbfb8c">Tokens</a>&amp; tokens, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#8dc8b5022637351e596b35279659361a">EatWhiteSpace</a>(<a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
+<a name="l00056"></a>00056    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#e763f7bc34c185b8f6acd763ea59e591">MatchComment</a>(std::string&amp; sComment, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
+<a name="l00057"></a>00057    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#cf510e4c002230d954ecf7bfaaea09a5">MatchString</a>(std::string&amp; sValue, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
+<a name="l00058"></a>00058    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#41dd1971b7982e9e72f54e0901799cc6">MatchNumber</a>(std::string&amp; sNumber, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
+<a name="l00059"></a>00059    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#400522bbd255cda5aab873cc42465e17">MatchExpectedString</a>(<span class="keyword">const</span> std::string&amp; sExpected, <a class="code" href="class_p_d_i_1_1_reader_1_1_input_stream.html">InputStream</a>&amp; inputStream);
 <a name="l00060"></a>00060 
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 } <span class="comment">// End namespace</span>
+<a name="l00063"></a>00063    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
+<a name="l00064"></a>00064    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_array.html">Array</a>&amp; array, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
+<a name="l00065"></a>00065    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a>&amp; <span class="keywordtype">string</span>, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
+<a name="l00066"></a>00066    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_reader.html#1cfb4e4362ba3b0fb0644244c590bd8a">Parse</a>(<a class="code" href="class_p_d_i_1_1_null.html">Null</a>&amp; null, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_reader.html#3229fee20b3fc15bd1031cbdf9b2a536">MatchExpectedToken</a>(<a class="code" href="class_p_d_i_1_1_reader.html#1763e50e90708afa61cd3b69979772e9">TokenType</a> nExpected, <a class="code" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a>&amp; tokenStream);
+<a name="l00069"></a>00069 };
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 } <span class="comment">// End namespace</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:53:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:20:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

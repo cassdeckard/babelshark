@@ -70,6 +70,10 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_element.html#01c033e3d23cf2ecc64807520ac706aa">_InterpretedData</a></td></tr>
 
 </table>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+<a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> is another abstract class derived from <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a>. In represents a primitive unit of packet data that <a class="el" href="class_babel_shark_1_1_dissector.html">Dissector</a> will interpret, and is a leaf in the <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> tree.<p>
+<b>Pattern roles:</b><ul>
+<li>Composite::Leaf</li><li>Iterator::ConcreteAggregate</li><li>Interpreter::TerminalExpression </li></ul>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="1eba7f61aa5a545d9a18c5f43260a183"></a><!-- doxytag: member="BabelShark::InstructionElement::InstructionElement" ref="1eba7f61aa5a545d9a18c5f43260a183" args="(unsigned int size, char *name)" -->
 <div class="memitem">
@@ -136,6 +140,11 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
+Creates and returns an iterator for this Instruction's children.<p>
+<b>Pattern roles:</b><ul>
+<li>Iterator::CreateIterator</li></ul>
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>an <a class="el" href="class_babel_shark_1_1_iterator.html">Iterator</a> pointing to this Instruction's first child </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#46ee71e94270716e917ad7293fee5aca">BabelShark::Instruction</a>.</p>
 
@@ -158,6 +167,13 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
+A utility function for subclasses whose size is in bits to convert that to bytes to implement the <a class="el" href="class_babel_shark_1_1_instruction.html#4d24b597fc26a85423d9f9cf79dc9709">GetSizeInBytes()</a> function.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bits</em>&nbsp;</td><td>number of bits </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>rounded up number of bytes </dd></dl>
 
 </div>
 </div><p>
@@ -177,6 +193,9 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
+Displays interpreted packet data.<p>
+<b>Pattern roles:</b><ul>
+<li>Composite::Operation </li></ul>
 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#a1d1dd6ff30235fd6842fcf4204f7698">BabelShark::Instruction</a>.</p>
 
@@ -200,6 +219,9 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
+Returns first child of this <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a>.<p>
+<b>Pattern roles:</b><ul>
+<li>Composite::GetChild </li></ul>
 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#709aac58cbdc516fcedc3bbcdd94795d">BabelShark::Instruction</a>.</p>
 
@@ -222,6 +244,15 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
+Interprets incoming packet data. Reads data from buffer and stores interpretation to later be displayed.<p>
+<b>Pattern roles:</b><ul>
+<li>Interpreter::Interpret</li></ul>
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buffer</em>&nbsp;</td><td>the packet data to interpret </td></tr>
+  </table>
+</dl>
 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#bfbceb493d151b2e255c7c8cbac7a476">BabelShark::Instruction</a>.</p>
 
@@ -245,6 +276,8 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
+Returns the total amount of subtree nodes that occur beneath this node. Will be used by <a class="el" href="class_babel_shark_1_1_dissector.html">Dissector</a> to allocate memory for keeping the expanded state (ett) of subtrees.<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>rounded up number of subtrees below this node </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#da0c4af8c73c7aae8b8d3a32a09f11e4">BabelShark::Instruction</a>.</p>
 
@@ -267,8 +300,13 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
-
-<p>Reimplemented in <a class="el" href="class_babel_shark_1_1_float_element.html#1ab7a1344c2489fddbf083cf6ece8473">BabelShark::FloatElement</a>.</p>
+A utility function used to create a bitmask for subtypes to use if they are looking at only a portion of a byte of data.<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>val</em>&nbsp;</td><td>number of bits to mask </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>bitmask to reveal <em>val</em> bytes </dd></dl>
 
 </div>
 </div><p>
@@ -285,13 +323,13 @@ Inheritance diagram for BabelShark::InstructionElement:</div>
 <div class="memdoc">
 
 <p>
-
+Holds the result of the last call to <a class="el" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">Interpret()</a> 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_instruction_element_8h_source.html">InstructionElement.h</a><li>src/<a class="el" href="_instruction_element_8cpp.html">InstructionElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:53:59 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:00 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
