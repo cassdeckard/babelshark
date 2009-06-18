@@ -6,7 +6,7 @@ Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 
 Original code parsed files in json format.
-Code now parses files in PDI format for a project for Washington University, 
+Code now parses files in PDI format for a project for Washington University,
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 File Name: Elements.h
@@ -39,21 +39,20 @@ enum ElementType
 ////////////////////////////////////////////////////////////////////////
 // base class - provides little useful in client code except constructor
 
-/**********************
-Class Name: Element
-Class Description: This class is the base class for the element type classes.
-The Element class and ElementImp class follow the Pimple Design Pattern.
-The majority of this class existed in the CAJUN JSON parser.  However, it has been
-modified to suit our needs as explained below.
-
-Each DisplayElement has three components: Name, Type, Size.
-The interface for the SetName function (used to place the name into the member variable) 
-and the Name function (used to obtain the value of the member variable) have been defined here.
-The actual member variable that holds the Name is not in the Element class.  It is in the
-ElementImp_T class.  This was done because the Element class did not need to know about the
-member variable.
-***********************/
 class ElementImp;
+
+/** Element is the base class for the element type classes.
+  * The Element class and ElementImp class follow the Pimple Design Pattern.
+  * The majority of this class existed in the CAJUN JSON parser.  However, it has been
+  * modified to suit our needs as explained below.
+  *
+  * Each DisplayElement has three components: Name, Type, Size.
+  * The interface for the SetName function (used to place the name into the member variable)
+  * and the Name function (used to obtain the value of the member variable) have been defined here.
+  * The actual member variable that holds the Name is not in the Element class.  It is in the
+  * ElementImp_T class.  This was done because the Element class did not need to know about the
+  * member variable.
+  */
 class Element
 {
 public:
@@ -63,7 +62,7 @@ public:
    ~Element();
 
    Element& operator= (const Element& element);
-   
+
    ElementType Type() const;
 
    // const & non-const visitor interfaces
@@ -85,15 +84,13 @@ private:
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// template base class for all "concrete" element types. employs "curiously 
-// recursive template pattern", also provides little interface used in client 
-// code 
+// template base class for all "concrete" element types. employs "curiously
+// recursive template pattern", also provides little interface used in client
+// code
 
-/**********************
-Class Name: Element_T
-Class Description: This class is a template class for the element type classes.
-This class existed in the CAJUN JSON parser and has not changed.
-***********************/
+/** Element_T is a template class for the element type classes.
+  * This class existed in the CAJUN JSON parser and has not changed.
+  */
 template <typename ElementImpTypeT>
 class Element_T : public Element
 {
@@ -111,27 +108,27 @@ protected:
 
 
 /////////////////////////////////////////////////////////////////////////////////
-// Array - mimics std::list<Element>, the array contents are 
+// Array - mimics std::list<Element>, the array contents are
 // effectively heterogeneous thanks to the Element base class
-/**********************
-Class Name: Array
-Class Description: The Array class defines the interface to the ArrayImp class.
-The Array class and ArrayImp class follow the Pimple Design Pattern.
-The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT.  However, it has been
-modified to suit our needs as explained below.
 
-The list is now a list of elements.  Previously, it was a list of member structs which contained both a
-name and an element.  The concept of the struct was removed because the name field was moved into the element.
-This Array class does not really hold items in the normal Array sense (in that you have item[0], item[1], etc.)
-Instead it contains an ordered list of elements.
-
-The concept of dimension was added to this class.  Our PDI format allows the user to specify a number after the
-closing bracket which specifies the dimension of the array.  Rather than storing extra elements in the array,
-it was more efficient just to store the dimension read in from the file.  When an InstructionSet is created
-from the Array element, the dimension will be passed into its constructor and it will appropriately handle 
-dealing with the buffer of bits being sniffed by Wireshark.
-***********************/
 class ArrayImp;
+
+/** The Array class defines the interface to the ArrayImp class.
+  * The Array class and ArrayImp class follow the Pimple Design Pattern.
+  * The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT.  However, it has been
+  * modified to suit our needs as explained below.
+  *
+  * The list is now a list of elements.  Previously, it was a list of member structs which contained both a
+  * name and an element.  The concept of the struct was removed because the name field was moved into the element.
+  * This Array class does not really hold items in the normal Array sense (in that you have item[0], item[1], etc.)
+  * Instead it contains an ordered list of elements.
+  *
+  * The concept of dimension was added to this class.  Our PDI format allows the user to specify a number after the
+  * closing bracket which specifies the dimension of the array.  Rather than storing extra elements in the array,
+  * it was more efficient just to store the dimension read in from the file.  When an InstructionSet is created
+  * from the Array element, the dimension will be passed into its constructor and it will appropriately handle
+  * dealing with the buffer of bits being sniffed by Wireshark.
+  */
 class Array : public Element_T<ArrayImp>
 {
 public:
@@ -165,19 +162,17 @@ public:
    void Clear();
 };
 
-
-/**********************
-Class Name: DisplayElement
-Class Description: The DisplayElement class defines the interface to the DisplayElementImp class.
-The DisplayElement class and DisplayElementImp class follow the Pimple Design Pattern.
-The majority of this class existed in the CAJUN JSON parser as the OBJECT_STRING.  However, it has been
-modified to suit our needs as explained below.
-
-The class has a very similar interface as before, however, the names of the class and the functions have
-been changed to be more clear about the new functionality of the class, to support DisplayElements which
-consist of a display type and size.
-***********************/
 class DisplayElementImp;
+
+/** The DisplayElement class defines the interface to the DisplayElementImp class.
+  * The DisplayElement class and DisplayElementImp class follow the Pimple Design Pattern.
+  * The majority of this class existed in the CAJUN JSON parser as the OBJECT_STRING.  However, it has been
+  * modified to suit our needs as explained below.
+  *
+  * The class has a very similar interface as before, however, the names of the class and the functions have
+  * been changed to be more clear about the new functionality of the class, to support DisplayElements which
+  * consist of a display type and size.
+  */
 class DisplayElement : public Element_T<DisplayElementImp>
 {
 public:
@@ -188,18 +183,15 @@ public:
    operator std::string&();
 };
 
-
-
-/**********************
-Class Name: Null
-Class Description: The Null class defines the interface to the NullImp class.
-The Null class and NullImp class follow the Pimple Design Pattern.
-This class existed in the CAJUN JSON parser.  It has not been modified.
-
-JSON supported Null elements.  However, our PDI language does not.  However, this class was
-retained so that it could be used as a default type prior to us knowing the element type.
-***********************/
 class NullImp;
+
+/** The Null class defines the interface to the NullImp class.
+  * The Null class and NullImp class follow the Pimple Design Pattern.
+  * This class existed in the CAJUN JSON parser.  It has not been modified.
+  *
+  * JSON supported Null elements.  However, our PDI language does not.  However, this class was
+  * retained so that it could be used as a default type prior to us knowing the element type.
+  */
 class Null : public Element_T<NullImp>
 {};
 
