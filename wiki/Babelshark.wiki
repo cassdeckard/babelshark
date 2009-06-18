@@ -1,8 +1,9 @@
-#summary A customizable packet dissector plugin for the [http://www.wireshark.org Wireshark] network protocol analyzer.
+#summary A customizable packet dissector plugin for the Wireshark network protocol analyzer.
 
 === Links ===
   * [http://www.4221klein.com/dokuwiki/doku.php?id=babel_shark_requirements Design Documentation Wiki]
   * [http://babelshark.googlecode.com/svn/trunk/Documentation/html/index.html Latest Doxygen documentation]
+  * [http://www.wireshark.org Wireshark homepage]
 
 === Edit ===
 ([http://code.google.com/p/babelshark/w/edit/Babelshark Edit this page])
