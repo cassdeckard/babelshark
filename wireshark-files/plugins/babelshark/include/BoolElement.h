@@ -8,34 +8,48 @@
 
 #define BIT_MASK_MAX_SIZE 64
 
-/*
-	Design Pattern Used: Composite
-	Class: BoolElement
-	Parent: InstructionElement
-	One of the Leaf(s) in the Composite Structure.
-	Processes Bool type elements
-*/
 
 
 
 namespace BabelShark
 {
+	/**
+		Design Pattern Used: Composite
+		Class: BoolElement
+		Parent: InstructionElement
+		One of the Leaf(s) in the Composite Structure.
+		Processes Bool type elements
+	*/
 	class BoolElement: public InstructionElement
 	{
 		public:
+
+			/** Constructor
+				calls parent constructor
+				then sets up the bit mask and size in bytes
+				*/
 			BoolElement(unsigned int size, char* name);
+
+			/** Destructor
+				Does nothing
+				*/
 			~BoolElement();
 
-			//used to read in data from packet
+			/** Interpret
+				Reads in data from packet
+				all 0's is treated as a false, anything else is true
+				*/
 			void Interpret(char* buffer);
 
-			//used to Display data to the WireShark output
+			/** Display
+				Prints out the name and the value (TRUE/FALSE)
+				*/
 			char* Display();
 
 			std::bitset<BIT_MASK_MAX_SIZE> GetBitMask(){ return _BitMask;}
 		private:
 
-            // members
+            /** members */
             std::bitset<BIT_MASK_MAX_SIZE> _BitMask;
 	};
 }
