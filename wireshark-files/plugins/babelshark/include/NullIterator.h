@@ -32,7 +32,7 @@ namespace BabelShark
 			/** CurrentItem
 				returns root node
 				*/
-			Instruction* CurrentItem() {return _rootNode}
+			Instruction* CurrentItem() {return NULL;}
 
 			/** Next
 				Does nothing since we can't advance

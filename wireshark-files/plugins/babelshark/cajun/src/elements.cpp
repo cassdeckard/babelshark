@@ -6,7 +6,7 @@ Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 
 Original code parsed files in json format.
-Code now parses files in PDI format for a project for Washington University, 
+Code now parses files in PDI format for a project for Washington University,
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 ***********************************************/
@@ -17,7 +17,7 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include <cassert>
 #include <algorithm>
 
-/*  
+/*
 
 TODO:
 * better documentation
@@ -30,6 +30,9 @@ namespace PDI
 //////////////////
 // Element members
 
+/** (See Element)
+  *
+  */
 class ElementImp
 {
 public:
@@ -54,20 +57,20 @@ Element::Element(const Element& element) :
 {}
 
 Element::~Element() {
-   delete m_pElementImp; 
+   delete m_pElementImp;
 }
 
 Element& Element::operator= (const Element& element) {
    delete m_pElementImp;
    m_pElementImp = element.ImpBase().Clone();
-   return *this; 
+   return *this;
 }
 
 ElementType Element::Type() const {
-   return ImpBase().Type(); 
+   return ImpBase().Type();
 }
 
-Element::Element(ElementImp* elementImp) : 
+Element::Element(ElementImp* elementImp) :
    m_pElementImp(elementImp)
 {}
 
@@ -79,9 +82,9 @@ void Element::Accept(Visitor& visitor) {
    ImpBase().Accept(*this, visitor);
 }
 
-ElementImp& Element::ImpBase() { 
+ElementImp& Element::ImpBase() {
    assert(m_pElementImp);
-   return *m_pElementImp; 
+   return *m_pElementImp;
 }
 
 const ElementImp& Element::ImpBase() const {
@@ -89,12 +92,12 @@ const ElementImp& Element::ImpBase() const {
    return *m_pElementImp;
 }
 
-void Element::SetName(const std::string& nameIn) { 
-   ImpBase().SetName(nameIn); 
+void Element::SetName(const std::string& nameIn) {
+   ImpBase().SetName(nameIn);
 }
 
-const std::string& Element::Name() const { 
-   return ImpBase().Name(); 
+const std::string& Element::Name() const {
+   return ImpBase().Name();
 }
 ////////////////////
 // Element_T members
@@ -123,7 +126,7 @@ public:
 
    // covariant return type does nothing for us here, and we can't do
    //  a real one anyway due to ElementTypeT not being defined yet
-   virtual ElementImp* Clone() const { 
+   virtual ElementImp* Clone() const {
       const RealImpTypeT* pRealImpType = static_cast<const RealImpTypeT*>(this);
       return new RealImpTypeT(*pRealImpType);
    }
@@ -153,6 +156,9 @@ ElementType Element_T<ElementImpTypeT>::Type_i() {
 //////////////////
 // Array members
 
+/** (See Array)
+  *
+  */
 class ArrayImp : public ElementImp_T<Array, ArrayImp, ARRAY_ELEMENT>
 {
 public:
@@ -189,7 +195,7 @@ public:
       return m_Members.erase(itWhere);
    }
 
-   Element& operator [](const std::string& name) { 
+   Element& operator [](const std::string& name) {
       Array::Members::iterator it = std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
       if (it == m_Members.end())
       {
@@ -229,15 +235,15 @@ private:
 Array::Array() {}
 
 Array::iterator Array::Begin() {
-   return Imp().Begin(); 
+   return Imp().Begin();
 }
 
 Array::iterator Array::End() {
-   return Imp().End(); 
+   return Imp().End();
 }
 
 Array::const_iterator Array::Begin() const {
-   return Imp().Begin(); 
+   return Imp().Begin();
 }
 
 Array::const_iterator Array::End() const {
@@ -245,19 +251,19 @@ Array::const_iterator Array::End() const {
 }
 
 size_t Array::Size() const {
-   return Imp().Size(); 
+   return Imp().Size();
 }
 
 bool Array::Empty() const {
-   return Imp().Empty(); 
+   return Imp().Empty();
 }
 
 size_t Array::Dimension() const {
-   return Imp().Dimension(); 
+   return Imp().Dimension();
 }
 
 void Array::SetDimension(size_t nDimension) {
-   Imp().SetDimension(nDimension); 
+   Imp().SetDimension(nDimension);
 }
 
 Array::iterator Array::Find(const std::string& name) {
@@ -277,11 +283,11 @@ Array::iterator Array::Insert(const Element& element, Array::iterator itWhere) {
 }
 
 Element& Array::operator [] (const std::string& name) {
-   return Imp()[name]; 
+   return Imp()[name];
 }
 
 const Element& Array::operator [] (const std::string& name) const {
-   return Imp()[name]; 
+   return Imp()[name];
 }
 
 void Array::Clear() {
@@ -291,20 +297,24 @@ void Array::Clear() {
 ///////////////
 // Null members
 
-
+/** (See Null)
+  *
+  */
 class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 {};
-
 
 
 ////////////////////////
 // DisplayElement members
 
+/** (See DisplayElement)
+  *
+  */
 class DisplayElementImp : public ElementImp_T<DisplayElement, DisplayElementImp, DISPLAY_ELEMENT>
 {
 public:
-   DisplayElementImp& operator = (const std::string& s) { 
-      m_sValue = s; 
+   DisplayElementImp& operator = (const std::string& s) {
+      m_sValue = s;
       m_iSizeToExtractFromBuffer = 1;
       return *this;
    }
@@ -314,11 +324,13 @@ public:
 
 private:
    std::string m_sValue;
-   unsigned int m_iSizeToExtractFromBuffer; // Size read in from the PDI file which will be used by instruction
-   // class in order to extract a field from the buffer read in by Wireshark.
-   // For some types this size will represent bits.  For others it may be bytes.
-   // To keep separation of logic for PDI instructions from the logic of the PDI parser, this code will just 
-   // pass the value along, and will not have different logic for bits versus bytes.
+   /** Size read in from the PDI file which will be used by instruction
+     * class in order to extract a field from the buffer read in by Wireshark.
+     * For some types this size will represent bits.  For others it may be bytes.
+     * To keep separation of logic for PDI instructions from the logic of the PDI parser, this code will just
+     * pass the value along, and will not have different logic for bits versus bytes.
+     */
+   unsigned int m_iSizeToExtractFromBuffer;
 };
 
 

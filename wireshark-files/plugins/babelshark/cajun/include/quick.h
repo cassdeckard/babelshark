@@ -6,35 +6,16 @@ Adapted from code written by: Terry Caton, tcaton(a)hotmail.com
 Project Webpage: http://cajun-jsonapi.sourceforge.net/
 
 Original code parsed files in json format.
-Code now parses files in PDI format for a project for Washington University, 
+Code now parses files in PDI format for a project for Washington University,
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 classes: QuickInterpreter
          QuickBuilder
 
-The classes in this file provide an alternative interface for very quickly 
-extracting or  compiling data into a JSON document structure. They are useful 
-when the structure of a document is rigid and well-known, which is often the 
-case. 
-
-QuickInterpreter allows quick, read-only access to an existing document 
-structure. For examples, given the document...
-
-{
-   "XYZ" : {
-         "ABC" : [ 1 ]
-   }
-}
-
-QuickInterpreter interpreter(elemRoot); // elemRoot containing above structure
-const Array& array = interpreter["XYZ"];
-const Array& array = interpreter["XYZ"]["ABC"];
-const Number& num = interpreter["XYZ"]["ABC"][0];
-
-QuickBuilder allows building the above structure with one line of code:
-
-QuickBuilder builder(elemRoot); // elemRoot being an empty Element
-builder["XYZ"][ABC][0] = Number(1);
+The classes in this file provide an alternative interface for very quickly
+extracting or  compiling data into a JSON document structure. They are useful
+when the structure of a document is rigid and well-known, which is often the
+case.
 
 ******************************************************************************/
 
@@ -46,7 +27,29 @@ builder["XYZ"][ABC][0] = Number(1);
 namespace PDI
 {
 
-
+/** QuickInterpreter allows quick, read-only access to an existing document
+  * structure. For examples, given the document...
+  *
+  * <pre>
+  * {
+  *    "XYZ" : {
+  *          "ABC" : [ 1 ]
+  *    }
+  * }
+  *
+  * QuickInterpreter interpreter(elemRoot); // elemRoot containing above structure
+  * const Array& array = interpreter["XYZ"];
+  * const Array& array = interpreter["XYZ"]["ABC"];
+  * const Number& num = interpreter["XYZ"]["ABC"][0];
+  * </pre>
+  *
+  * QuickBuilder allows building the above structure with one line of code:
+  *
+  * <pre>
+  * QuickBuilder builder(elemRoot); // elemRoot being an empty Element
+  * builder["XYZ"][ABC][0] = Number(1);
+  * </pre>
+  */
 class QuickInterpreter
 {
 public:
