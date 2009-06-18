@@ -83,7 +83,10 @@ Inheritance diagram for PDI::Array:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array.html#c0d7acf6d14997afb0f93b08db683d11">Clear</a> ()</td></tr>
 
 </table>
-<hr><h2>Member Typedef Documentation</h2>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+The <a class="el" href="class_p_d_i_1_1_array.html">Array</a> class defines the interface to the <a class="el" href="class_p_d_i_1_1_array_imp.html">ArrayImp</a> class. The <a class="el" href="class_p_d_i_1_1_array.html">Array</a> class and <a class="el" href="class_p_d_i_1_1_array_imp.html">ArrayImp</a> class follow the Pimple Design Pattern. The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT. However, it has been modified to suit our needs as explained below.<p>
+The list is now a list of elements. Previously, it was a list of member structs which contained both a name and an element. The concept of the struct was removed because the name field was moved into the element. This <a class="el" href="class_p_d_i_1_1_array.html">Array</a> class does not really hold items in the normal <a class="el" href="class_p_d_i_1_1_array.html">Array</a> sense (in that you have item[0], item[1], etc.) Instead it contains an ordered list of elements.<p>
+The concept of dimension was added to this class. Our <a class="el" href="namespace_p_d_i.html">PDI</a> format allows the user to specify a number after the closing bracket which specifies the dimension of the array. Rather than storing extra elements in the array, it was more efficient just to store the dimension read in from the file. When an InstructionSet is created from the <a class="el" href="class_p_d_i_1_1_array.html">Array</a> element, the dimension will be passed into its constructor and it will appropriately handle dealing with the buffer of bits being sniffed by Wireshark. <hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="3e4335ca32c34f7fd22e00e3aedc3e7f"></a><!-- doxytag: member="PDI::Array::const_iterator" ref="3e4335ca32c34f7fd22e00e3aedc3e7f" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -474,7 +477,7 @@ Inheritance diagram for PDI::Array:</div>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>cajun/include/<a class="el" href="elements_8h_source.html">elements.h</a><li>cajun/src/<a class="el" href="elements_8cpp.html">elements.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:54:04 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:05 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

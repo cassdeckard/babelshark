@@ -85,7 +85,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <div class="memdoc">
 
 <p>
-
+Constructor Calls parent then sets the member variable _List and initializes the stl::iterator for it 
 </div>
 </div><p>
 <a class="anchor" name="9d5877a0af0b57936dffcc2113e5eb16"></a><!-- doxytag: member="BabelShark::ListIterator::~ListIterator" ref="9d5877a0af0b57936dffcc2113e5eb16" args="()" -->
@@ -104,7 +104,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <div class="memdoc">
 
 <p>
-
+Destructor Empty, Does nothing 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -124,7 +124,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <div class="memdoc">
 
 <p>
-
+CurrentItem Returns the current item by dereferencing it since that's how the stl does it 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_iterator.html#47a9ff22fbd2dc6fdc935f22a7560ce1">BabelShark::Iterator</a>.</p>
 
 </div>
@@ -145,7 +145,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <div class="memdoc">
 
 <p>
-
+First Calls begin() on the stl::iterator to 'initialize' it 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_iterator.html#84ac6a7e539a944a6f67590c8e882001">BabelShark::Iterator</a>.</p>
 
 </div>
@@ -166,7 +166,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <div class="memdoc">
 
 <p>
-
+IsDone Checks if the address the pointer is pointing to is the same address occupied by the last element of the list (indicating we can't advance it any further and thus are done 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_iterator.html#85852cf1ca186d86b07336c100d9834d">BabelShark::Iterator</a>.</p>
 
 </div>
@@ -187,7 +187,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <div class="memdoc">
 
 <p>
-
+Next 'Increments' the counter which is the stl way of advancing to the next element in the list 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_iterator.html#5fb7aa35b296dfa34aa1203b6500f2e5">BabelShark::Iterator</a>.</p>
 
 </div>
@@ -226,7 +226,7 @@ Inheritance diagram for BabelShark::ListIterator:</div>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_list_iterator_8h_source.html">ListIterator.h</a><li>src/<a class="el" href="_list_iterator_8cpp.html">ListIterator.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:54:01 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:02 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

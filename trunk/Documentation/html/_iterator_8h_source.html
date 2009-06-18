@@ -35,30 +35,31 @@
 <a name="l00008"></a>00008 <span class="keyword">namespace </span>BabelShark
 <a name="l00009"></a>00009 {
 <a name="l00010"></a>00010     <span class="keyword">class </span>Instruction; <span class="comment">// forward declaration</span>
-<a name="l00011"></a><a class="code" href="class_babel_shark_1_1_iterator.html">00011</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>
-<a name="l00012"></a>00012         {
-<a name="l00013"></a>00013                 <span class="keyword">public</span>:
-<a name="l00014"></a>00014                         <a class="code" href="class_babel_shark_1_1_iterator.html#b30acda521d46ac44cb848cf1726382b">Iterator</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* root);
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016                         <a class="code" href="class_babel_shark_1_1_iterator.html#a3b5d3ba327b40b256450dc56c12e09e">~Iterator</a>();
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_iterator.html#84ac6a7e539a944a6f67590c8e882001">First</a>();
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020             <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_iterator.html#47a9ff22fbd2dc6fdc935f22a7560ce1">CurrentItem</a>();
+<a name="l00018"></a><a class="code" href="class_babel_shark_1_1_iterator.html">00018</a> <span class="comment"></span>        <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>
+<a name="l00019"></a>00019         {
+<a name="l00020"></a>00020                 <span class="keyword">public</span>:
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022             <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_iterator.html#5fb7aa35b296dfa34aa1203b6500f2e5">Next</a>();
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024             <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_babel_shark_1_1_iterator.html#85852cf1ca186d86b07336c100d9834d">IsDone</a>();
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026                 <span class="keyword">protected</span>:
-<a name="l00027"></a><a class="code" href="class_babel_shark_1_1_iterator.html#383dec0e585b2a6dfe787c8cd5ba384a">00027</a>                         <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_iterator.html#383dec0e585b2a6dfe787c8cd5ba384a">_rootNode</a>;
-<a name="l00028"></a>00028                 <span class="keyword">private</span>:
-<a name="l00029"></a>00029         };
-<a name="l00030"></a>00030 }
+<a name="l00025"></a>00025                         <a class="code" href="class_babel_shark_1_1_iterator.html#b30acda521d46ac44cb848cf1726382b">Iterator</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* root);
+<a name="l00026"></a>00026 
+<a name="l00030"></a>00030                         <a class="code" href="class_babel_shark_1_1_iterator.html#a3b5d3ba327b40b256450dc56c12e09e">~Iterator</a>();
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="preprocessor">#endif</span>
+<a name="l00035"></a>00035                         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_iterator.html#84ac6a7e539a944a6f67590c8e882001">First</a>();
+<a name="l00036"></a>00036 
+<a name="l00040"></a>00040             <span class="keyword">virtual</span> <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_iterator.html#47a9ff22fbd2dc6fdc935f22a7560ce1">CurrentItem</a>();
+<a name="l00041"></a>00041 
+<a name="l00045"></a>00045             <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_iterator.html#5fb7aa35b296dfa34aa1203b6500f2e5">Next</a>();
+<a name="l00046"></a>00046 
+<a name="l00050"></a>00050             <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_babel_shark_1_1_iterator.html#85852cf1ca186d86b07336c100d9834d">IsDone</a>();
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052                 <span class="keyword">protected</span>:
+<a name="l00054"></a><a class="code" href="class_babel_shark_1_1_iterator.html#383dec0e585b2a6dfe787c8cd5ba384a">00054</a>                         <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_iterator.html#383dec0e585b2a6dfe787c8cd5ba384a">_rootNode</a>;
+<a name="l00055"></a>00055                 <span class="keyword">private</span>:
+<a name="l00056"></a>00056         };
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:53:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:20:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

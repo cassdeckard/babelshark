@@ -33,7 +33,7 @@
 <a name="l00006"></a>00006 <span class="comment">Project Webpage: http://cajun-jsonapi.sourceforge.net/</span>
 <a name="l00007"></a>00007 <span class="comment"></span>
 <a name="l00008"></a>00008 <span class="comment">Original code parsed files in json format.</span>
-<a name="l00009"></a>00009 <span class="comment">Code now parses files in PDI format for a project for Washington University, </span>
+<a name="l00009"></a>00009 <span class="comment">Code now parses files in PDI format for a project for Washington University,</span>
 <a name="l00010"></a>00010 <span class="comment">course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.</span>
 <a name="l00011"></a>00011 <span class="comment"></span>
 <a name="l00012"></a>00012 <span class="comment">File Name: Elements.h</span>
@@ -65,174 +65,119 @@
 <a name="l00038"></a>00038 
 <a name="l00040"></a>00040 <span class="comment">// base class - provides little useful in client code except constructor</span>
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="comment">/**********************</span>
-<a name="l00043"></a>00043 <span class="comment">Class Name: Element</span>
-<a name="l00044"></a>00044 <span class="comment">Class Description: This class is the base class for the element type classes.</span>
-<a name="l00045"></a>00045 <span class="comment">The Element class and ElementImp class follow the Pimple Design Pattern.</span>
-<a name="l00046"></a>00046 <span class="comment">The majority of this class existed in the CAJUN JSON parser.  However, it has been</span>
-<a name="l00047"></a>00047 <span class="comment">modified to suit our needs as explained below.</span>
-<a name="l00048"></a>00048 <span class="comment"></span>
-<a name="l00049"></a>00049 <span class="comment">Each DisplayElement has three components: Name, Type, Size.</span>
-<a name="l00050"></a>00050 <span class="comment">The interface for the SetName function (used to place the name into the member variable) </span>
-<a name="l00051"></a>00051 <span class="comment">and the Name function (used to obtain the value of the member variable) have been defined here.</span>
-<a name="l00052"></a>00052 <span class="comment">The actual member variable that holds the Name is not in the Element class.  It is in the</span>
-<a name="l00053"></a>00053 <span class="comment">ElementImp_T class.  This was done because the Element class did not need to know about the</span>
-<a name="l00054"></a>00054 <span class="comment">member variable.</span>
-<a name="l00055"></a>00055 <span class="comment">***********************/</span>
-<a name="l00056"></a>00056 <span class="keyword">class </span>ElementImp;
-<a name="l00057"></a><a class="code" href="class_p_d_i_1_1_element.html">00057</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element.html">Element</a>
-<a name="l00058"></a>00058 {
-<a name="l00059"></a>00059 <span class="keyword">public</span>:
-<a name="l00060"></a>00060    <span class="comment">// note: nothing virtual in here! and only one (1) pointer member</span>
-<a name="l00061"></a>00061    <a class="code" href="class_p_d_i_1_1_element.html#8bff5e34dcb706745872315786d889fe">Element</a>();
-<a name="l00062"></a>00062    <a class="code" href="class_p_d_i_1_1_element.html#8bff5e34dcb706745872315786d889fe">Element</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
-<a name="l00063"></a>00063    <a class="code" href="class_p_d_i_1_1_element.html#5135cae2be5dda47271fd004bc4a1b4e">~Element</a>();
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065    <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; <a class="code" href="class_p_d_i_1_1_element.html#f549e116d18ba2209ea4e9a8b06b5452">operator= </a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
-<a name="l00066"></a>00066    
-<a name="l00067"></a>00067    <a class="code" href="namespace_p_d_i.html#bbd28c6f8905ff6834d6f84ba4363e5e">ElementType</a> <a class="code" href="class_p_d_i_1_1_element.html#e5a82dd1ebdd0e3c70f4cf690576984b">Type</a>() <span class="keyword">const</span>;
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069    <span class="comment">// const &amp; non-const visitor interfaces</span>
-<a name="l00070"></a>00070    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_element.html#122df676eacaec79f3ca3f9223dfa576">Accept</a>(<a class="code" href="class_p_d_i_1_1_visitor.html">Visitor</a>&amp; visitor);
-<a name="l00071"></a>00071    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_element.html#122df676eacaec79f3ca3f9223dfa576">Accept</a>(<a class="code" href="class_p_d_i_1_1_const_visitor.html">ConstVisitor</a>&amp; visitor) <span class="keyword">const</span>;
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_element.html#dc2054db4dede7a74eee4ec5e981b159">SetName</a>(<span class="keyword">const</span> std::string&amp; nameIn);
-<a name="l00074"></a>00074    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_element.html#8d0e2eca3eea1084ea2fe4dce22ee3c8">Name</a>() <span class="keyword">const</span>;
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <span class="keyword">protected</span>:
-<a name="l00077"></a>00077    <a class="code" href="class_p_d_i_1_1_element.html#8bff5e34dcb706745872315786d889fe">Element</a>(<a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>* elementImp);
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079    <a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>&amp; <a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>();
-<a name="l00080"></a>00080    <span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>&amp; <a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>() <span class="keyword">const</span>;
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="keyword">private</span>:
-<a name="l00083"></a><a class="code" href="class_p_d_i_1_1_element.html#65ef3a3ba44e62b375a1a8fd786a85f0">00083</a>    <a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>* <a class="code" href="class_p_d_i_1_1_element.html#65ef3a3ba44e62b375a1a8fd786a85f0">m_pElementImp</a>;
-<a name="l00084"></a>00084 };
+<a name="l00042"></a>00042 <span class="keyword">class </span>ElementImp;
+<a name="l00043"></a>00043 
+<a name="l00056"></a><a class="code" href="class_p_d_i_1_1_element.html">00056</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element.html">Element</a>
+<a name="l00057"></a>00057 {
+<a name="l00058"></a>00058 <span class="keyword">public</span>:
+<a name="l00059"></a>00059    <span class="comment">// note: nothing virtual in here! and only one (1) pointer member</span>
+<a name="l00060"></a>00060    <a class="code" href="class_p_d_i_1_1_element.html#8bff5e34dcb706745872315786d889fe">Element</a>();
+<a name="l00061"></a>00061    <a class="code" href="class_p_d_i_1_1_element.html#8bff5e34dcb706745872315786d889fe">Element</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
+<a name="l00062"></a>00062    <a class="code" href="class_p_d_i_1_1_element.html#5135cae2be5dda47271fd004bc4a1b4e">~Element</a>();
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064    <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; <a class="code" href="class_p_d_i_1_1_element.html#f549e116d18ba2209ea4e9a8b06b5452">operator= </a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066    <a class="code" href="namespace_p_d_i.html#bbd28c6f8905ff6834d6f84ba4363e5e">ElementType</a> <a class="code" href="class_p_d_i_1_1_element.html#e5a82dd1ebdd0e3c70f4cf690576984b">Type</a>() <span class="keyword">const</span>;
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068    <span class="comment">// const &amp; non-const visitor interfaces</span>
+<a name="l00069"></a>00069    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_element.html#122df676eacaec79f3ca3f9223dfa576">Accept</a>(<a class="code" href="class_p_d_i_1_1_visitor.html">Visitor</a>&amp; visitor);
+<a name="l00070"></a>00070    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_element.html#122df676eacaec79f3ca3f9223dfa576">Accept</a>(<a class="code" href="class_p_d_i_1_1_const_visitor.html">ConstVisitor</a>&amp; visitor) <span class="keyword">const</span>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_element.html#dc2054db4dede7a74eee4ec5e981b159">SetName</a>(<span class="keyword">const</span> std::string&amp; nameIn);
+<a name="l00073"></a>00073    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_element.html#8d0e2eca3eea1084ea2fe4dce22ee3c8">Name</a>() <span class="keyword">const</span>;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="keyword">protected</span>:
+<a name="l00076"></a>00076    <a class="code" href="class_p_d_i_1_1_element.html#8bff5e34dcb706745872315786d889fe">Element</a>(<a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>* elementImp);
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078    <a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>&amp; <a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>();
+<a name="l00079"></a>00079    <span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>&amp; <a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>() <span class="keyword">const</span>;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="keyword">private</span>:
+<a name="l00082"></a><a class="code" href="class_p_d_i_1_1_element.html#65ef3a3ba44e62b375a1a8fd786a85f0">00082</a>    <a class="code" href="class_p_d_i_1_1_element_imp.html">ElementImp</a>* <a class="code" href="class_p_d_i_1_1_element.html#65ef3a3ba44e62b375a1a8fd786a85f0">m_pElementImp</a>;
+<a name="l00083"></a>00083 };
+<a name="l00084"></a>00084 
 <a name="l00085"></a>00085 
-<a name="l00086"></a>00086 
-<a name="l00088"></a>00088 <span class="comment">// template base class for all "concrete" element types. employs "curiously </span>
-<a name="l00089"></a>00089 <span class="comment">// recursive template pattern", also provides little interface used in client </span>
-<a name="l00090"></a>00090 <span class="comment">// code </span>
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 <span class="comment">/**********************</span>
-<a name="l00093"></a>00093 <span class="comment">Class Name: Element_T</span>
-<a name="l00094"></a>00094 <span class="comment">Class Description: This class is a template class for the element type classes.</span>
-<a name="l00095"></a>00095 <span class="comment">This class existed in the CAJUN JSON parser and has not changed.</span>
-<a name="l00096"></a>00096 <span class="comment">***********************/</span>
-<a name="l00097"></a>00097 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementImpTypeT&gt;
-<a name="l00098"></a><a class="code" href="class_p_d_i_1_1_element___t.html">00098</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>
-<a name="l00099"></a>00099 {
-<a name="l00100"></a>00100 <span class="keyword">public</span>:
-<a name="l00101"></a>00101    <span class="keyword">static</span> <a class="code" href="namespace_p_d_i.html#bbd28c6f8905ff6834d6f84ba4363e5e">ElementType</a> <a class="code" href="class_p_d_i_1_1_element___t.html#b26e3df50adb5f550ef5fe5ea90e5cdd">Type_i</a>();
+<a name="l00087"></a>00087 <span class="comment">// template base class for all "concrete" element types. employs "curiously</span>
+<a name="l00088"></a>00088 <span class="comment">// recursive template pattern", also provides little interface used in client</span>
+<a name="l00089"></a>00089 <span class="comment">// code</span>
+<a name="l00090"></a>00090 
+<a name="l00094"></a>00094 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementImpTypeT&gt;
+<a name="l00095"></a><a class="code" href="class_p_d_i_1_1_element___t.html">00095</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097 <span class="keyword">public</span>:
+<a name="l00098"></a>00098    <span class="keyword">static</span> <a class="code" href="namespace_p_d_i.html#bbd28c6f8905ff6834d6f84ba4363e5e">ElementType</a> <a class="code" href="class_p_d_i_1_1_element___t.html#b26e3df50adb5f550ef5fe5ea90e5cdd">Type_i</a>();
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="keyword">protected</span>:
+<a name="l00101"></a>00101    <a class="code" href="class_p_d_i_1_1_element___t.html#7796396b8a0e0d5574aa400fbfe59b09">Element_T</a>();
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="keyword">protected</span>:
-<a name="l00104"></a>00104    <a class="code" href="class_p_d_i_1_1_element___t.html#7796396b8a0e0d5574aa400fbfe59b09">Element_T</a>();
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106    <span class="comment">//  return type is covariant with ImpBase(), but compiler doesn't know it (can't forward-declare inheritance)</span>
-<a name="l00107"></a><a class="code" href="class_p_d_i_1_1_element___t.html#f4ad2ab4d78c0b363b46d6175efefe83">00107</a>    ElementImpTypeT&amp; <a class="code" href="class_p_d_i_1_1_element___t.html#f4ad2ab4d78c0b363b46d6175efefe83">Imp</a>() { <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>ElementImpTypeT&amp;<span class="keyword">&gt;</span>(<a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>()); }
-<a name="l00108"></a><a class="code" href="class_p_d_i_1_1_element___t.html#ab103fde8c88e45b9734418e6af3c9c0">00108</a>    <span class="keyword">const</span> ElementImpTypeT&amp; <a class="code" href="class_p_d_i_1_1_element___t.html#ab103fde8c88e45b9734418e6af3c9c0">Imp</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ElementImpTypeT&amp;<span class="keyword">&gt;</span>(<a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>()); }
-<a name="l00109"></a>00109 };
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112 
-<a name="l00114"></a>00114 <span class="comment">// Array - mimics std::list&lt;Element&gt;, the array contents are </span>
-<a name="l00115"></a>00115 <span class="comment">// effectively heterogeneous thanks to the Element base class</span>
-<a name="l00116"></a>00116 <span class="comment">/**********************</span>
-<a name="l00117"></a>00117 <span class="comment">Class Name: Array</span>
-<a name="l00118"></a>00118 <span class="comment">Class Description: The Array class defines the interface to the ArrayImp class.</span>
-<a name="l00119"></a>00119 <span class="comment">The Array class and ArrayImp class follow the Pimple Design Pattern.</span>
-<a name="l00120"></a>00120 <span class="comment">The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT.  However, it has been</span>
-<a name="l00121"></a>00121 <span class="comment">modified to suit our needs as explained below.</span>
-<a name="l00122"></a>00122 <span class="comment"></span>
-<a name="l00123"></a>00123 <span class="comment">The list is now a list of elements.  Previously, it was a list of member structs which contained both a</span>
-<a name="l00124"></a>00124 <span class="comment">name and an element.  The concept of the struct was removed because the name field was moved into the element.</span>
-<a name="l00125"></a>00125 <span class="comment">This Array class does not really hold items in the normal Array sense (in that you have item[0], item[1], etc.)</span>
-<a name="l00126"></a>00126 <span class="comment">Instead it contains an ordered list of elements.</span>
-<a name="l00127"></a>00127 <span class="comment"></span>
-<a name="l00128"></a>00128 <span class="comment">The concept of dimension was added to this class.  Our PDI format allows the user to specify a number after the</span>
-<a name="l00129"></a>00129 <span class="comment">closing bracket which specifies the dimension of the array.  Rather than storing extra elements in the array,</span>
-<a name="l00130"></a>00130 <span class="comment">it was more efficient just to store the dimension read in from the file.  When an InstructionSet is created</span>
-<a name="l00131"></a>00131 <span class="comment">from the Array element, the dimension will be passed into its constructor and it will appropriately handle </span>
-<a name="l00132"></a>00132 <span class="comment">dealing with the buffer of bits being sniffed by Wireshark.</span>
-<a name="l00133"></a>00133 <span class="comment">***********************/</span>
-<a name="l00134"></a>00134 <span class="keyword">class </span>ArrayImp;
-<a name="l00135"></a><a class="code" href="class_p_d_i_1_1_array.html">00135</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_array.html">Array</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;ArrayImp&gt;
-<a name="l00136"></a>00136 {
-<a name="l00137"></a>00137 <span class="keyword">public</span>:
-<a name="l00138"></a><a class="code" href="class_p_d_i_1_1_array.html#033a904ed48718f6531f260830e2ed3e">00138</a>    <span class="keyword">typedef</span> std::list&lt;Element&gt; <a class="code" href="class_p_d_i_1_1_array.html#033a904ed48718f6531f260830e2ed3e">Members</a>; <span class="comment">// map faster, but does not preserve order</span>
-<a name="l00139"></a><a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">00139</a>    <span class="keyword">typedef</span> Members::iterator <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a>;
-<a name="l00140"></a><a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">00140</a>    <span class="keyword">typedef</span> Members::const_iterator <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a>;
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142    <a class="code" href="class_p_d_i_1_1_array.html#33df64c314416b547065804689da7f74">Array</a>(); <span class="comment">// necessary, or we get linker errors... ?</span>
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#f110c3266836cccdf9b6d52131386d07">Begin</a>();
-<a name="l00145"></a>00145    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#a1300755f06a94db2df66b3fb45c93a4">End</a>();
-<a name="l00146"></a>00146    <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#f110c3266836cccdf9b6d52131386d07">Begin</a>() <span class="keyword">const</span>;
-<a name="l00147"></a>00147    <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#a1300755f06a94db2df66b3fb45c93a4">End</a>() <span class="keyword">const</span>;
+<a name="l00103"></a>00103    <span class="comment">//  return type is covariant with ImpBase(), but compiler doesn't know it (can't forward-declare inheritance)</span>
+<a name="l00104"></a><a class="code" href="class_p_d_i_1_1_element___t.html#f4ad2ab4d78c0b363b46d6175efefe83">00104</a>    ElementImpTypeT&amp; <a class="code" href="class_p_d_i_1_1_element___t.html#f4ad2ab4d78c0b363b46d6175efefe83">Imp</a>() { <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>ElementImpTypeT&amp;<span class="keyword">&gt;</span>(<a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>()); }
+<a name="l00105"></a><a class="code" href="class_p_d_i_1_1_element___t.html#ab103fde8c88e45b9734418e6af3c9c0">00105</a>    <span class="keyword">const</span> ElementImpTypeT&amp; <a class="code" href="class_p_d_i_1_1_element___t.html#ab103fde8c88e45b9734418e6af3c9c0">Imp</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ElementImpTypeT&amp;<span class="keyword">&gt;</span>(<a class="code" href="class_p_d_i_1_1_element.html#c4724e42d490ba55df98452fb73b2866">ImpBase</a>()); }
+<a name="l00106"></a>00106 };
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00111"></a>00111 <span class="comment">// Array - mimics std::list&lt;Element&gt;, the array contents are</span>
+<a name="l00112"></a>00112 <span class="comment">// effectively heterogeneous thanks to the Element base class</span>
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 <span class="keyword">class </span>ArrayImp;
+<a name="l00115"></a>00115 
+<a name="l00132"></a><a class="code" href="class_p_d_i_1_1_array.html">00132</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_array.html">Array</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;ArrayImp&gt;
+<a name="l00133"></a>00133 {
+<a name="l00134"></a>00134 <span class="keyword">public</span>:
+<a name="l00135"></a><a class="code" href="class_p_d_i_1_1_array.html#033a904ed48718f6531f260830e2ed3e">00135</a>    <span class="keyword">typedef</span> std::list&lt;Element&gt; <a class="code" href="class_p_d_i_1_1_array.html#033a904ed48718f6531f260830e2ed3e">Members</a>; <span class="comment">// map faster, but does not preserve order</span>
+<a name="l00136"></a><a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">00136</a>    <span class="keyword">typedef</span> Members::iterator <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a>;
+<a name="l00137"></a><a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">00137</a>    <span class="keyword">typedef</span> Members::const_iterator <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a>;
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139    <a class="code" href="class_p_d_i_1_1_array.html#33df64c314416b547065804689da7f74">Array</a>(); <span class="comment">// necessary, or we get linker errors... ?</span>
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#f110c3266836cccdf9b6d52131386d07">Begin</a>();
+<a name="l00142"></a>00142    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#a1300755f06a94db2df66b3fb45c93a4">End</a>();
+<a name="l00143"></a>00143    <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#f110c3266836cccdf9b6d52131386d07">Begin</a>() <span class="keyword">const</span>;
+<a name="l00144"></a>00144    <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#a1300755f06a94db2df66b3fb45c93a4">End</a>() <span class="keyword">const</span>;
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146    <span class="keywordtype">size_t</span> <a class="code" href="class_p_d_i_1_1_array.html#27eaf51b3986777c67ed6832ebfc47f6">Size</a>() <span class="keyword">const</span>;  <span class="comment">// This is the number of elements in the array.</span>
+<a name="l00147"></a>00147    <span class="keywordtype">bool</span> <a class="code" href="class_p_d_i_1_1_array.html#714f51d4a977b0c1d361c212cd1b2618">Empty</a>() <span class="keyword">const</span>;
 <a name="l00148"></a>00148 
-<a name="l00149"></a>00149    <span class="keywordtype">size_t</span> <a class="code" href="class_p_d_i_1_1_array.html#27eaf51b3986777c67ed6832ebfc47f6">Size</a>() <span class="keyword">const</span>;  <span class="comment">// This is the number of elements in the array.</span>
-<a name="l00150"></a>00150    <span class="keywordtype">bool</span> <a class="code" href="class_p_d_i_1_1_array.html#714f51d4a977b0c1d361c212cd1b2618">Empty</a>() <span class="keyword">const</span>;
+<a name="l00149"></a>00149    <span class="keywordtype">size_t</span> <a class="code" href="class_p_d_i_1_1_array.html#d17e03ace992a6d0e57bab451fd0dda6">Dimension</a>() <span class="keyword">const</span>;  <span class="comment">// This is the dimension read in from the file.</span>
+<a name="l00150"></a>00150    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_array.html#19bc4e564ec03997f2ae3efad54b0c27">SetDimension</a>(<span class="keywordtype">size_t</span> nDimension);
 <a name="l00151"></a>00151 
-<a name="l00152"></a>00152    <span class="keywordtype">size_t</span> <a class="code" href="class_p_d_i_1_1_array.html#d17e03ace992a6d0e57bab451fd0dda6">Dimension</a>() <span class="keyword">const</span>;  <span class="comment">// This is the dimension read in from the file.</span>
-<a name="l00153"></a>00153    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_array.html#19bc4e564ec03997f2ae3efad54b0c27">SetDimension</a>(<span class="keywordtype">size_t</span> nDimension);
+<a name="l00152"></a>00152    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#fac74ad3ceaa61f117762932643f4fce">Find</a>(<span class="keyword">const</span> std::string&amp; name);
+<a name="l00153"></a>00153    <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#fac74ad3ceaa61f117762932643f4fce">Find</a>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
 <a name="l00154"></a>00154 
-<a name="l00155"></a>00155    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#fac74ad3ceaa61f117762932643f4fce">Find</a>(<span class="keyword">const</span> std::string&amp; name);
-<a name="l00156"></a>00156    <a class="code" href="class_p_d_i_1_1_array.html#3e4335ca32c34f7fd22e00e3aedc3e7f">const_iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#fac74ad3ceaa61f117762932643f4fce">Find</a>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
-<a name="l00157"></a>00157 
-<a name="l00158"></a>00158    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#2b6d1df5bfbd6fcc9d9e07e7b9ec9b7a">Insert</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
-<a name="l00159"></a>00159    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#2b6d1df5bfbd6fcc9d9e07e7b9ec9b7a">Insert</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element, <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> itWhere);
-<a name="l00160"></a>00160    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#131c705ff2cf178d505e62c1f8801b67">Erase</a>(<a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> itWhere);
+<a name="l00155"></a>00155    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#2b6d1df5bfbd6fcc9d9e07e7b9ec9b7a">Insert</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
+<a name="l00156"></a>00156    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#2b6d1df5bfbd6fcc9d9e07e7b9ec9b7a">Insert</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element, <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> itWhere);
+<a name="l00157"></a>00157    <a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> <a class="code" href="class_p_d_i_1_1_array.html#131c705ff2cf178d505e62c1f8801b67">Erase</a>(<a class="code" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">iterator</a> itWhere);
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159    <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; <a class="code" href="class_p_d_i_1_1_array.html#1d3f248c3f8ec6e42e9633bafad51797">operator [] </a>(<span class="keyword">const</span> std::string&amp; name);
+<a name="l00160"></a>00160    <span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; <a class="code" href="class_p_d_i_1_1_array.html#1d3f248c3f8ec6e42e9633bafad51797">operator [] </a>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
 <a name="l00161"></a>00161 
-<a name="l00162"></a>00162    <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; <a class="code" href="class_p_d_i_1_1_array.html#1d3f248c3f8ec6e42e9633bafad51797">operator [] </a>(<span class="keyword">const</span> std::string&amp; name);
-<a name="l00163"></a>00163    <span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; <a class="code" href="class_p_d_i_1_1_array.html#1d3f248c3f8ec6e42e9633bafad51797">operator [] </a>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
+<a name="l00162"></a>00162    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_array.html#c0d7acf6d14997afb0f93b08db683d11">Clear</a>();
+<a name="l00163"></a>00163 };
 <a name="l00164"></a>00164 
-<a name="l00165"></a>00165    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_array.html#c0d7acf6d14997afb0f93b08db683d11">Clear</a>();
-<a name="l00166"></a>00166 };
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168 
-<a name="l00169"></a>00169 <span class="comment">/**********************</span>
-<a name="l00170"></a>00170 <span class="comment">Class Name: DisplayElement</span>
-<a name="l00171"></a>00171 <span class="comment">Class Description: The DisplayElement class defines the interface to the DisplayElementImp class.</span>
-<a name="l00172"></a>00172 <span class="comment">The DisplayElement class and DisplayElementImp class follow the Pimple Design Pattern.</span>
-<a name="l00173"></a>00173 <span class="comment">The majority of this class existed in the CAJUN JSON parser as the OBJECT_STRING.  However, it has been</span>
-<a name="l00174"></a>00174 <span class="comment">modified to suit our needs as explained below.</span>
-<a name="l00175"></a>00175 <span class="comment"></span>
-<a name="l00176"></a>00176 <span class="comment">The class has a very similar interface as before, however, the names of the class and the functions have</span>
-<a name="l00177"></a>00177 <span class="comment">been changed to be more clear about the new functionality of the class, to support DisplayElements which</span>
-<a name="l00178"></a>00178 <span class="comment">consist of a display type and size.</span>
-<a name="l00179"></a>00179 <span class="comment">***********************/</span>
-<a name="l00180"></a>00180 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_display_element_imp.html">DisplayElementImp</a>;
-<a name="l00181"></a><a class="code" href="class_p_d_i_1_1_display_element.html">00181</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;DisplayElementImp&gt;
-<a name="l00182"></a>00182 {
-<a name="l00183"></a>00183 <span class="keyword">public</span>:
-<a name="l00184"></a>00184    <a class="code" href="class_p_d_i_1_1_display_element.html#e4c0cc6ec26fa29bbac5c981e4a2397f">DisplayElement</a>(<span class="keyword">const</span> std::string&amp; s = std::string());
-<a name="l00185"></a>00185    <a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a>&amp; <a class="code" href="class_p_d_i_1_1_display_element.html#fe9c487c7364aeb5d0dcef22890ca8ad">operator = </a>(<span class="keyword">const</span> std::string&amp; s);
-<a name="l00186"></a>00186 
-<a name="l00187"></a>00187    <a class="code" href="class_p_d_i_1_1_display_element.html#c02068a967a182c0bf68a9200160329e">operator const std::string&amp;</a>() <span class="keyword">const</span>;
-<a name="l00188"></a>00188    <a class="code" href="class_p_d_i_1_1_display_element.html#9a1121388cac26aa246605ef60256b81">operator std::string&amp;</a>();
-<a name="l00189"></a>00189 };
-<a name="l00190"></a>00190 
-<a name="l00191"></a>00191 
-<a name="l00192"></a>00192 
-<a name="l00193"></a>00193 <span class="comment">/**********************</span>
-<a name="l00194"></a>00194 <span class="comment">Class Name: Null</span>
-<a name="l00195"></a>00195 <span class="comment">Class Description: The Null class defines the interface to the NullImp class.</span>
-<a name="l00196"></a>00196 <span class="comment">The Null class and NullImp class follow the Pimple Design Pattern.</span>
-<a name="l00197"></a>00197 <span class="comment">This class existed in the CAJUN JSON parser.  It has not been modified.</span>
-<a name="l00198"></a>00198 <span class="comment"></span>
-<a name="l00199"></a>00199 <span class="comment">JSON supported Null elements.  However, our PDI language does not.  However, this class was</span>
-<a name="l00200"></a>00200 <span class="comment">retained so that it could be used as a default type prior to us knowing the element type.</span>
-<a name="l00201"></a>00201 <span class="comment">***********************/</span>
-<a name="l00202"></a>00202 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_null_imp.html">NullImp</a>;
-<a name="l00203"></a><a class="code" href="class_p_d_i_1_1_null.html">00203</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_null.html">Null</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;NullImp&gt;
-<a name="l00204"></a>00204 {};
-<a name="l00205"></a>00205 
-<a name="l00206"></a>00206 
-<a name="l00207"></a>00207 
-<a name="l00208"></a>00208 
-<a name="l00209"></a>00209 } <span class="comment">// End namespace</span>
+<a name="l00165"></a>00165 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_display_element_imp.html">DisplayElementImp</a>;
+<a name="l00166"></a>00166 
+<a name="l00176"></a><a class="code" href="class_p_d_i_1_1_display_element.html">00176</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;DisplayElementImp&gt;
+<a name="l00177"></a>00177 {
+<a name="l00178"></a>00178 <span class="keyword">public</span>:
+<a name="l00179"></a>00179    <a class="code" href="class_p_d_i_1_1_display_element.html#e4c0cc6ec26fa29bbac5c981e4a2397f">DisplayElement</a>(<span class="keyword">const</span> std::string&amp; s = std::string());
+<a name="l00180"></a>00180    <a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a>&amp; <a class="code" href="class_p_d_i_1_1_display_element.html#fe9c487c7364aeb5d0dcef22890ca8ad">operator = </a>(<span class="keyword">const</span> std::string&amp; s);
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182    <a class="code" href="class_p_d_i_1_1_display_element.html#c02068a967a182c0bf68a9200160329e">operator const std::string&amp;</a>() <span class="keyword">const</span>;
+<a name="l00183"></a>00183    <a class="code" href="class_p_d_i_1_1_display_element.html#9a1121388cac26aa246605ef60256b81">operator std::string&amp;</a>();
+<a name="l00184"></a>00184 };
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_null_imp.html">NullImp</a>;
+<a name="l00187"></a>00187 
+<a name="l00195"></a><a class="code" href="class_p_d_i_1_1_null.html">00195</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_null.html">Null</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;NullImp&gt;
+<a name="l00196"></a>00196 {};
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201 } <span class="comment">// End namespace</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:53:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:20:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

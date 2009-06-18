@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>InstructionSet.h</h1><a href="_instruction_set_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: InstructionSet.h 81 2009-06-17 05:26:30Z thegordonemail@gmail.com $</span>
+<h1>InstructionSet.h</h1><a href="_instruction_set_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: InstructionSet.h 94 2009-06-18 02:44:48Z thegordonemail@gmail.com $</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef INSTRUCTION_SET_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define INSTRUCTION_SET_H</span>
@@ -40,33 +40,35 @@
 <a name="l00019"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html">00019</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a>: <span class="keyword">public</span> <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>
 <a name="l00020"></a>00020         {
 <a name="l00021"></a>00021                 <span class="keyword">public</span>:
-<a name="l00023"></a>00023                         <a class="code" href="class_babel_shark_1_1_instruction_set.html#b1d22c7566a5693c6cc44746a4a58d40">InstructionSet</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
-<a name="l00024"></a>00024 
-<a name="l00026"></a>00026                         <a class="code" href="class_babel_shark_1_1_instruction_set.html#10f68c55831ae571354753c15487e8e0">~InstructionSet</a>();
-<a name="l00027"></a>00027 
-<a name="l00029"></a>00029                         <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_instruction_set.html#3c5af90b398f3ec28bc4248630f87c63">GetChild</a>();
-<a name="l00030"></a>00030 
-<a name="l00032"></a>00032                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#0e95013b914e2f4bdda8b0f94ab87712">Add</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>*);
-<a name="l00033"></a>00033 
-<a name="l00035"></a>00035                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#4d4c66b375e0f15de7775b295e15b558">Interpret</a>(<span class="keywordtype">char</span>* buffer);
-<a name="l00036"></a>00036 
-<a name="l00038"></a>00038             <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction_set.html#8456f55059620a8a971b3f1f39d62fc0">Display</a>();
-<a name="l00039"></a>00039 
-<a name="l00041"></a>00041                         <a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>* <a class="code" href="class_babel_shark_1_1_instruction_set.html#0ab5a7495470214060e64f9f7bc2ac72">CreateIterator</a>();
-<a name="l00042"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html#e6717a54fcb2da5282b52fbf506fa8bb">00042</a>                         InstructionCollection::iterator <a class="code" href="class_babel_shark_1_1_instruction_set.html#e6717a54fcb2da5282b52fbf506fa8bb">GetIterator</a>(){ <span class="keywordflow">return</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#1f99fe608f6e657f25aa121662443d11">_ListIter</a>;}
-<a name="l00043"></a>00043 
-<a name="l00046"></a>00046             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#5f11c971baf5eba34cc825a65ab51ba9">GetSizeInBytes</a>();
-<a name="l00047"></a>00047 
-<a name="l00050"></a>00050             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#663c141979af83f6b7e5188d0d105fad">NumSubtrees</a>();
-<a name="l00051"></a>00051                 <span class="keyword">private</span>:
-<a name="l00053"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html#fc2d947c3cc43110bd77b2aea47d7cd3">00053</a>                         <a class="code" href="namespace_babel_shark.html#b717a25ce0c899f2193ef8a7303a59bf">InstructionCollection</a> <a class="code" href="class_babel_shark_1_1_instruction_set.html#fc2d947c3cc43110bd77b2aea47d7cd3">_List</a>;
-<a name="l00055"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html#1f99fe608f6e657f25aa121662443d11">00055</a>                         InstructionCollection::iterator <a class="code" href="class_babel_shark_1_1_instruction_set.html#1f99fe608f6e657f25aa121662443d11">_ListIter</a>;
-<a name="l00056"></a>00056         };
-<a name="l00057"></a>00057 }
+<a name="l00025"></a>00025                         <a class="code" href="class_babel_shark_1_1_instruction_set.html#b1d22c7566a5693c6cc44746a4a58d40">InstructionSet</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
+<a name="l00026"></a>00026 
+<a name="l00030"></a>00030                         <a class="code" href="class_babel_shark_1_1_instruction_set.html#10f68c55831ae571354753c15487e8e0">~InstructionSet</a>();
+<a name="l00031"></a>00031 
+<a name="l00039"></a>00039                         <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_instruction_set.html#3c5af90b398f3ec28bc4248630f87c63">GetChild</a>();
+<a name="l00040"></a>00040 
+<a name="l00045"></a>00045                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#0e95013b914e2f4bdda8b0f94ab87712">Add</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>*);
+<a name="l00046"></a>00046 
+<a name="l00050"></a>00050                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#4d4c66b375e0f15de7775b295e15b558">Interpret</a>(<span class="keywordtype">char</span>* buffer);
+<a name="l00051"></a>00051 
+<a name="l00057"></a>00057             <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_instruction_set.html#8456f55059620a8a971b3f1f39d62fc0">Display</a>();
 <a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="preprocessor">#endif//INSTRUCTION_SET_H</span>
+<a name="l00064"></a>00064                         <a class="code" href="class_babel_shark_1_1_iterator.html">Iterator</a>* <a class="code" href="class_babel_shark_1_1_instruction_set.html#0ab5a7495470214060e64f9f7bc2ac72">CreateIterator</a>();
+<a name="l00065"></a>00065 
+<a name="l00069"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html#e6717a54fcb2da5282b52fbf506fa8bb">00069</a>                         InstructionCollection::iterator <a class="code" href="class_babel_shark_1_1_instruction_set.html#e6717a54fcb2da5282b52fbf506fa8bb">GetIterator</a>(){ <span class="keywordflow">return</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#1f99fe608f6e657f25aa121662443d11">_ListIter</a>;}
+<a name="l00070"></a>00070 
+<a name="l00075"></a>00075             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#5f11c971baf5eba34cc825a65ab51ba9">GetSizeInBytes</a>();
+<a name="l00076"></a>00076 
+<a name="l00081"></a>00081             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_instruction_set.html#663c141979af83f6b7e5188d0d105fad">NumSubtrees</a>();
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083                 <span class="keyword">private</span>:
+<a name="l00085"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html#fc2d947c3cc43110bd77b2aea47d7cd3">00085</a>                         <a class="code" href="namespace_babel_shark.html#b717a25ce0c899f2193ef8a7303a59bf">InstructionCollection</a> <a class="code" href="class_babel_shark_1_1_instruction_set.html#fc2d947c3cc43110bd77b2aea47d7cd3">_List</a>;
+<a name="l00087"></a><a class="code" href="class_babel_shark_1_1_instruction_set.html#1f99fe608f6e657f25aa121662443d11">00087</a>                         InstructionCollection::iterator <a class="code" href="class_babel_shark_1_1_instruction_set.html#1f99fe608f6e657f25aa121662443d11">_ListIter</a>;
+<a name="l00088"></a>00088         };
+<a name="l00089"></a>00089 }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="preprocessor">#endif//INSTRUCTION_SET_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 17:53:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:20:57 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
