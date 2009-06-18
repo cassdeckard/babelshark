@@ -19,35 +19,67 @@ namespace BabelShark
 	class InstructionSet: public Instruction
 	{
 		public:
-			/** Constructor*/
+			/** Constructor
+				Just calls parent constructor, nothing specific to this class
+			*/
 			InstructionSet(unsigned int size, char* name);
 
-			/** Destructor*/
+			/** Destructor
+				Empty desctructor class
+			*/
 			~InstructionSet();
 
-			/**returns the first Child of the InstructionSet list regardless of number of children present.*/
+			/** GetChild
+				Returns the first Child of the InstructionSet list regardless of number of children present.
+				This was mainly for testing for the presence of children but is no longer used
+				May be taken out at some point in the future
+
+				Does not match the standard pattern definition since we're using an iterator instead
+			*/
 			Instruction* GetChild();
 
-			/**Adds a child Instruction to the list.*/
+			/**	Add
+				Adds a child Instruction to the list.
+				Standard add of the composite pattern
+				*/
 			void Add(Instruction*);
 
-			/**attempts to Interpret the buffer according to the children.*/
+			/** Interpret
+				Currently an empty function since the dissector will just look directly at the children
+				*/
 			void Interpret(char* buffer);
 
-            /**will be used to Display data to the WireShark output*/
+            /** Display
+            	For the instruction set this just prints out the name of the set
+            	the printing out of the names/content of the children will be handled by the dissector calling
+            	the display function one at a time for each child
+            */
             char* Display();
 
-			/**Creates an iterator used to traverse the direct children.*/
+			/** CreateIterator
+				This is taking the part of the ConcreteList in the iterator pattern
+				Although we haven't done append/remove we don't need to since our list is static when we are iterating
+				over it
+			*/
 			Iterator* CreateIterator();
+
+			/** GetIterator
+				Returns the stl::iterator
+				**/
 			InstructionCollection::iterator GetIterator(){ return _ListIter;}
 
-            /** Returns the sum of calling GetSizeInBytes on all children
-            Override the function defined in instruction*/
+            /** GetSizeInBytes
+            	Returns the sum of calling GetSizeInBytes on all children
+            	Override the function defined in instruction
+            	*/
             unsigned int GetSizeInBytes();
 
-            /** Returns the sum of calling NumSubTrees on all children
-            Override the [dummy] function defined in instruction*/
+            /** NumSubTrees
+            	Returns the sum of calling NumSubTrees on all children
+            	Override the [dummy] function defined in instruction
+            	*/
             unsigned int NumSubtrees();
+
 		private:
 			/** Used to store the direct children*/
 			InstructionCollection _List;

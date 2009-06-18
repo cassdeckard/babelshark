@@ -4,26 +4,44 @@
 #define NULL_ITERATOR_H
 
 #include "Instruction.h"
-/*	Class:NullIterator
-		An iterator pattern; This represents the iterator to be used for leaf nodes in our
-		composite pattern.
-*/
 
 namespace BabelShark
 {
+	/*	Class:NullIterator
+			An iterator pattern; This represents the iterator to be used for leaf nodes in our
+			composite pattern (one of the concreteIterators in the pattern)
+	*/
 	class NullIterator : public Iterator
 	{
 		public:
+			/** Constructor
+				Just calls parent
+				*/
 			NullIterator(Instruction* root);
 
+			/** Destructor
+				Does nothing
+				*/
 			~NullIterator();
 
+			/** First
+				Does nothing
+				*/
 			void First() {return;}
 
-			Instruction* CurrentItem() {return NULL;}
+			/** CurrentItem
+				returns root node
+				*/
+			Instruction* CurrentItem() {return root}
 
+			/** Next
+				Does nothing since we can't advance
+				*/
 			void Next() {return;}
 
+			/** IsDone
+				returns true always (since there's only one element we're always done!
+				*/
 			bool IsDone() { return true;}
 
 		protected:
