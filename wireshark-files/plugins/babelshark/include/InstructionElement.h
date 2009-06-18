@@ -19,6 +19,16 @@
 
 namespace BabelShark
 {
+    /** InstructionElement is another abstract class derived from Instruction.
+      * In represents a primitive unit of packet data that Dissector will
+      * interpret, and is a leaf in the Instruction tree.
+      *
+      * <b>Pattern roles:</b>
+      *  - Composite::Leaf
+      *  - Iterator::ConcreteAggregate
+      *  - Interpreter::TerminalExpression
+      *
+      */
 	class InstructionElement: public Instruction
 	{
 		public:
@@ -41,23 +51,35 @@ namespace BabelShark
 			//should have no children.
             Iterator*  CreateIterator();
 
-            // takes an Input Size and forms a bitmask based on it.
+            /** A utility function used to create a bitmask for subtypes
+              * to use if they are looking at only a portion of a byte of
+              * data.
+              *
+              * @param val
+              *   number of bits to mask
+              * @return
+              *   bitmask to reveal <i>val</i> bytes
+              */
             static std::bitset<BIT_MASK_MAX_SIZE> SetupBitMask(unsigned int val);
 
-            // rounds up bit size to byte size
+            /** A utility function for subclasses whose size is
+              * in bits to convert that to bytes to implement the
+              * GetSizeInBytes() function.
+              *
+              * @param bits
+              *   number of bits
+              * @return
+              *   rounded up number of bytes
+              */
             unsigned int DetermineSizeInBytes(int bits);
 
             // override
             unsigned int NumSubtrees();
 
         protected:
+            /** Holds the result of the last call to Interpret()
+              */
             std::string _InterpretedData;
-
-		private:
-			//NullIterator has not been implented yet.
-			//when it is, this class is to construct an object
-			//of type NullIterator
-            //NullIterator* nullIterator;
 
 	};
 }

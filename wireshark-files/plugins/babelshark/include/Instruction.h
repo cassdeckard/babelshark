@@ -6,50 +6,94 @@
 #include <string>
 #include <vector>
 #include "Iterator.h"
-/*
-	Design Pattern Used: Composite
-	Class:Instruction
-		used purely as a Composite portion of the Composite Design Pattern
-		inherited by InstructionElement and InstructionSet
-		Composite allows objects to be treated uniformly.
-*/
-
-
 
 namespace BabelShark
 {
     class Iterator; // forward declaration
+
+    /** Instruction is the base abstract class for all instructions.
+      * It declares all the virtual functions which will be implemented by
+      * all of the Instruction subclasses. An Instruction represents some
+      * unit of packet data that Dissector will interpret. This could be
+      * either a primitive type (such as a string or an integer) or an
+      * aggregate type containing a set of other types.
+      *
+      * A tree of Instructions is created by the PDI Parser based on the
+      * definition supplied by the user. Dissector uses an Instruction
+      * by calling Interpret() to pass it the part of the packet data buffer
+      * it is responsible for, then calling Display() to retrieve the
+      * interpreted data to be displayed to the user.
+      *
+      * <b>Pattern roles:</b>
+      *  - Composite::Component
+      *  - Iterator::Aggregate
+      *  - Interpreter::AbstractExpression
+      */
 	class Instruction
 	{
 		public:
 			Instruction(unsigned int size, char* name);
 			virtual ~Instruction();
 
-			//virtual function, base definition does nothing.
-			//should be implemented by any class inheriting from it.
+            /** Interprets incoming packet data.
+              * Reads data from buffer and stores interpretation
+              * to later be displayed.
+              *
+              * <b>Pattern roles:</b>
+              *  - Interpreter::Interpret
+              *
+              * @param buffer the packet data to interpret
+              */
 			virtual void Interpret(char* buffer);
 
-			//virtual function, base definition does nothing.
-			//will be used to Display data to the WireShark output
+            /** Displays interpreted packet data.
+              *
+              * <b>Pattern roles:</b>
+              *  - Composite::Operation
+              */
 			virtual char* Display();
 
-			//virtual function, no implementation in base class
-			//used in the InstructionList class.
+
+            /** Returns first child of this Instruction.
+              *
+              * <b>Pattern roles:</b>
+              *  - Composite::GetChild
+              */
 			virtual Instruction* GetChild();
 
-			//virtual function, implementation does nothing.
-			//used in the InstructionList class.
+            /** Adds child to this Instruction.
+              *
+              * <b>Pattern roles:</b>
+              *  - Composite::Add
+              *
+              * @param instruction the Instruction to add
+              */
 			virtual void Add(Instruction*);
 
-			//virtual function, no implementation in base class
-			//used in the InstructionList class.
+            /** Removes child from this Instruction.
+              *
+              * <b>Pattern roles:</b>
+              *  - Composite::Remove
+              *
+              * @param instruction the Instruction to remove
+              */
 			virtual void Remove(Instruction*);
 
-			//virtual function, no implementation in base class
-			//used in the InstructionList class.
+            /** Creates and returns an iterator for this Instruction's
+              * children.
+              *
+              * <b>Pattern roles:</b>
+              *  - Iterator::CreateIterator
+              *
+              * @return an Iterator pointing to this Instruction's first child
+              */
             virtual Iterator* CreateIterator();
 
-            //virtual function, no implementation in base class
+            /** Returns the number of bytes this Instruction interprets,
+              * rounded up.
+              *
+              * @return size in bytes
+              */
             virtual unsigned int GetSizeInBytes(){return _SizeInBytes; }
 
 			void SetSize(unsigned int size){ _Size = size;}
@@ -58,7 +102,13 @@ namespace BabelShark
 			unsigned int GetSize() { return _Size;}
 			char* GetName(){ return (char*)(_Name.c_str());}
 
-            // For keeping track of subtrees
+            /** Returns the total amount of subtree nodes that occur
+              * beneath this node. Will be used by Dissector to allocate
+              * memory for keeping the expanded state (ett) of subtrees.
+              *
+              * @return
+              *   rounded up number of subtrees below this node
+              */
             virtual unsigned int NumSubtrees();
 
 		protected:

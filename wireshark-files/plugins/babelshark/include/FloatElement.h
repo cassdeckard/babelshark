@@ -14,7 +14,7 @@
 	Parent: InstructionElement
 	One of the Leaf(s) in the Composite Structure.
 	Processes Float type elements
-	
+
 	Notes: not completed in Phase I.
 */
 
@@ -35,11 +35,7 @@ namespace BabelShark
 			//will be used to Display data to the WireShark output
 			char* Display();
 
-			std::bitset<BIT_MASK_MAX_SIZE> GetBitMask(){ return _BitMask;}
 		private:
-			//takes our Input Size and forms the _BitMask based on it.
-			void SetupBitMask(unsigned int val);
-			std::bitset<BIT_MASK_MAX_SIZE> _BitMask;
 	};
 }
 
