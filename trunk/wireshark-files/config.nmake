@@ -1049,7 +1049,7 @@ ADNS_CONFIG=
 
 !IFDEF KFW_DIR
 KFW_PATH=$(KFW_DIR)\bin
-KFW_CFLAGS=/I$(KFW_DIR)\inc
+KFW_CFLAGS=/I$(KFW_DIR)\include
 KFW_LIBS=$(KFW_DIR)\lib\krb5_32.lib
 # Nmake uses carets to escape special characters
 KFW_CONFIG=^#define HAVE_MIT_KERBEROS 1
