@@ -1,0 +1,12 @@
+"ListAvatars_Message" : [
+	"ListAvatarsMessageId" : "UINT 32",
+	"Room" : "UINT 32",
+	"TestInt" : "INT 32",
+	"TestFloat" : "FLOAT 32",
+	"TestPad" : "PAD 8",
+	"AvatarsInTheRoom" : [
+		"Name" : "ASCII 16",
+		"Male" : "BOOL 8"
+
+	] 2
+] 1
