@@ -1,7 +1,9 @@
 "Test_Message" : [
-   "MessageID"  : "UINT 8",
-   "EventID"    : "UINT 16",
-   "Name"       : "ASCII 13",
+   "MessageID" : "UINT 8",
+   "Pad"       : "PAD 8",
+   "EventID"   : "UINT 16",
+   "Name"      : "ASCII 16",
+   "Pad2"      : "PAD 32",
    "ArrayTest" : [
       "UINT32Test" : "UINT 32",
       "UINT16Test" : "UINT 16",
