@@ -39,15 +39,15 @@ TEST_FIXTURE(InstructionChildren, AddingChildren)
 	T1.Add(child2);
 	T1.Add(child3);
 	T1.Add(child4);
-	T1.CreateIterator();
-	BabelShark::InstructionCollection::iterator iter = T1.GetIterator();
+	BabelShark::Iterator* iter = T1.CreateIterator();
+	 //iter = T1.GetIterator();
 	//confirm that the pointer to each child stored into the InstructionSet
 	//is the same one we access through the iterator
-	CHECK_EQUAL(child1, (*iter));
-	++iter;
-	CHECK_EQUAL(child2, (*iter));
-	++iter;
-	CHECK_EQUAL(child3, (*iter));
-	++iter;
-	CHECK_EQUAL(child4, (*iter));
+	CHECK_EQUAL(child1, (*iter).CurrentItem());
+	iter->Next();
+	CHECK_EQUAL(child2, (*iter).CurrentItem());
+	iter->Next();
+	CHECK_EQUAL(child3, (*iter).CurrentItem());
+	iter->Next();
+	CHECK_EQUAL(child4, (*iter).CurrentItem());
 }
