@@ -39,12 +39,18 @@ DISSECTOR_INCLUDES = \
 	include/Instruction.h \
 	include/InstructionElement.h \
 	include/InstructionSet.h \
+	include/InstructionNode.h \
+	include/AliasedInstruction.h \
 	include/IntElement.h \
 	include/Iterator.h \
 	include/ListIterator.h \
 	include/NullIterator.h \
 	include/PadElement.h \
-	include/UintElement.h
+	include/UintElement.h \
+	include/DataDictionary.h \
+	include/TypeDefinition.h \
+	include/StaticDefinition.h \
+	include/DynamicDefinition.h
 
 # Dissector helpers.  They're included in the source files in this
 # directory, but they're not dissectors themselves, i.e. they're not
@@ -66,4 +72,7 @@ DISSECTOR_SUPPORT_SRC = \
 	PdiParser.cpp \
 	Iterator.cpp \
 	ListIterator.cpp \
-	NullIterator.cpp
+	NullIterator.cpp \
+	DataDictionary.cpp \
+	StaticDefinition.cpp \
+	DynamicDefinition.cpp

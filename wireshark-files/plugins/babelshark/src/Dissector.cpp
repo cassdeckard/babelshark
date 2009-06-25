@@ -92,9 +92,18 @@ namespace BabelShark
            babelshark_tree = proto_item_add_subtree(ti, *_ett[0]);
 
            // Parse it
+           /*
            if (_RootInstruction->GetSize() > 0)
            {
               ParseInstructions(_RootInstruction, tvb, babelshark_tree, buffer, offset);
+           }
+           */
+
+           // TEST
+           _aliasedTest = new AliasedInstruction(1, "TestAliased", _RootInstruction);
+           if (_aliasedTest->GetSize() > 0)
+           {
+              ParseInstructions(_aliasedTest, tvb, babelshark_tree, buffer, offset);
            }
 
        }
