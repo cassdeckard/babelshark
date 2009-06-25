@@ -9,7 +9,7 @@ namespace BabelShark
 	 *Constructor
 	 */
 	InstructionSet::InstructionSet(unsigned int size, char* name)
-		:Instruction(size, name)
+		:InstructionNode(size, name)
 	{
 
 	}

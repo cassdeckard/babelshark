@@ -17,6 +17,7 @@ extern "C" {
 // C++ headers
 #include "Instruction.h"
 #include "InstructionSet.h"
+#include "AliasedInstruction.h" // TODO: Remove
 
 namespace BabelShark
 {
@@ -158,6 +159,9 @@ namespace BabelShark
               * changed and needs to be updated in the Wireshark GUI
               */
             bool         _nameChanged;
+
+            /** TODO: REMOVE **/
+            Instruction* _aliasedTest;
 	};
 }
 
