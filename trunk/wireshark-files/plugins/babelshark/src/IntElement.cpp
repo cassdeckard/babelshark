@@ -22,6 +22,9 @@ namespace BabelShark
 	{
         //Implement me!
         _InterpretedData = "(not implemented yet)";
+
+        // notify subjects of change
+        Notify();
 	}
 
 	//will be used to Display data to the WireShark output

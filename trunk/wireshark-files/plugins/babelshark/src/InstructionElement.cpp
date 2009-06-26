@@ -1,14 +1,24 @@
 // $Id$
 
 #include "InstructionElement.h"
+#include "DataDictionary.h"
 #include "NullIterator.h"
 
 namespace BabelShark
 {
-	InstructionElement::InstructionElement(unsigned int size, char* name)
+    InstructionElement::InstructionElement(unsigned int size, char* name)
+        :Instruction(size, name)
+    {
+
+    }
+    InstructionElement::InstructionElement(unsigned int size, char* name, std::string variable = "")
 		:Instruction(size, name)
 	{
-
+        if (variable != "")
+        {
+            printf("InstructionElement()\n");
+            DataDictionary::Instance()->AddVariable(variable, this);
+        }
 	}
 	InstructionElement::~InstructionElement()
 	{
@@ -19,7 +29,7 @@ namespace BabelShark
 	//should be implemented by any class inheriting from it.
 	void InstructionElement::Interpret(char* buffer)
 	{
-
+        Notify();
 	}
 
 	//virtual function, base definition does nothing.
@@ -79,6 +89,13 @@ namespace BabelShark
     {
         // This is a leaf, so it has no subtrees!
         return 0;
+    }
+
+    /* PHASE 2 UPDATES */
+
+    std::string InstructionElement::SimpleDisplay()
+    {
+        return _InterpretedData;
     }
 
     void InstructionElement::Attach(TypeDefinition* observer)

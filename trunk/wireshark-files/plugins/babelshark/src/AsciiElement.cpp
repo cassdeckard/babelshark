@@ -49,6 +49,9 @@ namespace BabelShark
 			_InterpretedData += Printable(buffer[i]);
         }
 
+        // notify subjects of change
+        Notify();
+
 	}
 
 	char* AsciiElement::Display()

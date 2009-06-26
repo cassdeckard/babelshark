@@ -1,11 +1,22 @@
 // $Id$
 
 #include "UintElement.h"
+#include "DataDictionary.h"
 #include <sstream>
 
 namespace BabelShark
 {
 
+    UintElement::UintElement(unsigned int size, char* name, std::string variable)
+        :InstructionElement(size, name)
+    {
+        std::stringstream ss;
+        ss << "UintElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
+        printf(ss.str().c_str());
+        DataDictionary::Instance()->AddVariable(variable, this);
+        _BitMask = SetupBitMask(_Size);
+        _SizeInBytes = DetermineSizeInBytes(size);
+    }
 	UintElement::UintElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
@@ -31,6 +42,9 @@ namespace BabelShark
         result << intVal;
 
         _InterpretedData = result.str();
+
+        // notify subjects of change
+        Notify();
 	}
 
 	//will be used to Display data to the WireShark output
