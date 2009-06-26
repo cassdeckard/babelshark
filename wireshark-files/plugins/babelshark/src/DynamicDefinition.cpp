@@ -34,13 +34,11 @@ namespace BabelShark
 
    void DynamicDefinition::Update(InstructionElement* subject)
    {
-       std::string parameter = "";
-
        // look up value of subject
-       // TODO
+       std::string parameter = subject->SimpleDisplay();
 
        // update pointer to appropriate InstructionSet
-       _Subjects[subject] = &_Definitions[parameter];
+       *(_Subjects[subject]) = _Definitions[parameter];
    }
 
 }

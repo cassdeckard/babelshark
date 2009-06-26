@@ -2,6 +2,7 @@
 
 // C++ headers
 #include "Dissector.h"
+#include "DataDictionary.h"
 #include <sstream>
 
 BabelShark::Instruction* Parse(std::string inFile); // delcaration; this is defined in PdiParser.cpp
@@ -52,6 +53,8 @@ namespace BabelShark
         _protoName       = _RootInstruction->GetName();
         _nameChanged     = true;
         printf("name: %s\n\n", _RootInstruction->GetName());
+
+        Test(); // TODO: REMOVE
     }
 
     void Dissector::Dissect(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
@@ -99,11 +102,10 @@ namespace BabelShark
            }
            */
 
-           // TEST
-           _aliasedTest = new AliasedInstruction(1, "TestAliased", _RootInstruction);
-           if (_aliasedTest->GetSize() > 0)
+           // Parse it
+           if (_TestInstruction->GetSize() > 0)
            {
-              ParseInstructions(_aliasedTest, tvb, babelshark_tree, buffer, offset);
+              ParseInstructions(_TestInstruction, tvb, babelshark_tree, buffer, offset);
            }
 
        }
@@ -115,6 +117,26 @@ namespace BabelShark
     void Dissector::Test()
     {
         //printf("Dissector::Test\n _ett: %i\n _proto: %u\n", _ett[0], *_proto);
+
+        _TestInstruction = new InstructionSet(1, "TestProtocol");
+        InstructionSet* tempTree;
+
+        // make a static type
+        tempTree = new InstructionSet(1, "TestAck");
+        tempTree->Add(new UintElement(32, "Status"));
+        DataDictionary::Instance()->AddStatic("&ACK", tempTree);
+
+        // make another static type
+        tempTree = new InstructionSet(1, "TestInit");
+        tempTree->Add(new UintElement(7, "Age"));
+        tempTree->Add(new PadElement(56, "Pad"));
+        DataDictionary::Instance()->AddStatic("&INIT", tempTree);
+
+        // build tree to test new functionality
+        _TestInstruction->Add(new UintElement(8, "MsgID", "$MSG_ID"));
+        _TestInstruction->Add(new PadElement(8, "Pad"));
+        _TestInstruction->Add(new AliasedInstruction(1, "AliasTest", "&INIT"));
+        //_TestAliased = new AliasedInstruction(1, "AliasTest", "&INIT");
     }
 
     void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)

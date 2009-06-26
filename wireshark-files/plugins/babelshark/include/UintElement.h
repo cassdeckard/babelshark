@@ -21,7 +21,8 @@ namespace BabelShark
 			/** Constructor
 				calls parent constructor
 				then sets up the bit mask and size in bytes
-				*/
+                */
+            UintElement(unsigned int size, char* name, std::string variable);
 			UintElement(unsigned int size, char* name);
 
 			/** Destructor

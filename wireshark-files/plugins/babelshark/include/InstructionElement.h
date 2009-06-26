@@ -34,7 +34,8 @@ namespace BabelShark
 	class InstructionElement: public Instruction
 	{
 		public:
-			InstructionElement(unsigned int size, char* name);
+            InstructionElement(unsigned int size, char* name, std::string variable);
+            InstructionElement(unsigned int size, char* name);
 			~InstructionElement();
 
 			//virtual function, base definition does nothing.
@@ -77,6 +78,10 @@ namespace BabelShark
 
             // override
             unsigned int NumSubtrees();
+
+            /* PHASE 2 UPDATES */
+
+            std::string SimpleDisplay();
 
             void Attach(TypeDefinition* observer);
 

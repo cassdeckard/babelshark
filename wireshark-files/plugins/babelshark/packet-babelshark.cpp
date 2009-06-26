@@ -57,7 +57,6 @@ static void update_dissector(const char* inFile)
 
 static void dissect_babelshark(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
 {
-    babelshark_dissector->Test(); // TODO: Remove
     babelshark_dissector->Dissect(tvb, pinfo, tree);
 }
 

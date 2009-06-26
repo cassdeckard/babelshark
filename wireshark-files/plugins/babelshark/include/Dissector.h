@@ -17,7 +17,14 @@ extern "C" {
 // C++ headers
 #include "Instruction.h"
 #include "InstructionSet.h"
-#include "AliasedInstruction.h" // TODO: Remove
+
+// TODO: Remove all of these
+#include "AliasedInstruction.h"
+#include "UintElement.h"
+#include "BoolElement.h"
+#include "PadElement.h"
+#include "FloatElement.h"
+#include "IntElement.h"
 
 namespace BabelShark
 {
@@ -161,7 +168,8 @@ namespace BabelShark
             bool         _nameChanged;
 
             /** TODO: REMOVE **/
-            Instruction* _aliasedTest;
+            AliasedInstruction* _TestAliased;
+            Instruction* _TestInstruction;
 	};
 }
 

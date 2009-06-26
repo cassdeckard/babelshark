@@ -3,7 +3,9 @@
 #ifndef ALIASED_INSTRUCTION_H
 #define ALIASED_INSTRUCTION_H
 #include "InstructionNode.h"
+#include "DataDictionary.h"
 #include "ListIterator.h"
+#include <sstream>
 
 #include <vector>
 
@@ -24,12 +26,19 @@ namespace BabelShark
             AliasedInstruction(unsigned int size, char* name)
                 : InstructionNode(size, name)
             {
+                std::stringstream ss;
+                ss << "AliasedInstruction(" << size << ", " << name << ")\n";
+                printf(ss.str().c_str());
             }
 
-            AliasedInstruction(unsigned int size, char* name, Instruction* alias)
-                : InstructionNode(size, name),
-                  _RealSubject(alias)
+            AliasedInstruction(unsigned int size, char* name, std::string alias)
+                : InstructionNode(size, name)
             {
+                std::stringstream ss;
+                ss << "AliasedInstruction(" << size << ", " << name << ", " << alias.c_str() << ")->_RealSubject = {" << _RealSubject <<  "}";
+                DataDictionary::Instance()->LookupType(&_RealSubject, alias);
+                ss << " => {" << _RealSubject <<  "}\n";
+                printf(ss.str().c_str());
             }
 
 			/** Destructor
@@ -88,7 +97,7 @@ namespace BabelShark
 		private:
 			/** The root of the Instruction tree this object will be a placeholder for
               */
-			Instruction* _RealSubject;
+			InstructionNode* _RealSubject;
 	};
 }
 

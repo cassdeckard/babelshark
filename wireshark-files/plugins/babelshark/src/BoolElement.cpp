@@ -33,6 +33,9 @@ namespace BabelShark
        {
           _InterpretedData = "FALSE";
        }
+
+        // notify subjects of change
+        Notify();
 	}
 
 	//will be used to Display data to the WireShark output
