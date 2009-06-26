@@ -4,7 +4,6 @@ File : DynamicTypeElement.h
 
 #pragma once
 
-//#include <vector>
 #include <list>
 #include <string>
 
@@ -29,7 +28,7 @@ struct DynamicTypeEntry {
   * two std::string fields.  The first field is a string instead of
   * an unsigned int, in order to make the definition more flexible.
   *
-  * DynamicTypeMap is defined as std::list<DynamicTypeEntry>
+  * m_DynamicTypeList is defined as std::list<DynamicTypeEntry>
   * Originally we planned to use std::map<std::string, std::string>,
   * but then realized that when we were going to access the data, 
   * we just want to iterate over every item in the list, rather than 
@@ -38,7 +37,6 @@ struct DynamicTypeEntry {
 class DynamicTypeElement
 {
 public:
-   // note: nothing virtual in here! and only one (1) pointer member
    DynamicTypeElement();
    DynamicTypeElement(const DynamicTypeElement& dyn_element);
    ~DynamicTypeElement();
@@ -48,9 +46,9 @@ public:
    void SetName(const std::string& nameIn);
    const std::string& Name() const;
 
-   typedef std::list<DynamicTypeEntry> DynamicTypeList;
-   typedef DynamicTypeList::iterator iterator;
-   typedef DynamicTypeList::const_iterator const_iterator;
+   typedef std::list<DynamicTypeEntry> m_DynamicTypeList;
+   typedef m_DynamicTypeList::iterator iterator;
+   typedef m_DynamicTypeList::const_iterator const_iterator;
    iterator Begin();
    iterator End();
    const_iterator Begin() const;
