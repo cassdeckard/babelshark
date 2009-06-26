@@ -3,16 +3,16 @@
 #ifndef TYPE_DEFINITION_H
 #define TYPE_DEFINITION_H
 
-#include "Instruction.h"
-#include "InstructionElement.h"
+#include "InstructionNode.h"
 
 namespace BabelShark
 {
+    class InstructionElement; // forward declaration
 	class TypeDefinition
 	{
         public:
 
-           TypeDefinition(Instruction* type, std::string parameter)
+           TypeDefinition(InstructionNode* type, std::string parameter)
            {
            }
 
@@ -20,9 +20,11 @@ namespace BabelShark
            {
            }
 
-           virtual Instruction* Fetch(InstructionElement* parameter) { return NULL; }
+           virtual void Fetch(InstructionNode** target, InstructionElement* parameter) { }
 
-           virtual void Add(Instruction* type, std::string parameter) { }
+           virtual void Add(InstructionNode* type, std::string parameter) { }
+
+           virtual void Update(InstructionElement* subject) { }
 
 		protected:
 

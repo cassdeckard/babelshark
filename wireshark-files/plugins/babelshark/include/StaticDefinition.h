@@ -4,8 +4,6 @@
 #define STATIC_DEFINITION_H
 
 #include "TypeDefinition.h"
-#include "Instruction.h"
-#include "InstructionElement.h"
 
 namespace BabelShark
 {
@@ -13,19 +11,19 @@ namespace BabelShark
 	{
         public:
 
-           StaticDefinition(Instruction* type, std::string parameter);
+           StaticDefinition(InstructionNode* type, std::string parameter);
 
            ~StaticDefinition();
 
-           Instruction* Fetch(InstructionElement* parameter);
+           void Fetch(InstructionNode** target, InstructionElement* parameter);
 
-           void Add(Instruction* type, std::string parameter);
+           void Add(InstructionNode* type, std::string parameter);
 
 		protected:
 
 
         private:
-           Instruction* _Definition;
+           InstructionNode* _Definition;
 	};
 
 }
