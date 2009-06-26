@@ -6,7 +6,9 @@
 #define BIT_MASK_MAX_SIZE 64
 
 #include <bitset>
+#include <list>
 #include "Instruction.h"
+#include "TypeDefinition.h"
 
 /*
 	Design Pattern Used: Composite
@@ -76,10 +78,18 @@ namespace BabelShark
             // override
             unsigned int NumSubtrees();
 
+            void Attach(TypeDefinition* observer);
+
+            void Detach(TypeDefinition* observer);
+
+            void Notify();
+
         protected:
             /** Holds the result of the last call to Interpret()
               */
             std::string _InterpretedData;
+
+            std::list<TypeDefinition*> _Observers;
 
 	};
 }

@@ -81,4 +81,22 @@ namespace BabelShark
         return 0;
     }
 
+    void InstructionElement::Attach(TypeDefinition* observer)
+    {
+        _Observers.push_back(observer);
+    }
+
+    void InstructionElement::Detach(TypeDefinition* observer)
+    {
+        _Observers.remove(observer);
+    }
+
+    void InstructionElement::Notify()
+    {
+        for ( std::list<TypeDefinition*>::iterator it = _Observers.begin(); it != _Observers.end(); it++ )
+        {
+            (*it)->Update(this);
+        }
+    }
+
 }

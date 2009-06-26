@@ -4,7 +4,6 @@
 #define DYNAMIC_DEFINITION_H
 
 #include "TypeDefinition.h"
-#include "Instruction.h"
 #include "InstructionElement.h"
 #include <map>
 
@@ -14,20 +13,22 @@ namespace BabelShark
 	{
         public:
 
-           DynamicDefinition(Instruction* type, std::string parameter);
+           DynamicDefinition(InstructionNode* type, std::string parameter);
 
            ~DynamicDefinition();
 
-           Instruction* Fetch(InstructionElement* parameter);
+           void Fetch(InstructionNode** target, InstructionElement* parameter);
 
-           void Add(Instruction* type, std::string parameter);
+           void Add(InstructionNode* type, std::string parameter);
+
+           void Update(InstructionElement* subject);
 
 		protected:
 
 
         private:
-           std::map<std::string, Instruction*>         _Definitions;
-           std::map<InstructionElement*, Instruction*> _Subjects;
+           std::map<std::string, InstructionNode*>          _Definitions;
+           std::map<InstructionElement*, InstructionNode**> _Subjects;
 	};
 
 }

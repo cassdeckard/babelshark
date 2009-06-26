@@ -5,7 +5,7 @@
 namespace BabelShark
 {
 
-   StaticDefinition::StaticDefinition(Instruction* type, std::string parameter)
+   StaticDefinition::StaticDefinition(InstructionNode* type, std::string parameter)
       : TypeDefinition(type, parameter)
    {
       _Definition = type;
@@ -15,12 +15,12 @@ namespace BabelShark
    {
    }
 
-   Instruction* StaticDefinition::Fetch(InstructionElement* parameter)
+   void StaticDefinition::Fetch(InstructionNode** target, InstructionElement* parameter)
    {
-       return _Definition;
+       target = &_Definition;
    }
 
-   void StaticDefinition::Add(Instruction* type, std::string parameter)
+   void StaticDefinition::Add(InstructionNode* type, std::string parameter)
    {
        // THIS SHOULD NEVER BE CALLED
    }
