@@ -19,6 +19,10 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include "exception.h"
 #include "TreeVisitor.h"
 
+// This is just included in Main so that we can use reverse engineering
+// to get the class diagram.
+#include "DynamicTypeElement.h"
+
 #include <iostream>
 #include <fstream>
 
