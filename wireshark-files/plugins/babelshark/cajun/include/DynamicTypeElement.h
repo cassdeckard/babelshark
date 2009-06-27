@@ -18,10 +18,12 @@ struct DynamicTypeEntry {
 
 /** The DynamicTypeElement class holds one "dynamictype" read in from a PDI file.
   * An example dynamictype in PDI file format follows:
+  * <pre>
   * dynamictype BODY {
   *    1 &ACK,
   *    2 &INIT
   *  }
+  * </pre>
   * where BODY is stored in the Name field in the DynamicTypeElement class
   * and 1 &ACK is one entry in the DynamicTypeList.  Each entry is
   * stored in a DynamicTypeEntry object, which is just a struct with
