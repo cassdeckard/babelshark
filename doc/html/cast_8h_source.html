@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>Babelshark: cajun/include/cast.h Source File</title>
+<title>Babelshark: M:/babelshark/trunk/wireshark-files/plugins/babelshark/cajun/include/cast.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_d8fd6e06acac9ca02187d872ab6f7cf0.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_6e53cdd06222c98eaf4342bcb21327e9.html">include</a>
+  <div class="navpath"><a class="el" href="dir_d6ac4cd17098d06600de515731028d92.html">trunk</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_2e424ff942c775b12b47ea434b3043d5.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_f5558b82492e1c87349857996edbdf53.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_75a84a5b6a80643e68cdb8e015afe6fa.html">babelshark</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -60,34 +60,34 @@
 <a name="l00033"></a>00033 <span class="preprocessor">#pragma once</span>
 <a name="l00034"></a>00034 <span class="preprocessor"></span>
 <a name="l00035"></a>00035 
-<a name="l00036"></a><a class="code" href="namespace_p_d_i.html">00036</a> <span class="keyword">namespace </span>PDI
+<a name="l00036"></a>00036 <span class="keyword">namespace </span>PDI
 <a name="l00037"></a>00037 {
 <a name="l00038"></a>00038 
 <a name="l00039"></a>00039 
-<a name="l00040"></a>00040 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element.html">Element</a>;
+<a name="l00040"></a>00040 <span class="keyword">class </span>Element;
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 <span class="comment">// reference to non-const</span>
 <a name="l00043"></a>00043 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00044"></a>00044 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
+<a name="l00044"></a>00044 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(Element&amp; element);
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 <span class="comment">// reference to const</span>
 <a name="l00047"></a>00047 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00048"></a>00048 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; element);
+<a name="l00048"></a>00048 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<span class="keyword">const</span> Element&amp; element);
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050 <span class="comment">// pointer to non-const</span>
 <a name="l00051"></a>00051 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00052"></a>00052 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<a class="code" href="class_p_d_i_1_1_element.html">Element</a>* pElement);
+<a name="l00052"></a>00052 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(Element* pElement);
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 <span class="comment">// pointer to const</span>
 <a name="l00055"></a>00055 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementTypeQualifiedT&gt;
-<a name="l00056"></a>00056 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>* pElement);
+<a name="l00056"></a>00056 ElementTypeQualifiedT <a class="code" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a>(<span class="keyword">const</span> Element* pElement);
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058 } <span class="comment">// End namespace</span>
 <a name="l00059"></a>00059 
 <a name="l00060"></a>00060 <span class="preprocessor">#include "<a class="code" href="cast_8inl.html">cast.inl</a>"</span>
 <a name="l00061"></a>00061 
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:20:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 26 22:54:43 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

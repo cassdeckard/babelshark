@@ -41,6 +41,8 @@ Inheritance diagram for BabelShark::UintElement:</div>
 <a href="class_babel_shark_1_1_uint_element-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_uint_element.html#da3f42d89cca160fb5ce0e4fd02c638c">UintElement</a> (unsigned int size, char *name, std::string variable)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_uint_element.html#3c15e5ce737b883dd374b35f62a7e81e">UintElement</a> (unsigned int size, char *name)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_uint_element.html#c298866a90094639668c65602190c6fa">~UintElement</a> ()</td></tr>
@@ -57,6 +59,41 @@ Inheritance diagram for BabelShark::UintElement:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Design Pattern Used: Composite Class: <a class="el" href="class_babel_shark_1_1_uint_element.html">UintElement</a> Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> One of the Leaf(s) in the Composite Structure. Processes Uint type elements <hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="da3f42d89cca160fb5ce0e4fd02c638c"></a><!-- doxytag: member="BabelShark::UintElement::UintElement" ref="da3f42d89cca160fb5ce0e4fd02c638c" args="(unsigned int size, char *name, std::string variable)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BabelShark::UintElement::UintElement           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>variable</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructor calls parent constructor then sets up the bit mask and size in bytes 
+</div>
+</div><p>
 <a class="anchor" name="3c15e5ce737b883dd374b35f62a7e81e"></a><!-- doxytag: member="BabelShark::UintElement::UintElement" ref="3c15e5ce737b883dd374b35f62a7e81e" args="(unsigned int size, char *name)" -->
 <div class="memitem">
 <div class="memproto">
@@ -83,7 +120,7 @@ Design Pattern Used: Composite Class: <a class="el" href="class_babel_shark_1_1_
 <div class="memdoc">
 
 <p>
-Constructor calls parent constructor then sets up the bit mask and size in bytes 
+
 </div>
 </div><p>
 <a class="anchor" name="c298866a90094639668c65602190c6fa"></a><!-- doxytag: member="BabelShark::UintElement::~UintElement" ref="c298866a90094639668c65602190c6fa" args="()" -->
@@ -185,9 +222,9 @@ Interpret Reads in data from packet This one gets a little complex converts the 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>include/<a class="el" href="_uint_element_8h_source.html">UintElement.h</a><li>src/<a class="el" href="_uint_element_8cpp.html">UintElement.cpp</a></ul>
+<li>M:/babelshark/trunk/wireshark-files/plugins/babelshark/include/<a class="el" href="_uint_element_8h_source.html">UintElement.h</a><li>M:/babelshark/trunk/wireshark-files/plugins/babelshark/src/<a class="el" href="_uint_element_8cpp.html">UintElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:03 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 26 22:54:56 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

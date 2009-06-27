@@ -34,6 +34,12 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_element_cast_imp_3_01const_01_element_type_t_01_5_01_4.html">ElementCastImp&lt; const ElementTypeT * &gt;</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html">DynamicTypeCollection</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_element.html">Element</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_element___t.html">Element_T</a></td></tr>
@@ -55,6 +61,10 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_quick_builder.html">QuickBuilder</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html">Reader</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_collection.html">StaticTypeCollection</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type.html">StaticType</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_visitor.html">Visitor</a></td></tr>
 
@@ -79,6 +89,8 @@
  }</td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_i.html#ebd45042f3a34ed7c14376cf59e5b289">CreateInstructionTreeAndFillDataDictionary</a> (const <a class="el" href="class_p_d_i_1_1_element.html">Element</a> &amp;elemRoot, bool bDisplayOutputToScreen=false)</td></tr>
+
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename ElementTypeQualifiedT &gt; </td></tr>
 <tr><td class="memTemplItemLeft" nowrap align="right" valign="top">ElementTypeQualifiedT&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_p_d_i.html#91e7acfd6c982ef09cc58d6acbfe5cbe">PDI_cast</a> (<a class="el" href="class_p_d_i_1_1_element.html">Element</a> &amp;element)</td></tr>
 
@@ -119,6 +131,38 @@
 </div>
 </div><p>
 <hr><h2>Function Documentation</h2>
+<a class="anchor" name="ebd45042f3a34ed7c14376cf59e5b289"></a><!-- doxytag: member="PDI::CreateInstructionTreeAndFillDataDictionary" ref="ebd45042f3a34ed7c14376cf59e5b289" args="(const Element &amp;elemRoot, bool bDisplayOutputToScreen=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PDI::CreateInstructionTreeAndFillDataDictionary           </td>
+          <td>(</td>
+          <td class="paramtype">const Element &amp;&nbsp;</td>
+          <td class="paramname"> <em>elemRoot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>bDisplayOutputToScreen</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The CreateInstructionTreeAndFillDataDictionary function is called by the calling code (either the <a class="el" href="main_8cpp.html">Main.cpp</a> file in cajun test folder or the <a class="el" href="_dissector_8cpp.html">dissector.cpp</a> file in babelshark include folder) after the <a class="el" href="namespace_p_d_i.html">PDI</a> file has been read by the Read function.<p>
+The purpose of this function is to simplify the calling code, so it doesn't need to know the details about creating the instruction tree or about about filling the data dictionary. For example, it is important that the Data Dictionary is filled before the Instruction Tree is created. This function will ensure that happens.<p>
+First it will call the StaticTypeCollection::FillDataDictionary function to fill the Data Dictionary with all the statictypes that were in the <a class="el" href="namespace_p_d_i.html">PDI</a> File. Then it will call the <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html#e55b7d755e62a4c50b7100a166013752">DynamicTypeCollection::FillDataDictionary</a> function to fill the data dictionary with all of the dynamictypes that were in the <a class="el" href="namespace_p_d_i.html">PDI</a> File. Then it will instantiate the a <a class="el" href="class_tree_visitor.html">TreeVisitor</a> to create the Instruction Tree. Finally, it will call singleton destructors to delete the <a class="el" href="class_p_d_i_1_1_static_type_collection.html">StaticTypeCollection</a> singleton and the <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html">DynamicTypeCollection</a> singleton.<p>
+The two paramters passed into this function are needed by the <a class="el" href="class_tree_visitor.html">TreeVisitor</a> constructor and accept function. 
+</div>
+</div><p>
 <a class="anchor" name="9940546f948318c316306e3145ed765b"></a><!-- doxytag: member="PDI::PDI_cast" ref="9940546f948318c316306e3145ed765b" args="(const Element *pElement)" -->
 <div class="memitem">
 <div class="memproto">
@@ -208,7 +252,7 @@ template&lt;typename ElementTypeQualifiedT &gt; </div>
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Wed Jun 17 22:21:03 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 26 22:54:56 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
