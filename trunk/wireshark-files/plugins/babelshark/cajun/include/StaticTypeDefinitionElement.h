@@ -1,12 +1,12 @@
-#ifndef STATIC_TYPE_ELEMENT_H
-#define STATIC_TYPE_ELEMENT_H
+#ifndef STATIC_TYPE_DEFINITION_H
+#define STATIC_TYPE_DEFINITION_H
 
 #include <string>
 #include "Elements.h"
 
 namespace PDI
 {
-	class StaticType : public Array
+	class StaticTypeDefinition : public Array
 	{
 		public:
 			StaticType(char* label, int size);
@@ -18,4 +18,4 @@ namespace PDI
 	}
 }
 
-#endif //STATIC_TYPE_ELEMENT_H
+#endif //STATIC_TYPE_DEFINITION_H
