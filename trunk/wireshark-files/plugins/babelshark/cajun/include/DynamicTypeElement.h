@@ -33,7 +33,7 @@ struct DynamicTypeEntry {
   * but then realized that when we were going to access the data, 
   * we just want to iterate over every item in the list, rather than 
   * look-up an item by passing in the first value.
-  */
+  **/
 class DynamicTypeElement
 {
 public:
