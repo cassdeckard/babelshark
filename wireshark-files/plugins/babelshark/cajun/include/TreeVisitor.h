@@ -1,4 +1,4 @@
-/**********************************************
+/***********************************************
 
 Author: Julie Betlach
 
@@ -10,7 +10,7 @@ File Name: TreeVisitor.h
 File Description: The TreeVisitor.h file is a part of the PDI parser.  It provides the implementation
 of the TreeVisitor class.
 
-***********************************************/
+*************************************************/
 #pragma once
 
 
@@ -32,7 +32,7 @@ of the TreeVisitor class.
 #include <iostream>
 #include <fstream>
 
-/** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
+/*** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
   * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created
   * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
   *
@@ -47,7 +47,7 @@ of the TreeVisitor class.
   * If a second parameter is provided, which is boolean, this will be used to determine if
   * unit test / debug data should be written to cout.  If the parameter is true then data will
   * be displayed.  If the parameter is false, or is not provided, then data will not be displayed.
-  */
+  ***/
 class TreeVisitor : public PDI::ConstVisitor
 {
 public:
@@ -58,9 +58,9 @@ public:
          |  'ASCII'
          |  'PAD'
          |  array
-*/
+***/
 
-    /** This is the constructor for TreeVisitor class.
+    /*** This is the constructor for TreeVisitor class.
       *
       * @param sName
       *   the name of the root node.
@@ -69,7 +69,7 @@ public:
       *
       * A function map is initialized in the constructor using a template.
       * This will make the addition of new types easier.
-      */
+      ***/
    TreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) :
       m_sName(sName),
       m_bDisplayOutputToScreen(bDisplayOutputToScreen),
@@ -83,20 +83,20 @@ public:
       m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
    }
 
-   /** GetInstruction() returns a pointer to an instruction.
+   /*** GetInstruction() returns a pointer to an instruction.
      *
-     */
+     ***/
    BabelShark::Instruction* GetInstruction() { return m_pInstruction; }
 
 private:
-   /** CreateInstruction() uses a template to reduce code size and to make it easier to
+   /*** CreateInstruction() uses a template to reduce code size and to make it easier to
      * add new types.  There are 3 pieces of data that an instruction needs: name, type, size.
      * Size and name are passed in as parameters.  The Type is known because this is a template function
      * and it is InstructionTypeT.
      *
      * @param nSize
      * @param sName
-     */
+     ***/
    template <typename InstructionTypeT>
    BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName)
    {
@@ -105,12 +105,12 @@ private:
       return new InstructionTypeT(nSize, s);
    }
 
-   /** Visit() uses iterates over all items in the array. It calls a visit function
+   /*** Visit() uses iterates over all items in the array. It calls a visit function
      * on each item.  It passes in the name of the array for the same reason that we needed to pass the name of
      * the root node into the constructor.  So that it would be available to use when we create the instruction.
      *
      * Each item in the array is added to an instruction set.
-     */
+     ***/
    virtual void Visit(const PDI::Array& array) {
       if (m_bDisplayOutputToScreen)
       {
@@ -131,13 +131,13 @@ private:
       m_pInstruction = pInstructionSet;
    }
 
-   /** Visit() is used to visit a DisplayElement.
+   /*** Visit() is used to visit a DisplayElement.
      * It creates one instruction for the DisplayElement.  It uses a template
      * in order to reduce code.  It looks in the function map for a known type
      * and then calls the appropriate function to create the instruction that
      * matches the desired type.  For example, if ASCII is the type, then an
      * AsciiElement instruction is created and added to the instruction tree.
-     */
+     ***/
    virtual void Visit(const PDI::DisplayElement& string) {
       std::istringstream ss(string);
 
@@ -163,10 +163,10 @@ private:
       m_pInstruction = (this->*func)(nSize, m_sName);
    }
 
-   /** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.
+   /*** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.
      * It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to
      * NULL_ELEMENT.  However, we should never be visiting a NULL_ELEMENT, so an exception in thrown.
-     */
+     ***/
    virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
 
    typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&);

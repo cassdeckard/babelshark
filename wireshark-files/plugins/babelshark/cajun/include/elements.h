@@ -1,4 +1,4 @@
-/**********************************************
+/***********************************************
 
 Author: Julie Betlach
 
@@ -13,7 +13,7 @@ File Name: Elements.h
 
 File Description: The Elements.h file is a part of the PDI parser.  It provides the implementation
 of the different element types: ARRAY_ELEMENT, DISPLAY_ELEMENT, and NULL_ELEMENT.
-***********************************************/
+*************************************************/
 
 #pragma once
 
@@ -41,7 +41,7 @@ enum ElementType
 
 class ElementImp;
 
-/** Element is the base class for the element type classes.
+/*** Element is the base class for the element type classes.
   * The Element class and ElementImp class follow the Pimple Design Pattern.
   * The majority of this class existed in the CAJUN JSON parser.  However, it has been
   * modified to suit our needs as explained below.
@@ -52,7 +52,7 @@ class ElementImp;
   * The actual member variable that holds the Name is not in the Element class.  It is in the
   * ElementImp_T class.  This was done because the Element class did not need to know about the
   * member variable.
-  */
+  ***/
 class Element
 {
 public:
@@ -88,9 +88,9 @@ private:
 // recursive template pattern", also provides little interface used in client
 // code
 
-/** Element_T is a template class for the element type classes.
+/*** Element_T is a template class for the element type classes.
   * This class existed in the CAJUN JSON parser and has not changed.
-  */
+  ***/
 template <typename ElementImpTypeT>
 class Element_T : public Element
 {
@@ -113,7 +113,7 @@ protected:
 
 class ArrayImp;
 
-/** The Array class defines the interface to the ArrayImp class.
+/*** The Array class defines the interface to the ArrayImp class.
   * The Array class and ArrayImp class follow the Pimple Design Pattern.
   * The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT.  However, it has been
   * modified to suit our needs as explained below.
@@ -128,7 +128,7 @@ class ArrayImp;
   * it was more efficient just to store the dimension read in from the file.  When an InstructionSet is created
   * from the Array element, the dimension will be passed into its constructor and it will appropriately handle
   * dealing with the buffer of bits being sniffed by Wireshark.
-  */
+  ***/
 class Array : public Element_T<ArrayImp>
 {
 public:
@@ -164,7 +164,7 @@ public:
 
 class DisplayElementImp;
 
-/** The DisplayElement class defines the interface to the DisplayElementImp class.
+/*** The DisplayElement class defines the interface to the DisplayElementImp class.
   * The DisplayElement class and DisplayElementImp class follow the Pimple Design Pattern.
   * The majority of this class existed in the CAJUN JSON parser as the OBJECT_STRING.  However, it has been
   * modified to suit our needs as explained below.
@@ -172,7 +172,7 @@ class DisplayElementImp;
   * The class has a very similar interface as before, however, the names of the class and the functions have
   * been changed to be more clear about the new functionality of the class, to support DisplayElements which
   * consist of a display type and size.
-  */
+  ***/
 class DisplayElement : public Element_T<DisplayElementImp>
 {
 public:
@@ -185,13 +185,13 @@ public:
 
 class NullImp;
 
-/** The Null class defines the interface to the NullImp class.
+/*** The Null class defines the interface to the NullImp class.
   * The Null class and NullImp class follow the Pimple Design Pattern.
   * This class existed in the CAJUN JSON parser.  It has not been modified.
   *
   * JSON supported Null elements.  However, our PDI language does not.  However, this class was
   * retained so that it could be used as a default type prior to us knowing the element type.
-  */
+  ***/
 class Null : public Element_T<NullImp>
 {};
 

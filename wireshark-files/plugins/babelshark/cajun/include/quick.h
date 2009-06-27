@@ -1,4 +1,4 @@
-/******************************************************************************
+/*******************************************************************************
 
 Author: Julie Betlach
 
@@ -17,7 +17,7 @@ extracting or  compiling data into a JSON document structure. They are useful
 when the structure of a document is rigid and well-known, which is often the
 case.
 
-******************************************************************************/
+********************************************************************************/
 
 #pragma once
 
@@ -27,7 +27,7 @@ case.
 namespace PDI
 {
 
-/** QuickInterpreter allows quick, read-only access to an existing document
+/*** QuickInterpreter allows quick, read-only access to an existing document
   * structure. For examples, given the document...
   *
   * <pre>
@@ -49,7 +49,7 @@ namespace PDI
   * QuickBuilder builder(elemRoot); // elemRoot being an empty Element
   * builder["XYZ"][ABC][0] = Number(1);
   * </pre>
-  */
+  ***/
 class QuickInterpreter
 {
 public:

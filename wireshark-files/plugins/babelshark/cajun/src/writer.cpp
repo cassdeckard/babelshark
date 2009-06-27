@@ -1,4 +1,4 @@
-/**********************************************
+/***********************************************
 
 Author: Julie Betlach
 
@@ -9,7 +9,7 @@ Original code parsed files in json format.
 Code now parses files in PDI format for a project for Washington University, 
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
-***********************************************/
+*************************************************/
 
 #include "writer.h"
 #include <iostream>
@@ -21,7 +21,7 @@ TODO:
 * better documentation
 * unicode character encoding
 
-*/
+***/
 
 namespace PDI
 {
@@ -62,7 +62,7 @@ void Writer::Visit(const Array& array) {
 void Writer::Visit(const Number& number) {
    m_ostr << number;
 }
-*/
+***/
 void Writer::Visit(const Null& nullElement) {
    m_ostr << "null";
 }
