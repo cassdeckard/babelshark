@@ -1,6 +1,6 @@
-/**********************************************
+/***********************************************
 File : BabelSharkSupport.cpp
-***********************************************/
+*************************************************/
 
 #pragma once
 
@@ -13,7 +13,7 @@ File : BabelSharkSupport.cpp
 namespace PDI
 {
 
-   /** The CreateInstructionTreeAndFillDataDictionary function is called by 
+   /*** The CreateInstructionTreeAndFillDataDictionary function is called by 
    * the calling code (either the Main.cpp file in cajun test folder or the
    * dissector.cpp file in babelshark include folder) after the PDI file
    * has been read by the Read function.
@@ -36,7 +36,7 @@ namespace PDI
    * 
    * The two paramters passed into this function are needed by the TreeVisitor
    * constructor and accept function.
-   */
+   ***/
    void CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)
    {
       //StaticTypeCollection::FillDataDictionary();

@@ -20,12 +20,12 @@ namespace PDI
 			StaticTypeConstIter Begin() const;
 			StaticTypeConstIter End() const;
 
-			/**
+			/***
 			Inserts a StaticTypeElement into the Collection
-			*/
+			***/
 			void Insert(StaticTypeElement* element);
 			
-			/** The FillDataDictionary function iterates over each StaticTypeDefinition
+			/*** The FillDataDictionary function iterates over each StaticTypeDefinition
 			 * in the collection.  Each DynamicTypeElement contains a name and a
 			 * list of DynamicTypeEntry objects.  For each DynamicTypeEntry, a function
 			 * call will be made to add it to the DataDictionary.  The function
@@ -34,7 +34,7 @@ namespace PDI
 			 * where alias is the name field from DynamicTypeElement,
 			 * parameter is the first field inside DynamicTypeEntry, and
 			 * typeName is the seconed field inside DynamicTypeEntry.
-			 */
+			 ***/
 			void FillDataDictionary();
 		private:
 	}

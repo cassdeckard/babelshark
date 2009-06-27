@@ -1,4 +1,4 @@
-/**********************************************
+/***********************************************
 
 Author: Julie Betlach
 
@@ -9,7 +9,7 @@ Original code parsed files in json format.
 Code now parses files in PDI format for a project for Washington University,
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
-***********************************************/
+*************************************************/
 
 #include "elements.h"
 #include "visitor.h"
@@ -22,7 +22,7 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 TODO:
 * better documentation
 
-*/
+***/
 
 namespace PDI
 {
@@ -30,9 +30,9 @@ namespace PDI
 //////////////////
 // Element members
 
-/** (See Element)
+/*** (See Element)
   *
-  */
+  ***/
 class ElementImp
 {
 public:
@@ -156,9 +156,9 @@ ElementType Element_T<ElementImpTypeT>::Type_i() {
 //////////////////
 // Array members
 
-/** (See Array)
+/*** (See Array)
   *
-  */
+  ***/
 class ArrayImp : public ElementImp_T<Array, ArrayImp, ARRAY_ELEMENT>
 {
 public:
@@ -297,9 +297,9 @@ void Array::Clear() {
 ///////////////
 // Null members
 
-/** (See Null)
+/*** (See Null)
   *
-  */
+  ***/
 class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 {};
 
@@ -307,9 +307,9 @@ class NullImp : public ElementImp_T<Null, NullImp, NULL_ELEMENT>
 ////////////////////////
 // DisplayElement members
 
-/** (See DisplayElement)
+/*** (See DisplayElement)
   *
-  */
+  ***/
 class DisplayElementImp : public ElementImp_T<DisplayElement, DisplayElementImp, DISPLAY_ELEMENT>
 {
 public:
@@ -324,12 +324,12 @@ public:
 
 private:
    std::string m_sValue;
-   /** Size read in from the PDI file which will be used by instruction
+   /*** Size read in from the PDI file which will be used by instruction
      * class in order to extract a field from the buffer read in by Wireshark.
      * For some types this size will represent bits.  For others it may be bytes.
      * To keep separation of logic for PDI instructions from the logic of the PDI parser, this code will just
      * pass the value along, and will not have different logic for bits versus bytes.
-     */
+     ***/
    unsigned int m_iSizeToExtractFromBuffer;
 };
 

@@ -1,4 +1,4 @@
-/******************************************************************************
+/*******************************************************************************
 
 Author: Julie Betlach
 
@@ -28,7 +28,7 @@ PDI_cast<const Array&>(el); // runtime exception
 PDI_cast<Number&>(el); // compile time failure (loses const qualifier)
 PDI_cast<const Number*>(el); // compile time failure (cannot convert ref to pointer)
 
-******************************************************************************/
+********************************************************************************/
 
 #pragma once
 

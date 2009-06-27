@@ -1,4 +1,4 @@
-/**********************************************
+/***********************************************
 
 Author: Julie Betlach
 
@@ -9,7 +9,7 @@ Original code parsed files in json format.
 Code now parses files in PDI format for a project for Washington University,
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
-***********************************************/
+*************************************************/
 
 #pragma once
 
@@ -25,16 +25,16 @@ public:
    {
       Location();
 
-      /** document line, zero-indexed
-        */
+      /*** document line, zero-indexed
+        ***/
       unsigned int m_nLine;
 
-      /** character offset from beginning of line, zero indexed
-        */
+      /*** character offset from beginning of line, zero indexed
+        ***/
       unsigned int m_nLineOffset;
 
-      /** character offset from entire document, zero indexed
-        */
+      /*** character offset from entire document, zero indexed
+        ***/
       unsigned int m_nDocOffset;
    };
 
@@ -48,8 +48,8 @@ private:
    typedef std::vector<Token> Tokens;
    class TokenStream;
 
-   /** scanning istream into token sequence
-     */
+   /*** scanning istream into token sequence
+     ***/
    void Scan(Tokens& tokens, InputStream& inputStream);
 
    void EatWhiteSpace(InputStream& inputStream);
@@ -58,8 +58,8 @@ private:
    void MatchNumber(std::string& sNumber, InputStream& inputStream);
    void MatchExpectedString(const std::string& sExpected, InputStream& inputStream);
 
-   /** parsing token sequence into element structure
-     */
+   /*** parsing token sequence into element structure
+     ***/
    void Parse(Element& element, TokenStream& tokenStream);
    void Parse(Array& array, TokenStream& tokenStream);
    void Parse(DisplayElement& string, TokenStream& tokenStream);
