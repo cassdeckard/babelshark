@@ -33,11 +33,6 @@ namespace PDI
       return m_DynamicTypeCollection.insert(m_DynamicTypeCollection.end(), dynamicTypeElementToAdd);   
    }
 
-   /** The ClearCollection function calls the Clear function on
-     * each DynamicTypeElement in the collection.
-     */
-   void DynamicTypeCollection::ClearCollection() {}
-
    /** The FillDataDictionary function iterates over each DynamicTypeElement
      * in the collection.  Each DynamicTypeElement contains a name and a
      * list of DynamicTypeEntry objects.  For each DynamicTypeEntry, a function

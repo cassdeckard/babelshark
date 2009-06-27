@@ -40,14 +40,15 @@ namespace PDI
    void CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)
    {
       //StaticTypeCollection::FillDataDictionary();
-      //DynamicTypeCollection::FillDataDictionary();
+      DynamicTypeCollection::Instance().FillDataDictionary();
 
       // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.
       TreeVisitor treeVisitor(elemRoot.Name(), bDisplayOutputToScreen);
       elemRoot.Accept(treeVisitor);
 
       //Destroy StaticTypeCollection singleton.
-      //Destroy DynamicTypeCollection singleton.
+      DynamicTypeCollection::Release();
+      DynamicTypeCollection::Instance().FillDataDictionary(); // TODO: remove!!!
    }
 
 } // End namespace

@@ -198,6 +198,9 @@
 				RelativePath="..\..\include\PadElement.h">
 			</File>
 			<File
+				RelativePath="..\..\include\Singleton.h">
+			</File>
+			<File
 				RelativePath="..\..\include\StaticDefinition.h">
 			</File>
 			<File
