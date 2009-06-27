@@ -32,7 +32,7 @@ of the TreeVisitor class.
 #include <iostream>
 #include <fstream>
 
-/*** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
+/** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
   * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created
   * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
   *
@@ -60,7 +60,7 @@ public:
          |  array
 ***/
 
-    /*** This is the constructor for TreeVisitor class.
+    /** This is the constructor for TreeVisitor class.
       *
       * @param sName
       *   the name of the root node.
@@ -83,13 +83,13 @@ public:
       m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
    }
 
-   /*** GetInstruction() returns a pointer to an instruction.
+   /** GetInstruction() returns a pointer to an instruction.
      *
      ***/
    BabelShark::Instruction* GetInstruction() { return m_pInstruction; }
 
 private:
-   /*** CreateInstruction() uses a template to reduce code size and to make it easier to
+   /** CreateInstruction() uses a template to reduce code size and to make it easier to
      * add new types.  There are 3 pieces of data that an instruction needs: name, type, size.
      * Size and name are passed in as parameters.  The Type is known because this is a template function
      * and it is InstructionTypeT.
@@ -105,7 +105,7 @@ private:
       return new InstructionTypeT(nSize, s);
    }
 
-   /*** Visit() uses iterates over all items in the array. It calls a visit function
+   /** Visit() uses iterates over all items in the array. It calls a visit function
      * on each item.  It passes in the name of the array for the same reason that we needed to pass the name of
      * the root node into the constructor.  So that it would be available to use when we create the instruction.
      *
@@ -131,7 +131,7 @@ private:
       m_pInstruction = pInstructionSet;
    }
 
-   /*** Visit() is used to visit a DisplayElement.
+   /** Visit() is used to visit a DisplayElement.
      * It creates one instruction for the DisplayElement.  It uses a template
      * in order to reduce code.  It looks in the function map for a known type
      * and then calls the appropriate function to create the instruction that
@@ -163,7 +163,7 @@ private:
       m_pInstruction = (this->*func)(nSize, m_sName);
    }
 
-   /*** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.
+   /** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.
      * It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to
      * NULL_ELEMENT.  However, we should never be visiting a NULL_ELEMENT, so an exception in thrown.
      ***/
