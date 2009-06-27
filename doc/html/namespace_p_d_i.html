@@ -62,9 +62,9 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html">Reader</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_collection.html">StaticTypeCollection</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration_collection.html">StaticTypeDeclarationCollection</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type.html">StaticType</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html">StaticTypeDeclaration</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_visitor.html">Visitor</a></td></tr>
 
@@ -157,10 +157,7 @@
 <div class="memdoc">
 
 <p>
-The CreateInstructionTreeAndFillDataDictionary function is called by the calling code (either the <a class="el" href="main_8cpp.html">Main.cpp</a> file in cajun test folder or the <a class="el" href="_dissector_8cpp.html">dissector.cpp</a> file in babelshark include folder) after the <a class="el" href="namespace_p_d_i.html">PDI</a> file has been read by the Read function.<p>
-The purpose of this function is to simplify the calling code, so it doesn't need to know the details about creating the instruction tree or about about filling the data dictionary. For example, it is important that the Data Dictionary is filled before the Instruction Tree is created. This function will ensure that happens.<p>
-First it will call the StaticTypeCollection::FillDataDictionary function to fill the Data Dictionary with all the statictypes that were in the <a class="el" href="namespace_p_d_i.html">PDI</a> File. Then it will call the <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html#e55b7d755e62a4c50b7100a166013752">DynamicTypeCollection::FillDataDictionary</a> function to fill the data dictionary with all of the dynamictypes that were in the <a class="el" href="namespace_p_d_i.html">PDI</a> File. Then it will instantiate the a <a class="el" href="class_tree_visitor.html">TreeVisitor</a> to create the Instruction Tree. Finally, it will call singleton destructors to delete the <a class="el" href="class_p_d_i_1_1_static_type_collection.html">StaticTypeCollection</a> singleton and the <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html">DynamicTypeCollection</a> singleton.<p>
-The two paramters passed into this function are needed by the <a class="el" href="class_tree_visitor.html">TreeVisitor</a> constructor and accept function. 
+
 </div>
 </div><p>
 <a class="anchor" name="9940546f948318c316306e3145ed765b"></a><!-- doxytag: member="PDI::PDI_cast" ref="9940546f948318c316306e3145ed765b" args="(const Element *pElement)" -->
@@ -252,7 +249,7 @@ template&lt;typename ElementTypeQualifiedT &gt; </div>
 </div>
 </div><p>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 26 22:54:56 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:14:35 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

@@ -70,10 +70,7 @@ Inheritance diagram for TreeVisitor:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a></td></tr>
 
 </table>
-<hr><a name="_details"></a><h2>Detailed Description</h2>
-The <a class="el" href="class_tree_visitor.html">TreeVisitor</a> class is used to visit (iterate over) each item in the Tree which is created by reading in a file in <a class="el" href="namespace_p_d_i.html">PDI</a> format. When a node on the tree is visited, an instruction is created in the Instruction Tree. The Wireshark dissector will use the instruction tree created by this class.<p>
-Usage: After a file has been read in by calling the following parser functions... Element elemRoot = DisplayElement(); Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt")); then the following function can be called to create an instruction tree. <a class="el" href="class_tree_visitor.html">TreeVisitor</a> treeVisitor(elemRoot.Name()); Note that the root element name must be passed into the <a class="el" href="class_tree_visitor.html">TreeVisitor</a> in order to get the first name from the file to be included in the first instruction in the instruction tree.<p>
-If a second parameter is provided, which is boolean, this will be used to determine if unit test / debug data should be written to cout. If the parameter is true then data will be displayed. If the parameter is false, or is not provided, then data will not be displayed. <hr><h2>Member Typedef Documentation</h2>
+<hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="3d331880b4ea827c6ff144c9fee88f7b"></a><!-- doxytag: member="TreeVisitor::CreateInstructionFunc" ref="3d331880b4ea827c6ff144c9fee88f7b" args=")(unsigned int, const std::string &amp;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -131,14 +128,7 @@ If a second parameter is provided, which is boolean, this will be used to determ
 <div class="memdoc">
 
 <p>
-This is the constructor for <a class="el" href="class_tree_visitor.html">TreeVisitor</a> class.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>sName</em>&nbsp;</td><td>the name of the root node. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>bDisplayOutputToScreen</em>&nbsp;</td><td>(optional) should be true if you want output to the screen for testing</td></tr>
-  </table>
-</dl>
-A function map is initialized in the constructor using a template. This will make the addition of new types easier. 
+
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -170,13 +160,6 @@ template&lt;typename InstructionTypeT &gt; </div>
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_tree_visitor.html#a319857c169e37d66b46a4810279789e">CreateInstruction()</a> uses a template to reduce code size and to make it easier to add new types. There are 3 pieces of data that an instruction needs: name, type, size. Size and name are passed in as parameters. The Type is known because this is a template function and it is InstructionTypeT.<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>nSize</em>&nbsp;</td><td></td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sName</em>&nbsp;</td><td></td></tr>
-  </table>
-</dl>
 
 </div>
 </div><p>
@@ -196,7 +179,7 @@ template&lt;typename InstructionTypeT &gt; </div>
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_tree_visitor.html#5aec3878d33d8942c16e1cfe38ca9371">GetInstruction()</a> returns a pointer to an instruction. 
+
 </div>
 </div><p>
 <a class="anchor" name="43a9f62cc523fba70fd69177ae9efe00"></a><!-- doxytag: member="TreeVisitor::Visit" ref="43a9f62cc523fba70fd69177ae9efe00" args="(const PDI::Null &amp;null)" -->
@@ -216,7 +199,7 @@ template&lt;typename InstructionTypeT &gt; </div>
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">Visit()</a> is used to visit a NULL_ELEMENT. This was kept in for completeness. It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to NULL_ELEMENT. However, we should never be visiting a NULL_ELEMENT, so an exception in thrown. 
+
 <p>Implements <a class="el" href="class_p_d_i_1_1_const_visitor.html#bfd97412ff9c3184f22e733eaf3c2dbf">PDI::ConstVisitor</a>.</p>
 
 </div>
@@ -238,7 +221,7 @@ template&lt;typename InstructionTypeT &gt; </div>
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">Visit()</a> is used to visit a DisplayElement. It creates one instruction for the DisplayElement. It uses a template in order to reduce code. It looks in the function map for a known type and then calls the appropriate function to create the instruction that matches the desired type. For example, if ASCII is the type, then an AsciiElement instruction is created and added to the instruction tree. 
+
 <p>Implements <a class="el" href="class_p_d_i_1_1_const_visitor.html#524441ec45975a709fede105f8c30361">PDI::ConstVisitor</a>.</p>
 
 </div>
@@ -260,8 +243,7 @@ template&lt;typename InstructionTypeT &gt; </div>
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">Visit()</a> uses iterates over all items in the array. It calls a visit function on each item. It passes in the name of the array for the same reason that we needed to pass the name of the root node into the constructor. So that it would be available to use when we create the instruction.<p>
-Each item in the array is added to an instruction set. 
+
 <p>Implements <a class="el" href="class_p_d_i_1_1_const_visitor.html#7a7cf2134195f958a2d5eeeb6cfc2561">PDI::ConstVisitor</a>.</p>
 
 </div>
@@ -330,7 +312,7 @@ Each item in the array is added to an instruction set.
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>M:/babelshark/trunk/wireshark-files/plugins/babelshark/cajun/include/<a class="el" href="_tree_visitor_8h_source.html">TreeVisitor.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 26 22:54:48 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:14:27 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

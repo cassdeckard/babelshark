@@ -25,7 +25,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>quick.h</h1><a href="quick_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/******************************************************************************</span>
+<h1>quick.h</h1><a href="quick_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*******************************************************************************</span>
 <a name="l00002"></a>00002 <span class="comment"></span>
 <a name="l00003"></a>00003 <span class="comment">Author: Julie Betlach</span>
 <a name="l00004"></a>00004 <span class="comment"></span>
@@ -44,7 +44,7 @@
 <a name="l00017"></a>00017 <span class="comment">when the structure of a document is rigid and well-known, which is often the</span>
 <a name="l00018"></a>00018 <span class="comment">case.</span>
 <a name="l00019"></a>00019 <span class="comment"></span>
-<a name="l00020"></a>00020 <span class="comment">******************************************************************************/</span>
+<a name="l00020"></a>00020 <span class="comment">********************************************************************************/</span>
 <a name="l00021"></a>00021 
 <a name="l00022"></a>00022 <span class="preprocessor">#pragma once</span>
 <a name="l00023"></a>00023 <span class="preprocessor"></span>
@@ -54,6 +54,29 @@
 <a name="l00027"></a>00027 <span class="keyword">namespace </span>PDI
 <a name="l00028"></a>00028 {
 <a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="comment">/*** QuickInterpreter allows quick, read-only access to an existing document</span>
+<a name="l00031"></a>00031 <span class="comment">  * structure. For examples, given the document...</span>
+<a name="l00032"></a>00032 <span class="comment">  *</span>
+<a name="l00033"></a>00033 <span class="comment">  * &lt;pre&gt;</span>
+<a name="l00034"></a>00034 <span class="comment">  * {</span>
+<a name="l00035"></a>00035 <span class="comment">  *    "XYZ" : {</span>
+<a name="l00036"></a>00036 <span class="comment">  *          "ABC" : [ 1 ]</span>
+<a name="l00037"></a>00037 <span class="comment">  *    }</span>
+<a name="l00038"></a>00038 <span class="comment">  * }</span>
+<a name="l00039"></a>00039 <span class="comment">  *</span>
+<a name="l00040"></a>00040 <span class="comment">  * QuickInterpreter interpreter(elemRoot); // elemRoot containing above structure</span>
+<a name="l00041"></a>00041 <span class="comment">  * const Array&amp; array = interpreter["XYZ"];</span>
+<a name="l00042"></a>00042 <span class="comment">  * const Array&amp; array = interpreter["XYZ"]["ABC"];</span>
+<a name="l00043"></a>00043 <span class="comment">  * const Number&amp; num = interpreter["XYZ"]["ABC"][0];</span>
+<a name="l00044"></a>00044 <span class="comment">  * &lt;/pre&gt;</span>
+<a name="l00045"></a>00045 <span class="comment">  *</span>
+<a name="l00046"></a>00046 <span class="comment">  * QuickBuilder allows building the above structure with one line of code:</span>
+<a name="l00047"></a>00047 <span class="comment">  *</span>
+<a name="l00048"></a>00048 <span class="comment">  * &lt;pre&gt;</span>
+<a name="l00049"></a>00049 <span class="comment">  * QuickBuilder builder(elemRoot); // elemRoot being an empty Element</span>
+<a name="l00050"></a>00050 <span class="comment">  * builder["XYZ"][ABC][0] = Number(1);</span>
+<a name="l00051"></a>00051 <span class="comment">  * &lt;/pre&gt;</span>
+<a name="l00052"></a>00052 <span class="comment">  ***/</span>
 <a name="l00053"></a><a class="code" href="class_p_d_i_1_1_quick_interpreter.html">00053</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_quick_interpreter.html">QuickInterpreter</a>
 <a name="l00054"></a>00054 {
 <a name="l00055"></a>00055 <span class="keyword">public</span>:
@@ -114,7 +137,7 @@
 <a name="l00110"></a>00110 
 <a name="l00111"></a>00111 }
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Fri Jun 26 22:54:43 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:14:25 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
