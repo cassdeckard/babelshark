@@ -17,12 +17,15 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include "reader.h"
 #include "cast.h"
 #include "exception.h"
+
 #include "TreeVisitor.h"
+#include "BabelSharkSupport.h"
 
 // These are just included in Main so that we can use reverse engineering
 // to get the class diagram.
 #include "DynamicTypeElement.h"
 #include "DynamicTypeCollection.h"
+
 
 #include <iostream>
 #include <fstream>
@@ -71,6 +74,9 @@ int main()
 //      TreeVisitor treeVisitor(elemRoot.Name());
       elemRoot.Accept(treeVisitor);
       std::cout << "Done." << std::endl << std::endl;
+
+      // Try out the new function for Phase 2 testing.
+      CreateInstructionTreeAndFillDataDictionary(elemRoot, true);
 
       BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
 
