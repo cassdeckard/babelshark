@@ -1,6 +1,7 @@
 // $Id$
 
 #include "DynamicDefinition.h"
+#include <sstream>
 
 namespace BabelShark
 {
@@ -8,6 +9,9 @@ namespace BabelShark
    DynamicDefinition::DynamicDefinition(InstructionNode* type, std::string parameter)
       : TypeDefinition(type, parameter)
    {
+      std::stringstream ss;
+      ss << "DynamicDefinition( {" << type << "}, " << parameter.c_str() << ")\n";
+      printf(ss.str().c_str());
       _Definitions[parameter] = type;
    }
 
@@ -28,6 +32,9 @@ namespace BabelShark
 
    void DynamicDefinition::Add(InstructionNode* type, std::string parameter)
    {
+      std::stringstream ss;
+      ss << "DynamicDefinition.Add( {" << type << "}, " << parameter.c_str() << ")\n";
+      printf(ss.str().c_str());
       _Definitions[parameter] = type;
    }
 
