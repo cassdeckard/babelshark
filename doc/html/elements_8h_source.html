@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_d6ac4cd17098d06600de515731028d92.html">trunk</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_2e424ff942c775b12b47ea434b3043d5.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_f5558b82492e1c87349857996edbdf53.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_75a84a5b6a80643e68cdb8e015afe6fa.html">babelshark</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
+  <div class="navpath"><a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -67,18 +67,6 @@
 <a name="l00041"></a>00041 
 <a name="l00042"></a>00042 <span class="keyword">class </span>ElementImp;
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="comment">/*** Element is the base class for the element type classes.</span>
-<a name="l00045"></a>00045 <span class="comment">  * The Element class and ElementImp class follow the Pimple Design Pattern.</span>
-<a name="l00046"></a>00046 <span class="comment">  * The majority of this class existed in the CAJUN JSON parser.  However, it has been</span>
-<a name="l00047"></a>00047 <span class="comment">  * modified to suit our needs as explained below.</span>
-<a name="l00048"></a>00048 <span class="comment">  *</span>
-<a name="l00049"></a>00049 <span class="comment">  * Each DisplayElement has three components: Name, Type, Size.</span>
-<a name="l00050"></a>00050 <span class="comment">  * The interface for the SetName function (used to place the name into the member variable)</span>
-<a name="l00051"></a>00051 <span class="comment">  * and the Name function (used to obtain the value of the member variable) have been defined here.</span>
-<a name="l00052"></a>00052 <span class="comment">  * The actual member variable that holds the Name is not in the Element class.  It is in the</span>
-<a name="l00053"></a>00053 <span class="comment">  * ElementImp_T class.  This was done because the Element class did not need to know about the</span>
-<a name="l00054"></a>00054 <span class="comment">  * member variable.</span>
-<a name="l00055"></a>00055 <span class="comment">  ***/</span>
 <a name="l00056"></a><a class="code" href="class_p_d_i_1_1_element.html">00056</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element.html">Element</a>
 <a name="l00057"></a>00057 {
 <a name="l00058"></a>00058 <span class="keyword">public</span>:
@@ -113,9 +101,6 @@
 <a name="l00088"></a>00088 <span class="comment">// recursive template pattern", also provides little interface used in client</span>
 <a name="l00089"></a>00089 <span class="comment">// code</span>
 <a name="l00090"></a>00090 
-<a name="l00091"></a>00091 <span class="comment">/*** Element_T is a template class for the element type classes.</span>
-<a name="l00092"></a>00092 <span class="comment">  * This class existed in the CAJUN JSON parser and has not changed.</span>
-<a name="l00093"></a>00093 <span class="comment">  ***/</span>
 <a name="l00094"></a>00094 <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ElementImpTypeT&gt;
 <a name="l00095"></a><a class="code" href="class_p_d_i_1_1_element___t.html">00095</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>
 <a name="l00096"></a>00096 {
@@ -137,22 +122,6 @@
 <a name="l00113"></a>00113 
 <a name="l00114"></a>00114 <span class="keyword">class </span>ArrayImp;
 <a name="l00115"></a>00115 
-<a name="l00116"></a>00116 <span class="comment">/*** The Array class defines the interface to the ArrayImp class.</span>
-<a name="l00117"></a>00117 <span class="comment">  * The Array class and ArrayImp class follow the Pimple Design Pattern.</span>
-<a name="l00118"></a>00118 <span class="comment">  * The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT.  However, it has been</span>
-<a name="l00119"></a>00119 <span class="comment">  * modified to suit our needs as explained below.</span>
-<a name="l00120"></a>00120 <span class="comment">  *</span>
-<a name="l00121"></a>00121 <span class="comment">  * The list is now a list of elements.  Previously, it was a list of member structs which contained both a</span>
-<a name="l00122"></a>00122 <span class="comment">  * name and an element.  The concept of the struct was removed because the name field was moved into the element.</span>
-<a name="l00123"></a>00123 <span class="comment">  * This Array class does not really hold items in the normal Array sense (in that you have item[0], item[1], etc.)</span>
-<a name="l00124"></a>00124 <span class="comment">  * Instead it contains an ordered list of elements.</span>
-<a name="l00125"></a>00125 <span class="comment">  *</span>
-<a name="l00126"></a>00126 <span class="comment">  * The concept of dimension was added to this class.  Our PDI format allows the user to specify a number after the</span>
-<a name="l00127"></a>00127 <span class="comment">  * closing bracket which specifies the dimension of the array.  Rather than storing extra elements in the array,</span>
-<a name="l00128"></a>00128 <span class="comment">  * it was more efficient just to store the dimension read in from the file.  When an InstructionSet is created</span>
-<a name="l00129"></a>00129 <span class="comment">  * from the Array element, the dimension will be passed into its constructor and it will appropriately handle</span>
-<a name="l00130"></a>00130 <span class="comment">  * dealing with the buffer of bits being sniffed by Wireshark.</span>
-<a name="l00131"></a>00131 <span class="comment">  ***/</span>
 <a name="l00132"></a><a class="code" href="class_p_d_i_1_1_array.html">00132</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_array.html">Array</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;ArrayImp&gt;
 <a name="l00133"></a>00133 {
 <a name="l00134"></a>00134 <span class="keyword">public</span>:
@@ -188,15 +157,6 @@
 <a name="l00164"></a>00164 
 <a name="l00165"></a>00165 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_display_element_imp.html">DisplayElementImp</a>;
 <a name="l00166"></a>00166 
-<a name="l00167"></a>00167 <span class="comment">/*** The DisplayElement class defines the interface to the DisplayElementImp class.</span>
-<a name="l00168"></a>00168 <span class="comment">  * The DisplayElement class and DisplayElementImp class follow the Pimple Design Pattern.</span>
-<a name="l00169"></a>00169 <span class="comment">  * The majority of this class existed in the CAJUN JSON parser as the OBJECT_STRING.  However, it has been</span>
-<a name="l00170"></a>00170 <span class="comment">  * modified to suit our needs as explained below.</span>
-<a name="l00171"></a>00171 <span class="comment">  *</span>
-<a name="l00172"></a>00172 <span class="comment">  * The class has a very similar interface as before, however, the names of the class and the functions have</span>
-<a name="l00173"></a>00173 <span class="comment">  * been changed to be more clear about the new functionality of the class, to support DisplayElements which</span>
-<a name="l00174"></a>00174 <span class="comment">  * consist of a display type and size.</span>
-<a name="l00175"></a>00175 <span class="comment">  ***/</span>
 <a name="l00176"></a><a class="code" href="class_p_d_i_1_1_display_element.html">00176</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_display_element.html">DisplayElement</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;DisplayElementImp&gt;
 <a name="l00177"></a>00177 {
 <a name="l00178"></a>00178 <span class="keyword">public</span>:
@@ -209,13 +169,6 @@
 <a name="l00185"></a>00185 
 <a name="l00186"></a>00186 <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_null_imp.html">NullImp</a>;
 <a name="l00187"></a>00187 
-<a name="l00188"></a>00188 <span class="comment">/*** The Null class defines the interface to the NullImp class.</span>
-<a name="l00189"></a>00189 <span class="comment">  * The Null class and NullImp class follow the Pimple Design Pattern.</span>
-<a name="l00190"></a>00190 <span class="comment">  * This class existed in the CAJUN JSON parser.  It has not been modified.</span>
-<a name="l00191"></a>00191 <span class="comment">  *</span>
-<a name="l00192"></a>00192 <span class="comment">  * JSON supported Null elements.  However, our PDI language does not.  However, this class was</span>
-<a name="l00193"></a>00193 <span class="comment">  * retained so that it could be used as a default type prior to us knowing the element type.</span>
-<a name="l00194"></a>00194 <span class="comment">  ***/</span>
 <a name="l00195"></a><a class="code" href="class_p_d_i_1_1_null.html">00195</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_null.html">Null</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_element___t.html">Element_T</a>&lt;NullImp&gt;
 <a name="l00196"></a>00196 {};
 <a name="l00197"></a>00197 
@@ -224,7 +177,7 @@
 <a name="l00200"></a>00200 
 <a name="l00201"></a>00201 } <span class="comment">// End namespace</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:06 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:38 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

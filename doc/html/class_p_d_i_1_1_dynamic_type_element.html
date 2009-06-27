@@ -68,7 +68,9 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">DynamicTypeList</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_dynamic_type_element.html#116866fdc11f575f6d7f3f9fd0c39f1f">m_DynamicTypeList</a></td></tr>
 
 </table>
-<hr><h2>Member Typedef Documentation</h2>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+The <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> class holds one "dynamictype" read in from a <a class="el" href="namespace_p_d_i.html">PDI</a> file. An example dynamictype in <a class="el" href="namespace_p_d_i.html">PDI</a> file format follows: dynamictype BODY { 1 &amp;ACK, 2 &amp;INIT } where BODY is stored in the Name field in the <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> class and 1 &amp;ACK is one entry in the DynamicTypeList. Each entry is stored in a <a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a> object, which is just a struct with two std::string fields. The first field is a string instead of an unsigned int, in order to make the definition more flexible.<p>
+m_DynamicTypeList is defined as std::list&lt;DynamicTypeEntry&gt; Originally we planned to use std::map&lt;std::string, std::string&gt;, but then realized that when we were going to access the data, we just want to iterate over every item in the list, rather than look-up an item by passing in the first value. <hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="d42ada769b3d6ffb0c7e9da39f23e257"></a><!-- doxytag: member="PDI::DynamicTypeElement::const_iterator" ref="d42ada769b3d6ffb0c7e9da39f23e257" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +133,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> function is just a simple constructor. 
 </div>
 </div><p>
 <a class="anchor" name="894226ca40346eef1ef10ac54b2122cd"></a><!-- doxytag: member="PDI::DynamicTypeElement::DynamicTypeElement" ref="894226ca40346eef1ef10ac54b2122cd" args="(const DynamicTypeElement &amp;dyn_element)" -->
@@ -151,7 +153,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> function with one <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> parameter is just a simple copy constructor. 
 </div>
 </div><p>
 <a class="anchor" name="e6ef10b47f9857d60072bf03c11026ae"></a><!-- doxytag: member="PDI::DynamicTypeElement::~DynamicTypeElement" ref="e6ef10b47f9857d60072bf03c11026ae" args="()" -->
@@ -170,7 +172,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The ~DynamicTypeElement function is just a simple destructor. 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -228,7 +230,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The Clear function is used to empty the <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> list. 
 </div>
 </div><p>
 <a class="anchor" name="8615ccb36242dde491dca7674c582b7d"></a><!-- doxytag: member="PDI::DynamicTypeElement::End" ref="8615ccb36242dde491dca7674c582b7d" args="() const " -->
@@ -286,7 +288,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The Insert function is used to insert a <a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a> into a <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a>. There will be one call to the insert function for each row inside a dynamictype found in the <a class="el" href="namespace_p_d_i.html">PDI</a> File. 
 </div>
 </div><p>
 <a class="anchor" name="dcaacfd676bd09b2d62083249e72f5c9"></a><!-- doxytag: member="PDI::DynamicTypeElement::Name" ref="dcaacfd676bd09b2d62083249e72f5c9" args="() const " -->
@@ -305,7 +307,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The Name function returns a std::string containing the value of the m_sName member variable. 
 </div>
 </div><p>
 <a class="anchor" name="a8fc86f43c57b20307d3192f72e94fb6"></a><!-- doxytag: member="PDI::DynamicTypeElement::SetName" ref="a8fc86f43c57b20307d3192f72e94fb6" args="(const std::string &amp;nameIn)" -->
@@ -325,7 +327,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <div class="memdoc">
 
 <p>
-
+The SetName function is used to set the m_sName member variable with the name of the dynamictype from the <a class="el" href="namespace_p_d_i.html">PDI</a> File. This corresponds to the "BODY" string in our example. 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -362,7 +364,7 @@ DynamicTypeList::const_iterator&nbsp;</td><td class="memItemRight" valign="botto
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_dynamic_type_element_8h_source.html">DynamicTypeElement.h</a><li><a class="el" href="_dynamic_type_element_8cpp.html">DynamicTypeElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:15 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:48 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

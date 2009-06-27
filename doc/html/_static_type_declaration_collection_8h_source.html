@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_d6ac4cd17098d06600de515731028d92.html">trunk</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_2e424ff942c775b12b47ea434b3043d5.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_f5558b82492e1c87349857996edbdf53.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_75a84a5b6a80643e68cdb8e015afe6fa.html">babelshark</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
+  <div class="navpath"><a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -38,38 +38,22 @@
 <a name="l00011"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#df9436fd0ce2a1e16aaae4c5501cd676">00011</a>                         <span class="keyword">typedef</span> StaticTypeDefinitionCollection::iterator <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#df9436fd0ce2a1e16aaae4c5501cd676">StaticTypeIterator</a>;
 <a name="l00012"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#87ecc2cb5cbd99f37af32ef272520419">00012</a>                         <span class="keyword">typedef</span> StaticTypeDefinitionCollection::const_iterator <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#87ecc2cb5cbd99f37af32ef272520419">StaticTypeConstIter</a>;
 <a name="l00013"></a>00013 
-<a name="l00014"></a>00014                         <span class="comment">/*</span>
-<a name="l00015"></a>00015 <span class="comment">                        * Iterator accessors.  Both Const iterators and regular</span>
-<a name="l00016"></a>00016 <span class="comment">                        */</span>
-<a name="l00017"></a>00017                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#df9436fd0ce2a1e16aaae4c5501cd676">StaticTypeIterator</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#b9f7cca245a7c2fb4818e6ed38e3f573">Begin</a>();
-<a name="l00018"></a>00018                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#df9436fd0ce2a1e16aaae4c5501cd676">StaticTypeIterator</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#560c17f0e035c7de096fe5c95cd7150d">End</a>();
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#87ecc2cb5cbd99f37af32ef272520419">StaticTypeConstIter</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#b9f7cca245a7c2fb4818e6ed38e3f573">Begin</a>() <span class="keyword">const</span>;
-<a name="l00021"></a>00021                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#87ecc2cb5cbd99f37af32ef272520419">StaticTypeConstIter</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#560c17f0e035c7de096fe5c95cd7150d">End</a>() <span class="keyword">const</span>;
-<a name="l00022"></a>00022 
-<a name="l00023"></a>00023                         <span class="comment">/***</span>
-<a name="l00024"></a>00024 <span class="comment">                        Inserts a StaticTypeElement into the Collection</span>
-<a name="l00025"></a>00025 <span class="comment">                        ***/</span>
-<a name="l00026"></a>00026                         <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#584c5b9d42d9f6a97a77c6ccf801b285">Insert</a>(StaticTypeElement* element);
-<a name="l00027"></a>00027                         
-<a name="l00028"></a>00028                         <span class="comment">/*** The FillDataDictionary function iterates over each StaticTypeDefinition</span>
-<a name="l00029"></a>00029 <span class="comment">                         * in the collection.  Each DynamicTypeElement contains a name and a</span>
-<a name="l00030"></a>00030 <span class="comment">                         * list of DynamicTypeEntry objects.  For each DynamicTypeEntry, a function</span>
-<a name="l00031"></a>00031 <span class="comment">                         * call will be made to add it to the DataDictionary.  The function</span>
-<a name="l00032"></a>00032 <span class="comment">                         * call will be DataDictionary::AddDynamic(std::string alias, </span>
-<a name="l00033"></a>00033 <span class="comment">                         *    std::string parameter, std::string typeName)</span>
-<a name="l00034"></a>00034 <span class="comment">                         * where alias is the name field from DynamicTypeElement,</span>
-<a name="l00035"></a>00035 <span class="comment">                         * parameter is the first field inside DynamicTypeEntry, and</span>
-<a name="l00036"></a>00036 <span class="comment">                         * typeName is the seconed field inside DynamicTypeEntry.</span>
-<a name="l00037"></a>00037 <span class="comment">                         ***/</span>
-<a name="l00038"></a>00038                         <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#74c5400d73a22ab146ac489fbd0fd560">FillDataDictionary</a>();
-<a name="l00039"></a>00039                 <span class="keyword">private</span>:
-<a name="l00040"></a>00040         }
-<a name="l00041"></a>00041 }
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 <span class="preprocessor">#endif //STATIC_TYPE_DEFINITION_COLLECTION_H</span>
+<a name="l00016"></a>00016                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#df9436fd0ce2a1e16aaae4c5501cd676">StaticTypeIterator</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#b9f7cca245a7c2fb4818e6ed38e3f573">Begin</a>();
+<a name="l00017"></a>00017                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#df9436fd0ce2a1e16aaae4c5501cd676">StaticTypeIterator</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#560c17f0e035c7de096fe5c95cd7150d">End</a>();
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#87ecc2cb5cbd99f37af32ef272520419">StaticTypeConstIter</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#b9f7cca245a7c2fb4818e6ed38e3f573">Begin</a>() <span class="keyword">const</span>;
+<a name="l00020"></a>00020                         <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#87ecc2cb5cbd99f37af32ef272520419">StaticTypeConstIter</a> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#560c17f0e035c7de096fe5c95cd7150d">End</a>() <span class="keyword">const</span>;
+<a name="l00021"></a>00021 
+<a name="l00024"></a>00024                         <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#584c5b9d42d9f6a97a77c6ccf801b285">Insert</a>(StaticTypeElement* element);
+<a name="l00025"></a>00025 
+<a name="l00036"></a>00036                         <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration_collection.html#74c5400d73a22ab146ac489fbd0fd560">FillDataDictionary</a>();
+<a name="l00037"></a>00037                 <span class="keyword">private</span>:
+<a name="l00038"></a>00038         }
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="preprocessor">#endif //STATIC_TYPE_DEFINITION_COLLECTION_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:06 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:39 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_d6ac4cd17098d06600de515731028d92.html">trunk</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_2e424ff942c775b12b47ea434b3043d5.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_f5558b82492e1c87349857996edbdf53.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_75a84a5b6a80643e68cdb8e015afe6fa.html">babelshark</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
+  <div class="navpath"><a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -43,87 +43,41 @@
 <a name="l00016"></a><a class="code" href="struct_p_d_i_1_1_dynamic_type_entry.html#34226d1e1eff2dfb5d75722d6cac791e">00016</a>    std::string <a class="code" href="struct_p_d_i_1_1_dynamic_type_entry.html#34226d1e1eff2dfb5d75722d6cac791e">second</a>;
 <a name="l00017"></a>00017 };
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="comment">/***********************************************</span>
-<a name="l00020"></a>00020 <span class="comment"> The DynamicTypeElement class holds one "dynamictype" read in from a PDI file.</span>
-<a name="l00021"></a>00021 <span class="comment"> An example dynamictype in PDI file format follows:</span>
-<a name="l00022"></a>00022 <span class="comment"> dynamictype BODY {</span>
-<a name="l00023"></a>00023 <span class="comment">    1 &amp;ACK,</span>
-<a name="l00024"></a>00024 <span class="comment">    2 &amp;INIT</span>
-<a name="l00025"></a>00025 <span class="comment"> }</span>
-<a name="l00026"></a>00026 <span class="comment"> where BODY is stored in the Name field in the DynamicTypeElement class</span>
-<a name="l00027"></a>00027 <span class="comment"> and 1 &amp;ACK is one entry in the DynamicTypeList.  Each entry is </span>
-<a name="l00028"></a>00028 <span class="comment"> stored in a DynamicTypeEntry object, which is just a struct with</span>
-<a name="l00029"></a>00029 <span class="comment"> two std::string fields.  The first field is a string instead of</span>
-<a name="l00030"></a>00030 <span class="comment"> an unsigned int, in order to make the definition more flexible.</span>
-<a name="l00031"></a>00031 <span class="comment"></span>
-<a name="l00032"></a>00032 <span class="comment"> m_DynamicTypeList is defined as std::list&lt;DynamicTypeEntry&gt;</span>
-<a name="l00033"></a>00033 <span class="comment"> Originally we planned to use std::map&lt;std::string, std::string&gt;,</span>
-<a name="l00034"></a>00034 <span class="comment"> but then realized that when we were going to access the data, </span>
-<a name="l00035"></a>00035 <span class="comment"> we just want to iterate over every item in the list, rather than </span>
-<a name="l00036"></a>00036 <span class="comment"> look-up an item by passing in the first value.</span>
-<a name="l00037"></a>00037 <span class="comment">*************************************************/</span>
-<a name="l00038"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html">00038</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a>
-<a name="l00039"></a>00039 {
-<a name="l00040"></a>00040 <span class="keyword">public</span>:
-<a name="l00041"></a>00041    <span class="comment">/**** </span>
-<a name="l00042"></a>00042 <span class="comment">   The DynamicTypeElement function is just a simple constructor.</span>
-<a name="l00043"></a>00043 <span class="comment">   *****/</span>
-<a name="l00044"></a>00044    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#dc91982f88b1d9692835774c027ff453">DynamicTypeElement</a>();
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046    <span class="comment">/**** </span>
-<a name="l00047"></a>00047 <span class="comment">   The DynamicTypeElement function with one DynamicTypeElement </span>
-<a name="l00048"></a>00048 <span class="comment">   parameter is just a simple copy constructor.</span>
-<a name="l00049"></a>00049 <span class="comment">   *****/</span>
-<a name="l00050"></a>00050    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#dc91982f88b1d9692835774c027ff453">DynamicTypeElement</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a>&amp; dyn_element);
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052    <span class="comment">/**** </span>
-<a name="l00053"></a>00053 <span class="comment">   * The ~DynamicTypeElement function is just a simple destructor.</span>
-<a name="l00054"></a>00054 <span class="comment">   *****/</span>
-<a name="l00055"></a>00055    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#e6ef10b47f9857d60072bf03c11026ae">~DynamicTypeElement</a>();
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057    <span class="comment">/**** </span>
-<a name="l00058"></a>00058 <span class="comment">   The SetName function is used to set the m_sName member variable</span>
-<a name="l00059"></a>00059 <span class="comment">   with the name of the dynamictype from the PDI File.  This </span>
-<a name="l00060"></a>00060 <span class="comment">   corresponds to the "BODY" string in our example.</span>
-<a name="l00061"></a>00061 <span class="comment">     ***/</span>
-<a name="l00062"></a>00062    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#a8fc86f43c57b20307d3192f72e94fb6">SetName</a>(<span class="keyword">const</span> std::string&amp; nameIn);
-<a name="l00063"></a>00063    <span class="comment">/*** </span>
-<a name="l00064"></a>00064 <span class="comment">   The Name function returns a std::string containing the value</span>
-<a name="l00065"></a>00065 <span class="comment">   of the m_sName member variable.</span>
-<a name="l00066"></a>00066 <span class="comment">     ***/</span>
-<a name="l00067"></a>00067    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#dcaacfd676bd09b2d62083249e72f5c9">Name</a>() <span class="keyword">const</span>;
-<a name="l00068"></a>00068 
-<a name="l00069"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">00069</a>    <span class="keyword">typedef</span> std::list&lt;DynamicTypeEntry&gt; <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">DynamicTypeList</a>;
-<a name="l00070"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">00070</a>    <span class="keyword">typedef</span> DynamicTypeList::iterator <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a>;
-<a name="l00071"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">00071</a>    <span class="keyword">typedef</span> DynamicTypeList::const_iterator <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">const_iterator</a>;
-<a name="l00072"></a>00072    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#a8c036f19f33a24f608490a455db99ca">Begin</a>();
-<a name="l00073"></a>00073    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#c8ac9ed5afbf81df085ae572450aac00">End</a>();
-<a name="l00074"></a>00074    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">const_iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#a8c036f19f33a24f608490a455db99ca">Begin</a>() <span class="keyword">const</span>;
-<a name="l00075"></a>00075    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">const_iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#c8ac9ed5afbf81df085ae572450aac00">End</a>() <span class="keyword">const</span>;
+<a name="l00037"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html">00037</a> <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a>
+<a name="l00038"></a>00038 {
+<a name="l00039"></a>00039 <span class="keyword">public</span>:
+<a name="l00042"></a>00042    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#dc91982f88b1d9692835774c027ff453">DynamicTypeElement</a>();
+<a name="l00043"></a>00043 
+<a name="l00047"></a>00047    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#dc91982f88b1d9692835774c027ff453">DynamicTypeElement</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a>&amp; dyn_element);
+<a name="l00048"></a>00048 
+<a name="l00051"></a>00051    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#e6ef10b47f9857d60072bf03c11026ae">~DynamicTypeElement</a>();
+<a name="l00052"></a>00052 
+<a name="l00057"></a>00057    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#a8fc86f43c57b20307d3192f72e94fb6">SetName</a>(<span class="keyword">const</span> std::string&amp; nameIn);
+<a name="l00061"></a>00061    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#dcaacfd676bd09b2d62083249e72f5c9">Name</a>() <span class="keyword">const</span>;
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">00063</a>    <span class="keyword">typedef</span> std::list&lt;DynamicTypeEntry&gt; <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">DynamicTypeList</a>;
+<a name="l00064"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">00064</a>    <span class="keyword">typedef</span> DynamicTypeList::iterator <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a>;
+<a name="l00065"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">00065</a>    <span class="keyword">typedef</span> DynamicTypeList::const_iterator <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">const_iterator</a>;
+<a name="l00066"></a>00066    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#a8c036f19f33a24f608490a455db99ca">Begin</a>();
+<a name="l00067"></a>00067    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#c8ac9ed5afbf81df085ae572450aac00">End</a>();
+<a name="l00068"></a>00068    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">const_iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#a8c036f19f33a24f608490a455db99ca">Begin</a>() <span class="keyword">const</span>;
+<a name="l00069"></a>00069    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#d42ada769b3d6ffb0c7e9da39f23e257">const_iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#c8ac9ed5afbf81df085ae572450aac00">End</a>() <span class="keyword">const</span>;
+<a name="l00070"></a>00070 
+<a name="l00075"></a>00075    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#918143de31af3037f975196348279bd2">Insert</a>(<span class="keyword">const</span> <a class="code" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a>&amp; entry);
 <a name="l00076"></a>00076 
-<a name="l00077"></a>00077    <span class="comment">/*** </span>
-<a name="l00078"></a>00078 <span class="comment">   The Insert function is used to insert a DynamicTypeEntry into</span>
-<a name="l00079"></a>00079 <span class="comment">   a DynamicTypeElement.  There will be one call to the insert</span>
-<a name="l00080"></a>00080 <span class="comment">   function for each row inside a dynamictype found in the PDI File.</span>
-<a name="l00081"></a>00081 <span class="comment">     ***/</span>
-<a name="l00082"></a>00082    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#8f0797025c7ba9a8366c294fd9a06cc5">iterator</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#918143de31af3037f975196348279bd2">Insert</a>(<span class="keyword">const</span> <a class="code" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a>&amp; entry);
+<a name="l00079"></a>00079    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#172e439b22a468d0925f5c624ca3effb">Clear</a>();
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="keyword">protected</span>:
+<a name="l00082"></a>00082 
 <a name="l00083"></a>00083 
-<a name="l00084"></a>00084    <span class="comment">/*** </span>
-<a name="l00085"></a>00085 <span class="comment">   The Clear function is used to empty the DynamicTypeElement list.</span>
-<a name="l00086"></a>00086 <span class="comment">     ***/</span>
-<a name="l00087"></a>00087    <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#172e439b22a468d0925f5c624ca3effb">Clear</a>();
+<a name="l00084"></a>00084 <span class="keyword">private</span>:
+<a name="l00085"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#3894613a7d41e394c160cb9ea1e2f80a">00085</a>    std::string <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#3894613a7d41e394c160cb9ea1e2f80a">m_sName</a>;
+<a name="l00086"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#116866fdc11f575f6d7f3f9fd0c39f1f">00086</a>    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">DynamicTypeList</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#116866fdc11f575f6d7f3f9fd0c39f1f">m_DynamicTypeList</a>;
+<a name="l00087"></a>00087 };
 <a name="l00088"></a>00088 
-<a name="l00089"></a>00089 <span class="keyword">protected</span>:
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 <span class="keyword">private</span>:
-<a name="l00093"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#3894613a7d41e394c160cb9ea1e2f80a">00093</a>    std::string <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#3894613a7d41e394c160cb9ea1e2f80a">m_sName</a>;
-<a name="l00094"></a><a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#116866fdc11f575f6d7f3f9fd0c39f1f">00094</a>    <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#ad4cf2e4e67b7c3f6e655ccf7793c4ee">DynamicTypeList</a> <a class="code" href="class_p_d_i_1_1_dynamic_type_element.html#116866fdc11f575f6d7f3f9fd0c39f1f">m_DynamicTypeList</a>;
-<a name="l00095"></a>00095 };
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 } <span class="comment">// End namespace</span>
+<a name="l00089"></a>00089 } <span class="comment">// End namespace</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:06 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:38 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

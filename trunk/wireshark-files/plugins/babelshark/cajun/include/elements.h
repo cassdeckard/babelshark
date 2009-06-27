@@ -41,7 +41,7 @@ enum ElementType
 
 class ElementImp;
 
-/*** Element is the base class for the element type classes.
+/** Element is the base class for the element type classes.
   * The Element class and ElementImp class follow the Pimple Design Pattern.
   * The majority of this class existed in the CAJUN JSON parser.  However, it has been
   * modified to suit our needs as explained below.
@@ -88,7 +88,7 @@ private:
 // recursive template pattern", also provides little interface used in client
 // code
 
-/*** Element_T is a template class for the element type classes.
+/** Element_T is a template class for the element type classes.
   * This class existed in the CAJUN JSON parser and has not changed.
   ***/
 template <typename ElementImpTypeT>
@@ -113,7 +113,7 @@ protected:
 
 class ArrayImp;
 
-/*** The Array class defines the interface to the ArrayImp class.
+/** The Array class defines the interface to the ArrayImp class.
   * The Array class and ArrayImp class follow the Pimple Design Pattern.
   * The majority of this class existed in the CAJUN JSON parser as the OBJECT_ELEMENT.  However, it has been
   * modified to suit our needs as explained below.
@@ -164,7 +164,7 @@ public:
 
 class DisplayElementImp;
 
-/*** The DisplayElement class defines the interface to the DisplayElementImp class.
+/** The DisplayElement class defines the interface to the DisplayElementImp class.
   * The DisplayElement class and DisplayElementImp class follow the Pimple Design Pattern.
   * The majority of this class existed in the CAJUN JSON parser as the OBJECT_STRING.  However, it has been
   * modified to suit our needs as explained below.
@@ -185,7 +185,7 @@ public:
 
 class NullImp;
 
-/*** The Null class defines the interface to the NullImp class.
+/** The Null class defines the interface to the NullImp class.
   * The Null class and NullImp class follow the Pimple Design Pattern.
   * This class existed in the CAJUN JSON parser.  It has not been modified.
   *

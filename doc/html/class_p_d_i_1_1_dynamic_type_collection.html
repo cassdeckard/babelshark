@@ -70,7 +70,8 @@ DynamicTypeCollectionTypeDef::const_iterator&nbsp;</td><td class="memItemRight" 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html#323306bab94396cd1d81fc171c870ec7">DynamicTypeCollectionTypeDef</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html#c0a0a3112f40cbe2e8db40d7df5d3f36">m_DynamicTypeCollection</a></td></tr>
 
 </table>
-<hr><h2>Member Typedef Documentation</h2>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+The <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html">DynamicTypeCollection</a> class is a singleton that holds a list of DynamicTypeElements. This is a singleton because we will only have one collection of these, and also because we want to make it easier to access the data. We don't want to have to pass a pointer out to the calling program (the <a class="el" href="main_8cpp.html">Main.cpp</a> file in the cajun test folder, or the <a class="el" href="_dissector_8cpp.html">dissector.cpp</a> file in babelshark include folder). <hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="feedb22411613a525582b386e11661cc"></a><!-- doxytag: member="PDI::DynamicTypeCollection::const_iterator" ref="feedb22411613a525582b386e11661cc" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -133,7 +134,7 @@ DynamicTypeCollectionTypeDef::const_iterator&nbsp;</td><td class="memItemRight" 
 <div class="memdoc">
 
 <p>
-
+The <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html">DynamicTypeCollection</a> function is just a simple constructor. 
 </div>
 </div><p>
 <a class="anchor" name="0ed04f2c19a2c49586b76db6d7e966e8"></a><!-- doxytag: member="PDI::DynamicTypeCollection::~DynamicTypeCollection" ref="0ed04f2c19a2c49586b76db6d7e966e8" args="()" -->
@@ -152,7 +153,7 @@ DynamicTypeCollectionTypeDef::const_iterator&nbsp;</td><td class="memItemRight" 
 <div class="memdoc">
 
 <p>
-
+The ~DynamicTypeCollection function is just a simple destructor. It will call the ClearCollection function. 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -248,7 +249,7 @@ DynamicTypeCollectionTypeDef::const_iterator&nbsp;</td><td class="memItemRight" 
 <div class="memdoc">
 
 <p>
-
+The FillDataDictionary function iterates over each <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> in the collection. Each <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> contains a name and a list of <a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a> objects. For each <a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a>, a function call will be made to add it to the DataDictionary. The function call will be DataDictionary::AddDynamic(std::string alias, std::string parameter, std::string typeName) where alias is the name field from <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a>, parameter is the first field inside <a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a>, and typeName is the seconed field inside <a class="el" href="struct_p_d_i_1_1_dynamic_type_entry.html">DynamicTypeEntry</a>. 
 </div>
 </div><p>
 <a class="anchor" name="da0eb2da1603dabfede08692658d3cbb"></a><!-- doxytag: member="PDI::DynamicTypeCollection::Insert" ref="da0eb2da1603dabfede08692658d3cbb" args="(const DynamicTypeElement &amp;dynamicTypeElementToAdd)" -->
@@ -268,7 +269,7 @@ DynamicTypeCollectionTypeDef::const_iterator&nbsp;</td><td class="memItemRight" 
 <div class="memdoc">
 
 <p>
-
+The Insert function is used to insert a <a class="el" href="class_p_d_i_1_1_dynamic_type_element.html">DynamicTypeElement</a> in the <a class="el" href="class_p_d_i_1_1_dynamic_type_collection.html">DynamicTypeCollection</a>. There will be one call to the insert function for each dynamictype found in the <a class="el" href="namespace_p_d_i.html">PDI</a> File. 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -290,7 +291,7 @@ DynamicTypeCollectionTypeDef::const_iterator&nbsp;</td><td class="memItemRight" 
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_dynamic_type_collection_8h_source.html">DynamicTypeCollection.h</a><li><a class="el" href="_dynamic_type_collection_8cpp.html">DynamicTypeCollection.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:15 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:48 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

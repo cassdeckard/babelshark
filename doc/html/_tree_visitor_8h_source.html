@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_d6ac4cd17098d06600de515731028d92.html">trunk</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_2e424ff942c775b12b47ea434b3043d5.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_f5558b82492e1c87349857996edbdf53.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_75a84a5b6a80643e68cdb8e015afe6fa.html">babelshark</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
+  <div class="navpath"><a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -59,22 +59,6 @@
 <a name="l00032"></a>00032 <span class="preprocessor">#include &lt;iostream&gt;</span>
 <a name="l00033"></a>00033 <span class="preprocessor">#include &lt;fstream&gt;</span>
 <a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="comment">/*** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by</span>
-<a name="l00036"></a>00036 <span class="comment">  * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created</span>
-<a name="l00037"></a>00037 <span class="comment">  * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.</span>
-<a name="l00038"></a>00038 <span class="comment">  *</span>
-<a name="l00039"></a>00039 <span class="comment">  * Usage: After a file has been read in by calling the following parser functions...</span>
-<a name="l00040"></a>00040 <span class="comment">  *       Element elemRoot = DisplayElement();</span>
-<a name="l00041"></a>00041 <span class="comment">  *       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));</span>
-<a name="l00042"></a>00042 <span class="comment">  * then the following function can be called to create an instruction tree.</span>
-<a name="l00043"></a>00043 <span class="comment">  *       TreeVisitor treeVisitor(elemRoot.Name());</span>
-<a name="l00044"></a>00044 <span class="comment">  * Note that the root element name must be passed into the TreeVisitor in order to get the first</span>
-<a name="l00045"></a>00045 <span class="comment">  * name from the file to be included in the first instruction in the instruction tree.</span>
-<a name="l00046"></a>00046 <span class="comment">  *</span>
-<a name="l00047"></a>00047 <span class="comment">  * If a second parameter is provided, which is boolean, this will be used to determine if</span>
-<a name="l00048"></a>00048 <span class="comment">  * unit test / debug data should be written to cout.  If the parameter is true then data will</span>
-<a name="l00049"></a>00049 <span class="comment">  * be displayed.  If the parameter is false, or is not provided, then data will not be displayed.</span>
-<a name="l00050"></a>00050 <span class="comment">  ***/</span>
 <a name="l00051"></a><a class="code" href="class_tree_visitor.html">00051</a> <span class="keyword">class </span><a class="code" href="class_tree_visitor.html">TreeVisitor</a> : <span class="keyword">public</span> PDI::ConstVisitor
 <a name="l00052"></a>00052 {
 <a name="l00053"></a>00053 <span class="keyword">public</span>:
@@ -87,16 +71,6 @@
 <a name="l00060"></a>00060 <span class="comment">         |  array</span>
 <a name="l00061"></a>00061 <span class="comment">***/</span>
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063     <span class="comment">/*** This is the constructor for TreeVisitor class.</span>
-<a name="l00064"></a>00064 <span class="comment">      *</span>
-<a name="l00065"></a>00065 <span class="comment">      * @param sName</span>
-<a name="l00066"></a>00066 <span class="comment">      *   the name of the root node.</span>
-<a name="l00067"></a>00067 <span class="comment">      * @param bDisplayOutputToScreen</span>
-<a name="l00068"></a>00068 <span class="comment">      *   (optional) should be true if you want output to the screen for testing</span>
-<a name="l00069"></a>00069 <span class="comment">      *</span>
-<a name="l00070"></a>00070 <span class="comment">      * A function map is initialized in the constructor using a template.</span>
-<a name="l00071"></a>00071 <span class="comment">      * This will make the addition of new types easier.</span>
-<a name="l00072"></a>00072 <span class="comment">      ***/</span>
 <a name="l00073"></a><a class="code" href="class_tree_visitor.html#83c6b4c595156e7364646894e8063d4d">00073</a>    <a class="code" href="class_tree_visitor.html#83c6b4c595156e7364646894e8063d4d">TreeVisitor</a>(<span class="keyword">const</span> std::string&amp; sName, <span class="keywordtype">bool</span> bDisplayOutputToScreen = <span class="keyword">false</span>) :
 <a name="l00074"></a>00074       <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a>(sName),
 <a name="l00075"></a>00075       <a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>(bDisplayOutputToScreen),
@@ -110,20 +84,9 @@
 <a name="l00083"></a>00083       <a class="code" href="class_tree_visitor.html#5118f3dbb7fe1f1e0858dcce730883f7">m_CreateInstructionFuncMap</a>[<span class="stringliteral">"PAD"</span>] = &amp;TreeVisitor::CreateInstruction&lt;BabelShark::PadElement&gt;;
 <a name="l00084"></a>00084    }
 <a name="l00085"></a>00085 
-<a name="l00086"></a>00086    <span class="comment">/*** GetInstruction() returns a pointer to an instruction.</span>
-<a name="l00087"></a>00087 <span class="comment">     *</span>
-<a name="l00088"></a>00088 <span class="comment">     ***/</span>
 <a name="l00089"></a><a class="code" href="class_tree_visitor.html#5aec3878d33d8942c16e1cfe38ca9371">00089</a>    <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* <a class="code" href="class_tree_visitor.html#5aec3878d33d8942c16e1cfe38ca9371">GetInstruction</a>() { <span class="keywordflow">return</span> <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a>; }
 <a name="l00090"></a>00090 
 <a name="l00091"></a>00091 <span class="keyword">private</span>:
-<a name="l00092"></a>00092    <span class="comment">/*** CreateInstruction() uses a template to reduce code size and to make it easier to</span>
-<a name="l00093"></a>00093 <span class="comment">     * add new types.  There are 3 pieces of data that an instruction needs: name, type, size.</span>
-<a name="l00094"></a>00094 <span class="comment">     * Size and name are passed in as parameters.  The Type is known because this is a template function</span>
-<a name="l00095"></a>00095 <span class="comment">     * and it is InstructionTypeT.</span>
-<a name="l00096"></a>00096 <span class="comment">     *</span>
-<a name="l00097"></a>00097 <span class="comment">     * @param nSize</span>
-<a name="l00098"></a>00098 <span class="comment">     * @param sName</span>
-<a name="l00099"></a>00099 <span class="comment">     ***/</span>
 <a name="l00100"></a>00100    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> InstructionTypeT&gt;
 <a name="l00101"></a><a class="code" href="class_tree_visitor.html#a319857c169e37d66b46a4810279789e">00101</a>    <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* <a class="code" href="class_tree_visitor.html#a319857c169e37d66b46a4810279789e">CreateInstruction</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nSize, <span class="keyword">const</span> std::string&amp; sName)
 <a name="l00102"></a>00102    {
@@ -132,12 +95,6 @@
 <a name="l00105"></a>00105       <span class="keywordflow">return</span> <span class="keyword">new</span> InstructionTypeT(nSize, s);
 <a name="l00106"></a>00106    }
 <a name="l00107"></a>00107 
-<a name="l00108"></a>00108    <span class="comment">/*** Visit() uses iterates over all items in the array. It calls a visit function</span>
-<a name="l00109"></a>00109 <span class="comment">     * on each item.  It passes in the name of the array for the same reason that we needed to pass the name of</span>
-<a name="l00110"></a>00110 <span class="comment">     * the root node into the constructor.  So that it would be available to use when we create the instruction.</span>
-<a name="l00111"></a>00111 <span class="comment">     *</span>
-<a name="l00112"></a>00112 <span class="comment">     * Each item in the array is added to an instruction set.</span>
-<a name="l00113"></a>00113 <span class="comment">     ***/</span>
 <a name="l00114"></a><a class="code" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">00114</a>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tree_visitor.html#9d9bcb690e82d4ce37a60cb719080728">Visit</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_array.html">PDI::Array</a>&amp; array) {
 <a name="l00115"></a>00115       <span class="keywordflow">if</span> (<a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>)
 <a name="l00116"></a>00116       {
@@ -158,13 +115,6 @@
 <a name="l00131"></a>00131       <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a> = pInstructionSet;
 <a name="l00132"></a>00132    }
 <a name="l00133"></a>00133 
-<a name="l00134"></a>00134    <span class="comment">/*** Visit() is used to visit a DisplayElement.</span>
-<a name="l00135"></a>00135 <span class="comment">     * It creates one instruction for the DisplayElement.  It uses a template</span>
-<a name="l00136"></a>00136 <span class="comment">     * in order to reduce code.  It looks in the function map for a known type</span>
-<a name="l00137"></a>00137 <span class="comment">     * and then calls the appropriate function to create the instruction that</span>
-<a name="l00138"></a>00138 <span class="comment">     * matches the desired type.  For example, if ASCII is the type, then an</span>
-<a name="l00139"></a>00139 <span class="comment">     * AsciiElement instruction is created and added to the instruction tree.</span>
-<a name="l00140"></a>00140 <span class="comment">     ***/</span>
 <a name="l00141"></a><a class="code" href="class_tree_visitor.html#743376c17f517556962c3eb18645a78e">00141</a>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tree_visitor.html#743376c17f517556962c3eb18645a78e">Visit</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_display_element.html">PDI::DisplayElement</a>&amp; <span class="keywordtype">string</span>) {
 <a name="l00142"></a>00142       std::istringstream ss(<span class="keywordtype">string</span>);
 <a name="l00143"></a>00143 
@@ -190,10 +140,6 @@
 <a name="l00163"></a>00163       <a class="code" href="class_tree_visitor.html#bfc1d38adea2b98fa6f2d064bc4f3f3a">m_pInstruction</a> = (this-&gt;*func)(nSize, <a class="code" href="class_tree_visitor.html#5741289c6228228f87981e0f98f5728d">m_sName</a>);
 <a name="l00164"></a>00164    }
 <a name="l00165"></a>00165 
-<a name="l00166"></a>00166    <span class="comment">/*** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.</span>
-<a name="l00167"></a>00167 <span class="comment">     * It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to</span>
-<a name="l00168"></a>00168 <span class="comment">     * NULL_ELEMENT.  However, we should never be visiting a NULL_ELEMENT, so an exception in thrown.</span>
-<a name="l00169"></a>00169 <span class="comment">     ***/</span>
 <a name="l00170"></a><a class="code" href="class_tree_visitor.html#43a9f62cc523fba70fd69177ae9efe00">00170</a>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tree_visitor.html#43a9f62cc523fba70fd69177ae9efe00">Visit</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_null.html">PDI::Null</a>&amp; null) { <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">"ERROR: should never see NULL element"</span>); }
 <a name="l00171"></a>00171 
 <a name="l00172"></a><a class="code" href="class_tree_visitor.html#3d331880b4ea827c6ff144c9fee88f7b">00172</a>    <span class="keyword">typedef</span> <a class="code" href="class_babel_shark_1_1_instruction.html">BabelShark::Instruction</a>* (<a class="code" href="class_tree_visitor.html">TreeVisitor</a>::*<a class="code" href="class_tree_visitor.html#3d331880b4ea827c6ff144c9fee88f7b">CreateInstructionFunc</a>)(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <span class="keyword">const</span> std::string&amp;);
@@ -206,7 +152,7 @@
 <a name="l00179"></a><a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">00179</a>    <span class="keywordtype">bool</span> <a class="code" href="class_tree_visitor.html#85a29552ac35ad8d914f0bf3eb404108">m_bDisplayOutputToScreen</a>;
 <a name="l00180"></a>00180 };
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:06 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:39 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

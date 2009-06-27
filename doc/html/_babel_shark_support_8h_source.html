@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_d6ac4cd17098d06600de515731028d92.html">trunk</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_2e424ff942c775b12b47ea434b3043d5.html">wireshark-files</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_f5558b82492e1c87349857996edbdf53.html">plugins</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_75a84a5b6a80643e68cdb8e015afe6fa.html">babelshark</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
+  <div class="navpath"><a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -36,35 +36,11 @@
 <a name="l00009"></a>00009 {
 <a name="l00010"></a>00010    <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_element.html">Element</a>;
 <a name="l00011"></a>00011 
-<a name="l00012"></a>00012    <span class="comment">/*** The CreateInstructionTreeAndFillDataDictionary function is called by </span>
-<a name="l00013"></a>00013 <span class="comment">   * the calling code (either the Main.cpp file in cajun test folder or the</span>
-<a name="l00014"></a>00014 <span class="comment">   * dissector.cpp file in babelshark include folder) after the PDI file</span>
-<a name="l00015"></a>00015 <span class="comment">   * has been read by the Read function.</span>
-<a name="l00016"></a>00016 <span class="comment">   * </span>
-<a name="l00017"></a>00017 <span class="comment">   * The purpose of this function is to simplify the calling code, so</span>
-<a name="l00018"></a>00018 <span class="comment">   * it doesn't need to know the details about creating the instruction</span>
-<a name="l00019"></a>00019 <span class="comment">   * tree or about about filling the data dictionary.  For example, it</span>
-<a name="l00020"></a>00020 <span class="comment">   * is important that the Data Dictionary is filled before the </span>
-<a name="l00021"></a>00021 <span class="comment">   * Instruction Tree is created.  This function will ensure that happens.</span>
-<a name="l00022"></a>00022 <span class="comment">   * </span>
-<a name="l00023"></a>00023 <span class="comment">   * First it will call the StaticTypeCollection::FillDataDictionary </span>
-<a name="l00024"></a>00024 <span class="comment">   * function to fill the Data Dictionary with all the statictypes that were</span>
-<a name="l00025"></a>00025 <span class="comment">   * in the PDI File.  </span>
-<a name="l00026"></a>00026 <span class="comment">   * Then it will call the DynamicTypeCollection::FillDataDictionary function</span>
-<a name="l00027"></a>00027 <span class="comment">   * to fill the data dictionary with all of the dynamictypes that were </span>
-<a name="l00028"></a>00028 <span class="comment">   * in the PDI File. </span>
-<a name="l00029"></a>00029 <span class="comment">   * Then it will instantiate the a TreeVisitor to create the Instruction Tree.</span>
-<a name="l00030"></a>00030 <span class="comment">   * Finally, it will call singleton destructors to delete the StaticTypeCollection</span>
-<a name="l00031"></a>00031 <span class="comment">   * singleton and the DynamicTypeCollection singleton.</span>
-<a name="l00032"></a>00032 <span class="comment">   * </span>
-<a name="l00033"></a>00033 <span class="comment">   * The two paramters passed into this function are needed by the TreeVisitor</span>
-<a name="l00034"></a>00034 <span class="comment">   * constructor and accept function.</span>
-<a name="l00035"></a>00035 <span class="comment">   ***/</span>
 <a name="l00036"></a>00036    <span class="keywordtype">void</span> <a class="code" href="namespace_p_d_i.html#ebd45042f3a34ed7c14376cf59e5b289">CreateInstructionTreeAndFillDataDictionary</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_element.html">Element</a>&amp; elemRoot, <span class="keywordtype">bool</span> bDisplayOutputToScreen = <span class="keyword">false</span>);
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038 } <span class="comment">// End namespace</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:23:06 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:38 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

@@ -27,7 +27,7 @@ case.
 namespace PDI
 {
 
-/*** QuickInterpreter allows quick, read-only access to an existing document
+/** QuickInterpreter allows quick, read-only access to an existing document
   * structure. For examples, given the document...
   *
   * <pre>
