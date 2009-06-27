@@ -4,7 +4,7 @@
 
 namespace PDI
 {
-	class StaticTypeCollection : public Singleton<StaticTypeCollection>
+	class StaticTypeDeclarationCollection : public Singleton<StaticTypeCollection>
 	{
 		public:
 			typedef std::list<StaticTypeElement> StaticTypeDefinitionCollection;

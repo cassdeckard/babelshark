@@ -27,8 +27,19 @@ namespace PDI
 	{
 		public:
 			StaticTypeDeclaration(char* label, int size);
+			
+			//copy constructor
+			StaticTypeDeclaration(const StaticTypeDeclaration& value);
+			
+			//simple destructor
+			~StaticTypeDeclaration()
+			
+			//member variable Set functions
 			void SetLabel(char* input){_Label = input;}
-			char* GetLabel(){ return _Label;}
+			void SetSize(int size){_Size = size;}
+			
+			//member variable Get functions
+			char* GetLabel(){ return _Label.c_str();}
 			int GetSize() { return _Size;}
 			
 		private:
