@@ -48,7 +48,6 @@ namespace PDI
 
       //Destroy StaticTypeCollection singleton.
       DynamicTypeCollection::Release();
-      DynamicTypeCollection::Instance().FillDataDictionary(); // TODO: remove!!!
    }
 
 } // End namespace
