@@ -24,9 +24,4 @@ namespace BabelShark
        *target = _Definition;
    }
 
-   void StaticDefinition::Add(InstructionNode* type, std::string parameter)
-   {
-       // THIS SHOULD NEVER BE CALLED
-   }
-
 }

@@ -132,6 +132,10 @@ namespace BabelShark
         tempTree->Add(new PadElement(56, "Pad"));
         DataDictionary::Instance()->AddStatic("&INIT", tempTree);
 
+        // make a dynamic type
+        DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
+        DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
+
         // build tree to test new functionality
         _TestInstruction->Add(new UintElement(8, "MsgID", "$MSG_ID"));
         _TestInstruction->Add(new PadElement(8, "Pad"));

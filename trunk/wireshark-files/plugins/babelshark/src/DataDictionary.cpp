@@ -41,7 +41,7 @@ namespace BabelShark
         printf(ss.str().c_str());
     }
 
-    void DataDictionary::AddDynamic(std::string alias, std::string parameter, std::string typeName, std::string typeParamName = "")
+    void DataDictionary::AddDynamic(std::string alias, std::string value, std::string typeName, std::string typeParamName)
     {
         InstructionNode*    type;
         InstructionElement* typeParam;
@@ -52,8 +52,15 @@ namespace BabelShark
         // get referred type
         this->LookupType(&type, typeName, typeParam);
 
-        _Types[alias]; // "touch" to instantiate
-        _Types[alias]->Add(type, parameter);
+        if (_Types.count(alias) == 0)
+        {
+            // type doesn't exist yet; create it
+            _Types[alias] = new DynamicDefinition(type, value);
+        }
+        else
+        {
+            _Types[alias]->Add(type, value);
+        }
     }
 
     void DataDictionary::LookupType(InstructionNode** target, std::string alias, InstructionElement* parameter)
@@ -64,9 +71,9 @@ namespace BabelShark
         _Types[alias]->Fetch(target, parameter);
     }
 
-    InstructionElement* DataDictionary::LookupVariable(std::string label)
+    InstructionElement* DataDictionary::LookupVariable(std::string alias)
     {
-        return _Variables[label];
+        return _Variables[alias];
     }
 
 } // namespace BabelShark

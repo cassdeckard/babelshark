@@ -11,18 +11,23 @@
 
 namespace BabelShark
 {
-	/**
-		Class: AliasedInstruction
-		Design Pattern Used: Composite
-			The Composite portion of the Composite pattern.
-			This contains Instruction* children.
-	*/
+	/** AliasedInstruction
+      *
+      * This class is used to create instances of Instructions with user-defined
+      * static and dynamic types. Upon instantiation, it sets up a pointer to
+      * the InstructionSet its type represents. For most methods, it merely delegates
+      * the method to this InstructionSet.
+      *
+      * <b>Pattern roles:</b>
+      *  - Proxy::Proxy
+	  */
 	class AliasedInstruction: public InstructionNode
 	{
 		public:
 			/** Constructor
-				Just calls parent constructor, nothing specific to this class
-			*/
+		      * This constructor is inherited from Instruction but should not
+              * be used.
+			  */
             AliasedInstruction(unsigned int size, char* name)
                 : InstructionNode(size, name)
             {
@@ -31,12 +36,22 @@ namespace BabelShark
                 printf(ss.str().c_str());
             }
 
-            AliasedInstruction(unsigned int size, char* name, std::string alias)
+            /** Constructor
+              * In addition to normal Instruction() constructor behavior, this uses the given
+              * alias and paramName to set its _RealSubject type to point to the correct
+              * InstructionSet this AliasedInstruction will serve as a Proxy for.
+              */
+            AliasedInstruction(unsigned int size, char* name, std::string alias, std::string paramName = "")
                 : InstructionNode(size, name)
             {
+                InstructionElement* param = NULL;
+                if (paramName.compare("") != 0)
+                {
+                    param = DataDictionary::Instance()->LookupVariable(paramName);
+                }
                 std::stringstream ss;
                 ss << "AliasedInstruction(" << size << ", " << name << ", " << alias.c_str() << ")->_RealSubject = {" << _RealSubject <<  "}";
-                DataDictionary::Instance()->LookupType(&_RealSubject, alias);
+                DataDictionary::Instance()->LookupType(&_RealSubject, alias, param);
                 ss << " => {" << _RealSubject <<  "}\n";
                 printf(ss.str().c_str());
             }
@@ -49,53 +64,68 @@ namespace BabelShark
             }
 
 			/** GetChild
-				Returns the first Child of the AliasedInstruction list regardless of number of children present.
-				This was mainly for testing for the presence of children but is no longer used
-				May be taken out at some point in the future
-
-				Does not match the standard pattern definition since we're using an iterator instead
-			*/
+		      * Calls GetChild() on its _RealSubject
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+			  */
             Instruction* GetChild() { return _RealSubject->GetChild(); }
 
-			/**	Add
-				Adds a child Instruction to the list.
-				Standard add of the composite pattern
-				*/
+            /** Add
+              * Calls Add() on its _RealSubject
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+              */
             void Add(Instruction* instruction) { _RealSubject->Add(instruction); }
 
-			/** Interpret
-				Currently an empty function since the dissector will just look directly at the children
-				*/
+            /** Interpret
+              * Calls Interpret() on its _RealSubject
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+              */
             void Interpret(char* buffer) {  _RealSubject->Interpret(buffer); }
 
             /** Display
-            	For the instruction set this just prints out the name of the set
-            	the printing out of the names/content of the children will be handled by the dissector calling
-            	the display function one at a time for each child
-            */
+              * Calls Display() on its _RealSubject
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+              */
             char* Display() { return _RealSubject->Display(); }
 
-			/** CreateIterator
-				This is taking the part of the ConcreteList in the iterator pattern
-				Although we haven't done append/remove we don't need to since our list is static when we are iterating
-				over it
-			*/
+            /** CreateIterator
+              * Calls CreateIterator() on its _RealSubject
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+			  */
 			Iterator* CreateIterator() { return _RealSubject->CreateIterator(); }
 
             /** GetSizeInBytes
-            	Returns the sum of calling GetSizeInBytes on all children
-            	Override the function defined in instruction
-            	*/
+              * Calls GetSizeInBytes() on its _RealSubject. Multiplies the result by
+              * its _Size.
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+              */
             unsigned int GetSizeInBytes() { return _Size * _RealSubject->NumSubtrees(); }
 
             /** NumSubTrees
-            	Returns the sum of calling NumSubTrees on all children
-            	Override the [dummy] function defined in instruction
-            	*/
+              * Calls NumSubTrees() on its _RealSubject
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+              */
             unsigned int NumSubtrees() { return _RealSubject->NumSubtrees(); }
 
 		private:
-			/** The root of the Instruction tree this object will be a placeholder for
+            /** _RealSubject
+              * The root of the Instruction tree this object will be a placeholder for.
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::realSubject
               */
 			InstructionNode* _RealSubject;
 	};
