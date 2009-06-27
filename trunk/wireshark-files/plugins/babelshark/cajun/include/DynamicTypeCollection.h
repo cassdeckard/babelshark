@@ -6,6 +6,7 @@ File : DynamicTypeCollection.h
 
 #include <list>
 #include <string>
+#include "Singleton.h"
 
 namespace PDI
 {
@@ -20,7 +21,7 @@ class DynamicTypeElement;
   * cajun test folder, or the dissector.cpp file in babelshark include
   * folder).
   */
-class DynamicTypeCollection
+class DynamicTypeCollection : public Singleton<DynamicTypeCollection>
 {
 public:
    /** The DynamicTypeCollection function is just a simple constructor.
@@ -45,11 +46,6 @@ public:
      * function for each dynamictype found in the PDI File.
      */
    iterator Insert(const DynamicTypeElement& dynamicTypeElementToAdd);
-
-   /** The ClearCollection function calls the Clear function on
-     * each DynamicTypeElement in the collection.
-     */
-   void ClearCollection();
 
    /** The FillDataDictionary function iterates over each DynamicTypeElement
      * in the collection.  Each DynamicTypeElement contains a name and a
