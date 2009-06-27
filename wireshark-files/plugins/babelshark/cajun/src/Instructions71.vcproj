@@ -106,6 +106,12 @@
 				RelativePath="..\..\src\BoolElement.cpp">
 			</File>
 			<File
+				RelativePath="..\..\src\DataDictionary.cpp">
+			</File>
+			<File
+				RelativePath="..\..\src\DynamicDefinition.cpp">
+			</File>
+			<File
 				RelativePath="..\..\src\FloatElement.cpp">
 			</File>
 			<File
@@ -136,6 +142,9 @@
 				RelativePath="..\..\src\PdiParser.cpp">
 			</File>
 			<File
+				RelativePath="..\..\src\StaticDefinition.cpp">
+			</File>
+			<File
 				RelativePath="..\..\src\UintElement.cpp">
 			</File>
 		</Filter>
@@ -144,10 +153,19 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
+				RelativePath="..\..\include\AliasedInstruction.h">
+			</File>
+			<File
 				RelativePath="..\..\include\AsciiElement.h">
 			</File>
 			<File
 				RelativePath="..\..\include\BoolElement.h">
+			</File>
+			<File
+				RelativePath="..\..\include\DataDictionary.h">
+			</File>
+			<File
+				RelativePath="..\..\include\DynamicDefinition.h">
 			</File>
 			<File
 				RelativePath="..\..\include\FloatElement.h">
@@ -157,6 +175,9 @@
 			</File>
 			<File
 				RelativePath="..\..\include\InstructionElement.h">
+			</File>
+			<File
+				RelativePath="..\..\include\InstructionNode.h">
 			</File>
 			<File
 				RelativePath="..\..\include\InstructionSet.h">
@@ -175,6 +196,12 @@
 			</File>
 			<File
 				RelativePath="..\..\include\PadElement.h">
+			</File>
+			<File
+				RelativePath="..\..\include\StaticDefinition.h">
+			</File>
+			<File
+				RelativePath="..\..\include\TypeDefinition.h">
 			</File>
 			<File
 				RelativePath="..\..\include\UintElement.h">

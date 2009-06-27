@@ -37,24 +37,45 @@ struct DynamicTypeEntry {
 class DynamicTypeElement
 {
 public:
+   /** The DynamicTypeElement function is just a simple constructor.
+     */
    DynamicTypeElement();
+
+   /** The DynamicTypeElement function with one DynamicTypeElement 
+     * parameter is just a simple copy constructor.
+     */
    DynamicTypeElement(const DynamicTypeElement& dyn_element);
+
+   /** The ~DynamicTypeElement function is just a simple destructor.
+     */
    ~DynamicTypeElement();
 
-   DynamicTypeElement& operator= (const DynamicTypeElement& dyn_element);
-
+   /** The SetName function is used to set the m_sName member variable
+     * with the name of the dynamictype from the PDI File.  This 
+     * corresponds to the "BODY" string in our example.
+     */
    void SetName(const std::string& nameIn);
+   /** The Name function returns a std::string containing the value
+     * of the m_sName member variable.
+     */
    const std::string& Name() const;
 
-   typedef std::list<DynamicTypeEntry> m_DynamicTypeList;
-   typedef m_DynamicTypeList::iterator iterator;
-   typedef m_DynamicTypeList::const_iterator const_iterator;
+   typedef std::list<DynamicTypeEntry> DynamicTypeList;
+   typedef DynamicTypeList::iterator iterator;
+   typedef DynamicTypeList::const_iterator const_iterator;
    iterator Begin();
    iterator End();
    const_iterator Begin() const;
    const_iterator End() const;
 
+   /** The Insert function is used to insert a DynamicTypeEntry into
+     * a DynamicTypeElement.  There will be one call to the insert
+     * function for each row inside a dynamictype found in the PDI File.
+     */
    iterator Insert(const DynamicTypeEntry& entry);
+
+   /** The Clear function is used to empty the DynamicTypeElement list.
+     */
    void Clear();
 
 protected:
@@ -62,7 +83,7 @@ protected:
 
 private:
    std::string m_sName;
-
+   DynamicTypeList m_DynamicTypeList;
 };
 
 } // End namespace

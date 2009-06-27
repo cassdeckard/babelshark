@@ -22,6 +22,7 @@ of the TreeVisitor class.
 #include "PadElement.h"
 #include "InstructionSet.h"
 
+#include "visitor.h"
 
 #include <algorithm>
 #include <map>
