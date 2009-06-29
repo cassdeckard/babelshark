@@ -39,19 +39,6 @@ struct DynamicTypeEntry {
 class DynamicTypeElement
 {
 public:
-   /** The DynamicTypeElement function is just a simple constructor.
-     */
-   DynamicTypeElement();
-
-   /** The DynamicTypeElement function with one DynamicTypeElement
-   parameter is just a simple copy constructor.
-   *****/
-   DynamicTypeElement(const DynamicTypeElement& dyn_element);
-
-   /** The ~DynamicTypeElement function is just a simple destructor.
-   *****/
-   ~DynamicTypeElement();
-
    /** The SetName function is used to set the m_sName member variable
    with the name of the dynamictype from the PDI File.  This
    corresponds to the "BODY" string in our example.
@@ -75,6 +62,9 @@ public:
    function for each row inside a dynamictype found in the PDI File.
      ***/
    iterator Insert(const DynamicTypeEntry& entry);
+
+   //iterator FindNext(const std::string& name);
+   //const_iterator FindNext(const std::string& name) const;
 
    /** The Clear function is used to empty the DynamicTypeElement list.
      ***/

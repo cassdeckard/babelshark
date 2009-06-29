@@ -9,19 +9,6 @@ File : DynamicTypeElement.cpp
 namespace PDI
 {
 
-   /*** The DynamicTypeElement function is just a simple constructor.
-     ***/
-   DynamicTypeElement::DynamicTypeElement() {}
-
-   /*** The DynamicTypeElement function with one DynamicTypeElement 
-     * parameter is just a simple copy constructor.
-     ***/
-   DynamicTypeElement::DynamicTypeElement(const DynamicTypeElement& dyn_element) {}
-
-   /*** The ~DynamicTypeElement function is just a simple destructor.
-     ***/
-   DynamicTypeElement::~DynamicTypeElement() {}
-
    /*** The SetName function is used to set the m_sName member variable
      * with the name of the dynamictype from the PDI File.  This 
      * corresponds to the "BODY" string in our example.

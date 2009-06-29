@@ -23,15 +23,6 @@ class DynamicTypeElement;
 class DynamicTypeCollection : public Singleton<DynamicTypeCollection>
 {
 public:
-   /** The DynamicTypeCollection function is just a simple constructor.
-     ***/
-   DynamicTypeCollection();
-
-   /** The ~DynamicTypeCollection function is just a simple destructor.
-     * It will call the ClearCollection function.
-     ***/
-   ~DynamicTypeCollection();
-
    typedef std::list<DynamicTypeElement> DynamicTypeCollectionTypeDef;
    typedef DynamicTypeCollectionTypeDef::iterator iterator;
    typedef DynamicTypeCollectionTypeDef::const_iterator const_iterator;

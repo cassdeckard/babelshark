@@ -10,6 +10,11 @@ File : BabelSharkSupport.cpp
 #include "DynamicTypeCollection.h"
 //#include "StaticTypeCollection.h"
 
+//TODO: After we clean-up the test code out of here, remove these includes.
+#include "InstructionSet.h"
+#include "DynamicTypeElement.h"
+#include "DataDictionary.h"
+
 namespace PDI
 {
 
@@ -39,7 +44,38 @@ namespace PDI
    ***/
    void CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)
    {
+      //Create a StaticTypeElement and add it to the collection for testing purposes.
+      // TODO: Later, when we have the parser updated to parse the file, remove this.
+        //Instruction* _TestInstruction;
+        //_TestInstruction = new InstructionSet(1, "TestProtocol");
+        BabelShark::InstructionSet* tempTree;
+
+        // make a static type
+        tempTree = new BabelShark::InstructionSet(1, "TestAck");
+        tempTree->Add(new BabelShark::UintElement(32, "Status"));
+        BabelShark::DataDictionary::Instance()->AddStatic("&ACK", tempTree);
+
+        // make another static type
+        tempTree = new BabelShark::InstructionSet(1, "TestInit");
+        tempTree->Add(new BabelShark::UintElement(7, "Age"));
+        tempTree->Add(new BabelShark::PadElement(56, "Pad"));
+        BabelShark::DataDictionary::Instance()->AddStatic("&INIT", tempTree);
+
       //StaticTypeCollection::FillDataDictionary();
+
+      //Create a DynamicTypeElement and add it to the collection for testing purposes.
+      // TODO: Later, when we have the parser updated to parse the file, remove this.
+      DynamicTypeElement dynElement;
+      dynElement.SetName("BODY");
+      DynamicTypeEntry dynTypeEntry;
+      dynTypeEntry.first = "1";
+      dynTypeEntry.second = "&ACK";
+      dynElement.Insert(dynTypeEntry);
+      dynTypeEntry.first = "2";
+      dynTypeEntry.second = "&INIT";
+      dynElement.Insert(dynTypeEntry);
+      DynamicTypeCollection::Instance().Insert(dynElement);
+
       DynamicTypeCollection::Instance().FillDataDictionary();
 
       // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.

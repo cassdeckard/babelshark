@@ -6,18 +6,10 @@ File : DynamicTypeCollection.cpp
 
 #include "DynamicTypeCollection.h"
 #include "DynamicTypeElement.h"
+#include "DataDictionary.h"
 
 namespace PDI
 {
-
-   /*** The DynamicTypeCollection function is just a simple constructor.
-     ***/
-   DynamicTypeCollection::DynamicTypeCollection() {}
-
-   /*** The ~DynamicTypeCollection function is just a simple destructor.
-     * It will call the ClearCollection function.
-     ***/
-   DynamicTypeCollection::~DynamicTypeCollection() {}
 
    DynamicTypeCollection::iterator DynamicTypeCollection::Begin() { return m_DynamicTypeCollection.begin(); }
    DynamicTypeCollection::iterator DynamicTypeCollection::End() { return m_DynamicTypeCollection.end(); }
@@ -43,7 +35,24 @@ namespace PDI
      * parameter is the first field inside DynamicTypeEntry, and
      * typeName is the seconed field inside DynamicTypeEntry.
      ***/
-   void DynamicTypeCollection::FillDataDictionary() {}
+   void DynamicTypeCollection::FillDataDictionary() 
+   {
+      // Loop over all items in the dynamic type collection.
+      DynamicTypeCollection::const_iterator itElement(Begin()),
+                                            itElementEnd(End());
+      for (; itElement != itElementEnd; ++itElement)
+      {
+         DynamicTypeElement::const_iterator itEntry(itElement->Begin()),
+                                            itEntryEnd(itElement->End());
+
+         for (; itEntry != itEntryEnd; ++itEntry)
+         {
+            BabelShark::DataDictionary::Instance()->AddDynamic(itElement->Name(), itEntry->first, itEntry->second, "ThisShouldNotBeNeeded");
+            //BabelShark::DataDictionary::Instance()->AddDynamic("BODY", "1", "&ACK");
+            //BabelShark::DataDictionary::Instance()->AddDynamic("BODY", "2", "&INIT");
+         }
+      }
+   }
 
 
 } // End namespace
