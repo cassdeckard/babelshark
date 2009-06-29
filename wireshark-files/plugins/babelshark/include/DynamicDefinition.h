@@ -20,9 +20,8 @@ namespace BabelShark
         public:
 
            /** Constructor
-             * Essentially, an inital call to Add()
              */
-           DynamicDefinition(InstructionNode* type, std::string parameter);
+           DynamicDefinition(InstructionNode* type = NULL, std::string parameter = "");
 
            ~DynamicDefinition();
 
@@ -43,7 +42,7 @@ namespace BabelShark
              * @param value
              *   value half ot the value-type pair
              */
-           void Add(InstructionNode* type, std::string parameter);
+           void Add(TypeDefinition* typeDef, std::string parameter);
 
            /** Update is called by an observed InstructionElement when its
              * state changes, to notify that it needs to update the
@@ -65,7 +64,7 @@ namespace BabelShark
            /** _Definitions
              * Mapping of values to types.
              */
-           std::map<std::string, InstructionNode*>          _Definitions;
+           std::map<std::string, TypeDefinition*>           _Definitions;
            /** _Subjects
              * Mapping of watched variables to the type associated with their
              * current value.

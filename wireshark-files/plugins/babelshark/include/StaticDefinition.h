@@ -10,13 +10,14 @@ namespace BabelShark
     /** StaticDefinition is a simple subclass of TypeDefinition
       * that contains a static reference to an InstructionSet.
       */
+
     class StaticDefinition : public TypeDefinition
 	{
         public:
            /** Constructor
              * Saves given InstructionNode as the definition of this type.
              */
-           StaticDefinition(InstructionNode* type, std::string parameter);
+           StaticDefinition(InstructionNode* type = NULL, std::string parameter = "");
 
            ~StaticDefinition();
 
@@ -28,7 +29,9 @@ namespace BabelShark
              * @param parameter
              *   (unused)
              */
-           void Fetch(InstructionNode** target, InstructionElement* parameter);
+           void Fetch(InstructionNode** target, InstructionElement* parameter = NULL);
+
+           void Define(InstructionNode* type);
 
 		protected:
 

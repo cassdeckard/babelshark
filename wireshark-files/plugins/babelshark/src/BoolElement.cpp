@@ -18,7 +18,7 @@ namespace BabelShark
 	}
 
 	//Will be used to read in data from packet
-	void BoolElement::Interpret(char* buffer)
+    unsigned int BoolElement::Interpret(char* buffer)
     {
         unsigned long intVal = 0;
         unsigned long intMask = _BitMask.to_ulong();
@@ -36,6 +36,8 @@ namespace BabelShark
 
         // notify subjects of change
         Notify();
+
+        return _Size % 8;
 	}
 
 	//will be used to Display data to the WireShark output

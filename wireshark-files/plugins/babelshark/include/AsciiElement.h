@@ -34,7 +34,7 @@ namespace BabelShark
 			 * Interpret function for Ascii;
 			 * will just read in the correct number of characters
 			 */
-			void Interpret(char* buffer);
+            unsigned int Interpret(char* buffer);
 
 			/**
 			 * Display function for Ascii;

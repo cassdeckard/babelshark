@@ -35,7 +35,7 @@ namespace BabelShark
 				Reads in data from packet
 				Throws away the contents, just sets interpreted data to "X bits of padding"
 				*/
-			void Interpret(char* buffer);
+            unsigned int Interpret(char* buffer);
 
 			/** Display
 				Print the name and the interpreted data

@@ -37,7 +37,7 @@ namespace BabelShark
 			/**	TODO -- Implement this
 				Will be used to read in data from packet
 				*/
-			void Interpret(char* buffer);
+            unsigned int Interpret(char* buffer);
 
 			/**	TODO -- Implement this
 				will be used to Display data to the WireShark output

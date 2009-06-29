@@ -17,7 +17,7 @@ namespace BabelShark
 
            /** Constructor
              */
-           TypeDefinition(InstructionNode* type, std::string parameter)
+           TypeDefinition(InstructionNode* type = NULL, std::string parameter = "")
            {
            }
 
@@ -33,7 +33,7 @@ namespace BabelShark
              * @param parameter
              *   (for DynamicDefinition)
              */
-           virtual void Fetch(InstructionNode** target, InstructionElement* parameter) { }
+           virtual void Fetch(InstructionNode** target, InstructionElement* parameter = NULL) { }
 
            /** Add is used by DynamicDefinition to add a value-type pair to the definition.
              *
@@ -42,7 +42,7 @@ namespace BabelShark
              * @param value
              *   value half ot the value-type pair
              */
-           virtual void Add(InstructionNode* type, std::string value) { }
+           virtual void Add(TypeDefinition* type, std::string value) { }
 
            /** Update is used by DynamicDefinition. It is called by an observed
              * InstructionElement when its state changes, to notify that it needs
@@ -52,6 +52,8 @@ namespace BabelShark
              *   pointer to observed element that has changed
              */
            virtual void Update(InstructionElement* subject) { }
+
+           virtual void Define(InstructionNode* type) { }
 
 		protected:
 

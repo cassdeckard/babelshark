@@ -30,7 +30,7 @@ namespace BabelShark
 	}
 
 	//Will be used to read in data from packet
-	void UintElement::Interpret(char* buffer)
+    unsigned int UintElement::Interpret(char* buffer)
     {
         std::stringstream result;
 
@@ -45,6 +45,8 @@ namespace BabelShark
 
         // notify subjects of change
         Notify();
+
+        return _Size % 8;
 	}
 
 	//will be used to Display data to the WireShark output

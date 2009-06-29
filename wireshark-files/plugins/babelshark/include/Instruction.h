@@ -43,8 +43,9 @@ namespace BabelShark
               *  - Interpreter::Interpret
               *
               * @param buffer the packet data to interpret
+              * @return number of bits used in last byte
               */
-			virtual void Interpret(char* buffer);
+			virtual unsigned int Interpret(char* buffer);
 
             /** Displays interpreted packet data.
               *

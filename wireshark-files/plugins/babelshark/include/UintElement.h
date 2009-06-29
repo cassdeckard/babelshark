@@ -36,7 +36,7 @@ namespace BabelShark
 				converts the bitmask to an unsigned long and then does a bitwise and
 				then it uses a stream to convert that to a character value
 				*/
-			void Interpret(char* buffer);
+            unsigned int Interpret(char* buffer);
 
 			/** Display
 				Prints out the name and the value as an unsigned int

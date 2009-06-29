@@ -38,8 +38,9 @@ namespace BabelShark
 
 
 	//attempts to Interpret the buffer according to the children.
-	void InstructionSet::Interpret(char* buffer)
+    unsigned int InstructionSet::Interpret(char* buffer)
 	{
+        return 0;
 	}
 
 

@@ -18,11 +18,13 @@ namespace BabelShark
 	}
 
 	//Will be used to read in data from packet
-	void PadElement::Interpret(char* buffer)
+    unsigned int PadElement::Interpret(char* buffer)
     {
         std::stringstream result;
         result << "(" << _Size << " bits of padding)";
         _InterpretedData = result.str();
+
+        return _Size % 8;
 	}
 
 	//will be used to Display data to the WireShark output

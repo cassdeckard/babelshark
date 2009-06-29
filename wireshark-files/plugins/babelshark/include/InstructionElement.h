@@ -41,7 +41,7 @@ namespace BabelShark
 
 			//virtual function, base definition does nothing.
 			//should be implemented by any class inheriting from it.
-			virtual void Interpret(char* buffer);
+            virtual unsigned int Interpret(char* buffer);
 
 			//virtual function, base definition does nothing.
 			//will be used to Display data to the WireShark output
