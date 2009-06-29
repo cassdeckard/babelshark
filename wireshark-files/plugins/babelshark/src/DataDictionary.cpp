@@ -2,6 +2,7 @@
 
 // C++ headers
 #include "DataDictionary.h"
+#include "InstructionSet.h"
 #include <sstream>
 
 namespace BabelShark
@@ -10,6 +11,10 @@ namespace BabelShark
 
     DataDictionary::DataDictionary()
     {
+        _NullInstruction = new InstructionSet(0, "(No instruction)");
+        std::stringstream ss;
+        ss << "DD::_NullInstruction = {" << _NullInstruction << "}\n";
+        printf(ss.str().c_str());
 	}
 
     DataDictionary::~DataDictionary()
@@ -29,7 +34,7 @@ namespace BabelShark
     {
         _Variables[alias] = variable;
         std::stringstream ss;
-        ss << "_Variables[" << alias.c_str() << "] = {" << variable <<  "}\n";
+        ss << "DD::_Variables[" << alias.c_str() << "] = {" << variable <<  "}\n";
         printf(ss.str().c_str());
     }
 
@@ -37,7 +42,7 @@ namespace BabelShark
     {
         _Types[alias] = new StaticDefinition(type, "");
         std::stringstream ss;
-        ss << "_Types[" << alias.c_str() << "] = {" << _Types[alias] <<  "}\n";
+        ss << "DD::_Types[" << alias.c_str() << "] = {" << _Types[alias] <<  "}\n";
         printf(ss.str().c_str());
     }
 
@@ -66,7 +71,7 @@ namespace BabelShark
     void DataDictionary::LookupType(InstructionNode** target, std::string alias, InstructionElement* parameter)
     {
         std::stringstream ss;
-        ss << "_Types[" << alias.c_str() << "]{" << _Types[alias] << "}->Fetch( {" << *target << "} , {" << parameter << "} )\n";
+        ss << "DD::_Types[" << alias.c_str() << "]{" << _Types[alias] << "}->Fetch( {" << *target << "} , {" << parameter << "} )\n";
         printf(ss.str().c_str());
         _Types[alias]->Fetch(target, parameter);
     }

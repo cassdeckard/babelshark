@@ -139,8 +139,9 @@ namespace BabelShark
         // build tree to test new functionality
         _TestInstruction->Add(new UintElement(8, "MsgID", "$MSG_ID"));
         _TestInstruction->Add(new PadElement(8, "Pad"));
-        _TestInstruction->Add(new AliasedInstruction(1, "AliasTest", "&INIT"));
-        //_TestAliased = new AliasedInstruction(1, "AliasTest", "&INIT");
+        //_TestInstruction->Add(new AliasedInstruction(1, "AliasTest", "&INIT"));
+        _TestInstruction->Add(new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID"));
+        //_TestAliased = new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID");
     }
 
     void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)

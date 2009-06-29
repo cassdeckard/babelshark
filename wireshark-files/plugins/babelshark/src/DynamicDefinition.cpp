@@ -1,6 +1,7 @@
 // $Id$
 
 #include "DynamicDefinition.h"
+#include "DataDictionary.h"
 #include <sstream>
 
 namespace BabelShark
@@ -21,11 +22,16 @@ namespace BabelShark
 
    void DynamicDefinition::Fetch(InstructionNode** target, InstructionElement* parameter)
    {
+       int size = (int)_Subjects.size();
+
        // add to _Subjects
        _Subjects[parameter] = target;
 
-       // Attach() to parameter
-       parameter->Attach(this);
+       if ( (int)_Subjects.size() > size)
+       {
+           // Attach() to parameter
+           parameter->Attach(this);
+       }
 
        // the target will be updated when parameter changes and Notify()s us
    }
@@ -41,11 +47,28 @@ namespace BabelShark
 
    void DynamicDefinition::Update(InstructionElement* subject)
    {
+      std::stringstream ss;
+      ss << "DynamicDefinition.Update( {" << subject << "} : ";
+
        // look up value of subject
        std::string parameter = subject->SimpleDisplay();
 
-       // update pointer to appropriate InstructionSet
-       *(_Subjects[subject]) = _Definitions[parameter];
+      ss << "parameter(" << parameter << ") => ";
+
+       InstructionNode* result = _Definitions[parameter];
+       if ( result == NULL )
+       {
+           *(_Subjects[subject]) = DataDictionary::Instance()->NullInstruction();
+       }
+       else
+       {
+           // update pointer to appropriate InstructionSet
+           *(_Subjects[subject]) = result;
+       }
+
+      ss << "{" << *(_Subjects[subject]) << "}\n";
+
+      printf(ss.str().c_str());
    }
 
 }

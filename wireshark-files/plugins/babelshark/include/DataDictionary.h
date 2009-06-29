@@ -115,6 +115,8 @@ namespace BabelShark
              */
            InstructionElement* LookupVariable(std::string alias);
 
+           InstructionNode* NullInstruction() { return _NullInstruction; }
+
         protected:
            /** DataDictionary's constructor is only called by its static
              * Instance() method when the instance has not yet been created.
@@ -145,6 +147,8 @@ namespace BabelShark
              *  - Singleton::singletonData
              */
            std::map<std::string, TypeDefinition*> _Types;
+
+           InstructionNode* _NullInstruction;
 	};
 
 }
