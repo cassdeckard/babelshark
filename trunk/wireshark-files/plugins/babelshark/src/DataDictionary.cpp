@@ -40,32 +40,38 @@ namespace BabelShark
 
     void DataDictionary::AddStatic(std::string alias, InstructionNode* type)
     {
-        _Types[alias] = new StaticDefinition(type, "");
+
+        if (_Types.count(alias) == 0)
+        {
+            // type doesn't exist yet; create it
+            _Types[alias] = new StaticDefinition(type, "");
+        }
+        else
+        {
+            _Types[alias]->Define(type);
+        }
+
         std::stringstream ss;
         ss << "DD::_Types[" << alias.c_str() << "] = {" << _Types[alias] <<  "}\n";
         printf(ss.str().c_str());
     }
 
-    void DataDictionary::AddDynamic(std::string alias, std::string value, std::string typeName, std::string typeParamName)
+    void DataDictionary::AddDynamic(std::string alias, std::string value, std::string typeName)
     {
-        InstructionNode*    type;
-        InstructionElement* typeParam;
-
-        // get referred type param (if it exists)
-        typeParam = this->LookupVariable(typeParamName);
-
-        // get referred type
-        this->LookupType(&type, typeName, typeParam);
-
         if (_Types.count(alias) == 0)
         {
             // type doesn't exist yet; create it
-            _Types[alias] = new DynamicDefinition(type, value);
+            _Types[alias] = new DynamicDefinition();
         }
-        else
+
+        // if typeName doesn't already exist as a static type, create it
+        if ( _Types[typeName] == NULL )
         {
-            _Types[alias]->Add(type, value);
+            _Types[typeName] = new StaticDefinition();
         }
+
+        // add new definition to dynamic type
+        _Types[alias]->Add(_Types[typeName], value);
     }
 
     void DataDictionary::LookupType(InstructionNode** target, std::string alias, InstructionElement* parameter)

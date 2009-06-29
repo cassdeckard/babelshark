@@ -18,13 +18,15 @@ namespace BabelShark
 	}
 	//TODO -- Implement this
 	//Will be used to read in data from packet (I think??)
-	void FloatElement::Interpret(char* buffer)
+    unsigned int FloatElement::Interpret(char* buffer)
 	{
 		//Implement me!
         _InterpretedData = "(not implemented yet)";
 
         // notify subjects of change
         Notify();
+
+        return _Size % 8;
 	}
 
 	//will be used to Display data to the WireShark output

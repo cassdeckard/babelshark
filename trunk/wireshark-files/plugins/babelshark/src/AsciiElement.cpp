@@ -40,7 +40,7 @@ namespace BabelShark
     }
 
 
-	void AsciiElement::Interpret(char* buffer)
+    unsigned int AsciiElement::Interpret(char* buffer)
     {
 		_InterpretedData.clear();
 
@@ -52,6 +52,7 @@ namespace BabelShark
         // notify subjects of change
         Notify();
 
+        return 0;
 	}
 
 	char* AsciiElement::Display()

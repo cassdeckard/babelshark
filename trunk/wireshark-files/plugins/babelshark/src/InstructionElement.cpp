@@ -27,9 +27,10 @@ namespace BabelShark
 
 	//virtual function, base definition does nothing.
 	//should be implemented by any class inheriting from it.
-	void InstructionElement::Interpret(char* buffer)
+    unsigned int InstructionElement::Interpret(char* buffer)
 	{
         Notify();
+        return 0;
 	}
 
 	//virtual function, base definition does nothing.

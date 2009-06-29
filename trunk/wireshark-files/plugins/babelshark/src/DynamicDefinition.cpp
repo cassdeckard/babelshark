@@ -13,7 +13,6 @@ namespace BabelShark
       std::stringstream ss;
       ss << "DynamicDefinition( {" << type << "}, " << parameter.c_str() << ")\n";
       printf(ss.str().c_str());
-      _Definitions[parameter] = type;
    }
 
    DynamicDefinition::~DynamicDefinition()
@@ -36,12 +35,12 @@ namespace BabelShark
        // the target will be updated when parameter changes and Notify()s us
    }
 
-   void DynamicDefinition::Add(InstructionNode* type, std::string parameter)
+   void DynamicDefinition::Add(TypeDefinition* typeDef, std::string parameter)
    {
       std::stringstream ss;
-      ss << "DynamicDefinition.Add( {" << type << "}, " << parameter.c_str() << ")\n";
+      ss << "DynamicDefinition.Add( {" << typeDef << "}, " << parameter.c_str() << ")\n";
       printf(ss.str().c_str());
-      _Definitions[parameter] = type;
+      _Definitions[parameter] = typeDef;
    }
 
 
@@ -55,7 +54,10 @@ namespace BabelShark
 
       ss << "parameter(" << parameter << ") => ";
 
-       InstructionNode* result = _Definitions[parameter];
+       InstructionNode* result = NULL;
+       TypeDefinition* def = _Definitions[parameter];
+       if ( def != NULL ) def->Fetch(&result);
+
        if ( result == NULL )
        {
            *(_Subjects[subject]) = DataDictionary::Instance()->NullInstruction();

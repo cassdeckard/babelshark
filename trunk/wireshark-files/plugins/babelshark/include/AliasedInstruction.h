@@ -85,7 +85,7 @@ namespace BabelShark
               * <b>Pattern roles:</b>
               *  - Proxy::Request()
               */
-            void Interpret(char* buffer) {  _RealSubject->Interpret(buffer); }
+            unsigned int Interpret(char* buffer) {  return _RealSubject->Interpret(buffer); }
 
             /** Display
               * Calls Display() on its _RealSubject
@@ -110,7 +110,7 @@ namespace BabelShark
               * <b>Pattern roles:</b>
               *  - Proxy::Request()
               */
-            unsigned int GetSizeInBytes() { return _Size * _RealSubject->NumSubtrees(); }
+            unsigned int GetSizeInBytes() { return _Size * _RealSubject->GetSizeInBytes(); }
 
             /** NumSubTrees
               * Calls NumSubTrees() on its _RealSubject

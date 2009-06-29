@@ -121,7 +121,20 @@ namespace BabelShark
         _TestInstruction = new InstructionSet(1, "TestProtocol");
         InstructionSet* tempTree;
 
+        // make a dynamic type
+        DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
+        DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
+
         // make a static type
+        tempTree = new InstructionSet(1, "TestHeader");
+        tempTree->Add(new UintElement(8, "Message ID", "$MSG_ID"));
+        tempTree->Add(new PadElement(8, "Padding"));
+        tempTree->Add(new UintElement(16, "Event ID"));
+        tempTree->Add(new AsciiElement(16, "Name"));
+        tempTree->Add(new PadElement(32, "Padding"));
+        DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
+
+        // make another static type
         tempTree = new InstructionSet(1, "TestAck");
         tempTree->Add(new UintElement(32, "Status"));
         DataDictionary::Instance()->AddStatic("&ACK", tempTree);
@@ -132,16 +145,11 @@ namespace BabelShark
         tempTree->Add(new PadElement(56, "Pad"));
         DataDictionary::Instance()->AddStatic("&INIT", tempTree);
 
-        // make a dynamic type
-        DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
-        DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
-
         // build tree to test new functionality
-        _TestInstruction->Add(new UintElement(8, "MsgID", "$MSG_ID"));
-        _TestInstruction->Add(new PadElement(8, "Pad"));
-        //_TestInstruction->Add(new AliasedInstruction(1, "AliasTest", "&INIT"));
+        _TestInstruction->Add(new AliasedInstruction(1, "Header", "&HEADER"));
         _TestInstruction->Add(new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID"));
         //_TestAliased = new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID");
+
     }
 
     void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
@@ -157,6 +165,9 @@ namespace BabelShark
            if (currentIns->CreateIterator()->IsDone())
            {
                // BASE CASE
+
+               // TODO: figure out if we need to play with the bits
+
                // currentIns is a leaf, move forward in the buffer
                proto_tree_add_text(tree,
                                    tvb,

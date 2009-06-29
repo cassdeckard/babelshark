@@ -80,11 +80,9 @@ namespace BabelShark
              *   the value half of the value-type pair being added
              * @param typeName
              *   the alias of the type half of the value-type pair being added
-             * @param typeParamName
-             *   (not used yet) the type's parameter name, if it is a dynamic type
              *
              */
-           void AddDynamic(std::string alias, std::string value, std::string typeName, std::string typeParamName = "");
+           void AddDynamic(std::string alias, std::string value, std::string typeName);
 
            /** LookupType looks up the requested type name and sets the supplied
              * InstructionNode* to point to the appropriate InstructionNode according

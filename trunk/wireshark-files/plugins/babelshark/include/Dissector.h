@@ -20,6 +20,7 @@ extern "C" {
 
 // TODO: Remove all of these
 #include "AliasedInstruction.h"
+#include "AsciiElement.h"
 #include "UintElement.h"
 #include "BoolElement.h"
 #include "PadElement.h"

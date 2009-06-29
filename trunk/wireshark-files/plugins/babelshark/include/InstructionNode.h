@@ -52,7 +52,7 @@ namespace BabelShark
 			/** Interpret
 				Currently an empty function since the dissector will just look directly at the children
 				*/
-            virtual void Interpret(char* buffer) { }
+            virtual unsigned int Interpret(char* buffer) { return 0; }
 
             /** Display
             	For the instruction set this just prints out the name of the set
