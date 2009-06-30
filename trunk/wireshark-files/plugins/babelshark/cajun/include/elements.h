@@ -146,8 +146,8 @@ public:
    size_t Size() const;  // This is the number of elements in the array.
    bool Empty() const;
 
-   size_t Dimension() const;  // This is the dimension read in from the file.
-   void SetDimension(size_t nDimension);
+   const std::string& Dimension() const;  // This is the dimension read in from the file.
+   void SetDimension(const std::string& sDimension);
 
    iterator Find(const std::string& name);
    const_iterator Find(const std::string& name) const;

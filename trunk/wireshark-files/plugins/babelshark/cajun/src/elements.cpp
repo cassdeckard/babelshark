@@ -162,8 +162,6 @@ ElementType Element_T<ElementImpTypeT>::Type_i() {
 class ArrayImp : public ElementImp_T<Array, ArrayImp, ARRAY_ELEMENT>
 {
 public:
-   ArrayImp() : m_nDimension(1) {} // suitable default?
-
    Array::iterator Begin() { return m_Members.begin(); }
    Array::iterator End() { return m_Members.end(); }
    Array::const_iterator Begin() const { return m_Members.begin(); }
@@ -172,8 +170,8 @@ public:
    size_t Size() const { return m_Members.size(); }
    bool Empty() const { return m_Members.empty(); }
 
-   size_t Dimension() const { return m_nDimension; }
-   void SetDimension(size_t nDimension) { m_nDimension = nDimension; }
+   const std::string& Dimension() const { return m_sDimension; }
+   void SetDimension(const std::string& sDimension) { m_sDimension = sDimension; }
 
    Array::iterator Find(const std::string& name) {
       return std::find_if(m_Members.begin(), m_Members.end(), Finder(name));
@@ -228,7 +226,7 @@ private:
    };
 
    Array::Members m_Members;
-   size_t m_nDimension;
+   std::string m_sDimension;
 };
 
 
@@ -258,12 +256,12 @@ bool Array::Empty() const {
    return Imp().Empty();
 }
 
-size_t Array::Dimension() const {
+const std::string& Array::Dimension() const {
    return Imp().Dimension();
 }
 
-void Array::SetDimension(size_t nDimension) {
-   Imp().SetDimension(nDimension);
+void Array::SetDimension(const std::string& sDimension) {
+   Imp().SetDimension(sDimension);
 }
 
 Array::iterator Array::Find(const std::string& name) {

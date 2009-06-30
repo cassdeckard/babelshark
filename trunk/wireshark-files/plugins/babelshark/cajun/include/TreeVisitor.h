@@ -117,7 +117,17 @@ private:
          std::cout << "This array node has been visited " << m_sName << ", dimension " << array.Dimension() << std::endl;
       }
 
-      BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(array.Dimension(), (char*)m_sName.c_str()); // TODO: fix "char*"
+      //TODO: (JULIE) Currently this passes a number into InstructionSet constructor.
+      //              After InstructionSet is changed to take a string, uncomment row below and delete this kluge.
+//kluge start
+      std::istringstream ss(array.Dimension());
+
+      size_t nDimension;
+      ss >> nDimension;
+      BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(nDimension, (char*)m_sName.c_str()); // TODO: fix "char*"
+//kluge end
+
+//      BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(array.Dimension(), (char*)m_sName.c_str()); // TODO: fix "char*"
       PDI::Array::const_iterator it(array.Begin()),
                                    itEnd(array.End());
       for (; it != itEnd; ++it)
