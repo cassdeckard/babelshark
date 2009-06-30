@@ -147,6 +147,9 @@ namespace BabelShark
                           char* buffer,
                           gint &offset);
 
+
+            char* ShiftBits(char* buffer, unsigned int size, unsigned int offset);
+
             /** _RootInstruction holds the root node of the Instruction tree
               */
             Instruction* _RootInstruction;

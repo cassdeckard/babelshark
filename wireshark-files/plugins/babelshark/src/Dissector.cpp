@@ -142,24 +142,70 @@ namespace BabelShark
         // make another static type
         tempTree = new InstructionSet(1, "TestInit");
         tempTree->Add(new UintElement(7, "Age"));
+        tempTree->Add(new BoolElement(1, "Male?"));
         tempTree->Add(new PadElement(56, "Pad"));
         DataDictionary::Instance()->AddStatic("&INIT", tempTree);
 
         // build tree to test new functionality
         _TestInstruction->Add(new AliasedInstruction(1, "Header", "&HEADER"));
         _TestInstruction->Add(new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID"));
+
         //_TestAliased = new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID");
 
     }
 
+    char* Dissector::ShiftBits(char* buffer, unsigned int size, unsigned int offset)
+    {
+        // offset: 6
+        // size:   3
+        //
+        // buffer:  ~~__ ____   --== ====   ^^%% %%%%    0000 0000
+        // result:  ==== ==~~   %%%% %%--   0000 00^^
+
+        char *result;
+        result = new char[size];
+        char mask = 0xFF << offset; // 1100 0000
+        for (unsigned int i = 0; i < size; i++)
+        {
+            char temp;
+            result[i] = buffer[i] & mask;     // ~~00 0000
+            result[i] =result[i] >> offset;   // 0000 00~~
+            // WARNING:
+            if (i + 1 == size)
+            {
+                temp = 0;                     // 0000 0000
+            }
+            else
+            {
+                temp = buffer[i + 1] & ~mask; // 00== ====
+            }
+            temp = temp << (8 - offset);      // ==== ==00
+            result[i] |= temp;                // ==== ==~~
+        }
+
+        return result;
+    }
+
     void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
     {
+        static unsigned int bitOffset = 0;
+
         // interpret children
         for (Iterator* it = in->CreateIterator(); ! it->IsDone(); it->Next())
         {
-
            Instruction* currentIns = it->CurrentItem();
-           currentIns->Interpret(buffer + offset);
+           printf("bitOffset for %s is %u\n", currentIns->GetName(), bitOffset);
+           if ( bitOffset > 0 )
+           {
+              offset -= 1;
+              bitOffset = (bitOffset + currentIns->Interpret(ShiftBits(buffer + offset,
+                                                                       currentIns->GetSizeInBytes(),
+                                                                       bitOffset))) % 8;
+           }
+           else
+           {
+              bitOffset = (bitOffset + currentIns->Interpret(buffer + offset)) % 8;
+           }
 
            // find out if this instruction is a leaf or a node
            if (currentIns->CreateIterator()->IsDone())
