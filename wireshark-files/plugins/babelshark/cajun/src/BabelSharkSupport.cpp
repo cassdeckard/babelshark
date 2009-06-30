@@ -66,7 +66,7 @@ namespace PDI
       //Create a DynamicTypeElement and add it to the collection for testing purposes.
       // TODO: Later, when we have the parser updated to parse the file, remove this.
       DynamicTypeElement dynElement;
-      dynElement.SetName("BODY");
+      dynElement.SetName("&BODY");
       DynamicTypeEntry dynTypeEntry;
       dynTypeEntry.first = "1";
       dynTypeEntry.second = "&ACK";
