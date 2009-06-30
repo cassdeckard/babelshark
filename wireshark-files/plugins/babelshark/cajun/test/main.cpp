@@ -65,7 +65,7 @@ int main()
       Writer::Write(elemRoot, std::ofstream("AvatarsInRoomOutput.txt"));
       std::cout << "Done." << std::endl << std::endl;
 
-      // When the accept function is called, it iterates over every element in the PDI tree.
+/*      // When the accept function is called, it iterates over every element in the PDI tree.
       std::cout << "Testing TreeVisitor..." << std::endl;
       // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.
       TreeVisitor treeVisitor(elemRoot.Name(), true);
@@ -74,12 +74,10 @@ int main()
 //      TreeVisitor treeVisitor(elemRoot.Name());
       elemRoot.Accept(treeVisitor);
       std::cout << "Done." << std::endl << std::endl;
+*/
 
       // Try out the new function for Phase 2 testing.
       CreateInstructionTreeAndFillDataDictionary(elemRoot, true);
-
-      BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
-
    }
 
    return 0;

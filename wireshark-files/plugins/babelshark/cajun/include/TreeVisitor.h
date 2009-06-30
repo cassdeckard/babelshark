@@ -154,27 +154,60 @@ private:
    virtual void Visit(const PDI::DisplayElement& string) {
       std::istringstream ss(string);
 
-      std::string sType;
-      int nSize;  //TODO (JULIE) Later, when the constructor for Instructions expects strings, just change this to a string.
-      std::string sVariableName;
-      ss >> sType >> nSize >> sVariableName;
+      // DISPLAY_ELEMENT can be any one of the following formats:
+      // "NameSimple" : "Type Size"
+      // "NameSimple" : "Type Size $Optional_Variable"
+      // "NameStaticTypeUsage" : "&Alias Size"
+      // "NameDynamicTypeUsage" : "&Alias($Variable) Size"
 
-      CreateInstructionFuncMap::const_iterator it = m_CreateInstructionFuncMap.find(sType);
-      if (it == m_CreateInstructionFuncMap.end())
+      char cPeekCharacter = ss.peek();
+
+      if (cPeekCharacter == '&')
       {
-         std::string sException = "use of undefined type: " + sType;
-         throw std::exception(sException.c_str());
+         // This is either a StaticType usage or a DynamicType usage:
+         // "NameStaticTypeUsage" : "&Alias Size"
+         // "NameDynamicTypeUsage" : "&Alias($Variable) Size"
+
+         // Split the stream into two different tokens defined by a space between them.  The second one is size.
+         std::string sAlias;
+         int nSize;  //TODO (JULIE) Later, change this to a string?
+         ss >> sAlias >> nSize;
+
+         //TODO (JULIE) 
+         //1) Determine if this is a static or dynamic usage by looking for the (
+         //2) If this is static, then create an AliasedInstruction and pass in the nSize, sAlias.
+         //3) If this is dynamic, then
+         //3a) Split Alias into two strings (one being &Alias and the other being $Variable)
+         //3b) Create an AliasedInstruction and pass in the nSize, sAlias, $Variable.
       }
       else
       {
-         if (m_bDisplayOutputToScreen)
-         {
-            std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << " " << sVariableName << std::endl;
-         }
-      }
+         // Simple Display Element in one of the following layouts:
+         // "NameSimple" : "Type Size"
+         // "NameSimple" : "Type Size $Optional_Variable"
 
-      CreateInstructionFunc func = it->second;
-      m_pInstruction = (this->*func)(nSize, m_sName, sVariableName);
+         std::string sType;
+         int nSize;  //TODO (JULIE) Later, when the constructor for Instructions expects strings, just change this to a string.
+         std::string sVariableName;
+         ss >> sType >> nSize >> sVariableName;
+
+         CreateInstructionFuncMap::const_iterator it = m_CreateInstructionFuncMap.find(sType);
+         if (it == m_CreateInstructionFuncMap.end())
+         {
+            std::string sException = "use of undefined type: " + sType;
+            throw std::exception(sException.c_str());
+         }
+         else
+         {
+            if (m_bDisplayOutputToScreen)
+            {
+               std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << " " << sVariableName << std::endl;
+            }
+         }
+
+         CreateInstructionFunc func = it->second;
+         m_pInstruction = (this->*func)(nSize, m_sName, sVariableName);
+      }
    }
 
    /** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.

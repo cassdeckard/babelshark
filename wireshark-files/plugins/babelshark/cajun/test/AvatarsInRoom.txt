@@ -1,5 +1,7 @@
 "ListAvatars_Message" : [
 	"ListAvatarsMessageId" : "UINT 32 $MSG_ID",
+	"TestStaticUsage" : "&HEADER 1",
+	"TestDynamicUsage" : "&BODY($MSG_ID) 1",
 	"Room" : "UINT 32",
 	"TestInt" : "INT 32",
 	"TestFloat" : "FLOAT 32",
