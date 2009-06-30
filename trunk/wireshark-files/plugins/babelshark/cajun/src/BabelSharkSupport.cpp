@@ -84,6 +84,10 @@ namespace PDI
 
       //Destroy StaticTypeCollection singleton.
       DynamicTypeCollection::Release();
+
+      //TODO (JULIE) Delete this line later.  This is here so I can see tree that was created.
+      BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
+
    }
 
 } // End namespace
