@@ -418,12 +418,14 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
    // finally, look for the dimension of this array
    std::string sNumber = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
 
+   /*
    std::istringstream ss(sNumber);
 
    size_t nDimension;
    ss >> nDimension;
+   */
 
-   array.SetDimension(nDimension);
+   array.SetDimension(sNumber);
 }
 
 
