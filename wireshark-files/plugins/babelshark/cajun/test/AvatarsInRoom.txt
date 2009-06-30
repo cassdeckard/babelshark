@@ -1,5 +1,5 @@
 "ListAvatars_Message" : [
-	"ListAvatarsMessageId" : "UINT 32",
+	"ListAvatarsMessageId" : "UINT 32 $MSG_ID",
 	"Room" : "UINT 32",
 	"TestInt" : "INT 32",
 	"TestFloat" : "FLOAT 32",

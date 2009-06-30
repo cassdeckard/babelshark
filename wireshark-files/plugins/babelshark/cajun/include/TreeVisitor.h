@@ -98,11 +98,14 @@ private:
      * @param sName
      ***/
    template <typename InstructionTypeT>
-   BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName)
+   BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName, const std::string& sVariable)
    {
       char* s = const_cast<char*>(sName.c_str());
 	  // This would be easier if std::string was the parameter type rather than char*.
       return new InstructionTypeT(nSize, s);
+//TODO (JULIE) When IntElement and all the instruction subclasses are ready to take a third parameter,
+//             uncomment the line below and delete the line above.
+//      return new InstructionTypeT(nSize, s, sVariable);
    }
 
    /** Visit() uses iterates over all items in the array. It calls a visit function
@@ -152,8 +155,9 @@ private:
       std::istringstream ss(string);
 
       std::string sType;
-      int nSize;
-      ss >> sType >> nSize;
+      int nSize;  //TODO (JULIE) Later, when the constructor for Instructions expects strings, just change this to a string.
+      std::string sVariableName;
+      ss >> sType >> nSize >> sVariableName;
 
       CreateInstructionFuncMap::const_iterator it = m_CreateInstructionFuncMap.find(sType);
       if (it == m_CreateInstructionFuncMap.end())
@@ -165,12 +169,12 @@ private:
       {
          if (m_bDisplayOutputToScreen)
          {
-            std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << std::endl;
+            std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << " " << sVariableName << std::endl;
          }
       }
 
       CreateInstructionFunc func = it->second;
-      m_pInstruction = (this->*func)(nSize, m_sName);
+      m_pInstruction = (this->*func)(nSize, m_sName, sVariableName);
    }
 
    /** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.
@@ -179,7 +183,7 @@ private:
      ***/
    virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
 
-   typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&);
+   typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&, const std::string&);
    typedef std::map<std::string, CreateInstructionFunc> CreateInstructionFuncMap;
 
    CreateInstructionFuncMap m_CreateInstructionFuncMap;
