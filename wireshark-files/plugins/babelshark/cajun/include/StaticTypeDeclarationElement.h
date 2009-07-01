@@ -32,20 +32,20 @@ namespace PDI
 			StaticTypeDeclaration(const StaticTypeDeclaration& value);
 
 			//simple destructor
-			~StaticTypeDeclaration()
+			~StaticTypeDeclaration();
 
 			//member variable Set functions
 			void SetLabel(char* input){_Label = input;}
 			void SetSize(int size){_Size = size;}
 
 			//member variable Get functions
-			char* GetLabel(){ return _Label.c_str();}
+			char* GetLabel(){ return const_cast<char*>(_Label.c_str());}
 			int GetSize() { return _Size;}
 
 		private:
 			std::string _Label;
 			int _Size;
-	}
+	};
 }
 
 #endif //STATIC_TYPE_DEFINITION_H

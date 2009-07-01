@@ -1,31 +1,35 @@
 #ifndef STATIC_TYPE_DEFINITION_COLLECTION_H
 #define STATIC_TYPE_DEFINITION_COLLECTION_H
 
+#include "singleton.h"
+#include "StaticTypeDeclarationElement.h"
+#include <list>
 
 namespace PDI
 {
-	class StaticTypeDeclarationCollection : public Singleton<StaticTypeCollection>
+	class StaticTypeDeclarationCollection : public Singleton<StaticTypeDeclarationCollection>
 	{
 		public:
-			typedef std::list<StaticTypeElement> StaticTypeDefinitionCollection;
-			typedef StaticTypeDefinitionCollection::iterator StaticTypeIterator;
-			typedef StaticTypeDefinitionCollection::const_iterator StaticTypeConstIter;
+			typedef std::list<StaticTypeDeclaration> StaticTypeDefinitionCollection;
+			typedef StaticTypeDefinitionCollection::iterator Iterator;
+			typedef StaticTypeDefinitionCollection::const_iterator ConstIter;
+
+			StaticTypeDeclarationCollection();
 
 			/** Iterator accessors.  Both Const iterators and regular
 			*/
-			StaticTypeIterator Begin();
-			StaticTypeIterator End();
+			Iterator Begin();
+			Iterator End();
 
-			StaticTypeConstIter Begin() const;
-			StaticTypeConstIter End() const;
+			ConstIter Begin() const;
+			ConstIter End() const;
 
 			/** Inserts a StaticTypeElement into the Collection
 			***/
-			void Insert(StaticTypeElement* element);
+			void Insert(StaticTypeDeclaration& element);
 
 			/** The FillDataDictionary function iterates over each StaticTypeDefinition
-			 * in the collection.  Each DynamicTypeElement contains a name and a
-			 * list of DynamicTypeEntry objects.  For each DynamicTypeEntry, a function
+			 * in the collection.  Each StaticTypeElement contains a name and an Array of Elements.  For each DynamicTypeEntry, a function
 			 * call will be made to add it to the DataDictionary.  The function
 			 * call will be DataDictionary::AddDynamic(std::string alias,
 			 *    std::string parameter, std::string typeName)
@@ -35,7 +39,8 @@ namespace PDI
 			 ***/
 			void FillDataDictionary();
 		private:
-	}
+			StaticTypeDefinitionCollection _Collection;
+	};
 }
 
 #endif //STATIC_TYPE_DEFINITION_COLLECTION_H
