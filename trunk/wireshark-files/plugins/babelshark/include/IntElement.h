@@ -29,6 +29,8 @@ namespace BabelShark
 				*/
 			IntElement(unsigned int size, char* name);
 
+            IntElement(std::string size, std::string name); // new constructor
+
 			/** Destructor
 				Does nothing
 				*/

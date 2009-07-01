@@ -21,7 +21,15 @@ namespace BabelShark
 			/** Constructor
 				Just calls parent constructor, nothing specific to this class
 			*/
+            // OLD AND BUSTED
             InstructionNode(unsigned int size, char* name)
+                :Instruction(size, name)
+            {
+
+            }
+
+            // NEW HOTNESS
+            InstructionNode(std::string size, std::string name) // new constructor
                 :Instruction(size, name)
             {
 

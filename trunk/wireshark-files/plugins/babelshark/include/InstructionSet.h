@@ -23,6 +23,8 @@ namespace BabelShark
 			*/
 			InstructionSet(unsigned int size, char* name);
 
+            InstructionSet(std::string size, std::string name); // new constructor
+
 			/** Destructor
 				Empty desctructor class
 			*/

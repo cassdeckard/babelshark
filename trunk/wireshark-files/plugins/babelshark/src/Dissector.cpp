@@ -120,11 +120,11 @@ namespace BabelShark
         DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
 
         // make a static type
-        tempTree = new InstructionSet(1, "TestHeader");
-        tempTree->Add(new UintElement(8, "Message ID", "$MSG_ID"));
-        tempTree->Add(new PadElement(8, "Padding"));
+        tempTree = new InstructionSet("1", "TestHeader");
+        tempTree->Add(new UintElement("8", "Message ID", "$MSG_ID"));
+        tempTree->Add(new PadElement("8", "Padding"));
         tempTree->Add(new UintElement(16, "Event ID"));
-        tempTree->Add(new AsciiElement(16, "Name"));
+        tempTree->Add(new AsciiElement("16", "Name"));
         tempTree->Add(new PadElement(32, "Padding"));
         DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
 
@@ -136,12 +136,12 @@ namespace BabelShark
         // make another static type
         tempTree = new InstructionSet(1, "TestInit");
         tempTree->Add(new UintElement(7, "Age"));
-        tempTree->Add(new BoolElement(1, "Male?"));
+        tempTree->Add(new BoolElement("1", "Male?"));
         tempTree->Add(new PadElement(56, "Pad"));
         DataDictionary::Instance()->AddStatic("&INIT", tempTree);
 
         // build tree to test new functionality
-        _TestInstruction->Add(new AliasedInstruction(1, "Header", "&HEADER"));
+        _TestInstruction->Add(new AliasedInstruction("1", "Header", "&HEADER"));
         _TestInstruction->Add(new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID"));
 
         //_TestAliased = new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID");

@@ -5,12 +5,21 @@
 namespace BabelShark
 {
 
+    // OLD AND BUSTED
 	BoolElement::BoolElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
         _BitMask = SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
-	}
+    }
+
+    // NEW HOTNESS
+    BoolElement::BoolElement(std::string size, std::string name)
+        :InstructionElement(size, name)
+    {
+        _BitMask = SetupBitMask(_Size);
+        _SizeInBytes = DetermineSizeInBytes(_Size);
+    }
 
 	BoolElement::~BoolElement()
 	{

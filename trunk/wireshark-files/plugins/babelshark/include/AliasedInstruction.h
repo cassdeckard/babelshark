@@ -3,9 +3,6 @@
 #ifndef ALIASED_INSTRUCTION_H
 #define ALIASED_INSTRUCTION_H
 #include "InstructionNode.h"
-#include "DataDictionary.h"
-#include "ListIterator.h"
-#include <sstream>
 
 #include <vector>
 
@@ -28,33 +25,17 @@ namespace BabelShark
 		      * This constructor is inherited from Instruction but should not
               * be used.
 			  */
-            AliasedInstruction(unsigned int size, char* name)
-                : InstructionNode(size, name)
-            {
-                std::stringstream ss;
-                ss << "AliasedInstruction(" << size << ", " << name << ")\n";
-                printf(ss.str().c_str());
-            }
+            AliasedInstruction(unsigned int size, char* name);
 
             /** Constructor
               * In addition to normal Instruction() constructor behavior, this uses the given
               * alias and paramName to set its _RealSubject type to point to the correct
               * InstructionSet this AliasedInstruction will serve as a Proxy for.
               */
-            AliasedInstruction(unsigned int size, char* name, std::string alias, std::string paramName = "")
-                : InstructionNode(size, name)
-            {
-                InstructionElement* param = NULL;
-                if (paramName.compare("") != 0)
-                {
-                    param = DataDictionary::Instance()->LookupVariable(paramName);
-                }
-                std::stringstream ss;
-                ss << "AliasedInstruction(" << size << ", " << name << ", " << alias.c_str() << ")->_RealSubject = {" << _RealSubject <<  "}";
-                DataDictionary::Instance()->LookupType(&_RealSubject, alias, param);
-                ss << " => {" << _RealSubject <<  "}\n";
-                printf(ss.str().c_str());
-            }
+            AliasedInstruction(unsigned int size, char* name, std::string alias, std::string paramName = "");
+
+            AliasedInstruction(std::string size, std::string name, std::string alias, std::string paramName = ""); // new constructor
+            AliasedInstruction(std::string size, std::string name); // new constructor
 
 			/** Destructor
 				Empty desctructor class

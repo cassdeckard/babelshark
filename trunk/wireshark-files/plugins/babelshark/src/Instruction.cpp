@@ -2,13 +2,35 @@
 
 #include "Instruction.h"
 #include "NullIterator.h"
+#include <sstream>
 
 namespace BabelShark
 {
+    // OLD AND BUSTED
 	Instruction::Instruction(unsigned int size, char* name)
 		:_Size(size), _Name(name)
 	{
 	}
+
+    // NEW HOTNESS
+    Instruction::Instruction(std::string size, std::string name)
+        :_Name(name.c_str())
+    {
+        std::istringstream myStream(size);
+        unsigned int intSize;
+
+        if (myStream >> intSize)
+        {
+            _Size = intSize;
+        }
+        else
+        {
+            // Size not in integer format - must be a variable
+            // TODO: do something about this
+            printf("Instruction '%s' given string '%s' as size.\n", name.c_str(), size.c_str());
+            _Size = 1;
+        }
+    }
 
 	Instruction::~Instruction()
 	{

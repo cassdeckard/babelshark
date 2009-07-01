@@ -5,12 +5,21 @@
 namespace BabelShark
 {
 
+    // OLD AND BUSTED
 	FloatElement::FloatElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
         SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
-	}
+    }
+
+    // NEW HOTNESS
+    FloatElement::FloatElement(std::string size, std::string name)
+        :InstructionElement(size, name)
+    {
+        SetupBitMask(_Size);
+        _SizeInBytes = DetermineSizeInBytes(_Size);
+    }
 
 	FloatElement::~FloatElement()
 	{

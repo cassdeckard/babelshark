@@ -73,6 +73,7 @@ DISSECTOR_SUPPORT_SRC = \
 	Iterator.cpp \
 	ListIterator.cpp \
 	NullIterator.cpp \
+	AliasedInstruction.cpp \
 	DataDictionary.cpp \
 	StaticDefinition.cpp \
 	DynamicDefinition.cpp

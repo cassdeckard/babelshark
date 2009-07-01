@@ -6,11 +6,19 @@
 namespace BabelShark
 {
 
+    // OLD AND BUSTED
 	PadElement::PadElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
     {
         _SizeInBytes = DetermineSizeInBytes(size);
-	}
+    }
+
+    // NEW HOTNESS
+    PadElement::PadElement(std::string size, std::string name)
+        :InstructionElement(size, name)
+    {
+        _SizeInBytes = DetermineSizeInBytes(_Size);
+    }
 
 	PadElement::~PadElement()
 	{
