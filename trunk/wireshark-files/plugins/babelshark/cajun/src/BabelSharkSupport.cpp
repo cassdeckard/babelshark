@@ -51,6 +51,11 @@ namespace PDI
         BabelShark::InstructionSet* tempTree;
 
         // make a static type
+        tempTree = new BabelShark::InstructionSet(1, "Header");
+        tempTree->Add(new BabelShark::UintElement(32, "Message_ID", "$MSG_ID"));
+        BabelShark::DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
+
+        // make a static type
         tempTree = new BabelShark::InstructionSet(1, "TestAck");
         tempTree->Add(new BabelShark::UintElement(32, "Status"));
         BabelShark::DataDictionary::Instance()->AddStatic("&ACK", tempTree);
