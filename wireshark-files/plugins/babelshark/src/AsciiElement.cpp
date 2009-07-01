@@ -8,11 +8,20 @@ namespace BabelShark
 	/**
 	 * Constructor for AsciiElement
 	 */
+
+    // OLD AND BUSTED
 	AsciiElement::AsciiElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
     {
         _SizeInBytes = size;
 	}
+
+    // NEW HOTNESS
+    AsciiElement::AsciiElement(std::string size, std::string name)
+        :InstructionElement(size, name)
+    {
+        _SizeInBytes = _Size;
+    }
 
 	AsciiElement::~AsciiElement()
 	{

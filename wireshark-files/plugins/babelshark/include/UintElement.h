@@ -25,6 +25,9 @@ namespace BabelShark
             UintElement(unsigned int size, char* name, std::string variable);
 			UintElement(unsigned int size, char* name);
 
+            UintElement(std::string size, std::string name, std::string variable); // new constructor
+            UintElement(std::string size, std::string name); // new constructor
+
 			/** Destructor
 				Does nothing
 				*/

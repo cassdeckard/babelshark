@@ -30,6 +30,8 @@ namespace BabelShark
 			 */
 			~AsciiElement();
 
+            AsciiElement(std::string size, std::string name); // new constructor
+
 			/**
 			 * Interpret function for Ascii;
 			 * will just read in the correct number of characters

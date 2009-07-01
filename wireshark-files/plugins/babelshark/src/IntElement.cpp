@@ -5,6 +5,7 @@
 namespace BabelShark
 {
 
+    // OLD AND BUSTED
 	IntElement::IntElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
@@ -12,10 +13,19 @@ namespace BabelShark
         _SizeInBytes = DetermineSizeInBytes(size);
 	}
 
-	IntElement::~IntElement()
-	{
+    // NEW HOTNESS
+    IntElement::IntElement(std::string size, std::string name)
+        :InstructionElement(size, name)
+    {
+        _BitMask = SetupBitMask(_Size);
+        _SizeInBytes = DetermineSizeInBytes(_Size);
+    }
 
-	}
+    IntElement::~IntElement()
+    {
+
+    }
+
 	//TODO -- Implement this
 	//Will be used to read in data from packet
     unsigned int IntElement::Interpret(char* buffer)

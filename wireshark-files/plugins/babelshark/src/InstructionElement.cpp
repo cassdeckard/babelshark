@@ -6,11 +6,14 @@
 
 namespace BabelShark
 {
+    // OLD AND BUSTED
     InstructionElement::InstructionElement(unsigned int size, char* name)
         :Instruction(size, name)
     {
 
     }
+
+    // OLD AND BUSTED
     InstructionElement::InstructionElement(unsigned int size, char* name, std::string variable = "")
 		:Instruction(size, name)
 	{
@@ -19,7 +22,26 @@ namespace BabelShark
             printf("InstructionElement()\n");
             DataDictionary::Instance()->AddVariable(variable, this);
         }
-	}
+    }
+
+    // NEW HOTNESS
+    InstructionElement::InstructionElement(std::string size, std::string name)
+        :Instruction(size, name)
+    {
+
+    }
+
+    // NEW HOTNESS
+    InstructionElement::InstructionElement(std::string size, std::string name, std::string variable = "")
+        :Instruction(size, name)
+    {
+        if (variable != "")
+        {
+            printf("InstructionElement()\n");
+            DataDictionary::Instance()->AddVariable(variable, this);
+        }
+    }
+
 	InstructionElement::~InstructionElement()
 	{
 

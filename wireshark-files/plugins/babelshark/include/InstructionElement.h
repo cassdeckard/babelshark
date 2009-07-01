@@ -37,6 +37,8 @@ namespace BabelShark
 		public:
             InstructionElement(unsigned int size, char* name, std::string variable);
             InstructionElement(unsigned int size, char* name);
+            InstructionElement(std::string size, std::string name, std::string variable); // new constructor
+            InstructionElement(std::string size, std::string name); // new constructor
 			~InstructionElement();
 
 			//virtual function, base definition does nothing.
