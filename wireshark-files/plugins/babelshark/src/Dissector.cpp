@@ -5,6 +5,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#define ROOT_INSTRUCTION _TestInstruction
+
 BabelShark::Instruction* Parse(std::string inFile); // delcaration; this is defined in PdiParser.cpp
 
 namespace BabelShark
@@ -95,17 +97,9 @@ namespace BabelShark
            babelshark_tree = proto_item_add_subtree(ti, *_ett[0]);
 
            // Parse it
-           /*
-           if (_RootInstruction->GetSize() > 0)
+           if (ROOT_INSTRUCTION->GetSize() > 0)
            {
-              ParseInstructions(_RootInstruction, tvb, babelshark_tree, buffer, offset);
-           }
-           */
-
-           // Parse it
-           if (_TestInstruction->GetSize() > 0)
-           {
-              ParseInstructions(_TestInstruction, tvb, babelshark_tree, buffer, offset);
+              ParseInstructions(ROOT_INSTRUCTION, tvb, babelshark_tree, buffer, offset);
            }
 
        }
