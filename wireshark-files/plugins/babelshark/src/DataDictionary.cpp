@@ -87,4 +87,20 @@ namespace BabelShark
         return _Variables[alias];
     }
 
+    void DataDictionary::ToInitialize(Instruction* instruction)
+    {
+        _ToInitialize.push_back(instruction);
+    }
+
+    void DataDictionary::Initialize()
+    {
+        for ( std::list<Instruction*>::iterator it = _ToInitialize.begin(); it != _ToInitialize.end(); it++ )
+        {
+            std::stringstream ss;
+            ss << "DD initializing '" << (*it)->GetName() << "'\n";
+            printf(ss.str().c_str());
+            (*it)->Initialize();
+        }
+    }
+
 } // namespace BabelShark

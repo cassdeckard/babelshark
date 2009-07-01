@@ -9,6 +9,7 @@
 #include "StaticDefinition.h"
 #include "DynamicDefinition.h"
 #include <map>
+#include <list>
 
 namespace BabelShark
 {
@@ -113,6 +114,20 @@ namespace BabelShark
              */
            InstructionElement* LookupVariable(std::string alias);
 
+           /** ToInitialize adds an Instruction to the list of things
+             * that need to be initialized after all Instruction objects
+             * have been instantiated
+             *
+             * @param instruction
+             *   instruction to add to the initialization list
+             */
+           void ToInitialize(Instruction* instruction);
+
+           /** Initialize calls Initialize() on all of the Instructions
+             * in our initialization list
+             */
+           void Initialize();
+
            InstructionNode* NullInstruction() { return _NullInstruction; }
 
         protected:
@@ -145,6 +160,12 @@ namespace BabelShark
              *  - Singleton::singletonData
              */
            std::map<std::string, TypeDefinition*> _Types;
+
+
+           /** _ToInitialize is a list of Instructions that need to be
+             * initialized
+             */
+           std::list<Instruction*> _ToInitialize;
 
            InstructionNode* _NullInstruction;
 	};

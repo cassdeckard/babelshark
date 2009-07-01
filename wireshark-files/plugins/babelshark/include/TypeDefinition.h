@@ -29,7 +29,7 @@ namespace BabelShark
              * InstructionNode definition.
              *
              * @param target
-             *   pointer to the Instruction* that should be set to the requested definition
+             *   pointer to the InstructionNode* that should be set to the requested definition
              * @param parameter
              *   (for DynamicDefinition)
              */
@@ -53,6 +53,12 @@ namespace BabelShark
              */
            virtual void Update(InstructionElement* subject) { }
 
+           /** Define is only used by static definitions. It is used to change
+             * the definition
+             *
+             * @param type
+             *   InstructionNode* that represents this static definition
+             */
            virtual void Define(InstructionNode* type) { }
 
 		protected:
