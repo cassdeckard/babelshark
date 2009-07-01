@@ -3,6 +3,7 @@
 #include "InstructionElement.h"
 #include "DataDictionary.h"
 #include "NullIterator.h"
+#include <sstream>
 
 namespace BabelShark
 {
@@ -123,6 +124,9 @@ namespace BabelShark
 
     void InstructionElement::Attach(TypeDefinition* observer)
     {
+        std::stringstream ss;
+        ss << _Name << " attaching to observer {" << observer << "}\n";
+        printf(ss.str().c_str());
         _Observers.push_back(observer);
     }
 
@@ -135,6 +139,9 @@ namespace BabelShark
     {
         for ( std::list<TypeDefinition*>::iterator it = _Observers.begin(); it != _Observers.end(); it++ )
         {
+            std::stringstream ss;
+            ss << _Name << " notifying observer {" << *it << "}\n";
+            printf(ss.str().c_str());
             (*it)->Update(this);
         }
     }

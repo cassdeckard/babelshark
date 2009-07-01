@@ -1,17 +1,43 @@
 // $Id$
 
 #include "IntElement.h"
+#include "DataDictionary.h"
+#include <sstream>
 
 namespace BabelShark
 {
 
     // OLD AND BUSTED
-	IntElement::IntElement(unsigned int size, char* name)
-		:InstructionElement(size, name)
-	{
+    IntElement::IntElement(unsigned int size, char* name, std::string variable)
+        :InstructionElement(size, name)
+    {
+        std::stringstream ss;
+        ss << "IntElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
+        printf(ss.str().c_str());
+        DataDictionary::Instance()->AddVariable(variable, this);
         _BitMask = SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
-	}
+    }
+
+    // OLD AND BUSTED
+    IntElement::IntElement(unsigned int size, char* name)
+        :InstructionElement(size, name)
+    {
+        _BitMask = SetupBitMask(_Size);
+        _SizeInBytes = DetermineSizeInBytes(size);
+    }
+
+    // NEW HOTNESS
+    IntElement::IntElement(std::string size, std::string name, std::string variable)
+        :InstructionElement(size, name)
+    {
+        std::stringstream ss;
+        ss << "IntElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
+        printf(ss.str().c_str());
+        DataDictionary::Instance()->AddVariable(variable, this);
+        _BitMask = SetupBitMask(_Size);
+        _SizeInBytes = DetermineSizeInBytes(_Size);
+    }
 
     // NEW HOTNESS
     IntElement::IntElement(std::string size, std::string name)

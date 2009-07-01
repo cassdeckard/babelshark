@@ -115,11 +115,11 @@ namespace BabelShark
         _TestInstruction = new InstructionSet(1, "TestProtocol");
         InstructionSet* tempTree;
 
-        // make a dynamic type
+        // BODY dynamic type
         DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
         DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
 
-        // make a static type
+        // HEADER static type
         tempTree = new InstructionSet("1", "TestHeader");
         tempTree->Add(new UintElement("8", "Message ID", "$MSG_ID"));
         tempTree->Add(new PadElement("8", "Padding"));
@@ -128,12 +128,12 @@ namespace BabelShark
         tempTree->Add(new PadElement(32, "Padding"));
         DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
 
-        // make another static type
+        // ACK static type
         tempTree = new InstructionSet(1, "TestAck");
         tempTree->Add(new UintElement(32, "Status"));
         DataDictionary::Instance()->AddStatic("&ACK", tempTree);
 
-        // make another static type
+        // INIT static type
         tempTree = new InstructionSet(1, "TestInit");
         tempTree->Add(new UintElement(7, "Age"));
         tempTree->Add(new BoolElement("1", "Male?"));
@@ -150,31 +150,25 @@ namespace BabelShark
 
     char* Dissector::ShiftBits(char* buffer, unsigned int size, unsigned int offset)
     {
-        // offset: 6
-        // size:   3
-        //
-        // buffer:  ~~__ ____   --== ====   ^^%% %%%%    0000 0000
-        // result:  ==== ==~~   %%%% %%--   0000 00^^
-
+        // TODO: add some comments here
         char *result;
         result = new char[size];
-        char mask = 0xFF << offset; // 1100 0000
+        char mask = 0xFF << offset;
         for (unsigned int i = 0; i < size; i++)
         {
             char temp;
-            result[i] = buffer[i] & mask;     // ~~00 0000
-            result[i] =result[i] >> offset;   // 0000 00~~
-            // WARNING:
+            result[i] = buffer[i] & mask;
+            result[i] =result[i] >> offset;
             if (i + 1 == size)
             {
-                temp = 0;                     // 0000 0000
+                temp = 0;
             }
             else
             {
-                temp = buffer[i + 1] & ~mask; // 00== ====
+                temp = buffer[i + 1] & ~mask;
             }
-            temp = temp << (8 - offset);      // ==== ==00
-            result[i] |= temp;                // ==== ==~~
+            temp = temp << (8 - offset);
+            result[i] |= temp;
         }
 
         return result;
