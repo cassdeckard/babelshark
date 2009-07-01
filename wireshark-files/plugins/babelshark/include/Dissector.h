@@ -171,6 +171,8 @@ namespace BabelShark
               */
             bool         _nameChanged;
 
+            unsigned int _bitOffset;
+
             /** TODO: REMOVE **/
             AliasedInstruction* _TestAliased;
             Instruction* _TestInstruction;

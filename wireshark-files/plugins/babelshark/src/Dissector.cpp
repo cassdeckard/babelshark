@@ -14,7 +14,8 @@ namespace BabelShark
 
     Dissector::Dissector(const char* inFile, int* proto)
         : _proto(proto),
-          _nameChanged(true)
+          _nameChanged(true),
+          _bitOffset(0)
     {
 
         _RootInstruction = Parse(inFile);
@@ -99,6 +100,7 @@ namespace BabelShark
            // Parse it
            if (ROOT_INSTRUCTION->GetSize() > 0)
            {
+        	  _bitOffset = 0;
               ParseInstructions(ROOT_INSTRUCTION, tvb, babelshark_tree, buffer, offset);
            }
 
@@ -126,9 +128,9 @@ namespace BabelShark
 
         // INIT static type
         tempTree = new InstructionSet(1, "Init");
-        tempTree->Add(new UintElement(7, "Age"));
+        tempTree->Add(new UintElement(7, "Age", "$TEST"));
         tempTree->Add(new BoolElement("1", "Male?"));
-        tempTree->Add(new PadElement(56, "Pad"));
+        tempTree->Add(new PadElement("$TEST", "Pad"));
         DataDictionary::Instance()->AddStatic("&INIT", tempTree);
 
         // HEADER static type
@@ -177,31 +179,27 @@ namespace BabelShark
 
     void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
     {
-        static unsigned int bitOffset = 0;
-
         // interpret children
         for (Iterator* it = in->CreateIterator(); ! it->IsDone(); it->Next())
         {
            Instruction* currentIns = it->CurrentItem();
-           printf("bitOffset for %s is %u\n", currentIns->GetName(), bitOffset);
-           if ( bitOffset > 0 )
+           printf("bitOffset for %s is %u\n", currentIns->GetName(), _bitOffset);
+           if ( _bitOffset > 0 )
            {
               offset -= 1;
-              bitOffset = (bitOffset + currentIns->Interpret(ShiftBits(buffer + offset,
+              _bitOffset = (_bitOffset + currentIns->Interpret(ShiftBits(buffer + offset,
                                                                        currentIns->GetSizeInBytes(),
-                                                                       bitOffset))) % 8;
+                                                                       _bitOffset))) % 8;
            }
            else
            {
-              bitOffset = (bitOffset + currentIns->Interpret(buffer + offset)) % 8;
+              _bitOffset = (_bitOffset + currentIns->Interpret(buffer + offset)) % 8;
            }
 
            // find out if this instruction is a leaf or a node
            if (currentIns->CreateIterator()->IsDone())
            {
                // BASE CASE
-
-               // TODO: figure out if we need to play with the bits
 
                // currentIns is a leaf, move forward in the buffer
                proto_tree_add_text(tree,

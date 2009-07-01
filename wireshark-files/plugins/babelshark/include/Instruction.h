@@ -6,10 +6,12 @@
 #include <string>
 #include <vector>
 #include "Iterator.h"
+#include "Observer.h"
 
 namespace BabelShark
 {
-    class Iterator; // forward declaration
+    class Iterator;            // forward declaration
+    class InstructionElement;  // forward declaration
 
     /** Instruction is the base abstract class for all instructions.
       * It declares all the virtual functions which will be implemented by
@@ -29,7 +31,7 @@ namespace BabelShark
       *  - Iterator::Aggregate
       *  - Interpreter::AbstractExpression
       */
-	class Instruction
+	class Instruction : public Observer
 	{
 		public:
             Instruction(unsigned int size, char* name);
@@ -102,9 +104,10 @@ namespace BabelShark
               * objects being instantiated.
               *
               */
-            virtual void Initialize() { };
+            virtual void Initialize();
 
 			void SetSize(unsigned int size){ _Size = size;}
+			bool SetSize(std::string size);
 			void SetName(std::string name){ _Name = name;}
 
 			unsigned int GetSize() { return _Size;}
@@ -119,10 +122,15 @@ namespace BabelShark
               */
             virtual unsigned int NumSubtrees();
 
+            // overriding Observer::Update()
+            void Update(Subject* subject);
+
 		protected:
-			unsigned int _Size;
-			unsigned int _SizeInBytes;
-			std::string _Name;
+			unsigned int        _Size;
+			unsigned int        _SizeInBytes;
+			InstructionElement* _SizeParam;
+			std::string         _Name;
+			std::string         _SizeString;
 
 		private:
 	};

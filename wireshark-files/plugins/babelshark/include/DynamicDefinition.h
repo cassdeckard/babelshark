@@ -48,23 +48,24 @@ namespace BabelShark
              * state changes, to notify that it needs to update the
              * Instruction's dependent upon that parameter.
              *
-             *
              * <b>Pattern roles:</b>
              *  - Proxy::Observer::Update()
              *
              * @param subject
              *   pointer to observed element that has changed
              */
-           void Update(InstructionElement* subject);
+           void Update(Subject* subject);
 
 		protected:
 
 
         private:
+
            /** _Definitions
              * Mapping of values to types.
              */
            std::map<std::string, TypeDefinition*>           _Definitions;
+
            /** _Subjects
              * Mapping of watched variables to the type associated with their
              * current value.

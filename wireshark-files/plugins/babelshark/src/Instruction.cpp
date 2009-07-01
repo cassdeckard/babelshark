@@ -2,34 +2,28 @@
 
 #include "Instruction.h"
 #include "NullIterator.h"
+#include "DataDictionary.h"
 #include <sstream>
 
 namespace BabelShark
 {
     // OLD AND BUSTED
 	Instruction::Instruction(unsigned int size, char* name)
-		:_Size(size), _Name(name)
+		:_Size(size),
+		 _Name(name)
 	{
 	}
 
     // NEW HOTNESS
     Instruction::Instruction(std::string size, std::string name)
-        :_Name(name.c_str())
+        :_Name(name.c_str()),
+         _Size(1)
     {
-        std::istringstream myStream(size);
-        unsigned int intSize;
-
-        if (myStream >> intSize)
-        {
-            _Size = intSize;
-        }
-        else
-        {
-            // Size not in integer format - must be a variable
-            // TODO: do something about this
-            printf("Instruction '%s' given string '%s' as size.\n", name.c_str(), size.c_str());
-            _Size = 1;
-        }
+    	if ( ! SetSize(size) )
+    	{
+    		// add us to DD's initialize list
+    		DataDictionary::Instance()->ToInitialize(this);
+    	}
     }
 
 	Instruction::~Instruction()
@@ -92,4 +86,43 @@ namespace BabelShark
 
         return result;
     }
+
+    void Instruction::Initialize()
+    {
+    	// If size was given as a string, it should be a variable. Look it up,
+    	// and attach to it.
+    	if (_SizeString.compare("") != 0)
+    	{
+    		_SizeParam = DataDictionary::Instance()->LookupVariable(_SizeString);
+    		_SizeParam->Attach(this);
+    	}
+    }
+
+    void Instruction::Update(Subject* subject)
+    {
+    	if (subject == _SizeParam)
+    	{
+    		SetSize(_SizeParam->SimpleDisplay());
+    	}
+    }
+
+
+	bool Instruction::SetSize(std::string size)
+	{
+        std::istringstream myStream(size);
+        unsigned int intSize;
+
+        if (myStream >> intSize)
+        {
+    		printf("Instruction '%s' setting size to '%u'.\n", _Name.c_str(), intSize);
+            _Size = intSize;
+            _SizeString = "";
+            return true;
+        }
+
+		// Size not in integer format - must be a variable
+		printf("Instruction '%s' given string '%s' as size.\n", _Name.c_str(), size.c_str());
+		_SizeString = size;
+		return false;
+	}
 }

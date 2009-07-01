@@ -50,7 +50,9 @@ DISSECTOR_INCLUDES = \
 	include/DataDictionary.h \
 	include/TypeDefinition.h \
 	include/StaticDefinition.h \
-	include/DynamicDefinition.h
+	include/DynamicDefinition.h \
+	include/Subject.h \
+	include/Observer.h
 
 # Dissector helpers.  They're included in the source files in this
 # directory, but they're not dissectors themselves, i.e. they're not
@@ -76,4 +78,5 @@ DISSECTOR_SUPPORT_SRC = \
 	AliasedInstruction.cpp \
 	DataDictionary.cpp \
 	StaticDefinition.cpp \
-	DynamicDefinition.cpp
+	DynamicDefinition.cpp \
+	Subject.cpp
