@@ -4,6 +4,7 @@
 #define TYPE_DEFINITION_H
 
 #include "InstructionNode.h"
+#include "Observer.h"
 
 namespace BabelShark
 {
@@ -11,7 +12,7 @@ namespace BabelShark
 
     /** TypeDefinition is the abstract base class for user-defined types.
       */
-	class TypeDefinition
+	class TypeDefinition : public Observer
 	{
         public:
 
@@ -43,15 +44,6 @@ namespace BabelShark
              *   value half ot the value-type pair
              */
            virtual void Add(TypeDefinition* type, std::string value) { }
-
-           /** Update is used by DynamicDefinition. It is called by an observed
-             * InstructionElement when its state changes, to notify that it needs
-             * to update the Instructions dependent upon that parameter.
-             *
-             * @param subject
-             *   pointer to observed element that has changed
-             */
-           virtual void Update(InstructionElement* subject) { }
 
            /** Define is only used by static definitions. It is used to change
              * the definition

@@ -121,29 +121,4 @@ namespace BabelShark
     {
         return _InterpretedData;
     }
-
-    void InstructionElement::Attach(TypeDefinition* observer)
-    {
-        std::stringstream ss;
-        ss << _Name << " attaching to observer {" << observer << "}\n";
-        printf(ss.str().c_str());
-        _Observers.push_back(observer);
-    }
-
-    void InstructionElement::Detach(TypeDefinition* observer)
-    {
-        _Observers.remove(observer);
-    }
-
-    void InstructionElement::Notify()
-    {
-        for ( std::list<TypeDefinition*>::iterator it = _Observers.begin(); it != _Observers.end(); it++ )
-        {
-            std::stringstream ss;
-            ss << _Name << " notifying observer {" << *it << "}\n";
-            printf(ss.str().c_str());
-            (*it)->Update(this);
-        }
-    }
-
 }

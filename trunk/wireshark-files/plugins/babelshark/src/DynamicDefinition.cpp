@@ -47,13 +47,24 @@ namespace BabelShark
    }
 
 
-   void DynamicDefinition::Update(InstructionElement* subject)
+   void DynamicDefinition::Update(Subject* subject)
    {
       std::stringstream ss;
       ss << "DynamicDefinition.Update( {" << subject << "} : ";
 
+       // look up subject in our list
+      InstructionElement* subjElem;
+      for (std::map<InstructionElement*, InstructionNode**>::iterator it = _Subjects.begin(); it != _Subjects.end(); it++)
+      {
+    	  if ( (*it).first == subject )
+    	  {
+    		  subjElem = (*it).first;
+    		  break;
+    	  }
+      }
+
        // look up value of subject
-       std::string parameter = subject->SimpleDisplay();
+       std::string parameter = subjElem->SimpleDisplay();
 
       ss << "parameter('" << parameter << "') => ";
 
@@ -63,15 +74,15 @@ namespace BabelShark
 
        if ( result == NULL )
        {
-           *(_Subjects[subject]) = DataDictionary::Instance()->NullInstruction();
+           *(_Subjects[subjElem]) = DataDictionary::Instance()->NullInstruction();
        }
        else
        {
            // update pointer to appropriate InstructionSet
-           *(_Subjects[subject]) = result;
+           *(_Subjects[subjElem]) = result;
        }
 
-      ss << "{" << *(_Subjects[subject]) << "}\n";
+      ss << "{" << *(_Subjects[subjElem]) << "}\n";
 
       printf(ss.str().c_str());
    }
