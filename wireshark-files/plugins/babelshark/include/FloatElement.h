@@ -23,8 +23,11 @@ namespace BabelShark
 	*/
 	class FloatElement: public InstructionElement
 	{
-		public:
+        public:
+            FloatElement(unsigned int size, char* name, std::string variable);
             FloatElement(unsigned int size, char* name);
+
+            FloatElement(std::string size, std::string name, std::string variable);
             FloatElement(std::string size, std::string name); // new constructor
 			~FloatElement();
 

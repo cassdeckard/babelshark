@@ -33,6 +33,9 @@ namespace BabelShark
        }
 
        // the target will be updated when parameter changes and Notify()s us
+       // but go ahead and start it off with a NullInstruction
+       *target = DataDictionary::Instance()->NullInstruction();
+
    }
 
    void DynamicDefinition::Add(TypeDefinition* typeDef, std::string parameter)
@@ -52,7 +55,7 @@ namespace BabelShark
        // look up value of subject
        std::string parameter = subject->SimpleDisplay();
 
-      ss << "parameter(" << parameter << ") => ";
+      ss << "parameter('" << parameter << "') => ";
 
        InstructionNode* result = NULL;
        TypeDefinition* def = _Definitions[parameter];
