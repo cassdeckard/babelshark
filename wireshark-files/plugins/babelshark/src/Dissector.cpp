@@ -120,31 +120,44 @@ namespace BabelShark
         // BODY dynamic type
         DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
         DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
+        DataDictionary::Instance()->AddDynamic("&BODY", "11", "&TEST_MSG");
 
         // ACK static type
-        tempTree = new InstructionSet(1, "Ack");
-        tempTree->Add(new UintElement(32, "Status"));
+        tempTree = new InstructionSet("1", "Ack");
+        tempTree->Add(new UintElement("32", "Status"));
         DataDictionary::Instance()->AddStatic("&ACK", tempTree);
 
         // INIT static type
-        tempTree = new InstructionSet(1, "Init");
-        tempTree->Add(new UintElement(7, "Age", "$TEST"));
+        tempTree = new InstructionSet("1", "Init");
+        tempTree->Add(new UintElement("7", "Age"));
         tempTree->Add(new BoolElement("1", "Male?"));
-        tempTree->Add(new PadElement("$TEST", "Pad"));
+        tempTree->Add(new PadElement("56", "Pad"));
         DataDictionary::Instance()->AddStatic("&INIT", tempTree);
+
+        // TEST_MSG static type
+        tempTree = new InstructionSet("2", "ArrayTest");
+        tempTree->Add(new UintElement("32", "UINT32Test"));
+        tempTree->Add(new UintElement("16", "UINT16Test"));
+        tempTree->Add(new IntElement("8", "INT8Test"));
+        tempTree->Add(new IntElement("4", "Bits0To3"));
+        tempTree->Add(new BoolElement("1", "Bit4"));
+        tempTree->Add(new UintElement("3", "Bits5To7"));
+        InstructionSet* tempTree2 = new InstructionSet("1", "Test Message");
+        tempTree2->Add(tempTree);
+        DataDictionary::Instance()->AddStatic("&TEST_MSG", tempTree2);
 
         // HEADER static type
         tempTree = new InstructionSet("1", "Header");
         tempTree->Add(new UintElement("8", "Message ID", "$MSG_ID"));
         tempTree->Add(new PadElement("8", "Padding"));
-        tempTree->Add(new UintElement(16, "Event ID"));
+        tempTree->Add(new IntElement("16", "Event ID"));
         tempTree->Add(new AsciiElement("16", "Name"));
-        tempTree->Add(new PadElement(32, "Padding"));
+        tempTree->Add(new PadElement("32", "Padding"));
         DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
 
         // build tree to test new functionality
         _TestInstruction->Add(new AliasedInstruction("1", "Header", "&HEADER"));
-        _TestInstruction->Add(new AliasedInstruction(1, "Body", "&BODY", "$MSG_ID"));
+        _TestInstruction->Add(new AliasedInstruction("1", "Body", "&BODY", "$MSG_ID"));
         //_TestAliased = new AliasedInstruction(1, "Body", "&BODY", "$MSG_ID");
 
         // Initialize things

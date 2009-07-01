@@ -31,3 +31,10 @@ TEST(DeterminingByteSize)
 	BabelShark::UintElement UT1(size, "UtilityTest");
 	CHECK_EQUAL(1, UT1.GetSizeInBytes());
 }
+
+TEST(InterpretingData)
+{
+	BabelShark::UintElement UT1("16", "InterpretTest");
+	UT1.Interpret("\x64");
+	CHECK_EQUAL("InterpretTest : 100", UT1.Display());
+}

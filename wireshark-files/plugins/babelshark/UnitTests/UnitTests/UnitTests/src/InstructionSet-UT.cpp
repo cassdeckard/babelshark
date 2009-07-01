@@ -19,12 +19,6 @@ struct InstructionChildren
 };
 
 
-
-
-
-
-
-
 TEST(InstructionSetInitializer)
 {
 	BabelShark::InstructionSet T1(2, "InstructionSetTest");

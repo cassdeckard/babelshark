@@ -81,16 +81,10 @@ namespace BabelShark
     // takes an Input Size and forms a bitmask based on it.
     std::bitset<BIT_MASK_MAX_SIZE> InstructionElement::SetupBitMask(unsigned int val)
     {
-        std::bitset<BIT_MASK_MAX_SIZE> result;
-        size_t bitMaskIndex = 0;
-        while(bitMaskIndex < result.size())
+        std::bitset<BIT_MASK_MAX_SIZE> result(0);
+		for (size_t bitMaskIndex = 0; bitMaskIndex < val && bitMaskIndex < result.size(); bitMaskIndex++)
         {
-            if(val > 0)
-            {
-                result.set(bitMaskIndex, 1);
-                val--;
-            }
-            bitMaskIndex++;
+			result.set(bitMaskIndex, 1);
         }
         return result;
     }

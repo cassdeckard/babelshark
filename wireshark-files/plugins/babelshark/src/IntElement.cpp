@@ -56,8 +56,30 @@ namespace BabelShark
 	//Will be used to read in data from packet
     unsigned int IntElement::Interpret(char* buffer)
 	{
-        //Implement me!
-        _InterpretedData = "(not implemented yet)";
+        std::stringstream result;
+
+        long intVal = 0;
+
+		// copy data
+        memcpy(&intVal, buffer, _SizeInBytes);
+
+		// do 2's compliment stuff manually
+		// unless this is already a long, then let compiler do it for us
+		if ( _Size < 32 )
+		{
+			unsigned long negative = 0;
+			unsigned long negMask = _BitMask.to_ulong();
+			unsigned long intMask = _BitMask.to_ulong() >> 1;
+			negMask &= ~intMask;
+
+			negative = intVal & negMask; // get sign bit
+			intVal &= intMask;           // strip sign bit from number
+			if (negative) intVal -= negMask;
+		}
+
+		// convert to string
+        result << intVal;
+        _InterpretedData = result.str();
 
         // notify subjects of change
         Notify();
