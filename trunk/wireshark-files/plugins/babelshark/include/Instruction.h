@@ -98,8 +98,14 @@ namespace BabelShark
               */
             virtual unsigned int GetSizeInBytes(){return _SizeInBytes; }
 
+            /** Performs initialization that depends on all Instruction
+              * objects being instantiated.
+              *
+              */
+            virtual void Initialize() { };
+
 			void SetSize(unsigned int size){ _Size = size;}
-			void SetName(char* name){ _Name = name;}
+			void SetName(std::string name){ _Name = name;}
 
 			unsigned int GetSize() { return _Size;}
 			char* GetName(){ return (char*)(_Name.c_str());}

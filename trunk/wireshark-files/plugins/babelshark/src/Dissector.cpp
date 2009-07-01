@@ -119,8 +119,20 @@ namespace BabelShark
         DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
         DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
 
+        // ACK static type
+        tempTree = new InstructionSet(1, "Ack");
+        tempTree->Add(new UintElement(32, "Status"));
+        DataDictionary::Instance()->AddStatic("&ACK", tempTree);
+
+        // INIT static type
+        tempTree = new InstructionSet(1, "Init");
+        tempTree->Add(new UintElement(7, "Age"));
+        tempTree->Add(new BoolElement("1", "Male?"));
+        tempTree->Add(new PadElement(56, "Pad"));
+        DataDictionary::Instance()->AddStatic("&INIT", tempTree);
+
         // HEADER static type
-        tempTree = new InstructionSet("1", "TestHeader");
+        tempTree = new InstructionSet("1", "Header");
         tempTree->Add(new UintElement("8", "Message ID", "$MSG_ID"));
         tempTree->Add(new PadElement("8", "Padding"));
         tempTree->Add(new UintElement(16, "Event ID"));
@@ -128,24 +140,13 @@ namespace BabelShark
         tempTree->Add(new PadElement(32, "Padding"));
         DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
 
-        // ACK static type
-        tempTree = new InstructionSet(1, "TestAck");
-        tempTree->Add(new UintElement(32, "Status"));
-        DataDictionary::Instance()->AddStatic("&ACK", tempTree);
-
-        // INIT static type
-        tempTree = new InstructionSet(1, "TestInit");
-        tempTree->Add(new UintElement(7, "Age"));
-        tempTree->Add(new BoolElement("1", "Male?"));
-        tempTree->Add(new PadElement(56, "Pad"));
-        DataDictionary::Instance()->AddStatic("&INIT", tempTree);
-
         // build tree to test new functionality
         _TestInstruction->Add(new AliasedInstruction("1", "Header", "&HEADER"));
-        _TestInstruction->Add(new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID"));
+        _TestInstruction->Add(new AliasedInstruction(1, "Body", "&BODY", "$MSG_ID"));
+        //_TestAliased = new AliasedInstruction(1, "Body", "&BODY", "$MSG_ID");
 
-        //_TestAliased = new AliasedInstruction(1, "DynamicTest", "&BODY", "$MSG_ID");
-
+        // Initialize things
+        DataDictionary::Instance()->Initialize();
     }
 
     char* Dissector::ShiftBits(char* buffer, unsigned int size, unsigned int offset)

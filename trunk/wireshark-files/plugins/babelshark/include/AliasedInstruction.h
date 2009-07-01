@@ -21,12 +21,6 @@ namespace BabelShark
 	class AliasedInstruction: public InstructionNode
 	{
 		public:
-			/** Constructor
-		      * This constructor is inherited from Instruction but should not
-              * be used.
-			  */
-            AliasedInstruction(unsigned int size, char* name);
-
             /** Constructor
               * In addition to normal Instruction() constructor behavior, this uses the given
               * alias and paramName to set its _RealSubject type to point to the correct
@@ -35,7 +29,7 @@ namespace BabelShark
             AliasedInstruction(unsigned int size, char* name, std::string alias, std::string paramName = "");
 
             AliasedInstruction(std::string size, std::string name, std::string alias, std::string paramName = ""); // new constructor
-            AliasedInstruction(std::string size, std::string name); // new constructor
+
 
 			/** Destructor
 				Empty desctructor class
@@ -74,7 +68,7 @@ namespace BabelShark
               * <b>Pattern roles:</b>
               *  - Proxy::Request()
               */
-            char* Display() { return _RealSubject->Display(); }
+            char* Display();
 
             /** CreateIterator
               * Calls CreateIterator() on its _RealSubject
@@ -101,6 +95,8 @@ namespace BabelShark
               */
             unsigned int NumSubtrees() { return _RealSubject->NumSubtrees(); }
 
+            void Initialize();
+
 		private:
             /** _RealSubject
               * The root of the Instruction tree this object will be a placeholder for.
@@ -109,6 +105,8 @@ namespace BabelShark
               *  - Proxy::realSubject
               */
 			InstructionNode* _RealSubject;
+            std::string      _Alias;
+            std::string      _ParamName;
 	};
 }
 
