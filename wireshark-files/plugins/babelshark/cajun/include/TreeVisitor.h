@@ -21,6 +21,7 @@ of the TreeVisitor class.
 #include "AsciiElement.h"
 #include "PadElement.h"
 #include "InstructionSet.h"
+#include "AliasedInstruction.h"
 
 #include "visitor.h"
 
@@ -94,18 +95,13 @@ private:
      * Size and name are passed in as parameters.  The Type is known because this is a template function
      * and it is InstructionTypeT.
      *
-     * @param nSize
+     * @param sSize
      * @param sName
      ***/
    template <typename InstructionTypeT>
-   BabelShark::Instruction* CreateInstruction(unsigned int nSize, const std::string& sName, const std::string& sVariable)
+   BabelShark::Instruction* CreateInstruction(const std::string& sSize, const std::string& sName, const std::string& sVariable)
    {
-      char* s = const_cast<char*>(sName.c_str());
-	  // This would be easier if std::string was the parameter type rather than char*.
-      return new InstructionTypeT(nSize, s);
-//TODO (JULIE) When IntElement and all the instruction subclasses are ready to take a third parameter,
-//             uncomment the line below and delete the line above.
-//      return new InstructionTypeT(nSize, s, sVariable);
+      return new InstructionTypeT(sSize, sName, sVariable);
    }
 
    /** Visit() uses iterates over all items in the array. It calls a visit function
@@ -122,15 +118,15 @@ private:
 
       //TODO: (JULIE) Currently this passes a number into InstructionSet constructor.
       //              After InstructionSet is changed to take a string, uncomment row below and delete this kluge.
-//kluge start
+/*kluge start
       std::istringstream ss(array.Dimension());
 
       size_t nDimension;
       ss >> nDimension;
       BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(nDimension, (char*)m_sName.c_str()); // TODO: fix "char*"
-//kluge end
-
-//      BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(array.Dimension(), (char*)m_sName.c_str()); // TODO: fix "char*"
+kluge end
+*/
+      BabelShark::InstructionSet* pInstructionSet = new BabelShark::InstructionSet(array.Dimension(), m_sName);
       PDI::Array::const_iterator it(array.Begin()),
                                    itEnd(array.End());
       for (; it != itEnd; ++it)
@@ -170,26 +166,41 @@ private:
 
          // Split the stream into two different tokens defined by a space between them.  The second one is size.
          std::string sAlias;
-         int nSize;  //TODO (JULIE) Later, change this to a string?
-         ss >> sAlias >> nSize;
+         std::string sSize;
+         ss >> sAlias >> sSize;
 
-         //TODO (JULIE) 
+         // The following code does this...
          //1) Determine if this is a static or dynamic usage by looking for the (
          //2) If this is static, then create an AliasedInstruction and pass in the nSize, sAlias.
          //3) If this is dynamic, then
-         //3a) Split Alias into two strings (one being &Alias and the other being $Variable)
+         //3a) Split Alias into two strings (one being &Alias and the other being $Variable, and strip off the parenthesis)
          //3b) Create an AliasedInstruction and pass in the nSize, sAlias, $Variable.
+
+         int nLocationOfOpenParen = sAlias.find('(');
+         int nLocationOfCloseParen = sAlias.find(')');
+         if ((nLocationOfOpenParen > -1) & (nLocationOfCloseParen > -1))
+         {
+            // This is a dynamic Aliased Instruction (It has a parameter).
+            std::string sVariable = sAlias.substr(nLocationOfOpenParen+1, nLocationOfCloseParen-nLocationOfOpenParen-1);
+            sAlias = sAlias.substr(0, nLocationOfOpenParen);
+         }
+         else
+         {
+            // This is a static Aliased Instruction (It does not have a parameter).
+            m_pInstruction = new BabelShark::AliasedInstruction(sSize, m_sName, sAlias);
+         }
+
       }
       else
       {
-         // Simple Display Element in one of the following layouts:
+         // This is a Simple Display Element in one of the following layouts:
          // "NameSimple" : "Type Size"
          // "NameSimple" : "Type Size $Optional_Variable"
 
          std::string sType;
-         int nSize;  //TODO (JULIE) Later, when the constructor for Instructions expects strings, just change this to a string.
+         std::string sSize;
          std::string sVariableName;
-         ss >> sType >> nSize >> sVariableName;
+         ss >> sType >> sSize >> sVariableName;
 
          CreateInstructionFuncMap::const_iterator it = m_CreateInstructionFuncMap.find(sType);
          if (it == m_CreateInstructionFuncMap.end())
@@ -201,12 +212,12 @@ private:
          {
             if (m_bDisplayOutputToScreen)
             {
-               std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << nSize << " " << sVariableName << std::endl;
+               std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << sSize << " " << sVariableName << std::endl;
             }
          }
 
          CreateInstructionFunc func = it->second;
-         m_pInstruction = (this->*func)(nSize, m_sName, sVariableName);
+         m_pInstruction = (this->*func)(sSize, m_sName, sVariableName);
       }
    }
 
@@ -216,7 +227,7 @@ private:
      ***/
    virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
 
-   typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(unsigned int, const std::string&, const std::string&);
+   typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(const std::string&, const std::string&, const std::string&);
    typedef std::map<std::string, CreateInstructionFunc> CreateInstructionFuncMap;
 
    CreateInstructionFuncMap m_CreateInstructionFuncMap;
