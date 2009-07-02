@@ -68,7 +68,6 @@ DISSECTOR_SUPPORT_SRC = \
 	IntElement.cpp \
 	FloatElement.cpp \
 	Dissector.cpp \
-	PdiParser.cpp \
 	Iterator.cpp \
 	ListIterator.cpp \
 	NullIterator.cpp \

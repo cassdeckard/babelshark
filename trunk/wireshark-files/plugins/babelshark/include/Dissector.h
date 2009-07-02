@@ -93,10 +93,10 @@ namespace BabelShark
             void Test();
 
 		private:
-            /** ParseInstructions() uses all of the children of an Instruction
+            /** DissectInstructions() uses all of the children of an Instruction
               * to interpret packet data and attach it to Wireshark's protocol
               * tree. After using the Instruction to interpret data, it determines
-              * if it has any children and calls ParseSet() on it if so.
+              * if it has any children and calls DissectSet() on it if so.
               *
               * NOTE: Do we need to pass in buffer if we're already passing in tvb?
               *
@@ -113,18 +113,18 @@ namespace BabelShark
               * @param offset
               *   the byte offset marking our place in the packet dissection
               */
-            void ParseInstructions(Instruction* in,
+            void DissectInstructions(Instruction* in,
                                    tvbuff_t *tvb,
                                    proto_tree *tree,
                                    char* buffer,
                                    gint &offset);
 
-            /** ParseSet() interprets packet data of an aggregate Instruction
+            /** DissectSet() interprets packet data of an aggregate Instruction
               * type. It creates a subtree in Wireshark's protocol tree for the
-              * node, then recursively calls ParseInstructions() on the children
+              * node, then recursively calls DissectInstructions() on the children
               * of the node, attaching them to the new subtree. This is a
-              * two-part recursion as ParseSet() is itself called by
-              * ParseInstructions().
+              * two-part recursion as DissectSet() is itself called by
+              * DissectInstructions().
               *
               * NOTE: Do we need to pass in buffer if we're already passing in tvb?
               *
@@ -141,7 +141,7 @@ namespace BabelShark
               * @param offset
               *   the byte offset marking our place in the packet dissection
               */
-            void ParseSet(Instruction* in,
+            void DissectSet(Instruction* in,
                           tvbuff_t *tvb,
                           proto_tree *tree,
                           char* buffer,
@@ -149,6 +149,8 @@ namespace BabelShark
 
 
             char* ShiftBits(char* buffer, unsigned int size, unsigned int offset);
+
+            Instruction* ParsePDI(std::string inFile);
 
             /** _RootInstruction holds the root node of the Instruction tree
               */

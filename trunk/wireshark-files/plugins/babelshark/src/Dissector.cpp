@@ -1,11 +1,21 @@
 // $Id$
 
-// C++ headers
+// Babelshark includes
 #include "Dissector.h"
 #include "DataDictionary.h"
+
+// Parser includes
+#include "elements.h"
+#include "reader.h"
+#include "TreeVisitor.h"
+
+// STL includes
+#include <fstream>
 #include <sstream>
 
-#define ROOT_INSTRUCTION _TestInstruction
+// _RootInstruction : use PDI
+// _TestInstruction : use instruction built in Test()
+#define ROOT_INSTRUCTION _RootInstruction
 
 BabelShark::Instruction* Parse(std::string inFile); // delcaration; this is defined in PdiParser.cpp
 
@@ -18,7 +28,7 @@ namespace BabelShark
           _bitOffset(0)
     {
 
-        _RootInstruction = Parse(inFile);
+        _RootInstruction = ParsePDI(inFile);
         if (_RootInstruction == NULL)
         {
             _RootInstruction = new BabelShark::Instruction(0, "ERR_BAD_PARSE");
@@ -48,7 +58,7 @@ namespace BabelShark
     {
         // NOTE: This will not change the registered name of the protocol
         // Reparse Instruction tree
-        _RootInstruction = Parse(inFile);
+        _RootInstruction = ParsePDI(inFile);
         if (_RootInstruction == NULL)
         {
             _RootInstruction = new BabelShark::Instruction(0, "ERR_BAD_PARSE");
@@ -101,7 +111,7 @@ namespace BabelShark
            if (ROOT_INSTRUCTION->GetSize() > 0)
            {
         	  _bitOffset = 0;
-              ParseInstructions(ROOT_INSTRUCTION, tvb, babelshark_tree, buffer, offset);
+              DissectInstructions(ROOT_INSTRUCTION, tvb, babelshark_tree, buffer, offset);
            }
 
        }
@@ -190,7 +200,7 @@ namespace BabelShark
         return result;
     }
 
-    void Dissector::ParseInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
+    void Dissector::DissectInstructions(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
     {
         // interpret children
         for (Iterator* it = in->CreateIterator(); ! it->IsDone(); it->Next())
@@ -238,12 +248,12 @@ namespace BabelShark
                proto_tree *sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
 
                // parse this set
-               ParseSet(currentIns, tvb, sub_tree, buffer, offset);
+               DissectSet(currentIns, tvb, sub_tree, buffer, offset);
            }
         }
     }
 
-    void Dissector::ParseSet(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
+    void Dissector::DissectSet(Instruction* in, tvbuff_t *tvb, proto_tree *tree, char* buffer, gint &offset)
     {
         // in is a subtree
         proto_tree *sub_tree = NULL;
@@ -267,16 +277,43 @@ namespace BabelShark
                 sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
 
                 // parse the children
-                ParseInstructions(in, tvb, sub_tree, buffer, offset);
+                DissectInstructions(in, tvb, sub_tree, buffer, offset);
             }
         }
         else
         {
             // only one instance, just put it directly under the subtree
-            ParseInstructions(in, tvb, tree, buffer, offset);
+            DissectInstructions(in, tvb, tree, buffer, offset);
         }
     }
 
+    Instruction* Dissector::ParsePDI(std::string inFile)
+    {
+	    /*
+	    // First things first! Check to make sure we didn't get a null pointer
+	    if (&inFile == NULL)
+	    {
+		    // Those bastards...
+		    return new Instruction(0, "ERR_NULL_FILENAME");
+	    }*/
+
+	    // First things first! Check to make sure the file exists. If it doesn't, erupt into a frenzied rage!
+	    std::ifstream fin(inFile.c_str());
+	    if (fin.fail())
+	    {
+           return new Instruction(0, "ERR_FILE_NOT_FOUND");
+	    }
+
+	    PDI::Element elemRoot = PDI::DisplayElement();
+	    PDI::Reader::Read(elemRoot, fin);
+
+	    // When the accept function is called, it iterates over every element in the PDI tree.
+	    TreeVisitor treeVisitor(elemRoot.Name());
+	    elemRoot.Accept(treeVisitor);
+
+	    BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
+	    return pRootInstruction;
+    }
 
 } // namespace BabelShark
 
