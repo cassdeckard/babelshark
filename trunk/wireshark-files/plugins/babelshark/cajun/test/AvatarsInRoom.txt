@@ -1,3 +1,8 @@
+dynamictype "&BODY" {
+   "1 &ACK",
+   "2 &INIT"
+}
+
 "ListAvatars_Message" : [
 	"ListAvatarsMessageId" : "UINT 32 $MSG_ID",
 	"TestStaticUsage" : "&HEADER 1",

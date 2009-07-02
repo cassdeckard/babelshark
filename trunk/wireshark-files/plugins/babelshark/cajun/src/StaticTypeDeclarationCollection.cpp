@@ -1,5 +1,8 @@
 #include "StaticTypeDeclarationCollection.h"
 #include "DataDictionary.h"
+#include "InstructionSet.h"
+#include "UintElement.h"
+#include "PadElement.h"
 
 namespace PDI
 {
@@ -44,7 +47,13 @@ namespace PDI
 
          for (; itEntry != itEntryEnd; ++itEntry)
          {
-            BabelShark::DataDictionary::Instance()->AddStatic("o rly?"/*(itElement)->GetLabel()*/, *itEntry);
+            //TODO (DAN)
+            // Change the code below to call the visit function on itEntry.
+            BabelShark::InstructionSet* tempTree;
+            tempTree = new BabelShark::InstructionSet(1, "TestInit");
+            tempTree->Add(new BabelShark::UintElement(7, "Age"));
+            tempTree->Add(new BabelShark::PadElement(56, "Pad"));
+            BabelShark::DataDictionary::Instance()->AddStatic("o rly?"/*(itElement)->GetLabel()*/, tempTree);
          }
       }
 	}

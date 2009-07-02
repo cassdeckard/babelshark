@@ -142,10 +142,10 @@
 				RelativePath="..\..\src\PadElement.cpp">
 			</File>
 			<File
-				RelativePath="..\..\src\PdiParser.cpp">
+				RelativePath="..\..\src\StaticDefinition.cpp">
 			</File>
 			<File
-				RelativePath="..\..\src\StaticDefinition.cpp">
+				RelativePath="..\..\src\Subject.cpp">
 			</File>
 			<File
 				RelativePath="..\..\src\UintElement.cpp">
@@ -198,6 +198,9 @@
 				RelativePath="..\..\include\NullIterator.h">
 			</File>
 			<File
+				RelativePath="..\..\include\Observer.h">
+			</File>
+			<File
 				RelativePath="..\..\include\PadElement.h">
 			</File>
 			<File
@@ -205,6 +208,9 @@
 			</File>
 			<File
 				RelativePath="..\..\include\StaticDefinition.h">
+			</File>
+			<File
+				RelativePath="..\..\include\Subject.h">
 			</File>
 			<File
 				RelativePath="..\..\include\TypeDefinition.h">

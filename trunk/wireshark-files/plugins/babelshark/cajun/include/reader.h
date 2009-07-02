@@ -62,6 +62,8 @@ private:
      ***/
    void Parse(Element& element, TokenStream& tokenStream);
    void Parse(Array& array, TokenStream& tokenStream);
+   void ParseDynamicTypeDeclaration(const std::string& sName, Reader::TokenStream& tokenStream);
+   void ParseStaticTypeDeclaration(const std::string& sName, Reader::TokenStream& tokenStream);
    void Parse(DisplayElement& string, TokenStream& tokenStream);
    void Parse(Null& null, TokenStream& tokenStream);
 

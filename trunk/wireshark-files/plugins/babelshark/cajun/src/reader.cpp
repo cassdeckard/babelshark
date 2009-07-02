@@ -18,6 +18,12 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include <set>
 #include <sstream>
 
+#include "DynamicTypeElement.h"
+#include "DynamicTypeCollection.h"
+#include "StaticTypeDeclarationElement.h"
+#include "StaticTypeDeclarationCollection.h"
+
+
 /*  
 
 TODO:
@@ -38,8 +44,12 @@ Reader::Location::Location() :
 
 enum Reader::TokenType
 {
-   TOKEN_ARRAY_BEGIN,  //    [
-   TOKEN_ARRAY_END,    //    ]
+   TOKEN_ARRAY_BEGIN,         //    [
+   TOKEN_ARRAY_END,           //    ]
+   TOKEN_DYNAMICTYPE_BEGIN,   //    {
+   TOKEN_DYNAMICTYPE_END,     //    }
+   TOKEN_DYNAMICTYPE,         //    dynamictype
+   TOKEN_STATICTYPE,          //    statictype
    TOKEN_NEXT_ELEMENT,  //    ,
    TOKEN_MEMBER_ASSIGN, //    :
    TOKEN_STRING,        //    "xxx"
@@ -164,7 +174,12 @@ void Reader::Read(Element& elementRoot, std::istream& istr)
    reader.Scan(tokens, inputStream);
 
    TokenStream tokenStream(tokens);
-   reader.Parse(elementRoot, tokenStream);
+   // Needed to add looping here, because we now have multiple top-level items in the file.
+   // Before we just had one top-level message.  Now we have that, plus dynamictypes and statictypes.
+   while (tokenStream.EOS() == false)
+   {
+      reader.Parse(elementRoot, tokenStream);
+   }
 
    if (tokenStream.EOS() == false)
    {
@@ -198,6 +213,16 @@ void Reader::Scan(Tokens& tokens, InputStream& inputStream)
          case ']':
             MatchExpectedString(sChar, inputStream);
             token.nType = TOKEN_ARRAY_END;
+            break;
+
+         case '{':
+            MatchExpectedString(sChar, inputStream);
+            token.nType = TOKEN_DYNAMICTYPE_BEGIN;
+            break;
+
+         case '}':
+            MatchExpectedString(sChar, inputStream);
+            token.nType = TOKEN_DYNAMICTYPE_END;
             break;
 
          case ',':
@@ -239,6 +264,18 @@ void Reader::Scan(Tokens& tokens, InputStream& inputStream)
             token.sValue = "null";
             MatchExpectedString(token.sValue, inputStream);
             token.nType = TOKEN_NULL;
+            break;
+
+         case 'd':
+            token.sValue = "dynamictype";
+            MatchExpectedString(token.sValue, inputStream);
+            token.nType = TOKEN_DYNAMICTYPE;
+            break;
+
+         case 's':
+            token.sValue = "statictype";
+            MatchExpectedString(token.sValue, inputStream);
+            token.nType = TOKEN_STATICTYPE;
             break;
 
          default:
@@ -356,35 +393,58 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
       throw ParseException(sMessage, Location(), Location()); // nowhere to point to
    }
 
-   const std::string& sName = MatchExpectedToken(TOKEN_STRING, tokenStream);
-   MatchExpectedToken(TOKEN_MEMBER_ASSIGN, tokenStream);
+   std::string sName;
+   Token token = tokenStream.Peek();
 
-   const Token& token = tokenStream.Peek();
-   switch (token.nType)
+   if (token.nType == TOKEN_DYNAMICTYPE)
    {
-      case TOKEN_ARRAY_BEGIN:
-         element = Array();
-         Parse(PDI_cast<Array&>(element), tokenStream);
-         break;
+      // If the first token is dynamictype, then assume we are parsing a dynamictype.
+      MatchExpectedToken(TOKEN_DYNAMICTYPE, tokenStream);
+      sName = MatchExpectedToken(TOKEN_STRING, tokenStream);
+      ParseDynamicTypeDeclaration(sName, tokenStream);
+      token = tokenStream.Peek();
+   }
+   else if (token.nType == TOKEN_STATICTYPE)
+   {
+      // If the first token is statictype, then assume we are parsing a statictype.
+      MatchExpectedToken(TOKEN_DYNAMICTYPE, tokenStream);
+      sName = MatchExpectedToken(TOKEN_STRING, tokenStream);
+      ParseStaticTypeDeclaration(sName, tokenStream);
+      token = tokenStream.Peek();
+   }
+   else
+   {
+      // If the first token is a string, then assume we are parsing a message root.
+      sName = MatchExpectedToken(TOKEN_STRING, tokenStream);
+      MatchExpectedToken(TOKEN_MEMBER_ASSIGN, tokenStream);
+      token = tokenStream.Peek();
 
-      case TOKEN_STRING:
-         element = DisplayElement();
-         Parse(PDI_cast<DisplayElement&>(element), tokenStream);
-         break;
-
-      case TOKEN_NULL:
-         element = Null();
-         Parse(PDI_cast<Null&>(element), tokenStream);
-         break;
-
-      case TOKEN_COMMENT:
-         // do nothing
-         break;
-
-      default:
+      switch (token.nType)
       {
-         std::string sMessage = "Unexpected token: " + token.sValue;
-         throw ParseException(sMessage, token.locBegin, token.locEnd);
+         case TOKEN_ARRAY_BEGIN:
+            element = Array();
+            Parse(PDI_cast<Array&>(element), tokenStream);
+            break;
+
+         case TOKEN_STRING:
+            element = DisplayElement();
+            Parse(PDI_cast<DisplayElement&>(element), tokenStream);
+            break;
+
+         case TOKEN_NULL:
+            element = Null();
+            Parse(PDI_cast<Null&>(element), tokenStream);
+            break;
+
+         case TOKEN_COMMENT:
+            // do nothing
+            break;
+
+         default:
+         {
+            std::string sMessage = "Unexpected token: " + token.sValue;
+            throw ParseException(sMessage, token.locBegin, token.locEnd);
+         }
       }
    }
 
@@ -418,16 +478,55 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
    // finally, look for the dimension of this array
    std::string sNumber = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
 
-   /*
-   std::istringstream ss(sNumber);
-
-   size_t nDimension;
-   ss >> nDimension;
-   */
-
    array.SetDimension(sNumber);
 }
 
+
+void Reader::ParseDynamicTypeDeclaration(const std::string& sName, Reader::TokenStream& tokenStream)
+{
+   DynamicTypeElement element;
+   element.SetName(sName);
+
+   MatchExpectedToken(TOKEN_DYNAMICTYPE_BEGIN, tokenStream);
+
+   DynamicTypeEntry dynTypeEntry;
+
+   bool bContinue = (tokenStream.EOS() == false &&
+                     tokenStream.Peek().nType != TOKEN_DYNAMICTYPE_END);
+   while (bContinue)
+   {
+      std::string string = MatchExpectedToken(TOKEN_STRING, tokenStream);
+      std::istringstream ss(string);
+      ss >> dynTypeEntry.first >> dynTypeEntry.second;
+
+      element.Insert(dynTypeEntry);
+
+      bContinue = (tokenStream.EOS() == false &&
+                   tokenStream.Peek().nType == TOKEN_NEXT_ELEMENT);
+      if (bContinue)
+         MatchExpectedToken(TOKEN_NEXT_ELEMENT, tokenStream);
+   }
+
+   DynamicTypeCollection::Instance().Insert(element);
+   MatchExpectedToken(TOKEN_DYNAMICTYPE_END, tokenStream);
+
+}
+
+
+void Reader::ParseStaticTypeDeclaration(const std::string& sName, Reader::TokenStream& tokenStream)
+{
+   //TODO (DAN)
+   // Convert sName to a char* or change function signature to support std::string.
+   // For now I will just hard-code a value, so it will compile.
+   char* cName;
+   StaticTypeDeclaration element(cName, 1);
+
+   //TODO (DAN)
+   //Parse(PDI_cast<Array&>(element), tokenStream);
+
+   StaticTypeDeclarationCollection::Instance().Insert(element);
+
+}
 
 
 void Reader::Parse(DisplayElement& string, Reader::TokenStream& tokenStream)
