@@ -4,6 +4,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#define ROUND32(x) ((x) <= 32 ? 32 : 64)
+
 namespace BabelShark
 {
 
@@ -15,17 +17,7 @@ namespace BabelShark
         ss << "FloatElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
         printf(ss.str().c_str());
         DataDictionary::Instance()->AddVariable(variable, this);
-
-        // Round up size
-        if (_Size <= 32)
-        {
-        	_Size = 32;
-        }
-        else
-        {
-        	_Size = 64;
-        }
-
+        _Size = ROUND32(_Size);
         SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
     }
@@ -34,16 +26,7 @@ namespace BabelShark
     FloatElement::FloatElement(unsigned int size, char* name)
         :InstructionElement(size, name)
     {
-        // Round up size
-        if (_Size <= 32)
-        {
-        	_Size = 32;
-        }
-        else
-        {
-        	_Size = 64;
-        }
-
+        _Size = ROUND32(_Size);
         SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
     }
@@ -56,17 +39,7 @@ namespace BabelShark
         ss << "FloatElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
         printf(ss.str().c_str());
         DataDictionary::Instance()->AddVariable(variable, this);
-
-        // Round up size
-        if (_Size <= 32)
-        {
-        	_Size = 32;
-        }
-        else
-        {
-        	_Size = 64;
-        }
-
+        _Size = ROUND32(_Size);
         SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }
@@ -75,16 +48,7 @@ namespace BabelShark
     FloatElement::FloatElement(std::string size, std::string name)
         :InstructionElement(size, name)
     {
-        // Round up size
-        if (_Size <= 32)
-        {
-        	_Size = 32;
-        }
-        else
-        {
-        	_Size = 64;
-        }
-
+        _Size = ROUND32(_Size);
         SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }
