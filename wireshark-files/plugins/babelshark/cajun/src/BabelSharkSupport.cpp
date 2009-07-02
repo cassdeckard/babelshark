@@ -44,7 +44,7 @@ namespace PDI
    ***/
    void CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)
    {
-      //Create a StaticTypeElement and add it to the collection for testing purposes.
+      //Create a StaticTypeDeclarationElement and add it to the collection for testing purposes.
       // TODO: Later, when we have the parser updated to parse the file, remove this.
         //Instruction* _TestInstruction;
         //_TestInstruction = new InstructionSet(1, "TestProtocol");

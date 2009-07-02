@@ -126,6 +126,12 @@
 				RelativePath=".\reader.cpp">
 			</File>
 			<File
+				RelativePath=".\StaticTypeDeclarationCollection.cpp">
+			</File>
+			<File
+				RelativePath=".\StaticTypeDeclarationElement.cpp">
+			</File>
+			<File
 				RelativePath=".\writer.cpp">
 			</File>
 		</Filter>
@@ -156,6 +162,12 @@
 			</File>
 			<File
 				RelativePath="..\include\reader.h">
+			</File>
+			<File
+				RelativePath="..\include\StaticTypeDeclarationCollection.h">
+			</File>
+			<File
+				RelativePath="..\include\StaticTypeDeclarationElement.h">
 			</File>
 			<File
 				RelativePath="..\include\TreeVisitor.h">
