@@ -68,9 +68,6 @@ DISSECTOR_SUPPORT_SRC = \
 	IntElement.cpp \
 	FloatElement.cpp \
 	Dissector.cpp \
-	elements.cpp \
-	reader.cpp \
-	writer.cpp \
 	PdiParser.cpp \
 	Iterator.cpp \
 	ListIterator.cpp \
@@ -79,4 +76,12 @@ DISSECTOR_SUPPORT_SRC = \
 	DataDictionary.cpp \
 	StaticDefinition.cpp \
 	DynamicDefinition.cpp \
-	Subject.cpp
+	Subject.cpp \
+	elements.cpp \
+	reader.cpp \
+	writer.cpp \
+	BabelSharkSupport.cpp \
+	DynamicTypeCollection.cpp \
+	DynamicTypeElement.cpp \
+	StaticTypeDeclarationCollection.cpp \
+	StaticTypeDeclarationElement.cpp

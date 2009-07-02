@@ -518,7 +518,7 @@ void Reader::ParseStaticTypeDeclaration(const std::string& sName, Reader::TokenS
    //TODO (DAN)
    // Convert sName to a char* or change function signature to support std::string.
    // For now I will just hard-code a value, so it will compile.
-   char* cName;
+   char* cName = ""; // MDD - added "" to prevent compile error
    StaticTypeDeclaration element(cName, 1);
 
    //TODO (DAN)
