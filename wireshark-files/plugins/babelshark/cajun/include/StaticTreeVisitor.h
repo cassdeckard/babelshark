@@ -5,10 +5,10 @@ Author: Julie Betlach
 Code written for a project for Washington University,
 course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
-File Name: TreeVisitor.h
+File Name: StaticTreeVisitor.h
 
-File Description: The TreeVisitor.h file is a part of the PDI parser.  It provides the implementation
-of the TreeVisitor class.
+File Description: The StaticTreeVisitor.h file is a part of the PDI parser.  It provides the implementation
+of the StaticTreeVisitor class.
 
 *************************************************/
 #pragma once
@@ -23,7 +23,7 @@ of the TreeVisitor class.
 #include "InstructionSet.h"
 #include "AliasedInstruction.h"
 
-#include "visitor.h"
+#include "TreeVisitor.h"
 
 #include <algorithm>
 #include <map>
@@ -33,7 +33,7 @@ of the TreeVisitor class.
 #include <iostream>
 #include <fstream>
 
-/** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
+/** The StaticTreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
   * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created
   * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
   *
@@ -41,27 +41,19 @@ of the TreeVisitor class.
   *       Element elemRoot = DisplayElement();
   *       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
   * then the following function can be called to create an instruction tree.
-  *       TreeVisitor treeVisitor(elemRoot.Name());
-  * Note that the root element name must be passed into the TreeVisitor in order to get the first
+  *       StaticTreeVisitor StaticTreeVisitor(elemRoot.Name());
+  * Note that the root element name must be passed into the StaticTreeVisitor in order to get the first
   * name from the file to be included in the first instruction in the instruction tree.
   *
   * If a second parameter is provided, which is boolean, this will be used to determine if
   * unit test / debug data should be written to cout.  If the parameter is true then data will
   * be displayed.  If the parameter is false, or is not provided, then data will not be displayed.
   ***/
-class TreeVisitor : public PDI::ConstVisitor
+class StaticTreeVisitor : public PDI::ConstVisitor
 {
 public:
-/*type     := 'UINT'
-         |  'INT'
-         |  'BOOL'
-         |  'FLOAT'
-         |  'ASCII'
-         |  'PAD'
-         |  array
-***/
 
-    /** This is the constructor for TreeVisitor class.
+    /** This is the constructor for StaticTreeVisitor class.
       *
       * @param sName
       *   the name of the root node.
@@ -71,17 +63,17 @@ public:
       * A function map is initialized in the constructor using a template.
       * This will make the addition of new types easier.
       ***/
-   TreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) :
+   StaticTreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) :
       m_sName(sName),
       m_bDisplayOutputToScreen(bDisplayOutputToScreen),
       m_pInstruction(0)
    {
-      m_CreateInstructionFuncMap["INT"] = &TreeVisitor::CreateInstruction<BabelShark::IntElement>;
-      m_CreateInstructionFuncMap["UINT"] = &TreeVisitor::CreateInstruction<BabelShark::UintElement>;
-      m_CreateInstructionFuncMap["BOOL"] = &TreeVisitor::CreateInstruction<BabelShark::BoolElement>;
-      m_CreateInstructionFuncMap["FLOAT"] = &TreeVisitor::CreateInstruction<BabelShark::FloatElement>;
-      m_CreateInstructionFuncMap["ASCII"] = &TreeVisitor::CreateInstruction<BabelShark::AsciiElement>;
-      m_CreateInstructionFuncMap["PAD"] = &TreeVisitor::CreateInstruction<BabelShark::PadElement>;
+      m_CreateInstructionFuncMap["INT"] = &StaticTreeVisitor::CreateInstruction<BabelShark::IntElement>;
+      m_CreateInstructionFuncMap["UINT"] = &StaticTreeVisitor::CreateInstruction<BabelShark::UintElement>;
+      m_CreateInstructionFuncMap["BOOL"] = &StaticTreeVisitor::CreateInstruction<BabelShark::BoolElement>;
+      m_CreateInstructionFuncMap["FLOAT"] = &StaticTreeVisitor::CreateInstruction<BabelShark::FloatElement>;
+      m_CreateInstructionFuncMap["ASCII"] = &StaticTreeVisitor::CreateInstruction<BabelShark::AsciiElement>;
+      m_CreateInstructionFuncMap["PAD"] = &StaticTreeVisitor::CreateInstruction<BabelShark::PadElement>;
    }
 
    /** GetInstruction() returns a pointer to an instruction.
@@ -122,13 +114,14 @@ private:
                                    itEnd(array.End());
       for (; it != itEnd; ++it)
       {
-         TreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);
+         StaticTreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);
          it->Accept(visitor);
 
          pInstructionSet->Add(visitor.GetInstruction());
       }
 
       m_pInstruction = pInstructionSet;
+		BabelShark::DataDictionary::Instance()->AddStatic(m_sName, pInstructionSet);
    }
 
    /** Visit() is used to visit a DisplayElement.
@@ -169,7 +162,7 @@ private:
 
          size_t nLocationOfOpenParen = sAlias.find('(');
          size_t nLocationOfCloseParen = sAlias.find(')');
-	  	   if ((nLocationOfOpenParen != std::string::npos) & (nLocationOfCloseParen != std::string::npos))
+		   if ((nLocationOfOpenParen != std::string::npos) & (nLocationOfCloseParen != std::string::npos))
          {
             // This is a dynamic Aliased Instruction (It has a parameter).
             std::string sVariable = sAlias.substr(nLocationOfOpenParen+1, nLocationOfCloseParen-nLocationOfOpenParen-1);
@@ -219,7 +212,7 @@ private:
      ***/
    virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
 
-   typedef BabelShark::Instruction* (TreeVisitor::*CreateInstructionFunc)(const std::string&, const std::string&, const std::string&);
+   typedef BabelShark::Instruction* (StaticTreeVisitor::*CreateInstructionFunc)(const std::string&, const std::string&, const std::string&);
    typedef std::map<std::string, CreateInstructionFunc> CreateInstructionFuncMap;
 
    CreateInstructionFuncMap m_CreateInstructionFuncMap;

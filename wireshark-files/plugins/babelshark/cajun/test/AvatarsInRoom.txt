@@ -107,9 +107,8 @@
      "18 &Test_Message"
   }
 
-// When more code is working, change the first row to: "Header" : "&HEADER 1",
   "ClientServer Packet" : [
-     "Header"  : "ASCII 1",
+     "Header"  : "&HEADER 1",
      "Body"    : "&BODY($MSG_ID) 1"
   ] 1
   

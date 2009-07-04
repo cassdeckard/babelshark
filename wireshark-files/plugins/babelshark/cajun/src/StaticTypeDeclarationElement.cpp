@@ -1,22 +1,11 @@
 #include "StaticTypeDeclarationElement.h"
 namespace PDI
 {
-	StaticTypeDeclaration::StaticTypeDeclaration(std::string label, int size)
-	{
-		_Label = label;
-		_Size = size;
-	}
-	// MDD - added to prevent link error
-	StaticTypeDeclaration::StaticTypeDeclaration(const StaticTypeDeclaration& value)
-	{
-		// TODO
-		_Label = value.GetLabel();
-		_Size = value.GetSize();
-	}
+   StaticTypeDeclaration::StaticTypeDeclaration(const std::string& label, int size)
+   {
+      _Label = label;
+      _Size = size;
+   }
+   const std::string& StaticTypeDeclaration::GetLabel() const { return _Label; }
 
-	// MDD - added to prevent link error
-	StaticTypeDeclaration::~StaticTypeDeclaration()
-	{
-		// TODO
-	}
 }
