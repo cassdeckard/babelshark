@@ -3,6 +3,7 @@
 #include "InstructionSet.h"
 #include "UintElement.h"
 #include "PadElement.h"
+#include "TreeVisitor.h"
 
 namespace PDI
 {
@@ -44,16 +45,21 @@ namespace PDI
       {
          StaticTypeDeclaration::const_iterator itEntry(itElement->Begin()),
                                             itEntryEnd(itElement->End());
-
+		 TreeVisitor treeVisitor((*itEntry).Name());
          for (; itEntry != itEntryEnd; ++itEntry)
          {
             //TODO (DAN)
             // Change the code below to call the visit function on itEntry.
+			//itEntry.visit(
+			(*itEntry).Accept(treeVisitor);
             BabelShark::InstructionSet* tempTree;
+			//tempTree = new BabelShark::InstructionSet((*itEntry).GetSize(), (*itEntry).GetLabel());
+			//tempTree = 
             tempTree = new BabelShark::InstructionSet(1, "TestInit");
             tempTree->Add(new BabelShark::UintElement(7, "Age"));
             tempTree->Add(new BabelShark::PadElement(56, "Pad"));
-            BabelShark::DataDictionary::Instance()->AddStatic("o rly?"/*(itElement)->GetLabel()*/, tempTree);
+			//BabelShark::DataDictionary::Instance()->AddStatic(
+            //BabelShark::DataDictionary::Instance()->AddStatic("o rly?"/*(itElement)->GetLabel()*/, tempTree);
          }
       }
 	}

@@ -407,7 +407,7 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
    else if (token.nType == TOKEN_STATICTYPE)
    {
       // If the first token is statictype, then assume we are parsing a statictype.
-      MatchExpectedToken(TOKEN_DYNAMICTYPE, tokenStream);
+      MatchExpectedToken(TOKEN_STATICTYPE, tokenStream);
       sName = MatchExpectedToken(TOKEN_STRING, tokenStream);
       ParseStaticTypeDeclaration(sName, tokenStream);
       token = tokenStream.Peek();

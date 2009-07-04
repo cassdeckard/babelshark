@@ -110,7 +110,8 @@ private:
      *
      * Each item in the array is added to an instruction set.
      ***/
-   virtual void Visit(const PDI::Array& array) {
+   virtual void Visit(const PDI::Array& array) 
+   {
       if (m_bDisplayOutputToScreen)
       {
          std::cout << "This array node has been visited " << m_sName << ", dimension " << array.Dimension() << std::endl;
@@ -176,13 +177,14 @@ kluge end
          //3a) Split Alias into two strings (one being &Alias and the other being $Variable, and strip off the parenthesis)
          //3b) Create an AliasedInstruction and pass in the nSize, sAlias, $Variable.
 
-         int nLocationOfOpenParen = sAlias.find('(');
-         int nLocationOfCloseParen = sAlias.find(')');
-         if ((nLocationOfOpenParen > -1) & (nLocationOfCloseParen > -1))
+         size_t nLocationOfOpenParen = sAlias.find('(');
+         size_t nLocationOfCloseParen = sAlias.find(')');
+		 if ((nLocationOfOpenParen != std::string::npos) & (nLocationOfCloseParen != std::string::npos))
          {
             // This is a dynamic Aliased Instruction (It has a parameter).
             std::string sVariable = sAlias.substr(nLocationOfOpenParen+1, nLocationOfCloseParen-nLocationOfOpenParen-1);
             sAlias = sAlias.substr(0, nLocationOfOpenParen);
+			m_pInstruction = new BabelShark::AliasedInstruction(sSize, m_sName, sAlias, sVariable);
          }
          else
          {

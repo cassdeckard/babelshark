@@ -39,7 +39,7 @@ namespace PDI
 			void SetSize(int size){_Size = size;}
 
 			//member variable Get functions
-			char* GetLabel(){ return const_cast<char*>(_Label.c_str());}
+			const char* GetLabel(){ return const_cast<char*>(_Label.c_str());}
 			int GetSize() { return _Size;}
 
 		private:
