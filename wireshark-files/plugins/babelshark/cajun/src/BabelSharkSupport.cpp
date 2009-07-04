@@ -8,7 +8,7 @@ File : BabelSharkSupport.cpp
 #include "elements.h"
 #include "TreeVisitor.h"
 #include "DynamicTypeCollection.h"
-//#include "StaticTypeCollection.h"
+#include "StaticTypeDeclarationCollection.h"
 
 //TODO: After we clean-up the test code out of here, remove these includes.
 #include "InstructionSet.h"
@@ -48,7 +48,7 @@ namespace PDI
       // TODO: Later, when we have the parser updated to parse the file, remove this.
         //Instruction* _TestInstruction;
         //_TestInstruction = new InstructionSet(1, "TestProtocol");
-        BabelShark::InstructionSet* tempTree;
+      /*  BabelShark::InstructionSet* tempTree;
 
         // make a static type
         tempTree = new BabelShark::InstructionSet(1, "Header");
@@ -65,29 +65,17 @@ namespace PDI
         tempTree->Add(new BabelShark::UintElement(7, "Age"));
         tempTree->Add(new BabelShark::PadElement(56, "Pad"));
         BabelShark::DataDictionary::Instance()->AddStatic("&INIT", tempTree);
+      */
 
-      //StaticTypeCollection::FillDataDictionary();
-
-      //Create a DynamicTypeElement and add it to the collection for testing purposes.
-      // TODO: Later, when we have the parser updated to parse the file, remove this.
-      DynamicTypeElement dynElement;
-      dynElement.SetName("&BODY");
-      DynamicTypeEntry dynTypeEntry;
-      dynTypeEntry.first = "1";
-      dynTypeEntry.second = "&ACK";
-      dynElement.Insert(dynTypeEntry);
-      dynTypeEntry.first = "2";
-      dynTypeEntry.second = "&INIT";
-      dynElement.Insert(dynTypeEntry);
-      DynamicTypeCollection::Instance().Insert(dynElement);
-
+      StaticTypeDeclarationCollection::Instance().FillDataDictionary();
       DynamicTypeCollection::Instance().FillDataDictionary();
 
       // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.
       TreeVisitor treeVisitor(elemRoot.Name(), bDisplayOutputToScreen);
       elemRoot.Accept(treeVisitor);
 
-      //Destroy StaticTypeCollection singleton.
+      //Destroy the singletons to prepare us for another file.
+      StaticTypeDeclarationCollection::Release();
       DynamicTypeCollection::Release();
 
       //TODO (JULIE) Delete this line later.  This is here so I can see tree that was created.
