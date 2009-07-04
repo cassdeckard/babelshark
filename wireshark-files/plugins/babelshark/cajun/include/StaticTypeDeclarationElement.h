@@ -26,7 +26,7 @@ namespace PDI
 	class StaticTypeDeclaration : public Array
 	{
 		public:
-			StaticTypeDeclaration(char* label, int size);
+			StaticTypeDeclaration(std::string label, int size);
          StaticTypeDeclaration(const std::string& label, int size);
 
 			//copy constructor
@@ -40,8 +40,8 @@ namespace PDI
 			void SetSize(int size){_Size = size;}
 
 			//member variable Get functions
-			const char* GetLabel(){ return const_cast<char*>(_Label.c_str());}
-			int GetSize() { return _Size;}
+			const std::string GetLabel() const{ return _Label;}
+			const int GetSize() const { return _Size;}
 
 		private:
 			std::string _Label;
