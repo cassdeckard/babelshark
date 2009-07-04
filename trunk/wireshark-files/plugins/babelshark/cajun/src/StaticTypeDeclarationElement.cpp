@@ -1,7 +1,7 @@
 #include "StaticTypeDeclarationElement.h"
 namespace PDI
 {
-	StaticTypeDeclaration::StaticTypeDeclaration(char* label, int size)
+	StaticTypeDeclaration::StaticTypeDeclaration(std::string label, int size)
 	{
 		_Label = label;
 		_Size = size;
@@ -17,6 +17,8 @@ namespace PDI
 	StaticTypeDeclaration::StaticTypeDeclaration(const StaticTypeDeclaration& value)
 	{
 		// TODO
+		_Label = value.GetLabel();
+		_Size = value.GetSize();
 	}
 
 	// MDD - added to prevent link error

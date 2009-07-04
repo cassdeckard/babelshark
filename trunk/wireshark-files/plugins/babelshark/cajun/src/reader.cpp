@@ -522,8 +522,7 @@ void Reader::ParseStaticTypeDeclaration(const std::string& sName, Reader::TokenS
    // Create a StaticTypeDelcaration element.
    StaticTypeDeclaration staticTypeElement(sName, 1);
 
-   // We are able to use the existing function which parses arrays
-   // because the format of the statictype is the same as Array
+   //Parse(PDI_cast<Array&>(element), tokenStream);
    // (here we are only dealing with the part starting with the first [
    // and ending with the number at the end after the last ]).
    // At this point we have already read in "statictype" and the name of the type (ie "&HEADER").
