@@ -1,3 +1,36 @@
-M:/babelshark/wireshark-files/plugins/babelshark/src/AsciiElement.cpp:24: Warning: documented function `std::string BabelShark::AsciiElement::Printable' was not declared or defined.
-M:/babelshark/wireshark-files/plugins/babelshark/include/Instruction.h:64: Warning: argument 'instruction' of command @param is not found in the argument list of BabelShark::Instruction::Add(Instruction *)
-M:/babelshark/wireshark-files/plugins/babelshark/include/Instruction.h:73: Warning: argument 'instruction' of command @param is not found in the argument list of BabelShark::Instruction::Remove(Instruction *)
+C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/wireshark-files/plugins/babelshark/src/AsciiElement.cpp:24: Warning: documented function `std::string BabelShark::AsciiElement::Printable' was not declared or defined.
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/wireshark-files/plugins/babelshark/include/Instruction.h:64: Warning: argument 'instruction' of command @param is not found in the argument list of BabelShark::Instruction::Add(Instruction *)
+C:/Documents and Settings/tw562c/My Documents/Wash U/CSE533/project/babelshark/wireshark-files/plugins/babelshark/include/Instruction.h:73: Warning: argument 'instruction' of command @param is not found in the argument list of BabelShark::Instruction::Remove(Instruction *)
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
+Error: Problems running epstopdf. Check your TeX installation!
