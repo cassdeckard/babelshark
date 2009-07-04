@@ -3,6 +3,13 @@ dynamictype "&BODY" {
    "2 &INIT"
 }
 
+  statictype "&Initialize_Message" [
+     "Age"        : "UINT 7",
+     "IsMale"    : "BOOL 1",
+     "Pad"        : "PAD 56"
+  ]
+
+
 "ListAvatars_Message" : [
 	"ListAvatarsMessageId" : "UINT 32 $MSG_ID",
 	"TestStaticUsage" : "&HEADER 1",
