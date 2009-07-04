@@ -27,6 +27,7 @@ namespace PDI
 	{
 		public:
 			StaticTypeDeclaration(char* label, int size);
+         StaticTypeDeclaration(const std::string& label, int size);
 
 			//copy constructor
 			StaticTypeDeclaration(const StaticTypeDeclaration& value);

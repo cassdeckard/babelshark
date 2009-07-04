@@ -515,16 +515,17 @@ void Reader::ParseDynamicTypeDeclaration(const std::string& sName, Reader::Token
 
 void Reader::ParseStaticTypeDeclaration(const std::string& sName, Reader::TokenStream& tokenStream)
 {
-   //TODO (DAN)
-   // Convert sName to a char* or change function signature to support std::string.
-   // For now I will just hard-code a value, so it will compile.
-   char* cName = ""; // MDD - added "" to prevent compile error
-   StaticTypeDeclaration element(cName, 1);
+   // Create a StaticTypeDelcaration element.
+   StaticTypeDeclaration staticTypeElement(sName, 1);
 
-   //TODO (DAN)
-   //Parse(PDI_cast<Array&>(element), tokenStream);
-
-   StaticTypeDeclarationCollection::Instance().Insert(element);
+   // We are able to use the existing function which parses arrays
+   // because the format of the statictype is the same as Array
+   // (here we are only dealing with the part starting with the first [
+   // and ending with the number at the end after the last ]).
+   // At this point we have already read in "statictype" and the name of the type (ie "&HEADER").
+   Parse((Array&)(staticTypeElement), tokenStream);
+   
+   StaticTypeDeclarationCollection::Instance().Insert(staticTypeElement);
 
 }
 
