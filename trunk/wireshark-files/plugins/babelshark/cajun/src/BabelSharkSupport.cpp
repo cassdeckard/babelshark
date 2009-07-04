@@ -71,15 +71,15 @@ namespace PDI
       DynamicTypeCollection::Instance().FillDataDictionary();
 
       // Pass the second arguement as true, to see output statements written to the screen for unit testing purposes.
-      TreeVisitor treeVisitor(elemRoot.Name(), bDisplayOutputToScreen);
-      elemRoot.Accept(treeVisitor);
+      TreeVisitor TreeVisitor(elemRoot.Name(), bDisplayOutputToScreen);
+      elemRoot.Accept(TreeVisitor);
 
       //Destroy the singletons to prepare us for another file.
       StaticTypeDeclarationCollection::Release();
       DynamicTypeCollection::Release();
 
       //TODO (JULIE) Delete this line later.  This is here so I can see tree that was created.
-      BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
+      BabelShark::Instruction* pRootInstruction = TreeVisitor.GetInstruction();
 
    }
 

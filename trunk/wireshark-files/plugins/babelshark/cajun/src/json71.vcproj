@@ -164,6 +164,9 @@
 				RelativePath="..\include\reader.h">
 			</File>
 			<File
+				RelativePath="..\include\StaticTreeVisitor.h">
+			</File>
+			<File
 				RelativePath="..\include\StaticTypeDeclarationCollection.h">
 			</File>
 			<File

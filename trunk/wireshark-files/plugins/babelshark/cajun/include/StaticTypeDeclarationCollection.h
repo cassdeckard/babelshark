@@ -14,8 +14,6 @@ namespace PDI
 			typedef StaticTypeDefinitionCollection::iterator Iterator;
 			typedef StaticTypeDefinitionCollection::const_iterator ConstIter;
 
-			StaticTypeDeclarationCollection();
-
 			/** Iterator accessors.  Both Const iterators and regular
 			*/
 			Iterator Begin();

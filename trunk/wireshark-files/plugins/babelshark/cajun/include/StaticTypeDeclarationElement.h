@@ -26,22 +26,15 @@ namespace PDI
 	class StaticTypeDeclaration : public Array
 	{
 		public:
-			StaticTypeDeclaration(std::string label, int size);
-			//StaticTypeDeclaration(const std::string& label, int size);
-
-			//copy constructor
-			StaticTypeDeclaration(const StaticTypeDeclaration& value);
-
-			//simple destructor
-			~StaticTypeDeclaration();
+			StaticTypeDeclaration(const std::string& label, int size);
 
 			//member variable Set functions
-			void SetLabel(char* input){_Label = input;}
+         void SetLabel(const std::string& input){_Label = input;}
 			void SetSize(int size){_Size = size;}
 
 			//member variable Get functions
-			const std::string GetLabel() const{ return _Label;}
-			const int GetSize() const { return _Size;}
+         const std::string& GetLabel() const;
+			int GetSize() { return _Size;}
 
 		private:
 			std::string _Label;
