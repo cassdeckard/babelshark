@@ -45,13 +45,14 @@ namespace PDI
       {
          StaticTypeDeclaration::const_iterator itEntry(itElement->Begin()),
                                             itEntryEnd(itElement->End());
-		 TreeVisitor treeVisitor((*itEntry).Name());
+
+         /////TreeVisitor treeVisitor((*itEntry).Name());
          for (; itEntry != itEntryEnd; ++itEntry)
          {
             //TODO (DAN)
             // Change the code below to call the visit function on itEntry.
 			//itEntry.visit(
-			(*itEntry).Accept(treeVisitor);
+			/////(*itEntry).Accept(treeVisitor);
             BabelShark::InstructionSet* tempTree;
 			//tempTree = new BabelShark::InstructionSet((*itEntry).GetSize(), (*itEntry).GetLabel());
 			//tempTree = 

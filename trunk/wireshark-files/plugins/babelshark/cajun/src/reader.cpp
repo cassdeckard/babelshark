@@ -412,6 +412,10 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
       ParseStaticTypeDeclaration(sName, tokenStream);
       token = tokenStream.Peek();
    }
+   else if (token.nType == TOKEN_COMMENT)
+   {
+      MatchExpectedToken(TOKEN_COMMENT, tokenStream);
+   }
    else
    {
       // If the first token is a string, then assume we are parsing a message root.
@@ -437,7 +441,7 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
             break;
 
          case TOKEN_COMMENT:
-            // do nothing
+            // do nothing.
             break;
 
          default:
