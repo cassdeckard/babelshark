@@ -7,6 +7,12 @@ namespace PDI
 		_Size = size;
 	}
 
+   StaticTypeDeclaration::StaticTypeDeclaration(const std::string& label, int size)
+	{
+		_Label = label;
+		_Size = size;
+	}
+
 	// MDD - added to prevent link error
 	StaticTypeDeclaration::StaticTypeDeclaration(const StaticTypeDeclaration& value)
 	{

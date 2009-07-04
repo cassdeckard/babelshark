@@ -7,7 +7,7 @@ dynamictype "&BODY" {
      "Age"        : "UINT 7",
      "IsMale"    : "BOOL 1",
      "Pad"        : "PAD 56"
-  ]
+  ] 1
 
 
 "ListAvatars_Message" : [
