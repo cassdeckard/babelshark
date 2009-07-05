@@ -55,11 +55,10 @@ namespace BabelShark
 	//Will be used to read in data from packet
     unsigned int BoolElement::Interpret(char* buffer)
     {
-        unsigned long intVal = 0;
-        unsigned long intMask = _BitMask.to_ulong();
+       unsigned long long intVal = 0;
 
-       memcpy(&intVal, buffer, _SizeInBytes);
-       intVal &= intMask;
+       memcpy(&intVal, buffer, MIN(_SizeInBytes, sizeof(intVal)));
+       intVal &= _BitMask;
        if (intVal > 0)
        {
           _InterpretedData = "TRUE";

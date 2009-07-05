@@ -22,7 +22,7 @@ namespace BabelShark
 	UintElement::UintElement(unsigned int size, char* name)
 		:InstructionElement(size, name)
 	{
-		_BitMask = SetupBitMask(_Size);
+        _BitMask = SetupBitMask(_Size);
 		_SizeInBytes = DetermineSizeInBytes(size);
 	}
 
@@ -56,11 +56,10 @@ namespace BabelShark
     {
         std::stringstream result;
 
-        unsigned long intVal = 0;
-        unsigned long intMask = _BitMask.to_ulong();
+        unsigned long long intVal = 0;
 
-        memcpy(&intVal, buffer, _SizeInBytes);
-        intVal &= intMask;
+        memcpy(&intVal, buffer, MIN(_SizeInBytes, sizeof(intVal)));
+        intVal &= _BitMask;
         result << intVal;
 
         _InterpretedData = result.str();

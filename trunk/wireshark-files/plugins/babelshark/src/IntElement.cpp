@@ -58,18 +58,18 @@ namespace BabelShark
 	{
         std::stringstream result;
 
-        long intVal = 0;
+        long long intVal = 0;
 
 		// copy data
-        memcpy(&intVal, buffer, _SizeInBytes);
+        memcpy(&intVal, buffer, MIN(_SizeInBytes, sizeof(intVal)));
 
 		// do 2's compliment stuff manually
 		// unless this is already a long, then let compiler do it for us
 		if ( _Size < 32 )
 		{
-			unsigned long negative = 0;
-			unsigned long negMask = _BitMask.to_ulong();
-			unsigned long intMask = _BitMask.to_ulong() >> 1;
+			unsigned long long negative = 0;
+			unsigned long long negMask = _BitMask;
+			unsigned long long intMask = _BitMask >> 1;
 			negMask &= ~intMask;
 
 			negative = intVal & negMask; // get sign bit

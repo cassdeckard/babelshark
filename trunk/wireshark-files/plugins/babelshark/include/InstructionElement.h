@@ -3,7 +3,8 @@
 #ifndef INSTRUCTION_ELEMENT_H
 #define INSTRUCTION_ELEMENT_H
 
-#define BIT_MASK_MAX_SIZE 64
+// gmacros.h used for MIN macro
+#include "glib/gmacros.h"
 
 #include <bitset>
 #include <list>
@@ -67,7 +68,7 @@ namespace BabelShark
               * @return
               *   bitmask to reveal <i>val</i> bytes
               */
-            static std::bitset<BIT_MASK_MAX_SIZE> SetupBitMask(unsigned int val);
+            static unsigned long long SetupBitMask(unsigned int val);
 
             /** A utility function for subclasses whose size is
               * in bits to convert that to bytes to implement the

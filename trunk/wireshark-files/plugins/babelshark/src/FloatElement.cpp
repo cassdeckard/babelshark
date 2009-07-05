@@ -18,7 +18,6 @@ namespace BabelShark
         printf(ss.str().c_str());
         DataDictionary::Instance()->AddVariable(variable, this);
         _Size = ROUND32(_Size);
-        SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
     }
 
@@ -27,7 +26,6 @@ namespace BabelShark
         :InstructionElement(size, name)
     {
         _Size = ROUND32(_Size);
-        SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
     }
 
