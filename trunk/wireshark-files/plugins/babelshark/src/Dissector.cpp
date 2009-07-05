@@ -4,6 +4,8 @@
 #include "Dissector.h"
 #include "DataDictionary.h"
 
+#include "BabelSharkSupport.h"
+
 // Parser includes
 #include "elements.h"
 #include "reader.h"
@@ -306,15 +308,10 @@ namespace BabelShark
 	    {
            return new Instruction(0, "ERR_FILE_NOT_FOUND");
 	    }
-
-	    PDI::Element elemRoot = PDI::DisplayElement();
-	    PDI::Reader::Read(elemRoot, fin);
-
-	    // When the accept function is called, it iterates over every element in the PDI tree.
-	    TreeVisitor treeVisitor(elemRoot.Name());
-	    elemRoot.Accept(treeVisitor);
-
-	    BabelShark::Instruction* pRootInstruction = treeVisitor.GetInstruction();
+		
+		PDI::Element elemRoot = PDI::DisplayElement();
+		PDI::Reader::Read(elemRoot,fin);
+		BabelShark::Instruction* pRootInstruction = PDI::CreateInstructionTreeAndFillDataDictionary(elemRoot, false);
 	    return pRootInstruction;
     }
 

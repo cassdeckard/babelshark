@@ -3,7 +3,7 @@ File : BabelSharkSupport.h
 *************************************************/
 
 #pragma once
-
+#include "Instruction.h"
 
 namespace PDI
 {
@@ -33,6 +33,6 @@ namespace PDI
    * The two paramters passed into this function are needed by the TreeVisitor
    * constructor and accept function.
    ***/
-   void CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen = false);
+   BabelShark::Instruction* CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen = false);
 
 } // End namespace
