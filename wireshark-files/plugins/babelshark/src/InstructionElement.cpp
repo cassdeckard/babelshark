@@ -77,16 +77,12 @@ namespace BabelShark
 		return new NullIterator(this);
 	}
 
-
-    // takes an Input Size and forms a bitmask based on it.
-    std::bitset<BIT_MASK_MAX_SIZE> InstructionElement::SetupBitMask(unsigned int val)
+    unsigned long long InstructionElement::SetupBitMask(unsigned int val)
     {
-        std::bitset<BIT_MASK_MAX_SIZE> result(0);
-		for (size_t bitMaskIndex = 0; bitMaskIndex < val && bitMaskIndex < result.size(); bitMaskIndex++)
-        {
-			result.set(bitMaskIndex, 1);
-        }
-        return result;
+    	unsigned long long result = 0xFFFFFFFF;
+    	if (val > 64) return result;
+    	result = result << val;
+    	return ~result;
     }
 
     // rounds up bit size to byte size

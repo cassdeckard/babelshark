@@ -3,12 +3,7 @@
 #ifndef FLOAT_ELEMENT_H
 #define FLOAT_ELEMENT_H
 
-#include <bitset>
 #include "InstructionElement.h"
-
-#define BIT_MASK_MAX_SIZE 64
-
-
 
 namespace BabelShark
 {
