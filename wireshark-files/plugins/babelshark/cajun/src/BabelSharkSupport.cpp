@@ -42,7 +42,7 @@ namespace PDI
    * The two paramters passed into this function are needed by the TreeVisitor
    * constructor and accept function.
    ***/
-   void CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)
+   BabelShark::Instruction* CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)
    {
       //Create a StaticTypeDeclarationElement and add it to the collection for testing purposes.
       // TODO: Later, when we have the parser updated to parse the file, remove this.
@@ -80,6 +80,8 @@ namespace PDI
 
       //TODO (JULIE) Delete this line later.  This is here so I can see tree that was created.
       BabelShark::Instruction* pRootInstruction = TreeVisitor.GetInstruction();
+
+	  return pRootInstruction;
 
    }
 
