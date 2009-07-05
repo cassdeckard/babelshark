@@ -22,7 +22,7 @@
   ] 1
   
   statictype "&Terminate_Message" [
-     "TimeOnline" : "UINT 64"
+     "TimeOnline" : "PAD 64"
   ] 1
   
   statictype "&Avatar_List_Msg" [
