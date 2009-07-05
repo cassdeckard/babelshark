@@ -130,21 +130,21 @@ namespace BabelShark
         InstructionSet* tempTree;
 
         // BODY dynamic type
-        DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
-        DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
-        DataDictionary::Instance()->AddDynamic("&BODY", "11", "&TEST_MSG");
+        DataDictionary::Instance()->AddDynamic("&BODY_T", "1", "&ACK_T");
+        DataDictionary::Instance()->AddDynamic("&BODY_T", "2", "&INIT_T");
+        DataDictionary::Instance()->AddDynamic("&BODY_T", "11", "&TEST_MSG_T");
 
         // ACK static type
         tempTree = new InstructionSet("1", "Ack");
         tempTree->Add(new UintElement("32", "Status"));
-        DataDictionary::Instance()->AddStatic("&ACK", tempTree);
+        DataDictionary::Instance()->AddStatic("&ACK_T", tempTree);
 
         // INIT static type
         tempTree = new InstructionSet("1", "Init");
         tempTree->Add(new UintElement("7", "Age"));
         tempTree->Add(new BoolElement("1", "Male?"));
         tempTree->Add(new PadElement("56", "Pad"));
-        DataDictionary::Instance()->AddStatic("&INIT", tempTree);
+        DataDictionary::Instance()->AddStatic("&INIT_T", tempTree);
 
         // TEST_MSG static type
         tempTree = new InstructionSet("2", "ArrayTest");
@@ -156,20 +156,20 @@ namespace BabelShark
         tempTree->Add(new UintElement("3", "Bits5To7"));
         InstructionSet* tempTree2 = new InstructionSet("1", "Test Message");
         tempTree2->Add(tempTree);
-        DataDictionary::Instance()->AddStatic("&TEST_MSG", tempTree2);
+        DataDictionary::Instance()->AddStatic("&TEST_MSG_T", tempTree2);
 
         // HEADER static type
         tempTree = new InstructionSet("1", "Header");
-        tempTree->Add(new UintElement("8", "Message ID", "$MSG_ID"));
+        tempTree->Add(new UintElement("8", "Message ID", "$MSG_ID_T"));
         tempTree->Add(new PadElement("8", "Padding"));
         tempTree->Add(new IntElement("16", "Event ID"));
         tempTree->Add(new AsciiElement("16", "Name"));
         tempTree->Add(new PadElement("32", "Padding"));
-        DataDictionary::Instance()->AddStatic("&HEADER", tempTree);
+        DataDictionary::Instance()->AddStatic("&HEADER_T", tempTree);
 
         // build tree to test new functionality
-        _TestInstruction->Add(new AliasedInstruction("1", "Header", "&HEADER"));
-        _TestInstruction->Add(new AliasedInstruction("1", "Body", "&BODY", "$MSG_ID"));
+        _TestInstruction->Add(new AliasedInstruction("1", "Header", "&HEADER_T"));
+        _TestInstruction->Add(new AliasedInstruction("1", "Body", "&BODY_T", "$MSG_ID_T"));
         //_TestAliased = new AliasedInstruction(1, "Body", "&BODY", "$MSG_ID");
 
         // Initialize things
@@ -211,7 +211,7 @@ namespace BabelShark
         for (Iterator* it = in->CreateIterator(); ! it->IsDone(); it->Next())
         {
            Instruction* currentIns = it->CurrentItem();
-           printf("bitOffset for %s is %u\n", currentIns->GetName(), _bitOffset);
+           //printf("bitOffset for %s is %u\n", currentIns->GetName(), _bitOffset);
            if ( _bitOffset > 0 )
            {
               offset -= 1;
