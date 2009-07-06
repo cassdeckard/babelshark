@@ -479,8 +479,9 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
 
    MatchExpectedToken(TOKEN_ARRAY_END, tokenStream);
 
-   // finally, look for the dimension of this array
-   std::string sNumber = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
+   // Finally, look for the dimension of this array.
+   // We are now looking for a string (instead of a number) so we can support variable length arrays.
+   std::string sNumber = MatchExpectedToken(TOKEN_STRING, tokenStream);
 
    array.SetDimension(sNumber);
 }
