@@ -34,8 +34,7 @@ namespace BabelShark
 	class Instruction : public Observer
 	{
 		public:
-            Instruction(unsigned int size, char* name);
-            Instruction(std::string size, std::string name); // new constructor
+            Instruction(std::string size, std::string name);
 			virtual ~Instruction();
 
             /** Interprets incoming packet data.

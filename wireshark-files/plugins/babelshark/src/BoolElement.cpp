@@ -6,42 +6,8 @@
 
 namespace BabelShark
 {
-
-    // OLD AND BUSTED
-    BoolElement::BoolElement(unsigned int size, char* name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "BoolElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _BitMask = SetupBitMask(_Size);
-        _SizeInBytes = DetermineSizeInBytes(size);
-    }
-
-    // OLD AND BUSTED
-    BoolElement::BoolElement(unsigned int size, char* name)
-        :InstructionElement(size, name)
-    {
-        _BitMask = SetupBitMask(_Size);
-        _SizeInBytes = DetermineSizeInBytes(size);
-    }
-
-    // NEW HOTNESS
     BoolElement::BoolElement(std::string size, std::string name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "BoolElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _BitMask = SetupBitMask(_Size);
-        _SizeInBytes = DetermineSizeInBytes(_Size);
-    }
-
-    // NEW HOTNESS
-    BoolElement::BoolElement(std::string size, std::string name)
-        :InstructionElement(size, name)
+        :InstructionElement(size, name, variable)
     {
         _BitMask = SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);

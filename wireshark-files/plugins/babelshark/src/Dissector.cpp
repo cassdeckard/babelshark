@@ -126,7 +126,7 @@ namespace BabelShark
     {
         //printf("Dissector::Test\n _ett: %i\n _proto: %u\n", _ett[0], *_proto);
 
-        _TestInstruction = new InstructionSet(1, "TestProtocol");
+        _TestInstruction = new InstructionSet("1", "TestProtocol");
         InstructionSet* tempTree;
 
         // BODY dynamic type

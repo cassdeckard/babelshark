@@ -7,14 +7,6 @@
 
 namespace BabelShark
 {
-    // OLD AND BUSTED
-	Instruction::Instruction(unsigned int size, char* name)
-		:_Size(size),
-		 _Name(name)
-	{
-	}
-
-    // NEW HOTNESS
     Instruction::Instruction(std::string size, std::string name)
         :_Name(name.c_str()),
          _Size(1)

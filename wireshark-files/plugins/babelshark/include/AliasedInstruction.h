@@ -26,9 +26,7 @@ namespace BabelShark
               * alias and paramName to set its _RealSubject type to point to the correct
               * InstructionSet this AliasedInstruction will serve as a Proxy for.
               */
-            AliasedInstruction(unsigned int size, char* name, std::string alias, std::string paramName = "");
-
-            AliasedInstruction(std::string size, std::string name, std::string alias, std::string paramName = ""); // new constructor
+            AliasedInstruction(std::string size, std::string name, std::string alias, std::string paramName = "");
 
 
 			/** Destructor

@@ -6,29 +6,6 @@
 
 namespace BabelShark
 {
-    // OLD AND BUSTED
-    AliasedInstruction::AliasedInstruction(unsigned int size, char* name, std::string alias, std::string paramName)
-	    : InstructionNode(size, name),
-          _Alias(alias),
-          _ParamName(paramName)
-    {
-        _RealSubject = DATA_DICT.NullInstruction();
-        if (_ParamName.compare("") != 0)
-        {
-            // dynamic type; put in DD initialize list
-            DATA_DICT.ToInitialize(this);
-        }
-        else
-        {
-            // static type; go ahead and initialize
-            std::stringstream ss;
-            DATA_DICT.LookupType(&_RealSubject, _Alias);
-            ss << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}";
-            printf(ss.str().c_str());
-        }
-    }
-
-    // NEW HOTNESS
     AliasedInstruction::AliasedInstruction(std::string size, std::string name, std::string alias, std::string paramName)
         : InstructionNode(size, name),
           _Alias(alias),

@@ -23,11 +23,7 @@ namespace BabelShark
 				calls parent constructor
 				then sets up the bit mask and size in bytes
                 */
-            IntElement(unsigned int size, char* name, std::string variable);
-			IntElement(unsigned int size, char* name);
-
-            IntElement(std::string size, std::string name, std::string variable);
-            IntElement(std::string size, std::string name); // new constructor
+            IntElement(std::string size, std::string name, std::string variable = "");
 
 			/** Destructor
 				Does nothing

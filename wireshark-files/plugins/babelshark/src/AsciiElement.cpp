@@ -2,47 +2,11 @@
 
 #include "AsciiElement.h"
 #include "DataDictionary.h"
-#include <sstream>
 
 namespace BabelShark
 {
-
-	/**
-	 * Constructor for AsciiElement
-	 */
-
-    // OLD AND BUSTED
-    AsciiElement::AsciiElement(unsigned int size, char* name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "AsciiElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _SizeInBytes = size;
-    }
-
-    // OLD AND BUSTED
-    AsciiElement::AsciiElement(unsigned int size, char* name)
-        :InstructionElement(size, name)
-    {
-        _SizeInBytes = size;
-    }
-
-    // NEW HOTNESS
     AsciiElement::AsciiElement(std::string size, std::string name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "UintElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _SizeInBytes = _Size;
-    }
-
-    // NEW HOTNESS
-    AsciiElement::AsciiElement(std::string size, std::string name)
-        :InstructionElement(size, name)
+        :InstructionElement(size, name, variable)
     {
         _SizeInBytes = _Size;
     }
