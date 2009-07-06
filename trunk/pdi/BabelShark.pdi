@@ -1,0 +1,127 @@
+  statictype "&HEADER" [
+     "MessageID" : "UINT 8 $MSG_ID",
+     "Padh"      : "PAD 8",
+     "EventID"   : "UINT 16",
+     "Name"      : "ASCII 16",
+     "Padh2"     : "PAD 32"
+  ] "1"
+  
+  statictype "&Acknowledge_Message" [
+     "Status"    : "UINT 32"
+  ] "1"
+  
+  statictype "&Initialize_Message" [
+     "Age"       : "UINT 7",
+     "IsMale"    : "BOOL 1",
+     "Pad"       : "PAD 56"
+  ] "1"
+  
+  statictype "&Move_Message" [
+     "ToRoom"  : "UINT 16",
+     "Pad"     : "PAD 48"
+  ] "1"
+  
+  statictype "&Terminate_Message" [
+     "TimeOnline" : "UINT 64"
+  ] "1"
+  
+  statictype "&Avatar_List_Msg" [
+     "Room"         : "UINT 16",
+     "NumAvatars"   : "UINT 16 $N_AVS",
+     "SequenceNum"  : "UINT 8",
+     "TotalMsgs"    : "UINT 8",
+     "Padding?"     : "PAD 16",
+     "AvatarList"   : [
+        "Name"   : "ASCII 16"
+     ] "$N_AVS"
+  ] "1"
+  
+  statictype "&Game_List_Msg" [
+     "NumGames"    : "UINT 16 $N_GAMES",
+     "SequenceNum" : "UINT 8",
+     "TotalMsgs"   : "UINT 8",
+     "GameList"    : [
+        "Name"   : "ASCII 16"
+     ] "$N_GAMES"
+  ] "1"
+  
+  statictype "&Room_List_Msg" [
+     "NumRooms" : "UINT 16"
+  ] "1"
+  
+  statictype "&Item_List_Msg" [
+     "NumItems"    : "UINT 16 $N_ITEMS",
+     "SequenceNum" : "UINT 8",
+     "TotalMsgs"   :  " UINT 8",
+     "ItemList"    : [
+        "ItemName"   : "ASCII 16"
+     ] "$N_ITEMS"
+  ] "1"
+  
+  statictype "&Query_Room_Msg" [
+  ] "1"
+
+  statictype "&Query_Games_Msg" [
+  ] "1"
+
+  statictype "&Query_World_Msg" [
+  ] "1"
+
+  statictype "&Query_For_Items_Msg" [
+  ] "1"
+
+  statictype "&Game_Start_Msg" [
+  ] "1"
+
+  statictype "&Game_End_Msg" [
+  ] "1"
+   
+  statictype "&Game_Cmd_Msg" [
+        "Command"   : "ASCII 16"
+  ] "1"
+  
+  statictype "&Drop_Item_Msg" [
+        "ItemName"   : "ASCII 16"
+  ] "1"
+  
+  statictype "&Pickup_Item_Msg" [
+        "ItemName"   : "ASCII 16"
+  ] "1"
+  
+  statictype "&Test_Message" [
+     "ArrayTest" : [
+        "UINT32Test" : "UINT 32",
+        "UINT16Test" : "UINT 16",
+        "INT8Test"   : "INT 8",
+        "Bits0To3"   : "INT 4",
+        "Bit4"       : "BOOL 1",
+        "Bits5To7"   : "UINT 3"
+     ] "2"
+  ] "1"
+  
+  dynamictype "&BODY" {
+     "1 &Acknowledge_Message",
+     "2 &Initialize_Message",
+     "3 &Move_Message",
+     "4 &Terminate_Message",
+     "5 &Query_Room_Msg",
+     "6 &Query_Games_Msg",
+     "7 &Query_World_Msg",
+     "8 &Query_For_Items_Msg",
+     "9 &Avatar_List_Msg",
+     "10 &Game_List_Msg",
+     "11 &Room_List_Msg",
+     "12 &Item_List_Msg",
+     "13 &Game_Start_Msg",
+     "14 &Game_End_Msg",
+     "15 &Game_Cmd_Msg",
+     "16 &Drop_Item_Msg",
+     "17 &Pickup_Item_Msg",
+     "18 &Test_Message"
+  }
+
+  "ClientServer Packet" : [
+     "Header"  : "&HEADER 1",
+     "Body"    : "&BODY($MSG_ID) 1"
+  ] "1"
+  
