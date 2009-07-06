@@ -1,0 +1,7 @@
+"Query_Room_Msg" : [
+   "MessageID" : "UINT 8",
+   "Pad"       : "PAD 8",
+   "EventID"   : "UINT 16",
+   "Name"      : "ASCII 16",
+   "Pad2"      : "PAD 32"
+] 1
