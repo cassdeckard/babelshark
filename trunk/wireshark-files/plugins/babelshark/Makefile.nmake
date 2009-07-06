@@ -4,11 +4,6 @@
 # $Id$
 #
 
-#ADDED BY DAN AND SHOULD BE REMOVED LATER
-#####################################
-copy {.\cajun\test}\babelshark.pdi C:\
-#####################################
-
 include ..\..\config.nmake
 include moduleinfo.nmake
 
