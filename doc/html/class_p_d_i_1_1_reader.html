@@ -65,6 +65,10 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html#6e13a7e40bf9600d1723bbce272959bf">Parse</a> (<a class="el" href="class_p_d_i_1_1_array.html">Array</a> &amp;array, <a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a> &amp;tokenStream)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html#63d1e7bc422eaf61332551250a90e01f">ParseDynamicTypeDeclaration</a> (const std::string &amp;sName, <a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">Reader::TokenStream</a> &amp;tokenStream)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html#c94d8dc23f58375f7fb74b54c877d159">ParseStaticTypeDeclaration</a> (const std::string &amp;sName, <a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">Reader::TokenStream</a> &amp;tokenStream)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html#5048ad841c69dd11f3bb22b4bebeb6d1">Parse</a> (<a class="el" href="class_p_d_i_1_1_display_element.html">DisplayElement</a> &amp;string, <a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a> &amp;tokenStream)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_reader.html#3674e1f18d932ac3785811e1a1c69c0f">Parse</a> (<a class="el" href="class_p_d_i_1_1_null.html">Null</a> &amp;null, <a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">TokenStream</a> &amp;tokenStream)</td></tr>
@@ -386,6 +390,64 @@
 parsing token sequence into element structure 
 </div>
 </div><p>
+<a class="anchor" name="63d1e7bc422eaf61332551250a90e01f"></a><!-- doxytag: member="PDI::Reader::ParseDynamicTypeDeclaration" ref="63d1e7bc422eaf61332551250a90e01f" args="(const std::string &amp;sName, Reader::TokenStream &amp;tokenStream)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PDI::Reader::ParseDynamicTypeDeclaration           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>sName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">Reader::TokenStream</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>tokenStream</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c94d8dc23f58375f7fb74b54c877d159"></a><!-- doxytag: member="PDI::Reader::ParseStaticTypeDeclaration" ref="c94d8dc23f58375f7fb74b54c877d159" args="(const std::string &amp;sName, Reader::TokenStream &amp;tokenStream)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PDI::Reader::ParseStaticTypeDeclaration           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>sName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_p_d_i_1_1_reader_1_1_token_stream.html">Reader::TokenStream</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>tokenStream</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="f4bd913b90e3e0c8e7c0b38579a0f357"></a><!-- doxytag: member="PDI::Reader::Read" ref="f4bd913b90e3e0c8e7c0b38579a0f357" args="(Element &amp;elementRoot, std::istream &amp;istr)" -->
 <div class="memitem">
 <div class="memproto">
@@ -447,7 +509,7 @@ scanning istream into token sequence
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="reader_8h_source.html">reader.h</a><li><a class="el" href="reader_8cpp.html">reader.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:51 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:40 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

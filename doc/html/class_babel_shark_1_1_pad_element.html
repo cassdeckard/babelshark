@@ -32,8 +32,10 @@ Inheritance diagram for BabelShark::PadElement:</div>
 
 <p><center><img src="class_babel_shark_1_1_pad_element.png" usemap="#BabelShark::PadElement_map" border="0" alt=""></center>
 <map name="BabelShark::PadElement_map">
-<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="0,56,185,80">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,185,24">
+<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="97,112,282,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,56,185,80">
+<area href="class_babel_shark_1_1_subject.html" alt="BabelShark::Subject" shape="rect" coords="195,56,380,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,185,24">
 </map>
 </div>
 
@@ -41,32 +43,38 @@ Inheritance diagram for BabelShark::PadElement:</div>
 <a href="class_babel_shark_1_1_pad_element-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_pad_element.html#6d2289309a00458a98301a95d9c0d180">PadElement</a> (unsigned int size, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_pad_element.html#ec991912c73c0526eb7f8768ef957aae">PadElement</a> (std::string size, std::string name, std::string variable=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_pad_element.html#5790e609a9f2c5206f9fdd0a81ab3a0c">~PadElement</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_pad_element.html#06d4d9d5aca06773f994b794114bb093">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_pad_element.html#e5199954cada5900ee4364d22ecedfee">Interpret</a> (char *buffer)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_pad_element.html#aa1ddf32a942c6ea6c63eefe67f2521d">Display</a> ()</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Design Pattern Used: Composite Class: <a class="el" href="class_babel_shark_1_1_pad_element.html">PadElement</a> Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> One of the Leaf(s) in the Composite Structure. Processes Pad type elements <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="6d2289309a00458a98301a95d9c0d180"></a><!-- doxytag: member="BabelShark::PadElement::PadElement" ref="6d2289309a00458a98301a95d9c0d180" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="ec991912c73c0526eb7f8768ef957aae"></a><!-- doxytag: member="BabelShark::PadElement::PadElement" ref="ec991912c73c0526eb7f8768ef957aae" args="(std::string size, std::string name, std::string variable=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::PadElement::PadElement           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>variable</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -122,12 +130,12 @@ Display Print the name and the interpreted data
 
 </div>
 </div><p>
-<a class="anchor" name="06d4d9d5aca06773f994b794114bb093"></a><!-- doxytag: member="BabelShark::PadElement::Interpret" ref="06d4d9d5aca06773f994b794114bb093" args="(char *buffer)" -->
+<a class="anchor" name="e5199954cada5900ee4364d22ecedfee"></a><!-- doxytag: member="BabelShark::PadElement::Interpret" ref="e5199954cada5900ee4364d22ecedfee" args="(char *buffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BabelShark::PadElement::Interpret           </td>
+          <td class="memname">unsigned int BabelShark::PadElement::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -140,14 +148,14 @@ Display Print the name and the interpreted data
 
 <p>
 Interpret Reads in data from packet Throws away the contents, just sets interpreted data to "X bits of padding" 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">BabelShark::InstructionElement</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#bab7cb98a7c3d474ecea0f0ffb3fc1e0">BabelShark::InstructionElement</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_pad_element_8h_source.html">PadElement.h</a><li><a class="el" href="_pad_element_8cpp.html">PadElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:46 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:37 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

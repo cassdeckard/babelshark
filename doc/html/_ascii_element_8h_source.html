@@ -21,11 +21,11 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_e3dfa3d67927086a3c802b6a879a1792.html">include</a>
+  <div class="navpath"><a class="el" href="dir_e748473a93f63cfb7f473c1d449168ea.html">include</a>
   </div>
 </div>
 <div class="contents">
-<h1>AsciiElement.h</h1><a href="_ascii_element_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: AsciiElement.h 75 2009-06-17 04:47:56Z thegordonemail@gmail.com $</span>
+<h1>AsciiElement.h</h1><a href="_ascii_element_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: AsciiElement.h 194 2009-07-06 03:56:25Z histumness $</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef ASCII_ELEMENT_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define ASCII_ELEMENT_H</span>
@@ -40,11 +40,11 @@
 <a name="l00020"></a><a class="code" href="class_babel_shark_1_1_ascii_element.html">00020</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_ascii_element.html">AsciiElement</a>: <span class="keyword">public</span> <a class="code" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a>
 <a name="l00021"></a>00021         {
 <a name="l00022"></a>00022                 <span class="keyword">public</span>:
-<a name="l00026"></a>00026                         <a class="code" href="class_babel_shark_1_1_ascii_element.html#d634e18161b86d3f0da9215606c6ce24">AsciiElement</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">char</span>* name);
+<a name="l00026"></a>00026             <a class="code" href="class_babel_shark_1_1_ascii_element.html#f1957c2a86f1d1aec5a6c5c7d8f5a804">AsciiElement</a>(std::string size, std::string name, std::string variable = <span class="stringliteral">""</span>);
 <a name="l00027"></a>00027 
 <a name="l00031"></a>00031                         <a class="code" href="class_babel_shark_1_1_ascii_element.html#066a61d5d3f348ebc35d8c29de080e05">~AsciiElement</a>();
 <a name="l00032"></a>00032 
-<a name="l00037"></a>00037                         <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_ascii_element.html#452958c460980a70b80d02b659c11057">Interpret</a>(<span class="keywordtype">char</span>* buffer);
+<a name="l00037"></a>00037             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_ascii_element.html#ef69ab1540cb584412ebd4afcbd4bb05">Interpret</a>(<span class="keywordtype">char</span>* buffer);
 <a name="l00038"></a>00038 
 <a name="l00043"></a>00043                         <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_ascii_element.html#a10391d6cea4ab7ad45be370fed9d4d0">Display</a>();
 <a name="l00044"></a>00044                 <span class="keyword">private</span>:
@@ -55,7 +55,7 @@
 <a name="l00054"></a>00054 
 <a name="l00055"></a>00055 <span class="preprocessor">#endif //ASCII_ELEMENT_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:38 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:23 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

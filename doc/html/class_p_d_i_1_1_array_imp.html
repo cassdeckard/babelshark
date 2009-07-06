@@ -44,8 +44,6 @@ Inheritance diagram for PDI::ArrayImp:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp_1_1_finder.html">Finder</a></td></tr>
 
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#9321a7adb9c1104332789e4b0a848a3f">ArrayImp</a> ()</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">Array::iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#42c041637655d7b22dd25e2ded11e593">Begin</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">Array::iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#f586e06b4c8aa7dabcabbbcbcbf31aa4">End</a> ()</td></tr>
@@ -58,9 +56,9 @@ Inheritance diagram for PDI::ArrayImp:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#f2267b5d08009fe1fcd7b981306ca10b">Empty</a> () const </td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#329cebf4cb01ecf5e4c0dc162e02275a">Dimension</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const std::string &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#78b0abfe38d1666c332a6ddd1aa1068f">Dimension</a> () const </td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#055b671cf025fbb90934fd8ba5bc9918">SetDimension</a> (size_t nDimension)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#a00460b697bfab51d72cd14cfd8406ea">SetDimension</a> (const std::string &amp;sDimension)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_array.html#ea216852e304c9b15049c0e595378d1d">Array::iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#bbb8d18587fd1744554b8090b10b8ebb">Find</a> (const std::string &amp;name)</td></tr>
 
@@ -79,29 +77,9 @@ Inheritance diagram for PDI::ArrayImp:</div>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_p_d_i_1_1_array.html#033a904ed48718f6531f260830e2ed3e">Array::Members</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#71b861ce867666b8efdf582b3f2e05c3">m_Members</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#ec36f413d8439fec66bdb9072e95868d">m_nDimension</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_array_imp.html#6153c05cb1c8f24672350f8ef209d072">m_sDimension</a></td></tr>
 
 </table>
-<hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="9321a7adb9c1104332789e4b0a848a3f"></a><!-- doxytag: member="PDI::ArrayImp::ArrayImp" ref="9321a7adb9c1104332789e4b0a848a3f" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PDI::ArrayImp::ArrayImp           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="654604fca0ac6af51d7a0335e5f4e440"></a><!-- doxytag: member="PDI::ArrayImp::Begin" ref="654604fca0ac6af51d7a0335e5f4e440" args="() const " -->
 <div class="memitem">
@@ -160,12 +138,12 @@ Inheritance diagram for PDI::ArrayImp:</div>
 
 </div>
 </div><p>
-<a class="anchor" name="329cebf4cb01ecf5e4c0dc162e02275a"></a><!-- doxytag: member="PDI::ArrayImp::Dimension" ref="329cebf4cb01ecf5e4c0dc162e02275a" args="() const " -->
+<a class="anchor" name="78b0abfe38d1666c332a6ddd1aa1068f"></a><!-- doxytag: member="PDI::ArrayImp::Dimension" ref="78b0abfe38d1666c332a6ddd1aa1068f" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t PDI::ArrayImp::Dimension           </td>
+          <td class="memname">const std::string&amp; PDI::ArrayImp::Dimension           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -365,15 +343,15 @@ Inheritance diagram for PDI::ArrayImp:</div>
 
 </div>
 </div><p>
-<a class="anchor" name="055b671cf025fbb90934fd8ba5bc9918"></a><!-- doxytag: member="PDI::ArrayImp::SetDimension" ref="055b671cf025fbb90934fd8ba5bc9918" args="(size_t nDimension)" -->
+<a class="anchor" name="a00460b697bfab51d72cd14cfd8406ea"></a><!-- doxytag: member="PDI::ArrayImp::SetDimension" ref="a00460b697bfab51d72cd14cfd8406ea" args="(const std::string &amp;sDimension)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void PDI::ArrayImp::SetDimension           </td>
           <td>(</td>
-          <td class="paramtype">size_t&nbsp;</td>
-          <td class="paramname"> <em>nDimension</em>          </td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>sDimension</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -420,12 +398,12 @@ Inheritance diagram for PDI::ArrayImp:</div>
 
 </div>
 </div><p>
-<a class="anchor" name="ec36f413d8439fec66bdb9072e95868d"></a><!-- doxytag: member="PDI::ArrayImp::m_nDimension" ref="ec36f413d8439fec66bdb9072e95868d" args="" -->
+<a class="anchor" name="6153c05cb1c8f24672350f8ef209d072"></a><!-- doxytag: member="PDI::ArrayImp::m_sDimension" ref="6153c05cb1c8f24672350f8ef209d072" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="class_p_d_i_1_1_array_imp.html#ec36f413d8439fec66bdb9072e95868d">PDI::ArrayImp::m_nDimension</a><code> [private]</code>          </td>
+          <td class="memname">std::string <a class="el" href="class_p_d_i_1_1_array_imp.html#6153c05cb1c8f24672350f8ef209d072">PDI::ArrayImp::m_sDimension</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -438,7 +416,7 @@ Inheritance diagram for PDI::ArrayImp:</div>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="elements_8cpp.html">elements.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:54 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:43 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

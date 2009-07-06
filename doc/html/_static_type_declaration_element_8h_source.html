@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_1ab4b99b93d881e8bdbf45b9b7bf969e.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_49e1ccad9726d4968bf70f31d6f0c7b2.html">include</a>
+  <div class="navpath"><a class="el" href="dir_695d018eef480f4777bdebbf7259bb64.html">cajun</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_7211984e619e727b60b8e91402bf6742.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -37,31 +37,25 @@
 <a name="l00026"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html">00026</a>         <span class="keyword">class </span><a class="code" href="class_p_d_i_1_1_static_type_declaration.html">StaticTypeDeclaration</a> : <span class="keyword">public</span> <a class="code" href="class_p_d_i_1_1_array.html">Array</a>
 <a name="l00027"></a>00027         {
 <a name="l00028"></a>00028                 <span class="keyword">public</span>:
-<a name="l00029"></a>00029                         <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#181299143540c5ba51a336130f64055b">StaticTypeDeclaration</a>(<span class="keywordtype">char</span>* label, <span class="keywordtype">int</span> size);
+<a name="l00029"></a>00029                         <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#8eaea7e5bc70cf9a7b664b0f758054d2">StaticTypeDeclaration</a>(<span class="keyword">const</span> std::string&amp; label, <span class="keywordtype">int</span> size);
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031                         <span class="comment">//copy constructor</span>
-<a name="l00032"></a>00032                         <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#181299143540c5ba51a336130f64055b">StaticTypeDeclaration</a>(<span class="keyword">const</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html">StaticTypeDeclaration</a>&amp; value);
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034                         <span class="comment">//simple destructor</span>
-<a name="l00035"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#f550c3df77686d5730bdeef10379d723">00035</a>                         <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#f550c3df77686d5730bdeef10379d723">~StaticTypeDeclaration</a>()
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037                         <span class="comment">//member variable Set functions</span>
-<a name="l00038"></a>00038                         void SetLabel(<span class="keywordtype">char</span>* input){<a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">_Label</a> = input;}
-<a name="l00039"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#00f7f0530116882d12094ec688960d94">00039</a>                         <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#00f7f0530116882d12094ec688960d94">SetSize</a>(<span class="keywordtype">int</span> size){<a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">_Size</a> = size;}
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041                         <span class="comment">//member variable Get functions</span>
-<a name="l00042"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#b311c48fb2c31d3ccca253ce281d8dc1">00042</a>                         <span class="keywordtype">char</span>* <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#b311c48fb2c31d3ccca253ce281d8dc1">GetLabel</a>(){ <span class="keywordflow">return</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">_Label</a>.c_str();}
-<a name="l00043"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#2ec48c4a0cf8dec4d1a816085f10f716">00043</a>                         <span class="keywordtype">int</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#2ec48c4a0cf8dec4d1a816085f10f716">GetSize</a>() { <span class="keywordflow">return</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">_Size</a>;}
+<a name="l00031"></a>00031                         <span class="comment">//member variable Set functions</span>
+<a name="l00032"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#ad16762e2b680b950b3b663d26fc2936">00032</a>          <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#ad16762e2b680b950b3b663d26fc2936">SetLabel</a>(<span class="keyword">const</span> std::string&amp; input){<a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">_Label</a> = input;}
+<a name="l00033"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#00f7f0530116882d12094ec688960d94">00033</a>                         <span class="keywordtype">void</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#00f7f0530116882d12094ec688960d94">SetSize</a>(<span class="keywordtype">int</span> size){<a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">_Size</a> = size;}
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035                         <span class="comment">//member variable Get functions</span>
+<a name="l00036"></a>00036          <span class="keyword">const</span> std::string&amp; <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#de1c13f041383f22137ef5762eead53c">GetLabel</a>() <span class="keyword">const</span>;
+<a name="l00037"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#2ec48c4a0cf8dec4d1a816085f10f716">00037</a>                         <span class="keywordtype">int</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#2ec48c4a0cf8dec4d1a816085f10f716">GetSize</a>() { <span class="keywordflow">return</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">_Size</a>;}
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039                 <span class="keyword">private</span>:
+<a name="l00040"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">00040</a>                         std::string <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">_Label</a>;
+<a name="l00041"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">00041</a>                         <span class="keywordtype">int</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">_Size</a>;
+<a name="l00042"></a>00042         };
+<a name="l00043"></a>00043 }
 <a name="l00044"></a>00044 
-<a name="l00045"></a>00045                 <span class="keyword">private</span>:
-<a name="l00046"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">00046</a>                         std::string <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#c4ad7e612b46873cae82f8a52c3f8f77">_Label</a>;
-<a name="l00047"></a><a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">00047</a>                         <span class="keywordtype">int</span> <a class="code" href="class_p_d_i_1_1_static_type_declaration.html#47342780796b90e386a023a3be14b986">_Size</a>;
-<a name="l00048"></a>00048         }
-<a name="l00049"></a>00049 }
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="preprocessor">#endif //STATIC_TYPE_DEFINITION_H</span>
+<a name="l00045"></a>00045 <span class="preprocessor">#endif //STATIC_TYPE_DEFINITION_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:39 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:23 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

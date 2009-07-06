@@ -42,9 +42,13 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#64ceaa81e2445c9ec2b22414cbfaeefa">Test</a> ()</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#5b01cca23560981a5a53ac3769d661a2">ParseInstructions</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#d14ef2cf57e75ee3f79e0778b34cbae7">DissectInstructions</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#66ee08a103c633c06db4f4cdf39fcdb1">ParseSet</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#1777e66f46828c8b3fe6c1bc54a8c86f">DissectSet</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#019ab1e3229248b376221ebe41c32b54">ShiftBits</a> (char *buffer, unsigned int size, unsigned int offset)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#b047bb5c6d3b18db7d89538d9bcf796b">ParsePDI</a> (std::string inFile)</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#8d058b8f7eead87ca33baad9026e0d10">_RootInstruction</a></td></tr>
@@ -56,6 +60,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#56096f7e3bc9e1c7f531e5792f26a87e">_protoName</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#d67c1e3353a186387e51770ce697ffdd">_nameChanged</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#ef487f300df401d984e0e9e40edcb867">_bitOffset</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html">AliasedInstruction</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dissector.html#21beffca1a62fbba5944048558749134">_TestAliased</a></td></tr>
 
@@ -166,12 +172,12 @@ In its constructor, <a class="el" href="class_babel_shark_1_1_dissector.html">Di
 
 </div>
 </div><p>
-<a class="anchor" name="5b01cca23560981a5a53ac3769d661a2"></a><!-- doxytag: member="BabelShark::Dissector::ParseInstructions" ref="5b01cca23560981a5a53ac3769d661a2" args="(Instruction *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)" -->
+<a class="anchor" name="d14ef2cf57e75ee3f79e0778b34cbae7"></a><!-- doxytag: member="BabelShark::Dissector::DissectInstructions" ref="d14ef2cf57e75ee3f79e0778b34cbae7" args="(Instruction *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BabelShark::Dissector::ParseInstructions           </td>
+          <td class="memname">void BabelShark::Dissector::DissectInstructions           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *&nbsp;</td>
           <td class="paramname"> <em>in</em>, </td>
@@ -210,7 +216,7 @@ In its constructor, <a class="el" href="class_babel_shark_1_1_dissector.html">Di
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_babel_shark_1_1_dissector.html#5b01cca23560981a5a53ac3769d661a2">ParseInstructions()</a> uses all of the children of an <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to interpret packet data and attach it to Wireshark's protocol tree. After using the <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to interpret data, it determines if it has any children and calls <a class="el" href="class_babel_shark_1_1_dissector.html#66ee08a103c633c06db4f4cdf39fcdb1">ParseSet()</a> on it if so.<p>
+<a class="el" href="class_babel_shark_1_1_dissector.html#d14ef2cf57e75ee3f79e0778b34cbae7">DissectInstructions()</a> uses all of the children of an <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to interpret packet data and attach it to Wireshark's protocol tree. After using the <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to interpret data, it determines if it has any children and calls <a class="el" href="class_babel_shark_1_1_dissector.html#1777e66f46828c8b3fe6c1bc54a8c86f">DissectSet()</a> on it if so.<p>
 NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -224,12 +230,12 @@ NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
 
 </div>
 </div><p>
-<a class="anchor" name="66ee08a103c633c06db4f4cdf39fcdb1"></a><!-- doxytag: member="BabelShark::Dissector::ParseSet" ref="66ee08a103c633c06db4f4cdf39fcdb1" args="(Instruction *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)" -->
+<a class="anchor" name="1777e66f46828c8b3fe6c1bc54a8c86f"></a><!-- doxytag: member="BabelShark::Dissector::DissectSet" ref="1777e66f46828c8b3fe6c1bc54a8c86f" args="(Instruction *in, tvbuff_t *tvb, proto_tree *tree, char *buffer, gint &amp;offset)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BabelShark::Dissector::ParseSet           </td>
+          <td class="memname">void BabelShark::Dissector::DissectSet           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *&nbsp;</td>
           <td class="paramname"> <em>in</em>, </td>
@@ -268,7 +274,7 @@ NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
 <div class="memdoc">
 
 <p>
-<a class="el" href="class_babel_shark_1_1_dissector.html#66ee08a103c633c06db4f4cdf39fcdb1">ParseSet()</a> interprets packet data of an aggregate <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> type. It creates a subtree in Wireshark's protocol tree for the node, then recursively calls <a class="el" href="class_babel_shark_1_1_dissector.html#5b01cca23560981a5a53ac3769d661a2">ParseInstructions()</a> on the children of the node, attaching them to the new subtree. This is a two-part recursion as <a class="el" href="class_babel_shark_1_1_dissector.html#66ee08a103c633c06db4f4cdf39fcdb1">ParseSet()</a> is itself called by <a class="el" href="class_babel_shark_1_1_dissector.html#5b01cca23560981a5a53ac3769d661a2">ParseInstructions()</a>.<p>
+<a class="el" href="class_babel_shark_1_1_dissector.html#1777e66f46828c8b3fe6c1bc54a8c86f">DissectSet()</a> interprets packet data of an aggregate <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> type. It creates a subtree in Wireshark's protocol tree for the node, then recursively calls <a class="el" href="class_babel_shark_1_1_dissector.html#d14ef2cf57e75ee3f79e0778b34cbae7">DissectInstructions()</a> on the children of the node, attaching them to the new subtree. This is a two-part recursion as <a class="el" href="class_babel_shark_1_1_dissector.html#1777e66f46828c8b3fe6c1bc54a8c86f">DissectSet()</a> is itself called by <a class="el" href="class_babel_shark_1_1_dissector.html#d14ef2cf57e75ee3f79e0778b34cbae7">DissectInstructions()</a>.<p>
 NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -279,6 +285,26 @@ NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
     <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>the byte offset marking our place in the packet dissection </td></tr>
   </table>
 </dl>
+
+</div>
+</div><p>
+<a class="anchor" name="b047bb5c6d3b18db7d89538d9bcf796b"></a><!-- doxytag: member="BabelShark::Dissector::ParsePDI" ref="b047bb5c6d3b18db7d89538d9bcf796b" args="(std::string inFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> * BabelShark::Dissector::ParsePDI           </td>
+          <td>(</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>inFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
 
 </div>
 </div><p>
@@ -308,6 +334,43 @@ NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
 
 </div>
 </div><p>
+<a class="anchor" name="019ab1e3229248b376221ebe41c32b54"></a><!-- doxytag: member="BabelShark::Dissector::ShiftBits" ref="019ab1e3229248b376221ebe41c32b54" args="(char *buffer, unsigned int size, unsigned int offset)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * BabelShark::Dissector::ShiftBits           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>offset</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+This is the ever important code to handle shared bytes This code allows for a user to define a UINT 7 bit and a bool 1 bit immediately following so that it only takes up one byte of transmission space.
+</div>
+</div><p>
 <a class="anchor" name="64ceaa81e2445c9ec2b22414cbfaeefa"></a><!-- doxytag: member="BabelShark::Dissector::Test" ref="64ceaa81e2445c9ec2b22414cbfaeefa" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -328,6 +391,21 @@ NOTE: Do we need to pass in buffer if we're already passing in tvb?<p>
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="ef487f300df401d984e0e9e40edcb867"></a><!-- doxytag: member="BabelShark::Dissector::_bitOffset" ref="ef487f300df401d984e0e9e40edcb867" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_babel_shark_1_1_dissector.html#ef487f300df401d984e0e9e40edcb867">BabelShark::Dissector::_bitOffset</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="e4093cf8c4a376f1720c6a293d7aea9b"></a><!-- doxytag: member="BabelShark::Dissector::_ett" ref="e4093cf8c4a376f1720c6a293d7aea9b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -436,7 +514,7 @@ TODO: REMOVE
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_dissector_8h_source.html">Dissector.h</a><li><a class="el" href="_dissector_8cpp.html">Dissector.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:41 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:33 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

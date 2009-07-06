@@ -32,7 +32,8 @@ Inheritance diagram for BabelShark::DynamicDefinition:</div>
 
 <p><center><img src="class_babel_shark_1_1_dynamic_definition.png" usemap="#BabelShark::DynamicDefinition_map" border="0" alt=""></center>
 <map name="BabelShark::DynamicDefinition_map">
-<area href="class_babel_shark_1_1_type_definition.html" alt="BabelShark::TypeDefinition" shape="rect" coords="0,0,185,24">
+<area href="class_babel_shark_1_1_type_definition.html" alt="BabelShark::TypeDefinition" shape="rect" coords="0,56,185,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,185,24">
 </map>
 </div>
 
@@ -40,19 +41,19 @@ Inheritance diagram for BabelShark::DynamicDefinition:</div>
 <a href="class_babel_shark_1_1_dynamic_definition-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#968e256d7c70a67deb671ee6b9d30e8f">DynamicDefinition</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type, std::string parameter)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#1cbb6a6144d65cc167e095b8826904cf">DynamicDefinition</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type=NULL, std::string parameter=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#b57fe22ca4ae13fb505f183e1461edb4">~DynamicDefinition</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#e3cfd04b77e05033b4f3cdf48f7645ef">Fetch</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> **target, <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *parameter)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#418f6e1d00108e6d864ea5224761dc91">Add</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type, std::string parameter)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#c1e681ef9241214036ddc22f71f34e66">Add</a> (<a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a> *typeDef, std::string parameter)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#af2a3cb0e0f26031e0225b1dbe2ff70e">Update</a> (<a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *subject)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#ef27e4f7d3eaebb9222b05d74c75633c">Update</a> (<a class="el" href="class_babel_shark_1_1_subject.html">Subject</a> *subject)</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; std::string, <br class="typebreak">
-<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#ae664a4709a5a2228201ff23bf35dc22">_Definitions</a></td></tr>
+<a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#684fd2519d58f8b22450b686d0f590ca">_Definitions</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> <br class="typebreak">
 *, <a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> ** &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_dynamic_definition.html#08da79bc3ae347c9450f54e74049429d">_Subjects</a></td></tr>
@@ -61,9 +62,9 @@ Inheritance diagram for BabelShark::DynamicDefinition:</div>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <a class="el" href="class_babel_shark_1_1_dynamic_definition.html">DynamicDefinition</a> is a subclass of <a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a> that contains a dynamic reference to a mapping of InstructionSets.<p>
 <b>Pattern roles:</b><ul>
-<li>Observer::Observer </li></ul>
+<li><a class="el" href="class_babel_shark_1_1_observer.html#3363d593c19bc5bd3afb3f9f2d5fe9c6">Observer::Observer</a> </li></ul>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="968e256d7c70a67deb671ee6b9d30e8f"></a><!-- doxytag: member="BabelShark::DynamicDefinition::DynamicDefinition" ref="968e256d7c70a67deb671ee6b9d30e8f" args="(InstructionNode *type, std::string parameter)" -->
+<a class="anchor" name="1cbb6a6144d65cc167e095b8826904cf"></a><!-- doxytag: member="BabelShark::DynamicDefinition::DynamicDefinition" ref="1cbb6a6144d65cc167e095b8826904cf" args="(InstructionNode *type=NULL, std::string parameter=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -71,13 +72,13 @@ Inheritance diagram for BabelShark::DynamicDefinition:</div>
           <td class="memname">BabelShark::DynamicDefinition::DynamicDefinition           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
+          <td class="paramname"> <em>type</em> = <code>NULL</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>parameter</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>parameter</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -89,7 +90,7 @@ Inheritance diagram for BabelShark::DynamicDefinition:</div>
 <div class="memdoc">
 
 <p>
-Constructor Essentially, an inital call to <a class="el" href="class_babel_shark_1_1_dynamic_definition.html#418f6e1d00108e6d864ea5224761dc91">Add()</a> 
+Constructor 
 </div>
 </div><p>
 <a class="anchor" name="b57fe22ca4ae13fb505f183e1461edb4"></a><!-- doxytag: member="BabelShark::DynamicDefinition::~DynamicDefinition" ref="b57fe22ca4ae13fb505f183e1461edb4" args="()" -->
@@ -112,15 +113,15 @@ Constructor Essentially, an inital call to <a class="el" href="class_babel_shark
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="418f6e1d00108e6d864ea5224761dc91"></a><!-- doxytag: member="BabelShark::DynamicDefinition::Add" ref="418f6e1d00108e6d864ea5224761dc91" args="(InstructionNode *type, std::string parameter)" -->
+<a class="anchor" name="c1e681ef9241214036ddc22f71f34e66"></a><!-- doxytag: member="BabelShark::DynamicDefinition::Add" ref="c1e681ef9241214036ddc22f71f34e66" args="(TypeDefinition *typeDef, std::string parameter)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void BabelShark::DynamicDefinition::Add           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
+          <td class="paramtype"><a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a> *&nbsp;</td>
+          <td class="paramname"> <em>typeDef</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -146,7 +147,7 @@ Add adds a value-type pair to the definition.<p>
   </table>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#011a5cb6a9eed2c4f9c490c297e55d58">BabelShark::TypeDefinition</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#7a88003c5d1a74e9052bd683e2cd3b0a">BabelShark::TypeDefinition</a>.</p>
 
 </div>
 </div><p>
@@ -184,18 +185,18 @@ Fetch sets the supplied InstructionNode* to point to this type's <a class="el" h
   </table>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#b2658cb4e6f1ec71d52b9eba5edea979">BabelShark::TypeDefinition</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#4f7472d27f73ecad95bf45d827a98f72">BabelShark::TypeDefinition</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="af2a3cb0e0f26031e0225b1dbe2ff70e"></a><!-- doxytag: member="BabelShark::DynamicDefinition::Update" ref="af2a3cb0e0f26031e0225b1dbe2ff70e" args="(InstructionElement *subject)" -->
+<a class="anchor" name="ef27e4f7d3eaebb9222b05d74c75633c"></a><!-- doxytag: member="BabelShark::DynamicDefinition::Update" ref="ef27e4f7d3eaebb9222b05d74c75633c" args="(Subject *subject)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void BabelShark::DynamicDefinition::Update           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *&nbsp;</td>
+          <td class="paramtype"><a class="el" href="class_babel_shark_1_1_subject.html">Subject</a> *&nbsp;</td>
           <td class="paramname"> <em>subject</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [virtual]</code></td>
@@ -215,17 +216,17 @@ Update is called by an observed <a class="el" href="class_babel_shark_1_1_instru
   </table>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#a89a78c3ba5b6d720bf8ce71f1ea9e40">BabelShark::TypeDefinition</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_observer.html#06c0b3c6b98f3703444461ef6f77a067">BabelShark::Observer</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="ae664a4709a5a2228201ff23bf35dc22"></a><!-- doxytag: member="BabelShark::DynamicDefinition::_Definitions" ref="ae664a4709a5a2228201ff23bf35dc22" args="" -->
+<a class="anchor" name="684fd2519d58f8b22450b686d0f590ca"></a><!-- doxytag: member="BabelShark::DynamicDefinition::_Definitions" ref="684fd2519d58f8b22450b686d0f590ca" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string, <a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>*&gt; <a class="el" href="class_babel_shark_1_1_dynamic_definition.html#ae664a4709a5a2228201ff23bf35dc22">BabelShark::DynamicDefinition::_Definitions</a><code> [private]</code>          </td>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a>*&gt; <a class="el" href="class_babel_shark_1_1_dynamic_definition.html#684fd2519d58f8b22450b686d0f590ca">BabelShark::DynamicDefinition::_Definitions</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -253,7 +254,7 @@ _Subjects Mapping of watched variables to the type associated with their current
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_dynamic_definition_8h_source.html">DynamicDefinition.h</a><li><a class="el" href="_dynamic_definition_8cpp.html">DynamicDefinition.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:41 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:33 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

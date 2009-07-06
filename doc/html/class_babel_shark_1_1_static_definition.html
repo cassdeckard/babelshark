@@ -32,7 +32,8 @@ Inheritance diagram for BabelShark::StaticDefinition:</div>
 
 <p><center><img src="class_babel_shark_1_1_static_definition.png" usemap="#BabelShark::StaticDefinition_map" border="0" alt=""></center>
 <map name="BabelShark::StaticDefinition_map">
-<area href="class_babel_shark_1_1_type_definition.html" alt="BabelShark::TypeDefinition" shape="rect" coords="0,0,167,24">
+<area href="class_babel_shark_1_1_type_definition.html" alt="BabelShark::TypeDefinition" shape="rect" coords="0,56,167,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,167,24">
 </map>
 </div>
 
@@ -40,11 +41,13 @@ Inheritance diagram for BabelShark::StaticDefinition:</div>
 <a href="class_babel_shark_1_1_static_definition-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#0e07d0ddd88737f67c6dd9715c910712">StaticDefinition</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type, std::string parameter)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#dd85ae2a0a44cbd2065adc9c764af35f">StaticDefinition</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type=NULL, std::string parameter=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#ac92a727518376d1b5113f3750ef92b6">~StaticDefinition</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#853c058e8e4c08310ddd67c70ec76d7d">Fetch</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> **target, <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *parameter)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#3639c86b3043af727e93bdd5cf7bc179">Fetch</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> **target, <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *parameter=NULL)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#6dc7c9a3bc360cf42e0ff795ec5a18d4">Define</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type)</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_static_definition.html#f073ace75a78b10849f62349a397ce16">_Definition</a></td></tr>
@@ -52,7 +55,7 @@ Inheritance diagram for BabelShark::StaticDefinition:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <a class="el" href="class_babel_shark_1_1_static_definition.html">StaticDefinition</a> is a simple subclass of <a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a> that contains a static reference to an <a class="el" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a>. <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="0e07d0ddd88737f67c6dd9715c910712"></a><!-- doxytag: member="BabelShark::StaticDefinition::StaticDefinition" ref="0e07d0ddd88737f67c6dd9715c910712" args="(InstructionNode *type, std::string parameter)" -->
+<a class="anchor" name="dd85ae2a0a44cbd2065adc9c764af35f"></a><!-- doxytag: member="BabelShark::StaticDefinition::StaticDefinition" ref="dd85ae2a0a44cbd2065adc9c764af35f" args="(InstructionNode *type=NULL, std::string parameter=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -60,13 +63,13 @@ Inheritance diagram for BabelShark::StaticDefinition:</div>
           <td class="memname">BabelShark::StaticDefinition::StaticDefinition           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
+          <td class="paramname"> <em>type</em> = <code>NULL</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>parameter</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>parameter</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -101,7 +104,35 @@ Constructor Saves given <a class="el" href="class_babel_shark_1_1_instruction_no
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="853c058e8e4c08310ddd67c70ec76d7d"></a><!-- doxytag: member="BabelShark::StaticDefinition::Fetch" ref="853c058e8e4c08310ddd67c70ec76d7d" args="(InstructionNode **target, InstructionElement *parameter)" -->
+<a class="anchor" name="6dc7c9a3bc360cf42e0ff795ec5a18d4"></a><!-- doxytag: member="BabelShark::StaticDefinition::Define" ref="6dc7c9a3bc360cf42e0ff795ec5a18d4" args="(InstructionNode *type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BabelShark::StaticDefinition::Define           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td>
+          <td class="paramname"> <em>type</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Define is only used by static definitions. It is used to change the definition<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>InstructionNode* that represents this static definition </td></tr>
+  </table>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#943dc0f781247854e69ea310aa6f5d06">BabelShark::TypeDefinition</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3639c86b3043af727e93bdd5cf7bc179"></a><!-- doxytag: member="BabelShark::StaticDefinition::Fetch" ref="3639c86b3043af727e93bdd5cf7bc179" args="(InstructionNode **target, InstructionElement *parameter=NULL)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -115,7 +146,7 @@ Constructor Saves given <a class="el" href="class_babel_shark_1_1_instruction_no
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *&nbsp;</td>
-          <td class="paramname"> <em>parameter</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>parameter</em> = <code>NULL</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -135,7 +166,7 @@ Fetch sets the supplied InstructionNode* to point to this type's <a class="el" h
   </table>
 </dl>
 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#b2658cb4e6f1ec71d52b9eba5edea979">BabelShark::TypeDefinition</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_type_definition.html#4f7472d27f73ecad95bf45d827a98f72">BabelShark::TypeDefinition</a>.</p>
 
 </div>
 </div><p>
@@ -158,7 +189,7 @@ _Definition The <a class="el" href="class_babel_shark_1_1_instruction_node.html"
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_static_definition_8h_source.html">StaticDefinition.h</a><li><a class="el" href="_static_definition_8cpp.html">StaticDefinition.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:46 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:37 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

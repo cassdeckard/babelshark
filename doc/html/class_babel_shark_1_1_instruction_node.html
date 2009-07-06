@@ -32,9 +32,10 @@ Inheritance diagram for BabelShark::InstructionNode:</div>
 
 <p><center><img src="class_babel_shark_1_1_instruction_node.png" usemap="#BabelShark::InstructionNode_map" border="0" alt=""></center>
 <map name="BabelShark::InstructionNode_map">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="96,0,279,24">
-<area href="class_babel_shark_1_1_aliased_instruction.html" alt="BabelShark::AliasedInstruction" shape="rect" coords="0,112,183,136">
-<area href="class_babel_shark_1_1_instruction_set.html" alt="BabelShark::InstructionSet" shape="rect" coords="193,112,376,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="96,56,279,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="96,0,279,24">
+<area href="class_babel_shark_1_1_aliased_instruction.html" alt="BabelShark::AliasedInstruction" shape="rect" coords="0,168,183,192">
+<area href="class_babel_shark_1_1_instruction_set.html" alt="BabelShark::InstructionSet" shape="rect" coords="193,168,376,192">
 </map>
 </div>
 
@@ -42,7 +43,7 @@ Inheritance diagram for BabelShark::InstructionNode:</div>
 <a href="class_babel_shark_1_1_instruction_node-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#e013edec6e9a802a0354ad9cff203b69">InstructionNode</a> (unsigned int size, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#97800743348382d9c132aaef82db6e5f">InstructionNode</a> (std::string size, std::string name)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#ec13d4e7b027e4f26d4c69f6964914ae">~InstructionNode</a> ()</td></tr>
 
@@ -50,7 +51,7 @@ Inheritance diagram for BabelShark::InstructionNode:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#d7500068a0aed517f6ce5fe94cfb00cd">Add</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#0d7ac9dcf71a37fa59d57f9f3fda48ac">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#6fbf1f170d7f919b1f40a8eb8ea9ea14">Interpret</a> (char *buffer)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_node.html#c0c9ec6f0c7a023aca9652e5efdeff68">Display</a> ()</td></tr>
 
@@ -63,20 +64,20 @@ Inheritance diagram for BabelShark::InstructionNode:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Class: <a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> Design Pattern Used: Composite The Composite portion of the Composite pattern. This is an abstract class that every composite <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> type will inherit from. <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="e013edec6e9a802a0354ad9cff203b69"></a><!-- doxytag: member="BabelShark::InstructionNode::InstructionNode" ref="e013edec6e9a802a0354ad9cff203b69" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="97800743348382d9c132aaef82db6e5f"></a><!-- doxytag: member="BabelShark::InstructionNode::InstructionNode" ref="97800743348382d9c132aaef82db6e5f" args="(std::string size, std::string name)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::InstructionNode::InstructionNode           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -178,7 +179,7 @@ CreateIterator This is taking the part of the ConcreteList in the iterator patte
 Display For the instruction set this just prints out the name of the set the printing out of the names/content of the children will be handled by the dissector calling the display function one at a time for each child 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#a1d1dd6ff30235fd6842fcf4204f7698">BabelShark::Instruction</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#03144ca2466719759c7c86b642b8f914">BabelShark::AliasedInstruction</a>, and <a class="el" href="class_babel_shark_1_1_instruction_set.html#8456f55059620a8a971b3f1f39d62fc0">BabelShark::InstructionSet</a>.</p>
+<p>Reimplemented in <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7bf65b279afff8c799f69ec483b1936c">BabelShark::AliasedInstruction</a>, and <a class="el" href="class_babel_shark_1_1_instruction_set.html#8456f55059620a8a971b3f1f39d62fc0">BabelShark::InstructionSet</a>.</p>
 
 </div>
 </div><p>
@@ -229,12 +230,12 @@ GetSizeInBytes Returns the sum of calling GetSizeInBytes on all children Overrid
 
 </div>
 </div><p>
-<a class="anchor" name="0d7ac9dcf71a37fa59d57f9f3fda48ac"></a><!-- doxytag: member="BabelShark::InstructionNode::Interpret" ref="0d7ac9dcf71a37fa59d57f9f3fda48ac" args="(char *buffer)" -->
+<a class="anchor" name="6fbf1f170d7f919b1f40a8eb8ea9ea14"></a><!-- doxytag: member="BabelShark::InstructionNode::Interpret" ref="6fbf1f170d7f919b1f40a8eb8ea9ea14" args="(char *buffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void BabelShark::InstructionNode::Interpret           </td>
+          <td class="memname">virtual unsigned int BabelShark::InstructionNode::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -247,9 +248,9 @@ GetSizeInBytes Returns the sum of calling GetSizeInBytes on all children Overrid
 
 <p>
 Interpret Currently an empty function since the dissector will just look directly at the children 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#bfbceb493d151b2e255c7c8cbac7a476">BabelShark::Instruction</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#1a5ef9dd6e6df3b719c5d7bf4158b0e6">BabelShark::Instruction</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#aab7f2338eff453c3eda7b8abb84670f">BabelShark::AliasedInstruction</a>, and <a class="el" href="class_babel_shark_1_1_instruction_set.html#4d4c66b375e0f15de7775b295e15b558">BabelShark::InstructionSet</a>.</p>
+<p>Reimplemented in <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7912f5769c1b41a386701413ea3e9dec">BabelShark::AliasedInstruction</a>, and <a class="el" href="class_babel_shark_1_1_instruction_set.html#1f0639c982c3f5b9b22f73b08af9f3aa">BabelShark::InstructionSet</a>.</p>
 
 </div>
 </div><p>
@@ -279,7 +280,7 @@ NumSubTrees Returns the sum of calling NumSubTrees on all children Override the 
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_instruction_node_8h_source.html">InstructionNode.h</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:43 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:35 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

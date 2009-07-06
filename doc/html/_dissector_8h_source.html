@@ -21,11 +21,11 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_e3dfa3d67927086a3c802b6a879a1792.html">include</a>
+  <div class="navpath"><a class="el" href="dir_e748473a93f63cfb7f473c1d449168ea.html">include</a>
   </div>
 </div>
 <div class="contents">
-<h1>Dissector.h</h1><a href="_dissector_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: Dissector.h 93 2009-06-18 02:14:49Z histumness $</span>
+<h1>Dissector.h</h1><a href="_dissector_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: Dissector.h 172 2009-07-02 14:57:36Z histumness $</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef DISSECTOR_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define DISSECTOR_H</span>
@@ -47,58 +47,66 @@
 <a name="l00020"></a>00020 
 <a name="l00021"></a>00021 <span class="comment">// TODO: Remove all of these</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include "<a class="code" href="_aliased_instruction_8h.html">AliasedInstruction.h</a>"</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="_uint_element_8h.html">UintElement.h</a>"</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include "<a class="code" href="_bool_element_8h.html">BoolElement.h</a>"</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include "<a class="code" href="_pad_element_8h.html">PadElement.h</a>"</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include "<a class="code" href="_float_element_8h.html">FloatElement.h</a>"</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include "<a class="code" href="_int_element_8h.html">IntElement.h</a>"</span>
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">namespace </span>BabelShark
-<a name="l00030"></a>00030 {
-<a name="l00042"></a><a class="code" href="class_babel_shark_1_1_dissector.html">00042</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_dissector.html">Dissector</a>
-<a name="l00043"></a>00043         {
-<a name="l00044"></a>00044                 <span class="keyword">public</span>:
-<a name="l00056"></a>00056             <a class="code" href="class_babel_shark_1_1_dissector.html#58251765e8cdd8e140901c1d2d98c882">Dissector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* inFile, <span class="keywordtype">int</span>* proto);
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058             <a class="code" href="class_babel_shark_1_1_dissector.html#f1bdd832d65a948d7e148650a1a48a8f">~Dissector</a>();
-<a name="l00059"></a>00059 
-<a name="l00070"></a>00070             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#bd6aaeb31ab6735c47075d2880c41e95">ReparseTree</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* inFile);
-<a name="l00071"></a>00071 
-<a name="l00085"></a>00085             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#b0bc01fa1d8c676b0879c95397744156">Dissect</a>(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree);
-<a name="l00086"></a>00086 
-<a name="l00092"></a>00092             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#64ceaa81e2445c9ec2b22414cbfaeefa">Test</a>();
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094                 <span class="keyword">private</span>:
-<a name="l00115"></a>00115             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#5b01cca23560981a5a53ac3769d661a2">ParseInstructions</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* in,
-<a name="l00116"></a>00116                                    tvbuff_t *tvb,
-<a name="l00117"></a>00117                                    proto_tree *tree,
-<a name="l00118"></a>00118                                    <span class="keywordtype">char</span>* buffer,
-<a name="l00119"></a>00119                                    gint &amp;offset);
-<a name="l00120"></a>00120 
-<a name="l00143"></a>00143             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#66ee08a103c633c06db4f4cdf39fcdb1">ParseSet</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* in,
-<a name="l00144"></a>00144                           tvbuff_t *tvb,
-<a name="l00145"></a>00145                           proto_tree *tree,
-<a name="l00146"></a>00146                           <span class="keywordtype">char</span>* buffer,
-<a name="l00147"></a>00147                           gint &amp;offset);
-<a name="l00148"></a>00148 
-<a name="l00151"></a><a class="code" href="class_babel_shark_1_1_dissector.html#8d058b8f7eead87ca33baad9026e0d10">00151</a>             <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#8d058b8f7eead87ca33baad9026e0d10">_RootInstruction</a>;
+<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="_ascii_element_8h.html">AsciiElement.h</a>"</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include "<a class="code" href="_uint_element_8h.html">UintElement.h</a>"</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include "<a class="code" href="_bool_element_8h.html">BoolElement.h</a>"</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include "<a class="code" href="_pad_element_8h.html">PadElement.h</a>"</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include "<a class="code" href="_float_element_8h.html">FloatElement.h</a>"</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include "<a class="code" href="_int_element_8h.html">IntElement.h</a>"</span>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">namespace </span>BabelShark
+<a name="l00031"></a>00031 {
+<a name="l00043"></a><a class="code" href="class_babel_shark_1_1_dissector.html">00043</a>         <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_dissector.html">Dissector</a>
+<a name="l00044"></a>00044         {
+<a name="l00045"></a>00045                 <span class="keyword">public</span>:
+<a name="l00057"></a>00057             <a class="code" href="class_babel_shark_1_1_dissector.html#58251765e8cdd8e140901c1d2d98c882">Dissector</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* inFile, <span class="keywordtype">int</span>* proto);
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059             <a class="code" href="class_babel_shark_1_1_dissector.html#f1bdd832d65a948d7e148650a1a48a8f">~Dissector</a>();
+<a name="l00060"></a>00060 
+<a name="l00071"></a>00071             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#bd6aaeb31ab6735c47075d2880c41e95">ReparseTree</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* inFile);
+<a name="l00072"></a>00072 
+<a name="l00086"></a>00086             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#b0bc01fa1d8c676b0879c95397744156">Dissect</a>(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree);
+<a name="l00087"></a>00087 
+<a name="l00093"></a>00093             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#64ceaa81e2445c9ec2b22414cbfaeefa">Test</a>();
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095                 <span class="keyword">private</span>:
+<a name="l00116"></a>00116             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#d14ef2cf57e75ee3f79e0778b34cbae7">DissectInstructions</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* in,
+<a name="l00117"></a>00117                                    tvbuff_t *tvb,
+<a name="l00118"></a>00118                                    proto_tree *tree,
+<a name="l00119"></a>00119                                    <span class="keywordtype">char</span>* buffer,
+<a name="l00120"></a>00120                                    gint &amp;offset);
+<a name="l00121"></a>00121 
+<a name="l00144"></a>00144             <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_dissector.html#1777e66f46828c8b3fe6c1bc54a8c86f">DissectSet</a>(<a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* in,
+<a name="l00145"></a>00145                           tvbuff_t *tvb,
+<a name="l00146"></a>00146                           proto_tree *tree,
+<a name="l00147"></a>00147                           <span class="keywordtype">char</span>* buffer,
+<a name="l00148"></a>00148                           gint &amp;offset);
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151             <span class="keywordtype">char</span>* <a class="code" href="class_babel_shark_1_1_dissector.html#019ab1e3229248b376221ebe41c32b54">ShiftBits</a>(<span class="keywordtype">char</span>* buffer, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> offset);
 <a name="l00152"></a>00152 
-<a name="l00155"></a><a class="code" href="class_babel_shark_1_1_dissector.html#6d87d5189cec74a32e0ae5a403f4048a">00155</a>             <span class="keywordtype">int</span>*         <a class="code" href="class_babel_shark_1_1_dissector.html#6d87d5189cec74a32e0ae5a403f4048a">_proto</a>;
-<a name="l00156"></a>00156 
-<a name="l00159"></a><a class="code" href="class_babel_shark_1_1_dissector.html#e4093cf8c4a376f1720c6a293d7aea9b">00159</a>             gint**       <a class="code" href="class_babel_shark_1_1_dissector.html#e4093cf8c4a376f1720c6a293d7aea9b">_ett</a>;
-<a name="l00160"></a>00160 
-<a name="l00163"></a><a class="code" href="class_babel_shark_1_1_dissector.html#56096f7e3bc9e1c7f531e5792f26a87e">00163</a>             std::string  <a class="code" href="class_babel_shark_1_1_dissector.html#56096f7e3bc9e1c7f531e5792f26a87e">_protoName</a>;
-<a name="l00164"></a>00164 
-<a name="l00168"></a><a class="code" href="class_babel_shark_1_1_dissector.html#d67c1e3353a186387e51770ce697ffdd">00168</a>             <span class="keywordtype">bool</span>         <a class="code" href="class_babel_shark_1_1_dissector.html#d67c1e3353a186387e51770ce697ffdd">_nameChanged</a>;
-<a name="l00169"></a>00169 
-<a name="l00171"></a><a class="code" href="class_babel_shark_1_1_dissector.html#21beffca1a62fbba5944048558749134">00171</a>             <a class="code" href="class_babel_shark_1_1_aliased_instruction.html">AliasedInstruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#21beffca1a62fbba5944048558749134">_TestAliased</a>;
-<a name="l00172"></a><a class="code" href="class_babel_shark_1_1_dissector.html#84445db61d046dd1238d2a4eedf9ebca">00172</a>             <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#84445db61d046dd1238d2a4eedf9ebca">_TestInstruction</a>;
-<a name="l00173"></a>00173         };
-<a name="l00174"></a>00174 }
+<a name="l00153"></a>00153             <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#b047bb5c6d3b18db7d89538d9bcf796b">ParsePDI</a>(std::string inFile);
+<a name="l00154"></a>00154 
+<a name="l00157"></a><a class="code" href="class_babel_shark_1_1_dissector.html#8d058b8f7eead87ca33baad9026e0d10">00157</a>             <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#8d058b8f7eead87ca33baad9026e0d10">_RootInstruction</a>;
+<a name="l00158"></a>00158 
+<a name="l00161"></a><a class="code" href="class_babel_shark_1_1_dissector.html#6d87d5189cec74a32e0ae5a403f4048a">00161</a>             <span class="keywordtype">int</span>*         <a class="code" href="class_babel_shark_1_1_dissector.html#6d87d5189cec74a32e0ae5a403f4048a">_proto</a>;
+<a name="l00162"></a>00162 
+<a name="l00165"></a><a class="code" href="class_babel_shark_1_1_dissector.html#e4093cf8c4a376f1720c6a293d7aea9b">00165</a>             gint**       <a class="code" href="class_babel_shark_1_1_dissector.html#e4093cf8c4a376f1720c6a293d7aea9b">_ett</a>;
+<a name="l00166"></a>00166 
+<a name="l00169"></a><a class="code" href="class_babel_shark_1_1_dissector.html#56096f7e3bc9e1c7f531e5792f26a87e">00169</a>             std::string  <a class="code" href="class_babel_shark_1_1_dissector.html#56096f7e3bc9e1c7f531e5792f26a87e">_protoName</a>;
+<a name="l00170"></a>00170 
+<a name="l00174"></a><a class="code" href="class_babel_shark_1_1_dissector.html#d67c1e3353a186387e51770ce697ffdd">00174</a>             <span class="keywordtype">bool</span>         <a class="code" href="class_babel_shark_1_1_dissector.html#d67c1e3353a186387e51770ce697ffdd">_nameChanged</a>;
 <a name="l00175"></a>00175 
-<a name="l00176"></a>00176 <span class="preprocessor">#endif //DISSECTOR_H</span>
+<a name="l00176"></a><a class="code" href="class_babel_shark_1_1_dissector.html#ef487f300df401d984e0e9e40edcb867">00176</a>             <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_babel_shark_1_1_dissector.html#ef487f300df401d984e0e9e40edcb867">_bitOffset</a>;
+<a name="l00177"></a>00177 
+<a name="l00179"></a><a class="code" href="class_babel_shark_1_1_dissector.html#21beffca1a62fbba5944048558749134">00179</a>             <a class="code" href="class_babel_shark_1_1_aliased_instruction.html">AliasedInstruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#21beffca1a62fbba5944048558749134">_TestAliased</a>;
+<a name="l00180"></a><a class="code" href="class_babel_shark_1_1_dissector.html#84445db61d046dd1238d2a4eedf9ebca">00180</a>             <a class="code" href="class_babel_shark_1_1_instruction.html">Instruction</a>* <a class="code" href="class_babel_shark_1_1_dissector.html#84445db61d046dd1238d2a4eedf9ebca">_TestInstruction</a>;
+<a name="l00181"></a>00181         };
+<a name="l00182"></a>00182 }
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 <span class="preprocessor">#endif //DISSECTOR_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:38 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:23 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

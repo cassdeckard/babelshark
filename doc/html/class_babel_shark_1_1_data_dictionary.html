@@ -26,7 +26,16 @@
   </div>
 </div>
 <div class="contents">
-<h1>BabelShark::DataDictionary Class Reference</h1><!-- doxytag: class="BabelShark::DataDictionary" -->
+<h1>BabelShark::DataDictionary Class Reference</h1><!-- doxytag: class="BabelShark::DataDictionary" --><!-- doxytag: inherits="Singleton&lt; DataDictionary &gt;" --><div class="dynheader">
+Inheritance diagram for BabelShark::DataDictionary:</div>
+<div class="dynsection">
+
+<p><center><img src="class_babel_shark_1_1_data_dictionary.png" usemap="#BabelShark::DataDictionary_map" border="0" alt=""></center>
+<map name="BabelShark::DataDictionary_map">
+<area href="class_singleton.html" alt="Singleton< DataDictionary >" shape="rect" coords="0,0,172,24">
+</map>
+</div>
+
 <p>
 <a href="class_babel_shark_1_1_data_dictionary-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
@@ -35,19 +44,17 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#bda5fdd3b62d34b94fc85971c1693f7b">AddStatic</a> (std::string alias, <a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *type)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#d720901ccc2a33cc0d4cb111cd570124">AddDynamic</a> (std::string alias, std::string value, std::string typeName, std::string typeParamName=&quot;&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#89cd37e875f922f6f5f3261625d19d75">AddDynamic</a> (std::string alias, std::string value, std::string typeName)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#05f51c3b47f0ce4f3f3b3a0131a9951c">LookupType</a> (<a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> **target, std::string alias, <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *parameter=NULL)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#465cb10dc759ec32c96c6e7aa01bb598">LookupVariable</a> (std::string alias)</td></tr>
 
-<tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#7d9e73732e91a68601be65ea678d9622">Instance</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#c7d46a98b4fe91c170355a715ab121e2">ToInitialize</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *instruction)</td></tr>
 
-<tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#9ebdc55fa05cad5fda478858806eb465">DataDictionary</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#8712ddf8ce5198e7de80c6d3ab49482d">Initialize</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#12f8a49b32ea7605f7ad8a64147929c3">~DataDictionary</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#fae68196a5fba67dbddd4af09fe146ec">NullInstruction</a> ()</td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; std::string, <br class="typebreak">
@@ -56,58 +63,20 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::map&lt; std::string, <br class="typebreak">
 <a class="el" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#26557c81cee5be89144a2eae7ee6b528">_Types</a></td></tr>
 
-<tr><td colspan="2"><br><h2>Static Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#ad0aa44cb89f2831575a49ac5ee6cee0">_Instance</a> = NULL</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::list&lt; <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> * &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#f5d8a058aea9cbbbc6e515dd9366c3f8">_ToInitialize</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_data_dictionary.html#0653a240f6475c82cb754024d697ae96">_NullInstruction</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> acts as a single point of reference for globally defined data Instructions depend upon. This includes:<ul>
 <li>Static type definitions</li><li>Dynamic type definitions</li><li>Protocol variables</li></ul>
 <p>
-It implements the <a class="el" href="class_singleton.html" title="Implements the Singleton pattern (see Design Patterns - GoF).">Singleton</a> pattern, so its constructor is protected and cannot be accessed directly. To make calls to the <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>, the static <a class="el" href="class_babel_shark_1_1_data_dictionary.html#7d9e73732e91a68601be65ea678d9622">Instance()</a> method is used to retrieve a reference to the single instantiation of the class.<p>
+It implements the <a class="el" href="class_singleton.html" title="Implements the Singleton pattern (see Design Patterns - GoF).">Singleton</a> pattern, so its constructor is protected and cannot be accessed directly. To make calls to the <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>, the static <a class="el" href="class_singleton.html#e964c691466fe19748161bdc3b21097f">Instance()</a> method is used to retrieve a reference to the single instantiation of the class.<p>
 <b>Pattern roles:</b><ul>
 <li>Singleton::Singleton </li></ul>
-<hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="9ebdc55fa05cad5fda478858806eb465"></a><!-- doxytag: member="BabelShark::DataDictionary::DataDictionary" ref="9ebdc55fa05cad5fda478858806eb465" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">BabelShark::DataDictionary::DataDictionary           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-DataDictionary's constructor is only called by its static <a class="el" href="class_babel_shark_1_1_data_dictionary.html#7d9e73732e91a68601be65ea678d9622">Instance()</a> method when the instance has not yet been created. 
-</div>
-</div><p>
-<a class="anchor" name="12f8a49b32ea7605f7ad8a64147929c3"></a><!-- doxytag: member="BabelShark::DataDictionary::~DataDictionary" ref="12f8a49b32ea7605f7ad8a64147929c3" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">BabelShark::DataDictionary::~DataDictionary           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="d720901ccc2a33cc0d4cb111cd570124"></a><!-- doxytag: member="BabelShark::DataDictionary::AddDynamic" ref="d720901ccc2a33cc0d4cb111cd570124" args="(std::string alias, std::string value, std::string typeName, std::string typeParamName=&quot;&quot;)" -->
+<a class="anchor" name="89cd37e875f922f6f5f3261625d19d75"></a><!-- doxytag: member="BabelShark::DataDictionary::AddDynamic" ref="89cd37e875f922f6f5f3261625d19d75" args="(std::string alias, std::string value, std::string typeName)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -127,13 +96,7 @@ DataDictionary's constructor is only called by its static <a class="el" href="cl
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>typeName</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>typeParamName</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
+          <td class="paramname"> <em>typeName</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -154,7 +117,6 @@ AddDynamic adds a part of the declaration of a dynamic type to the <a class="el"
     <tr><td valign="top"></td><td valign="top"><em>alias</em>&nbsp;</td><td>the label of the type we're adding to (usually starting with '&amp;') </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>the value half of the value-type pair being added </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>typeName</em>&nbsp;</td><td>the alias of the type half of the value-type pair being added </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>typeParamName</em>&nbsp;</td><td>(not used yet) the type's parameter name, if it is a dynamic type </td></tr>
   </table>
 </dl>
 
@@ -225,7 +187,11 @@ AddStatic adds a declaration of a static type to the <a class="el" href="class_b
 <div class="memdoc">
 
 <p>
-AddVariable adds a declaration of a protocol variable to the <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>. A protocol variable is stored as a pointer to the variable's associated <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a>.<p>
+Instance returns reference to single instantiation of the <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>, creating it if need be.<p>
+<b>Pattern roles:</b><ul>
+<li><a class="el" href="class_singleton.html#e964c691466fe19748161bdc3b21097f" title="Returns the SingletonHelper&#39;s class instance.">Singleton::Instance</a></li></ul>
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>instance of <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> AddVariable adds a declaration of a protocol variable to the <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>. A protocol variable is stored as a pointer to the variable's associated <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a>.</dd></dl>
 <b>Pattern roles:</b><ul>
 <li>Singleton::SingletonOperation()</li></ul>
 <p>
@@ -238,28 +204,23 @@ AddVariable adds a declaration of a protocol variable to the <a class="el" href=
 
 </div>
 </div><p>
-<a class="anchor" name="7d9e73732e91a68601be65ea678d9622"></a><!-- doxytag: member="BabelShark::DataDictionary::Instance" ref="7d9e73732e91a68601be65ea678d9622" args="()" -->
+<a class="anchor" name="8712ddf8ce5198e7de80c6d3ab49482d"></a><!-- doxytag: member="BabelShark::DataDictionary::Initialize" ref="8712ddf8ce5198e7de80c6d3ab49482d" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> * BabelShark::DataDictionary::Instance           </td>
+          <td class="memname">void BabelShark::DataDictionary::Initialize           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [static]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Instance returns reference to single instantiation of the <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>, creating it if need be.<p>
-<b>Pattern roles:</b><ul>
-<li><a class="el" href="class_singleton.html#e964c691466fe19748161bdc3b21097f" title="Returns the SingletonHelper&#39;s class instance.">Singleton::Instance</a></li></ul>
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>instance of <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> </dd></dl>
-
+Initialize calls <a class="el" href="class_babel_shark_1_1_data_dictionary.html#8712ddf8ce5198e7de80c6d3ab49482d">Initialize()</a> on all of the Instructions in our initialization list 
 </div>
 </div><p>
 <a class="anchor" name="05f51c3b47f0ce4f3f3b3a0131a9951c"></a><!-- doxytag: member="BabelShark::DataDictionary::LookupType" ref="05f51c3b47f0ce4f3f3b3a0131a9951c" args="(InstructionNode **target, std::string alias, InstructionElement *parameter=NULL)" -->
@@ -338,23 +299,80 @@ LookupVariable looks up the requested variable name and returns the <a class="el
 
 </div>
 </div><p>
-<hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="ad0aa44cb89f2831575a49ac5ee6cee0"></a><!-- doxytag: member="BabelShark::DataDictionary::_Instance" ref="ad0aa44cb89f2831575a49ac5ee6cee0" args="" -->
+<a class="anchor" name="fae68196a5fba67dbddd4af09fe146ec"></a><!-- doxytag: member="BabelShark::DataDictionary::NullInstruction" ref="fae68196a5fba67dbddd4af09fe146ec" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a> * <a class="el" href="class_babel_shark_1_1_data_dictionary.html#ad0aa44cb89f2831575a49ac5ee6cee0">BabelShark::DataDictionary::_Instance</a> = NULL<code> [static, private]</code>          </td>
+          <td class="memname"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* BabelShark::DataDictionary::NullInstruction           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-_Instance stores the reference to the single instantiation of <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>.<p>
-<b>Pattern roles:</b><ul>
-<li>Singleton::uniqueInstance </li></ul>
 
+</div>
+</div><p>
+<a class="anchor" name="c7d46a98b4fe91c170355a715ab121e2"></a><!-- doxytag: member="BabelShark::DataDictionary::ToInitialize" ref="c7d46a98b4fe91c170355a715ab121e2" args="(Instruction *instruction)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BabelShark::DataDictionary::ToInitialize           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *&nbsp;</td>
+          <td class="paramname"> <em>instruction</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ToInitialize adds an <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> to the list of things that need to be initialized after all <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> objects have been instantiated<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>instruction</em>&nbsp;</td><td>instruction to add to the initialization list </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="0653a240f6475c82cb754024d697ae96"></a><!-- doxytag: member="BabelShark::DataDictionary::_NullInstruction" ref="0653a240f6475c82cb754024d697ae96" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* <a class="el" href="class_babel_shark_1_1_data_dictionary.html#0653a240f6475c82cb754024d697ae96">BabelShark::DataDictionary::_NullInstruction</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f5d8a058aea9cbbbc6e515dd9366c3f8"></a><!-- doxytag: member="BabelShark::DataDictionary::_ToInitialize" ref="f5d8a058aea9cbbbc6e515dd9366c3f8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt;<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a>*&gt; <a class="el" href="class_babel_shark_1_1_data_dictionary.html#f5d8a058aea9cbbbc6e515dd9366c3f8">BabelShark::DataDictionary::_ToInitialize</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+_ToInitialize is a list of Instructions that need to be initialized 
 </div>
 </div><p>
 <a class="anchor" name="26557c81cee5be89144a2eae7ee6b528"></a><!-- doxytag: member="BabelShark::DataDictionary::_Types" ref="26557c81cee5be89144a2eae7ee6b528" args="" -->
@@ -387,7 +405,10 @@ _Types stores the mapping of aliases to type definitions.<p>
 <div class="memdoc">
 
 <p>
-_Variables stores the mapping of aliases to protocol variables<p>
+DataDictionary's constructor is only called by its static <a class="el" href="class_singleton.html#e964c691466fe19748161bdc3b21097f">Instance()</a> method when the instance has not yet been created. _Instance stores the reference to the single instantiation of <a class="el" href="class_babel_shark_1_1_data_dictionary.html">DataDictionary</a>.<p>
+<b>Pattern roles:</b><ul>
+<li>Singleton::uniqueInstance _Variables stores the mapping of aliases to protocol variables</li></ul>
+<p>
 <b>Pattern roles:</b><ul>
 <li>Singleton::singletonData </li></ul>
 
@@ -396,7 +417,7 @@ _Variables stores the mapping of aliases to protocol variables<p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_data_dictionary_8h_source.html">DataDictionary.h</a><li><a class="el" href="_data_dictionary_8cpp.html">DataDictionary.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:41 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:33 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

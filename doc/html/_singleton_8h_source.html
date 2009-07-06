@@ -21,7 +21,7 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_e3dfa3d67927086a3c802b6a879a1792.html">include</a>
+  <div class="navpath"><a class="el" href="dir_e748473a93f63cfb7f473c1d449168ea.html">include</a>
   </div>
 </div>
 <div class="contents">
@@ -40,7 +40,7 @@
 <a name="l00028"></a>00028    <span class="keyword">class </span><a class="code" href="class_singleton_1_1_singleton_helper.html">SingletonHelper</a>;
 <a name="l00029"></a>00029 
 <a name="l00030"></a>00030    <span class="keyword">static</span> T&amp; <a class="code" href="class_singleton.html#e964c691466fe19748161bdc3b21097f" title="Returns the SingletonHelper&amp;#39;s class instance.">Instance</a>();
-<a name="l00031"></a>00031    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release it&amp;#39;s instance, if it has one.">Release</a>();
+<a name="l00031"></a>00031    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release its instance, if it has one.">Release</a>();
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033    <a class="code" href="class_singleton.html#419cb266d6544d6c72c8e55418a1db21">__declspec</a>(noinline) <span class="keyword">static</span> <a class="code" href="class_singleton_1_1_singleton_helper.html">SingletonHelper</a>&amp; HelperInstance();
 <a name="l00034"></a>00034 
@@ -60,7 +60,7 @@
 <a name="l00059"></a>00059       ~<a class="code" href="class_singleton_1_1_singleton_helper.html">SingletonHelper</a>();
 <a name="l00060"></a>00060       
 <a name="l00061"></a>00061       T* <a class="code" href="class_singleton.html#e964c691466fe19748161bdc3b21097f" title="Returns the SingletonHelper&amp;#39;s class instance.">Instance</a>();
-<a name="l00062"></a>00062       <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release it&amp;#39;s instance, if it has one.">Release</a>();
+<a name="l00062"></a>00062       <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release its instance, if it has one.">Release</a>();
 <a name="l00063"></a>00063             
 <a name="l00064"></a>00064    <span class="keyword">private</span>:
 <a name="l00065"></a><a class="code" href="class_singleton_1_1_singleton_helper.html#64b2212bd832b9abd3b9edf48d55ceff">00065</a>       T* <span class="keyword">volatile</span> m_pObjPtr;
@@ -80,7 +80,7 @@
 <a name="l00085"></a>00085 <span class="comment">//==============================================================================</span>
 <a name="l00092"></a>00092 <span class="comment"></span><span class="comment">//==============================================================================</span>
 <a name="l00093"></a>00093 <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;
-<a name="l00094"></a><a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18">00094</a> <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release it&amp;#39;s instance, if it has one.">Singleton&lt;T&gt;::Release</a>()
+<a name="l00094"></a><a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18">00094</a> <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release its instance, if it has one.">Singleton&lt;T&gt;::Release</a>()
 <a name="l00095"></a>00095 {
 <a name="l00096"></a>00096    HelperInstance().Release();
 <a name="l00097"></a>00097 }
@@ -160,7 +160,7 @@
 <a name="l00219"></a>00219 <span class="comment">//==============================================================================</span>
 <a name="l00226"></a>00226 <span class="comment"></span><span class="comment">//==============================================================================</span>
 <a name="l00227"></a>00227 <span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;
-<a name="l00228"></a><a class="code" href="class_singleton_1_1_singleton_helper.html#f8a642fd6574d155f4a85cc6a51d35bc">00228</a> <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release it&amp;#39;s instance, if it has one.">Singleton&lt;T&gt;::SingletonHelper::Release</a>()
+<a name="l00228"></a><a class="code" href="class_singleton_1_1_singleton_helper.html#f8a642fd6574d155f4a85cc6a51d35bc">00228</a> <span class="keywordtype">void</span> <a class="code" href="class_singleton.html#a8af3c65b490a4870ee42fdd325eca18" title="Instructs the SingletonHelper to release its instance, if it has one.">Singleton&lt;T&gt;::SingletonHelper::Release</a>()
 <a name="l00229"></a>00229 {
 <a name="l00230"></a>00230    <span class="keywordflow">if</span> (<a class="code" href="class_singleton_1_1_singleton_helper.html#64b2212bd832b9abd3b9edf48d55ceff">m_pObjPtr</a> != 0)
 <a name="l00231"></a>00231    {
@@ -172,7 +172,7 @@
 <a name="l00237"></a>00237 
 <a name="l00238"></a>00238 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:39 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:23 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

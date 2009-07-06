@@ -32,8 +32,9 @@ Inheritance diagram for BabelShark::InstructionSet:</div>
 
 <p><center><img src="class_babel_shark_1_1_instruction_set.png" usemap="#BabelShark::InstructionSet_map" border="0" alt=""></center>
 <map name="BabelShark::InstructionSet_map">
-<area href="class_babel_shark_1_1_instruction_node.html" alt="BabelShark::InstructionNode" shape="rect" coords="0,56,171,80">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,171,24">
+<area href="class_babel_shark_1_1_instruction_node.html" alt="BabelShark::InstructionNode" shape="rect" coords="0,112,171,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,56,171,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,171,24">
 </map>
 </div>
 
@@ -41,7 +42,7 @@ Inheritance diagram for BabelShark::InstructionSet:</div>
 <a href="class_babel_shark_1_1_instruction_set-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#b1d22c7566a5693c6cc44746a4a58d40">InstructionSet</a> (unsigned int size, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#4645d488a8546a047cf294a7f5769acd">InstructionSet</a> (std::string size, std::string name)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#10f68c55831ae571354753c15487e8e0">~InstructionSet</a> ()</td></tr>
 
@@ -49,7 +50,7 @@ Inheritance diagram for BabelShark::InstructionSet:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#0e95013b914e2f4bdda8b0f94ab87712">Add</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#4d4c66b375e0f15de7775b295e15b558">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#1f0639c982c3f5b9b22f73b08af9f3aa">Interpret</a> (char *buffer)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_instruction_set.html#8456f55059620a8a971b3f1f39d62fc0">Display</a> ()</td></tr>
 
@@ -67,20 +68,20 @@ Inheritance diagram for BabelShark::InstructionSet:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Class: <a class="el" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a> Design Pattern Used: Composite The Composite portion of the Composite pattern. This contains Instruction* children. <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="b1d22c7566a5693c6cc44746a4a58d40"></a><!-- doxytag: member="BabelShark::InstructionSet::InstructionSet" ref="b1d22c7566a5693c6cc44746a4a58d40" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="4645d488a8546a047cf294a7f5769acd"></a><!-- doxytag: member="BabelShark::InstructionSet::InstructionSet" ref="4645d488a8546a047cf294a7f5769acd" args="(std::string size, std::string name)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::InstructionSet::InstructionSet           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -225,12 +226,12 @@ GetSizeInBytes Returns the sum of calling GetSizeInBytes on all children Overrid
 
 </div>
 </div><p>
-<a class="anchor" name="4d4c66b375e0f15de7775b295e15b558"></a><!-- doxytag: member="BabelShark::InstructionSet::Interpret" ref="4d4c66b375e0f15de7775b295e15b558" args="(char *buffer)" -->
+<a class="anchor" name="1f0639c982c3f5b9b22f73b08af9f3aa"></a><!-- doxytag: member="BabelShark::InstructionSet::Interpret" ref="1f0639c982c3f5b9b22f73b08af9f3aa" args="(char *buffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BabelShark::InstructionSet::Interpret           </td>
+          <td class="memname">unsigned int BabelShark::InstructionSet::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -243,7 +244,7 @@ GetSizeInBytes Returns the sum of calling GetSizeInBytes on all children Overrid
 
 <p>
 Interpret Currently an empty function since the dissector will just look directly at the children 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_node.html#0d7ac9dcf71a37fa59d57f9f3fda48ac">BabelShark::InstructionNode</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_node.html#6fbf1f170d7f919b1f40a8eb8ea9ea14">BabelShark::InstructionNode</a>.</p>
 
 </div>
 </div><p>
@@ -302,7 +303,7 @@ Creates an stl::iterator used to traverse the direct children.
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_instruction_set_8h_source.html">InstructionSet.h</a><li><a class="el" href="_instruction_set_8cpp.html">InstructionSet.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:44 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:36 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

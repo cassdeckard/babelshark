@@ -32,8 +32,10 @@ Inheritance diagram for BabelShark::IntElement:</div>
 
 <p><center><img src="class_babel_shark_1_1_int_element.png" usemap="#BabelShark::IntElement_map" border="0" alt=""></center>
 <map name="BabelShark::IntElement_map">
-<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="0,56,185,80">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,185,24">
+<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="97,112,282,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,56,185,80">
+<area href="class_babel_shark_1_1_subject.html" alt="BabelShark::Subject" shape="rect" coords="195,56,380,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,185,24">
 </map>
 </div>
 
@@ -41,38 +43,42 @@ Inheritance diagram for BabelShark::IntElement:</div>
 <a href="class_babel_shark_1_1_int_element-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#7deb3e3749bf27dfd15ab0862caea306">IntElement</a> (unsigned int size, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#f66cfa3195c305905df3df906b5be056">IntElement</a> (std::string size, std::string name, std::string variable=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#51241ef34578ac87e4b124628a4929ff">~IntElement</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#d8467ad7b321f4189f944833ee60990f">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#2da304dfe0225d7f27c9cc6eca61fe9d">Interpret</a> (char *buffer)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#c6999927ab0af83714479752fda88f9b">Display</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">std::bitset&lt; BIT_MASK_MAX_SIZE &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#e91b02a2a8e83f55556d6756c12bf1b5">GetBitMask</a> ()</td></tr>
-
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">std::bitset&lt; BIT_MASK_MAX_SIZE &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#1254de6d940ac7959b00c9e740a228a8">_BitMask</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned long long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_int_element.html#7e2428a8f144eb3cd2a4a9d32fe65bd6">_BitMask</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Design Pattern Used: Composite Class: <a class="el" href="class_babel_shark_1_1_int_element.html">IntElement</a> Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> One of the Leaf(s) in the Composite Structure. Processes Int type elements<p>
 notes: not completed in Phase I. <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="7deb3e3749bf27dfd15ab0862caea306"></a><!-- doxytag: member="BabelShark::IntElement::IntElement" ref="7deb3e3749bf27dfd15ab0862caea306" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="f66cfa3195c305905df3df906b5be056"></a><!-- doxytag: member="BabelShark::IntElement::IntElement" ref="f66cfa3195c305905df3df906b5be056" args="(std::string size, std::string name, std::string variable=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::IntElement::IntElement           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>variable</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -123,36 +129,18 @@ Destructor Does nothing
 <div class="memdoc">
 
 <p>
-TODO -- Implement this will be used to Display data to the WireShark output 
+Display Prints out the name and value<p>
+Used to Display data to the WireShark output 
 <p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#6c98ad187a2a12399eb90a8cf9e2aec0">BabelShark::InstructionElement</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="e91b02a2a8e83f55556d6756c12bf1b5"></a><!-- doxytag: member="BabelShark::IntElement::GetBitMask" ref="e91b02a2a8e83f55556d6756c12bf1b5" args="()" -->
+<a class="anchor" name="2da304dfe0225d7f27c9cc6eca61fe9d"></a><!-- doxytag: member="BabelShark::IntElement::Interpret" ref="2da304dfe0225d7f27c9cc6eca61fe9d" args="(char *buffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::bitset&lt;BIT_MASK_MAX_SIZE&gt; BabelShark::IntElement::GetBitMask           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
-<a class="anchor" name="d8467ad7b321f4189f944833ee60990f"></a><!-- doxytag: member="BabelShark::IntElement::Interpret" ref="d8467ad7b321f4189f944833ee60990f" args="(char *buffer)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BabelShark::IntElement::Interpret           </td>
+          <td class="memname">unsigned int BabelShark::IntElement::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -164,18 +152,19 @@ TODO -- Implement this will be used to Display data to the WireShark output
 <div class="memdoc">
 
 <p>
-TODO -- Implement this Will be used to read in data from packet 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">BabelShark::InstructionElement</a>.</p>
+Interpret Reads in data from packet in one of two ways If its a long it lets the compiler handle the two's compliment If not it is manually done<p>
+Used to read in data from packet 
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#bab7cb98a7c3d474ecea0f0ffb3fc1e0">BabelShark::InstructionElement</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="1254de6d940ac7959b00c9e740a228a8"></a><!-- doxytag: member="BabelShark::IntElement::_BitMask" ref="1254de6d940ac7959b00c9e740a228a8" args="" -->
+<a class="anchor" name="7e2428a8f144eb3cd2a4a9d32fe65bd6"></a><!-- doxytag: member="BabelShark::IntElement::_BitMask" ref="7e2428a8f144eb3cd2a4a9d32fe65bd6" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::bitset&lt;BIT_MASK_MAX_SIZE&gt; <a class="el" href="class_babel_shark_1_1_int_element.html#1254de6d940ac7959b00c9e740a228a8">BabelShark::IntElement::_BitMask</a><code> [private]</code>          </td>
+          <td class="memname">unsigned long long <a class="el" href="class_babel_shark_1_1_int_element.html#7e2428a8f144eb3cd2a4a9d32fe65bd6">BabelShark::IntElement::_BitMask</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -188,7 +177,7 @@ TODO -- Implement this Will be used to read in data from packet
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_int_element_8h_source.html">IntElement.h</a><li><a class="el" href="_int_element_8cpp.html">IntElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:44 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:36 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

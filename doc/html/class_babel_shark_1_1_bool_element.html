@@ -32,8 +32,10 @@ Inheritance diagram for BabelShark::BoolElement:</div>
 
 <p><center><img src="class_babel_shark_1_1_bool_element.png" usemap="#BabelShark::BoolElement_map" border="0" alt=""></center>
 <map name="BabelShark::BoolElement_map">
-<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="0,56,185,80">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,185,24">
+<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="97,112,282,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,56,185,80">
+<area href="class_babel_shark_1_1_subject.html" alt="BabelShark::Subject" shape="rect" coords="195,56,380,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,185,24">
 </map>
 </div>
 
@@ -41,37 +43,41 @@ Inheritance diagram for BabelShark::BoolElement:</div>
 <a href="class_babel_shark_1_1_bool_element-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#19b018393e2c0b1344655d85131a9d5a">BoolElement</a> (unsigned int size, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#d6b36bb4255bf4d0705f745d2345d031">BoolElement</a> (std::string size, std::string name, std::string variable=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#71cee8143fa6926975a4ff619d578de9">~BoolElement</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#5eac4fa70d0dcf64414000285324d476">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#7e9a3c4f3001b374de2a5b67ccf43bcb">Interpret</a> (char *buffer)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#7908eb1bccd3d590bfa3da4735bcec76">Display</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">std::bitset&lt; BIT_MASK_MAX_SIZE &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#0a35c7443eb629eb360b68909a827cd7">GetBitMask</a> ()</td></tr>
-
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">std::bitset&lt; BIT_MASK_MAX_SIZE &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#cc041eff3e2d7a2cd9609a0a8a0cb0a3">_BitMask</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned long long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_bool_element.html#ebc328f30aab2ac2b7fbd84ca2a43961">_BitMask</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Design Pattern Used: Composite Class: <a class="el" href="class_babel_shark_1_1_bool_element.html">BoolElement</a> Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> One of the Leaf(s) in the Composite Structure. Processes Bool type elements <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="19b018393e2c0b1344655d85131a9d5a"></a><!-- doxytag: member="BabelShark::BoolElement::BoolElement" ref="19b018393e2c0b1344655d85131a9d5a" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="d6b36bb4255bf4d0705f745d2345d031"></a><!-- doxytag: member="BabelShark::BoolElement::BoolElement" ref="d6b36bb4255bf4d0705f745d2345d031" args="(std::string size, std::string name, std::string variable=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::BoolElement::BoolElement           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>variable</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -127,31 +133,12 @@ Display Prints out the name and the value (TRUE/FALSE)
 
 </div>
 </div><p>
-<a class="anchor" name="0a35c7443eb629eb360b68909a827cd7"></a><!-- doxytag: member="BabelShark::BoolElement::GetBitMask" ref="0a35c7443eb629eb360b68909a827cd7" args="()" -->
+<a class="anchor" name="7e9a3c4f3001b374de2a5b67ccf43bcb"></a><!-- doxytag: member="BabelShark::BoolElement::Interpret" ref="7e9a3c4f3001b374de2a5b67ccf43bcb" args="(char *buffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::bitset&lt;BIT_MASK_MAX_SIZE&gt; BabelShark::BoolElement::GetBitMask           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
-<a class="anchor" name="5eac4fa70d0dcf64414000285324d476"></a><!-- doxytag: member="BabelShark::BoolElement::Interpret" ref="5eac4fa70d0dcf64414000285324d476" args="(char *buffer)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BabelShark::BoolElement::Interpret           </td>
+          <td class="memname">unsigned int BabelShark::BoolElement::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -164,17 +151,17 @@ Display Prints out the name and the value (TRUE/FALSE)
 
 <p>
 Interpret Reads in data from packet all 0's is treated as a false, anything else is true 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">BabelShark::InstructionElement</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#bab7cb98a7c3d474ecea0f0ffb3fc1e0">BabelShark::InstructionElement</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="cc041eff3e2d7a2cd9609a0a8a0cb0a3"></a><!-- doxytag: member="BabelShark::BoolElement::_BitMask" ref="cc041eff3e2d7a2cd9609a0a8a0cb0a3" args="" -->
+<a class="anchor" name="ebc328f30aab2ac2b7fbd84ca2a43961"></a><!-- doxytag: member="BabelShark::BoolElement::_BitMask" ref="ebc328f30aab2ac2b7fbd84ca2a43961" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::bitset&lt;BIT_MASK_MAX_SIZE&gt; <a class="el" href="class_babel_shark_1_1_bool_element.html#cc041eff3e2d7a2cd9609a0a8a0cb0a3">BabelShark::BoolElement::_BitMask</a><code> [private]</code>          </td>
+          <td class="memname">unsigned long long <a class="el" href="class_babel_shark_1_1_bool_element.html#ebc328f30aab2ac2b7fbd84ca2a43961">BabelShark::BoolElement::_BitMask</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -187,7 +174,7 @@ members
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_bool_element_8h_source.html">BoolElement.h</a><li><a class="el" href="_bool_element_8cpp.html">BoolElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:41 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:33 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

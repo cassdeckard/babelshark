@@ -32,8 +32,10 @@ Inheritance diagram for BabelShark::AsciiElement:</div>
 
 <p><center><img src="class_babel_shark_1_1_ascii_element.png" usemap="#BabelShark::AsciiElement_map" border="0" alt=""></center>
 <map name="BabelShark::AsciiElement_map">
-<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="0,56,185,80">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,185,24">
+<area href="class_babel_shark_1_1_instruction_element.html" alt="BabelShark::InstructionElement" shape="rect" coords="97,112,282,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,56,185,80">
+<area href="class_babel_shark_1_1_subject.html" alt="BabelShark::Subject" shape="rect" coords="195,56,380,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,185,24">
 </map>
 </div>
 
@@ -41,11 +43,11 @@ Inheritance diagram for BabelShark::AsciiElement:</div>
 <a href="class_babel_shark_1_1_ascii_element-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_ascii_element.html#d634e18161b86d3f0da9215606c6ce24">AsciiElement</a> (unsigned int size, char *name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_ascii_element.html#f1957c2a86f1d1aec5a6c5c7d8f5a804">AsciiElement</a> (std::string size, std::string name, std::string variable=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_ascii_element.html#066a61d5d3f348ebc35d8c29de080e05">~AsciiElement</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_ascii_element.html#452958c460980a70b80d02b659c11057">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_ascii_element.html#ef69ab1540cb584412ebd4afcbd4bb05">Interpret</a> (char *buffer)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_ascii_element.html#a10391d6cea4ab7ad45be370fed9d4d0">Display</a> ()</td></tr>
 
@@ -55,21 +57,27 @@ Inheritance diagram for BabelShark::AsciiElement:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a> Design Pattern Used: Composite One of the Leaf(s) in the Composite Structure. Processes Ascii type elements <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="d634e18161b86d3f0da9215606c6ce24"></a><!-- doxytag: member="BabelShark::AsciiElement::AsciiElement" ref="d634e18161b86d3f0da9215606c6ce24" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="f1957c2a86f1d1aec5a6c5c7d8f5a804"></a><!-- doxytag: member="BabelShark::AsciiElement::AsciiElement" ref="f1957c2a86f1d1aec5a6c5c7d8f5a804" args="(std::string size, std::string name, std::string variable=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::AsciiElement::AsciiElement           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&nbsp;</td>
+          <td class="paramname"> <em>variable</em> = <code>&quot;&quot;</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -81,8 +89,7 @@ Parent: <a class="el" href="class_babel_shark_1_1_instruction_element.html">Inst
 <div class="memdoc">
 
 <p>
-Constructor<p>
-Constructor for <a class="el" href="class_babel_shark_1_1_ascii_element.html">AsciiElement</a> 
+Constructor 
 </div>
 </div><p>
 <a class="anchor" name="066a61d5d3f348ebc35d8c29de080e05"></a><!-- doxytag: member="BabelShark::AsciiElement::~AsciiElement" ref="066a61d5d3f348ebc35d8c29de080e05" args="()" -->
@@ -146,12 +153,12 @@ Display function for Ascii; will just print the bytes as a character
 
 </div>
 </div><p>
-<a class="anchor" name="452958c460980a70b80d02b659c11057"></a><!-- doxytag: member="BabelShark::AsciiElement::Interpret" ref="452958c460980a70b80d02b659c11057" args="(char *buffer)" -->
+<a class="anchor" name="ef69ab1540cb584412ebd4afcbd4bb05"></a><!-- doxytag: member="BabelShark::AsciiElement::Interpret" ref="ef69ab1540cb584412ebd4afcbd4bb05" args="(char *buffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BabelShark::AsciiElement::Interpret           </td>
+          <td class="memname">unsigned int BabelShark::AsciiElement::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -164,14 +171,14 @@ Display function for Ascii; will just print the bytes as a character
 
 <p>
 Interpret function for Ascii; will just read in the correct number of characters 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#7795ad0b2acedb5a2b68d2c3e63351ae">BabelShark::InstructionElement</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_element.html#bab7cb98a7c3d474ecea0f0ffb3fc1e0">BabelShark::InstructionElement</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_ascii_element_8h_source.html">AsciiElement.h</a><li><a class="el" href="_ascii_element_8cpp.html">AsciiElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:40 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:32 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

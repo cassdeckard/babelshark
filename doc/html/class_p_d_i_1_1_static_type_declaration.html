@@ -42,15 +42,13 @@ Inheritance diagram for PDI::StaticTypeDeclaration:</div>
 <a href="class_p_d_i_1_1_static_type_declaration-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#181299143540c5ba51a336130f64055b">StaticTypeDeclaration</a> (char *label, int size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#8eaea7e5bc70cf9a7b664b0f758054d2">StaticTypeDeclaration</a> (const std::string &amp;label, int size)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#b03fa3f3a389dcf29a10634c3fe4fba6">StaticTypeDeclaration</a> (const <a class="el" href="class_p_d_i_1_1_static_type_declaration.html">StaticTypeDeclaration</a> &amp;value)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#f550c3df77686d5730bdeef10379d723">~StaticTypeDeclaration</a> () void SetLabel(char *input)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#ad16762e2b680b950b3b663d26fc2936">SetLabel</a> (const std::string &amp;input)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#00f7f0530116882d12094ec688960d94">SetSize</a> (int size)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#b311c48fb2c31d3ccca253ce281d8dc1">GetLabel</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const std::string &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#de1c13f041383f22137ef5762eead53c">GetLabel</a> () const </td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_i_1_1_static_type_declaration.html#2ec48c4a0cf8dec4d1a816085f10f716">GetSize</a> ()</td></tr>
 
@@ -62,14 +60,14 @@ Inheritance diagram for PDI::StaticTypeDeclaration:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The StaticTypeDefinition class holds one "statictype" read in from a <a class="el" href="namespace_p_d_i.html">PDI</a> file. An example dynamictype in <a class="el" href="namespace_p_d_i.html">PDI</a> file format follows: statictype HEADER { "MessageID" : "UINT 8 $MSG_ID", "Pad" : "PAD 8", "EventID" : "UINT 16", "Name" : "ASCII 16", "Pad2" : "PAD 32" } where MessageID has a special mapping to our DataDictionary through the alias $MSG_ID <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="181299143540c5ba51a336130f64055b"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::StaticTypeDeclaration" ref="181299143540c5ba51a336130f64055b" args="(char *label, int size)" -->
+<a class="anchor" name="8eaea7e5bc70cf9a7b664b0f758054d2"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::StaticTypeDeclaration" ref="8eaea7e5bc70cf9a7b664b0f758054d2" args="(const std::string &amp;label, int size)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">PDI::StaticTypeDeclaration::StaticTypeDeclaration           </td>
           <td>(</td>
-          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
           <td class="paramname"> <em>label</em>, </td>
         </tr>
         <tr>
@@ -91,56 +89,17 @@ The StaticTypeDefinition class holds one "statictype" read in from a <a class="e
 
 </div>
 </div><p>
-<a class="anchor" name="b03fa3f3a389dcf29a10634c3fe4fba6"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::StaticTypeDeclaration" ref="b03fa3f3a389dcf29a10634c3fe4fba6" args="(const StaticTypeDeclaration &amp;value)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PDI::StaticTypeDeclaration::StaticTypeDeclaration           </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_p_d_i_1_1_static_type_declaration.html">StaticTypeDeclaration</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>value</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
-<a class="anchor" name="f550c3df77686d5730bdeef10379d723"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::~StaticTypeDeclaration" ref="f550c3df77686d5730bdeef10379d723" args="() void SetLabel(char *input)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PDI::StaticTypeDeclaration::~StaticTypeDeclaration           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="b311c48fb2c31d3ccca253ce281d8dc1"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::GetLabel" ref="b311c48fb2c31d3ccca253ce281d8dc1" args="()" -->
+<a class="anchor" name="de1c13f041383f22137ef5762eead53c"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::GetLabel" ref="de1c13f041383f22137ef5762eead53c" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* PDI::StaticTypeDeclaration::GetLabel           </td>
+          <td class="memname">const std::string &amp; PDI::StaticTypeDeclaration::GetLabel           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -158,6 +117,26 @@ The StaticTypeDefinition class holds one "statictype" read in from a <a class="e
           <td class="memname">int PDI::StaticTypeDeclaration::GetSize           </td>
           <td>(</td>
           <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ad16762e2b680b950b3b663d26fc2936"></a><!-- doxytag: member="PDI::StaticTypeDeclaration::SetLabel" ref="ad16762e2b680b950b3b663d26fc2936" args="(const std::string &amp;input)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PDI::StaticTypeDeclaration::SetLabel           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>input</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -220,10 +199,10 @@ The StaticTypeDefinition class holds one "statictype" read in from a <a class="e
 
 </div>
 </div><p>
-<hr>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_static_type_declaration_element_8h_source.html">StaticTypeDeclarationElement.h</a></ul>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="_static_type_declaration_element_8h_source.html">StaticTypeDeclarationElement.h</a><li><a class="el" href="_static_type_declaration_element_8cpp.html">StaticTypeDeclarationElement.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:52 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:41 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

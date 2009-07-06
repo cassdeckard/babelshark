@@ -32,8 +32,9 @@ Inheritance diagram for BabelShark::AliasedInstruction:</div>
 
 <p><center><img src="class_babel_shark_1_1_aliased_instruction.png" usemap="#BabelShark::AliasedInstruction_map" border="0" alt=""></center>
 <map name="BabelShark::AliasedInstruction_map">
-<area href="class_babel_shark_1_1_instruction_node.html" alt="BabelShark::InstructionNode" shape="rect" coords="0,56,183,80">
-<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,0,183,24">
+<area href="class_babel_shark_1_1_instruction_node.html" alt="BabelShark::InstructionNode" shape="rect" coords="0,112,183,136">
+<area href="class_babel_shark_1_1_instruction.html" alt="BabelShark::Instruction" shape="rect" coords="0,56,183,80">
+<area href="class_babel_shark_1_1_observer.html" alt="BabelShark::Observer" shape="rect" coords="0,0,183,24">
 </map>
 </div>
 
@@ -41,9 +42,7 @@ Inheritance diagram for BabelShark::AliasedInstruction:</div>
 <a href="class_babel_shark_1_1_aliased_instruction-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#b6031a94779d86fee9bd6f2fe1917133">AliasedInstruction</a> (unsigned int size, char *name)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#c0630cb9a02862324fbd19f3e0d7c58a">AliasedInstruction</a> (unsigned int size, char *name, std::string alias, std::string paramName=&quot;&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#65b121e3c27f6c494aaecbcd8203ceb6">AliasedInstruction</a> (std::string size, std::string name, std::string alias, std::string paramName=&quot;&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#2d9c6769d501c11fd9728748fe922c7b">~AliasedInstruction</a> ()</td></tr>
 
@@ -51,9 +50,9 @@ Inheritance diagram for BabelShark::AliasedInstruction:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#0725df7cded6481c35d5a7c50c72e0aa">Add</a> (<a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> *instruction)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#aab7f2338eff453c3eda7b8abb84670f">Interpret</a> (char *buffer)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7912f5769c1b41a386701413ea3e9dec">Interpret</a> (char *buffer)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#03144ca2466719759c7c86b642b8f914">Display</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7bf65b279afff8c799f69ec483b1936c">Display</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_iterator.html">Iterator</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#42d60fcd95d998ca1fd2ba3eecbb11cc">CreateIterator</a> ()</td></tr>
 
@@ -61,8 +60,14 @@ Inheritance diagram for BabelShark::AliasedInstruction:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#2e6f4a1c88f7931e229db893615c4fb3">NumSubtrees</a> ()</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7098e2d23618c36c1ceabfa5fbaefafc">Initialize</a> ()</td></tr>
+
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#f9aadc33991d3671c29384d1e8cef808">_RealSubject</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#0de74800f9d1513a6a0d602332a941a7">_Alias</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_babel_shark_1_1_aliased_instruction.html#ee49ff6c4c61846e3e55fef40d62382e">_ParamName</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -71,49 +76,20 @@ This class is used to create instances of Instructions with user-defined static 
 <b>Pattern roles:</b><ul>
 <li>Proxy::Proxy </li></ul>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="b6031a94779d86fee9bd6f2fe1917133"></a><!-- doxytag: member="BabelShark::AliasedInstruction::AliasedInstruction" ref="b6031a94779d86fee9bd6f2fe1917133" args="(unsigned int size, char *name)" -->
+<a class="anchor" name="65b121e3c27f6c494aaecbcd8203ceb6"></a><!-- doxytag: member="BabelShark::AliasedInstruction::AliasedInstruction" ref="65b121e3c27f6c494aaecbcd8203ceb6" args="(std::string size, std::string name, std::string alias, std::string paramName=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">BabelShark::AliasedInstruction::AliasedInstruction           </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Constructor This constructor is inherited from <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> but should not be used. 
-</div>
-</div><p>
-<a class="anchor" name="c0630cb9a02862324fbd19f3e0d7c58a"></a><!-- doxytag: member="BabelShark::AliasedInstruction::AliasedInstruction" ref="c0630cb9a02862324fbd19f3e0d7c58a" args="(unsigned int size, char *name, std::string alias, std::string paramName=&quot;&quot;)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">BabelShark::AliasedInstruction::AliasedInstruction           </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&nbsp;</td>
-          <td class="paramname"> <em>size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramtype">std::string&nbsp;</td>
           <td class="paramname"> <em>name</em>, </td>
         </tr>
         <tr>
@@ -131,14 +107,14 @@ Constructor This constructor is inherited from <a class="el" href="class_babel_s
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Constructor In addition to normal <a class="el" href="class_babel_shark_1_1_instruction.html#db56af133f39de0e46b4ff08b17de68d">Instruction()</a> constructor behavior, this uses the given alias and paramName to set its _RealSubject type to point to the correct <a class="el" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a> this <a class="el" href="class_babel_shark_1_1_aliased_instruction.html">AliasedInstruction</a> will serve as a Proxy for. 
+Constructor In addition to normal <a class="el" href="class_babel_shark_1_1_instruction.html#5f64c057dbc3a78c635ac1ae24a8e88a">Instruction()</a> constructor behavior, this uses the given alias and paramName to set its _RealSubject type to point to the correct <a class="el" href="class_babel_shark_1_1_instruction_set.html">InstructionSet</a> this <a class="el" href="class_babel_shark_1_1_aliased_instruction.html">AliasedInstruction</a> will serve as a Proxy for. 
 </div>
 </div><p>
 <a class="anchor" name="2d9c6769d501c11fd9728748fe922c7b"></a><!-- doxytag: member="BabelShark::AliasedInstruction::~AliasedInstruction" ref="2d9c6769d501c11fd9728748fe922c7b" args="()" -->
@@ -210,23 +186,23 @@ CreateIterator Calls <a class="el" href="class_babel_shark_1_1_aliased_instructi
 
 </div>
 </div><p>
-<a class="anchor" name="03144ca2466719759c7c86b642b8f914"></a><!-- doxytag: member="BabelShark::AliasedInstruction::Display" ref="03144ca2466719759c7c86b642b8f914" args="()" -->
+<a class="anchor" name="7bf65b279afff8c799f69ec483b1936c"></a><!-- doxytag: member="BabelShark::AliasedInstruction::Display" ref="7bf65b279afff8c799f69ec483b1936c" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* BabelShark::AliasedInstruction::Display           </td>
+          <td class="memname">char * BabelShark::AliasedInstruction::Display           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline, virtual]</code></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Display Calls <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#03144ca2466719759c7c86b642b8f914">Display()</a> on its _RealSubject<p>
+Display Calls <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7bf65b279afff8c799f69ec483b1936c">Display()</a> on its _RealSubject<p>
 <b>Pattern roles:</b><ul>
 <li>Proxy::Request() </li></ul>
 
@@ -282,12 +258,33 @@ GetSizeInBytes Calls <a class="el" href="class_babel_shark_1_1_aliased_instructi
 
 </div>
 </div><p>
-<a class="anchor" name="aab7f2338eff453c3eda7b8abb84670f"></a><!-- doxytag: member="BabelShark::AliasedInstruction::Interpret" ref="aab7f2338eff453c3eda7b8abb84670f" args="(char *buffer)" -->
+<a class="anchor" name="7098e2d23618c36c1ceabfa5fbaefafc"></a><!-- doxytag: member="BabelShark::AliasedInstruction::Initialize" ref="7098e2d23618c36c1ceabfa5fbaefafc" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BabelShark::AliasedInstruction::Interpret           </td>
+          <td class="memname">void BabelShark::AliasedInstruction::Initialize           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Performs initialization that depends on all <a class="el" href="class_babel_shark_1_1_instruction.html">Instruction</a> objects being instantiated. 
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction.html#84cbc26426117a0cf90efbfb5edfdec1">BabelShark::Instruction</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7912f5769c1b41a386701413ea3e9dec"></a><!-- doxytag: member="BabelShark::AliasedInstruction::Interpret" ref="7912f5769c1b41a386701413ea3e9dec" args="(char *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int BabelShark::AliasedInstruction::Interpret           </td>
           <td>(</td>
           <td class="paramtype">char *&nbsp;</td>
           <td class="paramname"> <em>buffer</em>          </td>
@@ -299,11 +296,11 @@ GetSizeInBytes Calls <a class="el" href="class_babel_shark_1_1_aliased_instructi
 <div class="memdoc">
 
 <p>
-Interpret Calls <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#aab7f2338eff453c3eda7b8abb84670f">Interpret()</a> on its _RealSubject<p>
+Interpret Calls <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#7912f5769c1b41a386701413ea3e9dec">Interpret()</a> on its _RealSubject<p>
 <b>Pattern roles:</b><ul>
 <li>Proxy::Request() </li></ul>
 
-<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_node.html#0d7ac9dcf71a37fa59d57f9f3fda48ac">BabelShark::InstructionNode</a>.</p>
+<p>Reimplemented from <a class="el" href="class_babel_shark_1_1_instruction_node.html#6fbf1f170d7f919b1f40a8eb8ea9ea14">BabelShark::InstructionNode</a>.</p>
 
 </div>
 </div><p>
@@ -332,6 +329,36 @@ NumSubTrees Calls NumSubTrees() on its _RealSubject<p>
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="0de74800f9d1513a6a0d602332a941a7"></a><!-- doxytag: member="BabelShark::AliasedInstruction::_Alias" ref="0de74800f9d1513a6a0d602332a941a7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#0de74800f9d1513a6a0d602332a941a7">BabelShark::AliasedInstruction::_Alias</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ee49ff6c4c61846e3e55fef40d62382e"></a><!-- doxytag: member="BabelShark::AliasedInstruction::_ParamName" ref="ee49ff6c4c61846e3e55fef40d62382e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_babel_shark_1_1_aliased_instruction.html#ee49ff6c4c61846e3e55fef40d62382e">BabelShark::AliasedInstruction::_ParamName</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="f9aadc33991d3671c29384d1e8cef808"></a><!-- doxytag: member="BabelShark::AliasedInstruction::_RealSubject" ref="f9aadc33991d3671c29384d1e8cef808" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -350,10 +377,10 @@ _RealSubject The root of the <a class="el" href="class_babel_shark_1_1_instructi
 
 </div>
 </div><p>
-<hr>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_aliased_instruction_8h_source.html">AliasedInstruction.h</a></ul>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="_aliased_instruction_8h_source.html">AliasedInstruction.h</a><li><a class="el" href="_aliased_instruction_8cpp.html">AliasedInstruction.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:40 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:32 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>

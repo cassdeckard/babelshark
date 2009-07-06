@@ -21,11 +21,11 @@
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_e3dfa3d67927086a3c802b6a879a1792.html">include</a>
+  <div class="navpath"><a class="el" href="dir_e748473a93f63cfb7f473c1d449168ea.html">include</a>
   </div>
 </div>
 <div class="contents">
-<h1>StaticDefinition.h</h1><a href="_static_definition_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: StaticDefinition.h 137 2009-06-27 03:54:22Z histumness $</span>
+<h1>StaticDefinition.h</h1><a href="_static_definition_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">// $Id: StaticDefinition.h 154 2009-06-29 02:39:30Z histumness $</span>
 <a name="l00002"></a>00002 
 <a name="l00003"></a>00003 <span class="preprocessor">#ifndef STATIC_DEFINITION_H</span>
 <a name="l00004"></a>00004 <span class="preprocessor"></span><span class="preprocessor">#define STATIC_DEFINITION_H</span>
@@ -34,27 +34,29 @@
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="keyword">namespace </span>BabelShark
 <a name="l00009"></a>00009 {
-<a name="l00013"></a><a class="code" href="class_babel_shark_1_1_static_definition.html">00013</a>     <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_static_definition.html">StaticDefinition</a> : <span class="keyword">public</span> <a class="code" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a>
-<a name="l00014"></a>00014         {
-<a name="l00015"></a>00015         <span class="keyword">public</span>:
-<a name="l00019"></a>00019            <a class="code" href="class_babel_shark_1_1_static_definition.html#0e07d0ddd88737f67c6dd9715c910712">StaticDefinition</a>(<a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* type, std::string parameter);
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021            <a class="code" href="class_babel_shark_1_1_static_definition.html#ac92a727518376d1b5113f3750ef92b6">~StaticDefinition</a>();
-<a name="l00022"></a>00022 
-<a name="l00031"></a>00031            <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_static_definition.html#853c058e8e4c08310ddd67c70ec76d7d">Fetch</a>(<a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>** target, <a class="code" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a>* parameter);
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033                 <span class="keyword">protected</span>:
-<a name="l00034"></a>00034 
+<a name="l00014"></a><a class="code" href="class_babel_shark_1_1_static_definition.html">00014</a>     <span class="keyword">class </span><a class="code" href="class_babel_shark_1_1_static_definition.html">StaticDefinition</a> : <span class="keyword">public</span> <a class="code" href="class_babel_shark_1_1_type_definition.html">TypeDefinition</a>
+<a name="l00015"></a>00015         {
+<a name="l00016"></a>00016         <span class="keyword">public</span>:
+<a name="l00020"></a>00020            <a class="code" href="class_babel_shark_1_1_static_definition.html#dd85ae2a0a44cbd2065adc9c764af35f">StaticDefinition</a>(<a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* type = NULL, std::string parameter = <span class="stringliteral">""</span>);
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022            <a class="code" href="class_babel_shark_1_1_static_definition.html#ac92a727518376d1b5113f3750ef92b6">~StaticDefinition</a>();
+<a name="l00023"></a>00023 
+<a name="l00032"></a>00032            <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_static_definition.html#3639c86b3043af727e93bdd5cf7bc179">Fetch</a>(<a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>** target, <a class="code" href="class_babel_shark_1_1_instruction_element.html">InstructionElement</a>* parameter = NULL);
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034            <span class="keywordtype">void</span> <a class="code" href="class_babel_shark_1_1_static_definition.html#6dc7c9a3bc360cf42e0ff795ec5a18d4">Define</a>(<a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* type);
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036         <span class="keyword">private</span>:
-<a name="l00040"></a><a class="code" href="class_babel_shark_1_1_static_definition.html#f073ace75a78b10849f62349a397ce16">00040</a>            <a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* <a class="code" href="class_babel_shark_1_1_static_definition.html#f073ace75a78b10849f62349a397ce16">_Definition</a>;
-<a name="l00041"></a>00041         };
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043 }
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="preprocessor">#endif //STATIC_DEFINITION_H</span>
+<a name="l00036"></a>00036                 <span class="keyword">protected</span>:
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         <span class="keyword">private</span>:
+<a name="l00043"></a><a class="code" href="class_babel_shark_1_1_static_definition.html#f073ace75a78b10849f62349a397ce16">00043</a>            <a class="code" href="class_babel_shark_1_1_instruction_node.html">InstructionNode</a>* <a class="code" href="class_babel_shark_1_1_static_definition.html#f073ace75a78b10849f62349a397ce16">_Definition</a>;
+<a name="l00044"></a>00044         };
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 }
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 <span class="preprocessor">#endif //STATIC_DEFINITION_H</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Jun 27 10:41:39 2009 for Babelshark by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Jul 6 00:35:23 2009 for Babelshark by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
 </body>
