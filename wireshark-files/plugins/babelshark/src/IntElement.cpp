@@ -52,8 +52,7 @@ namespace BabelShark
 
     }
 
-	//TODO -- Implement this
-	//Will be used to read in data from packet
+	/**Used to read in data from packet*/
     unsigned int IntElement::Interpret(char* buffer)
 	{
         std::stringstream result;
@@ -87,7 +86,7 @@ namespace BabelShark
         return _Size % 8;
 	}
 
-	//will be used to Display data to the WireShark output
+	/**Used to Display data to the WireShark output*/
 	char* IntElement::Display()
     {
         static char* result;

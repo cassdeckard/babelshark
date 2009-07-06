@@ -34,14 +34,16 @@ namespace BabelShark
 				*/
 			~IntElement();
 
-			/**	TODO -- Implement this
-				Will be used to read in data from packet
-				*/
+			/**	Interpret
+			  *	Reads in data from packet in one of two ways
+			  * If its a long it lets the compiler handle the two's compliment
+			  * If not it is manually done
+			  */
             unsigned int Interpret(char* buffer);
 
-			/**	TODO -- Implement this
-				will be used to Display data to the WireShark output
-				*/
+			/**	Display
+			  *	Prints out the name and value
+			  */
 			char* Display();
 
 		private:
