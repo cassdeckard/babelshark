@@ -1,9 +1,0 @@
-"Terminate_Message" : [
-   "MessageID" : "UINT 8",
-   "Pad"       : "PAD 8",
-   "EventID"   : "UINT 16",
-   "Name"      : "ASCII 16",
-   "Pad2"      : "PAD 32",
-   "TimeOnline" : "UINT 32",
-   "TimeOnline2" : "UINT 32"
-] 1

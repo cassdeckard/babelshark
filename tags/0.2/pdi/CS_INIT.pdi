@@ -1,8 +1,0 @@
-"Initialize_Message" : [
-   "MessageID" : "UINT 8",
-   "EventID"   : "UINT 16",
-   "Name"      : "ASCII 13",
-   "Age"       : "UINT 7",
-   "IsMale"    : "BOOL 1",
-   "Pad"       : "PAD 56"
-] 1
