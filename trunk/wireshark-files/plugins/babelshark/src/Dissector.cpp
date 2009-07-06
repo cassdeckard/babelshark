@@ -4,11 +4,11 @@
 #include "Dissector.h"
 #include "DataDictionary.h"
 
-#include "BabelSharkSupport.h"
-
 // Parser includes
+#include "BabelSharkSupport.h"
 #include "elements.h"
 #include "reader.h"
+#include "exception.h"
 #include "TreeVisitor.h"
 
 // STL includes
@@ -28,12 +28,18 @@ namespace BabelShark
           _bitOffset(0)
     {
 
-        _RootInstruction = ParsePDI(inFile);
-        if (_RootInstruction == NULL)
-        {
-            _RootInstruction = new BabelShark::Instruction(0, "ERR_BAD_PARSE");
-        }
-        _protoName       = _RootInstruction->GetName();
+    	// get root instruction from PDI parser
+    	_RootInstruction = ParsePDI(inFile);
+
+    	// get protocol name
+    	if (_RootInstruction->GetSize() > 0)
+    	{
+    		_protoName = _RootInstruction->GetName();
+    	}
+    	else
+    	{
+    		_protoName = "Unknown";
+    	}
 
         /* Setup protocol subtree array */
         _ett = new gint*[1]; // TODO: size array to number of InstructionSets
@@ -57,15 +63,21 @@ namespace BabelShark
     void Dissector::ReparseTree(const char* inFile)
     {
         // NOTE: This will not change the registered name of the protocol
-        // Reparse Instruction tree
-        _RootInstruction = ParsePDI(inFile);
-        if (_RootInstruction == NULL)
-        {
-            _RootInstruction = new BabelShark::Instruction(0, "ERR_BAD_PARSE");
-        }
-        _protoName       = _RootInstruction->GetName();
+
+    	// get root instruction from PDI parser
+    	_RootInstruction = ParsePDI(inFile);
+
+    	// get protocol name
+    	if (_RootInstruction->GetSize() > 0)
+    	{
+    		_protoName = _RootInstruction->GetName();
+    	}
+    	else
+    	{
+    		_protoName = "Unknown";
+    	}
+
         _nameChanged     = true;
-        printf("name: %s\n\n", _RootInstruction->GetName());
 
         Test(); // TODO: REMOVE
     }
@@ -107,13 +119,17 @@ namespace BabelShark
            // Create root node
            babelshark_tree = proto_item_add_subtree(ti, *_ett[0]);
 
-           // Parse it
+           // Dissect it
            if (ROOT_INSTRUCTION->GetSize() > 0)
            {
         	  _bitOffset = 0;
               DissectInstructions(ROOT_INSTRUCTION, tvb, babelshark_tree, buffer, offset);
            }
-
+           else
+           {
+        	   // exception occurred
+        	   expert_add_info_format(pinfo, ti, PI_UNDECODED, PI_ERROR, ROOT_INSTRUCTION->GetName());
+           }
        }
 
        // free dynamically allocated memory
@@ -292,24 +308,66 @@ namespace BabelShark
 
     Instruction* Dissector::ParsePDI(std::string inFile)
     {
-	    /*
 	    // First things first! Check to make sure we didn't get a null pointer
 	    if (&inFile == NULL)
 	    {
 		    // Those bastards...
-		    return new Instruction(0, "ERR_NULL_FILENAME");
-	    }*/
+		    return new Instruction("0", "ERROR: No filename given to parser!");
+	    }
+
+	    std::ifstream fin(inFile.c_str());
+	    BabelShark::Instruction* pRootInstruction;
 
 	    // First things first! Check to make sure the file exists. If it doesn't, erupt into a frenzied rage!
-	    std::ifstream fin(inFile.c_str());
-	    if (fin.fail())
+    	if (fin.fail())
 	    {
-           return new Instruction("0", "ERR_FILE_NOT_FOUND");
+           return new Instruction("0", "ERROR: PDI file not found: " + inFile);
 	    }
 		
-		PDI::Element elemRoot = PDI::DisplayElement();
-		PDI::Reader::Read(elemRoot,fin);
-		BabelShark::Instruction* pRootInstruction = PDI::CreateInstructionTreeAndFillDataDictionary(elemRoot, false);
+    	// Exception block
+	    try
+	    {
+	    	// Try to parse PDI into root instruction
+	    	PDI::Element elemRoot = PDI::DisplayElement();
+	    	PDI::Reader::Read(elemRoot,fin);
+	    	pRootInstruction = PDI::CreateInstructionTreeAndFillDataDictionary(elemRoot, false);
+	    }
+	    catch (PDI::ParseException& e)
+	    {
+            std::stringstream what;
+	    	what << e.what()
+	    	     << " ("
+	    	     << inFile
+	    	     << ":"
+                 << e.m_locTokenBegin.m_nLine
+                 << ")";
+	    	return new Instruction("0", "PARSE ERROR: " + what.str());
+	    }
+	    catch (PDI::ScanException& e)
+	    {
+            std::stringstream what;
+	    	what << e.what()
+	    	     << " ("
+	    	     << inFile
+	    	     << ":"
+                 << e.m_locError.m_nLine
+                 << ")";
+	    	return new Instruction("0", "SCAN ERROR: " + what.str());
+	    }
+	    catch (PDI::Exception& e)
+	    {
+	    	std::string what(e.what());
+	    	return new Instruction("0", "PDI ERROR: " + what);
+	    }
+	    catch (std::runtime_error& e)
+	    {
+	    	std::string what(e.what());
+	    	return new Instruction("0", "ERROR: " + what);
+	    }
+	    catch (...)
+	    {
+	    	return new Instruction("0", "ERROR: Unknown PDI error");
+	    }
 	    return pRootInstruction;
     }
 
