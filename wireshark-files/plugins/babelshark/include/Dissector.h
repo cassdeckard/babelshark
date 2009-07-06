@@ -12,6 +12,7 @@ extern "C" {
 
 #include <epan/packet.h>
 #include <epan/prefs.h>
+#include <epan/expert.h>
 }
 
 // C++ headers
