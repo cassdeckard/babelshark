@@ -22,7 +22,7 @@ namespace BabelShark
     	if ( ! SetSize(size) )
     	{
     		// add us to DD's initialize list
-    		DataDictionary::Instance()->ToInitialize(this);
+    		DATA_DICT.ToInitialize(this);
     	}
     }
 
@@ -93,7 +93,7 @@ namespace BabelShark
     	// and attach to it.
     	if (_SizeString.compare("") != 0)
     	{
-    		_SizeParam = DataDictionary::Instance()->LookupVariable(_SizeString);
+    		_SizeParam = DATA_DICT.LookupVariable(_SizeString);
     		_SizeParam->Attach(this);
     	}
     }

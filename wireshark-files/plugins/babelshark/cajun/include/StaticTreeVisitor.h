@@ -121,7 +121,7 @@ private:
       }
 
       m_pInstruction = pInstructionSet;
-		BabelShark::DataDictionary::Instance()->AddStatic(m_sName, pInstructionSet);
+		DATA_DICT.AddStatic(m_sName, pInstructionSet);
    }
 
    /** Visit() is used to visit a DisplayElement.

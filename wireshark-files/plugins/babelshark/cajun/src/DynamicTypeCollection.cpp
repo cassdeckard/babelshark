@@ -47,9 +47,9 @@ namespace PDI
 
          for (; itEntry != itEntryEnd; ++itEntry)
          {
-            BabelShark::DataDictionary::Instance()->AddDynamic(itElement->Name(), itEntry->first, itEntry->second);
-            //BabelShark::DataDictionary::Instance()->AddDynamic("&BODY", "1", "&ACK");
-            //BabelShark::DataDictionary::Instance()->AddDynamic("&BODY", "2", "&INIT");
+            DATA_DICT.AddDynamic(itElement->Name(), itEntry->first, itEntry->second);
+            //DATA_DICT.AddDynamic("&BODY", "1", "&ACK");
+            //DATA_DICT.AddDynamic("&BODY", "2", "&INIT");
          }
       }
    }

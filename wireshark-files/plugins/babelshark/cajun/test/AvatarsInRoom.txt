@@ -49,7 +49,7 @@
   ] 1
   
   statictype "&Item_List_Msg" [
-     "NumItems"    : "UINT 16",
+     "NumItems"    : "UINT 16 $N_ITEMS",
      "SequenceNum" : "UINT 8",
      "TotalMsgs"   :  " UINT 8",
      "ItemList"    : [
@@ -57,12 +57,24 @@
      ] 5
   ] 1
   
+  statictype "&Query_Room_Msg" [
+  ] 1
+
+  statictype "&Query_Games_Msg" [
+  ] 1
+
+  statictype "&Query_World_Msg" [
+  ] 1
+
+  statictype "&Query_For_Items_Msg" [
+  ] 1
+
   statictype "&Game_Start_Msg" [
   ] 1
-  
+
   statictype "&Game_End_Msg" [
   ] 1
-  
+   
   statictype "&Game_Cmd_Msg" [
         "Command"   : "ASCII 16"
   ] 1
@@ -97,7 +109,7 @@
      "8 &Query_For_Items_Msg",
      "9 &Avatar_List_Msg",
      "10 &Game_List_Msg",
-     "11 &Room_List_Msg",
+     "11 &Avatar_List_Msg",
      "12 &Item_List_Msg",
      "13 &Game_Start_Msg",
      "14 &Game_End_Msg",

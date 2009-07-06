@@ -3,6 +3,7 @@
 #ifndef DATA_DICTIONARY_H
 #define DATA_DICTIONARY_H
 
+#include "Singleton.h"
 #include "Instruction.h"
 #include "InstructionElement.h"
 #include "TypeDefinition.h"
@@ -10,6 +11,8 @@
 #include "DynamicDefinition.h"
 #include <map>
 #include <list>
+
+#define DATA_DICT BabelShark::DataDictionary::Instance()
 
 namespace BabelShark
 {
@@ -27,7 +30,7 @@ namespace BabelShark
       * <b>Pattern roles:</b>
       *  - Singleton::Singleton
       */
-	class DataDictionary
+	class DataDictionary : public Singleton<DataDictionary>
 	{
         public:
             /** Instance returns reference to single instantiation
@@ -38,7 +41,7 @@ namespace BabelShark
               *
               * @return instance of DataDictionary
               */
-           static DataDictionary* Instance();
+           //static DataDictionary* Instance();
 
            /** AddVariable adds a declaration of a protocol variable
              * to the DataDictionary. A protocol variable is stored as
@@ -134,9 +137,9 @@ namespace BabelShark
            /** DataDictionary's constructor is only called by its static
              * Instance() method when the instance has not yet been created.
              */
-           DataDictionary();
+           //DataDictionary();
 
-           ~DataDictionary();
+           //~DataDictionary();
 
         private:
            /** _Instance stores the reference to the single instantiation
@@ -145,7 +148,7 @@ namespace BabelShark
              * <b>Pattern roles:</b>
              *  - Singleton::uniqueInstance
              */
-           static DataDictionary* _Instance;
+           //static DataDictionary* _Instance;
 
            /** _Variables stores the mapping of aliases to protocol variables
              *

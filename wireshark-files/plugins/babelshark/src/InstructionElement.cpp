@@ -21,7 +21,7 @@ namespace BabelShark
         if (variable != "")
         {
             printf("InstructionElement()\n");
-            DataDictionary::Instance()->AddVariable(variable, this);
+            DATA_DICT.AddVariable(variable, this);
         }
     }
 
@@ -39,7 +39,7 @@ namespace BabelShark
         if (variable != "")
         {
             printf("InstructionElement()\n");
-            DataDictionary::Instance()->AddVariable(variable, this);
+            DATA_DICT.AddVariable(variable, this);
         }
     }
 

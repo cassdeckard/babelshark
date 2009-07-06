@@ -14,7 +14,7 @@ namespace BabelShark
         std::stringstream ss;
         ss << "PadElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
         printf(ss.str().c_str());
-        DataDictionary::Instance()->AddVariable(variable, this);
+        DATA_DICT.AddVariable(variable, this);
         _SizeInBytes = DetermineSizeInBytes(size);
     }
 
@@ -32,7 +32,7 @@ namespace BabelShark
         std::stringstream ss;
         ss << "PadElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
         printf(ss.str().c_str());
-        DataDictionary::Instance()->AddVariable(variable, this);
+        DATA_DICT.AddVariable(variable, this);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }
 

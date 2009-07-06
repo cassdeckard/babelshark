@@ -85,7 +85,7 @@ T& Singleton<T>::Instance()
 //==============================================================================
 /**
  \fn  Singleton<T>::Release()
- \brief  Instructs the SingletonHelper to release it's instance, if it has one.
+ \brief  Instructs the SingletonHelper to release its instance, if it has one.
 
  @return void
 */

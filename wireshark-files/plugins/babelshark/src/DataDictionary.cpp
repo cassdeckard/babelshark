@@ -7,6 +7,7 @@
 
 namespace BabelShark
 {
+    /*
     DataDictionary* DataDictionary::_Instance = NULL;
 
     DataDictionary::DataDictionary()
@@ -29,6 +30,7 @@ namespace BabelShark
         }
         return _Instance;
     }
+    */
 
     void DataDictionary::AddVariable(std::string alias, InstructionElement* variable)
     {

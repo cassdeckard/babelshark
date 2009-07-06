@@ -12,17 +12,17 @@ namespace BabelShark
           _Alias(alias),
           _ParamName(paramName)
     {
-        _RealSubject = DataDictionary::Instance()->NullInstruction();
+        _RealSubject = DATA_DICT.NullInstruction();
         if (_ParamName.compare("") != 0)
         {
             // dynamic type; put in DD initialize list
-            DataDictionary::Instance()->ToInitialize(this);
+            DATA_DICT.ToInitialize(this);
         }
         else
         {
             // static type; go ahead and initialize
             std::stringstream ss;
-            DataDictionary::Instance()->LookupType(&_RealSubject, _Alias);
+            DATA_DICT.LookupType(&_RealSubject, _Alias);
             ss << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}";
             printf(ss.str().c_str());
         }
@@ -34,18 +34,18 @@ namespace BabelShark
           _Alias(alias),
           _ParamName(paramName)
     {
-        _RealSubject = DataDictionary::Instance()->NullInstruction();
+        _RealSubject = DATA_DICT.NullInstruction();
         if (_ParamName.compare("") != 0)
         {
             // dynamic type; put in DD initialize list
-            DataDictionary::Instance()->ToInitialize(this);
+            DATA_DICT.ToInitialize(this);
         }
         else
         {
             // static type; go ahead and initialize
 			//TODO: DAN  pass in the Dynamic variable usage into the LookupType function
             std::stringstream ss;
-            DataDictionary::Instance()->LookupType(&_RealSubject, _Alias);
+            DATA_DICT.LookupType(&_RealSubject, _Alias);
             ss << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}";
             printf(ss.str().c_str());
         }
@@ -54,10 +54,10 @@ namespace BabelShark
     void AliasedInstruction::Initialize()
     {
         // Attach to parameter
-        InstructionElement* param = DataDictionary::Instance()->LookupVariable(_ParamName);
+        InstructionElement* param = DATA_DICT.LookupVariable(_ParamName);
         std::stringstream ss;
         ss << _Name << " initializing " << _Alias << "(" << _ParamName << "), _RealSubject = {" << _RealSubject <<  "}";
-        DataDictionary::Instance()->LookupType(&_RealSubject, _Alias, param);
+        DATA_DICT.LookupType(&_RealSubject, _Alias, param);
         ss << " => {" << _RealSubject <<  "}\n";
         printf(ss.str().c_str());
     }
