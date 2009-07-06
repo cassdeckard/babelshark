@@ -96,7 +96,13 @@ private:
      * and it is InstructionTypeT.
      *
      * @param sSize
+     *   The size of the piece to dissect from the message.  This may be in bits, bytes, or a string.
      * @param sName
+     *   The name to display in wireshark for this piece of data.
+     * @param sVariable
+     *   (Optional) Some instructions will have an optional varaible name which can be used in 
+     *   another part of the PDI file, to refer to the value obtained from the message buffer
+     *   for this instruction.
      ***/
    template <typename InstructionTypeT>
    BabelShark::Instruction* CreateInstruction(const std::string& sSize, const std::string& sName, const std::string& sVariable)
@@ -104,9 +110,9 @@ private:
       return new InstructionTypeT(sSize, sName, sVariable);
    }
 
-   /** Visit() uses iterates over all items in the array. It calls a visit function
+   /** Visit() iterates over all items in the array. It calls a visit function
      * on each item.  It passes in the name of the array for the same reason that we needed to pass the name of
-     * the root node into the constructor.  So that it would be available to use when we create the instruction.
+     * the root node into the constructor, so that it would be available to use when we create the instruction.
      *
      * Each item in the array is added to an instruction set.
      ***/
@@ -137,15 +143,19 @@ private:
      * and then calls the appropriate function to create the instruction that
      * matches the desired type.  For example, if ASCII is the type, then an
      * AsciiElement instruction is created and added to the instruction tree.
+     *
+     * For phase 2, the concept of display element has been expanded to include
+     * rows in the PDI file which are where a statictype is used or a dynamictype
+     * is used.
+     *
+     * DISPLAY_ELEMENT can be any one of the following formats:
+     * "NameSimple" : "Type Size"
+     * "NameSimpleWithVariable" : "Type Size $Optional_Variable"
+     * "NameStaticTypeUsage" : "&Alias Size"
+     * "NameDynamicTypeUsage" : "&Alias($Variable) Size"
      ***/
    virtual void Visit(const PDI::DisplayElement& string) {
       std::istringstream ss(string);
-
-      // DISPLAY_ELEMENT can be any one of the following formats:
-      // "NameSimple" : "Type Size"
-      // "NameSimple" : "Type Size $Optional_Variable"
-      // "NameStaticTypeUsage" : "&Alias Size"
-      // "NameDynamicTypeUsage" : "&Alias($Variable) Size"
 
       char cPeekCharacter = ss.peek();
 

@@ -27,11 +27,15 @@ namespace PDI
    * to fill the data dictionary with all of the dynamictypes that were
    * in the PDI File.
    * Then it will instantiate the a TreeVisitor to create the Instruction Tree.
-   * Finally, it will call singleton destructors to delete the StaticTypeCollection
+   * Then it will call singleton destructors to delete the StaticTypeCollection
    * singleton and the DynamicTypeCollection singleton.
+   * Finally, it will return a pointer to the instruction tree.
    *
    * The two paramters passed into this function are needed by the TreeVisitor
-   * constructor and accept function.
+   * constructor and accept function.  The first parameter is the root element
+   * that was passed into the Read function.  The second parameter is a boolean
+   * to determine if output should be displayed to the screen for debugging
+   * purposes.
    ***/
    BabelShark::Instruction* CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen = false);
 
