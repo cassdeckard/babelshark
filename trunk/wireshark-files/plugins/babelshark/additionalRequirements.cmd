@@ -1,1 +1,1 @@
-copy cajun\test\babelshark.pdi C:\
+copy cajun\test\babelshark.pdi ..\..\wireshark-gtk2\
