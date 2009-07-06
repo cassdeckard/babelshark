@@ -33,26 +33,30 @@ of the StaticTreeVisitor class.
 #include <iostream>
 #include <fstream>
 
-/** The StaticTreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
-  * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created
-  * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
+/** The StaticTreeVisitor class is used to visit (iterate over) each item in a Statictype Tree.
+  * A statictype tree is created for each statictype in a PDI File.  
+  * When a node on the tree is visited, an instruction is created
+  * forming an Instruction Tree.  The Wireshark dissector will use the instruction tree created 
+  * by this class when it is referred to by its alias in another instruction.
   *
   * Usage: After a file has been read in by calling the following parser functions...
   *       Element elemRoot = DisplayElement();
   *       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
-  * then the following function can be called to create an instruction tree.
+  * then the following function can be called to create a statictype instruction tree.
   *       StaticTreeVisitor StaticTreeVisitor(elemRoot.Name());
-  * Note that the root element name must be passed into the StaticTreeVisitor in order to get the first
-  * name from the file to be included in the first instruction in the instruction tree.
+  * Note that the root element name must be passed into the StaticTreeVisitor in order to get the 
+  * name of the statictype to be included in the first instruction in the instruction tree.
   *
   * If a second parameter is provided, which is boolean, this will be used to determine if
   * unit test / debug data should be written to cout.  If the parameter is true then data will
   * be displayed.  If the parameter is false, or is not provided, then data will not be displayed.
+  *
+  * StaticTreeVisitor inherits from TreeVisitor.  The only difference is that when the StaticTreeVisitor
+  * Visit function is called on an array, the resultant InstructionSet is added to the DataDictionary.
   ***/
-class StaticTreeVisitor : public PDI::ConstVisitor
+class StaticTreeVisitor : public TreeVisitor
 {
 public:
-
     /** This is the constructor for StaticTreeVisitor class.
       *
       * @param sName
@@ -64,43 +68,24 @@ public:
       * This will make the addition of new types easier.
       ***/
    StaticTreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) :
-      m_sName(sName),
-      m_bDisplayOutputToScreen(bDisplayOutputToScreen),
-      m_pInstruction(0)
+      TreeVisitor(sName, bDisplayOutputToScreen)
    {
-      m_CreateInstructionFuncMap["INT"] = &StaticTreeVisitor::CreateInstruction<BabelShark::IntElement>;
-      m_CreateInstructionFuncMap["UINT"] = &StaticTreeVisitor::CreateInstruction<BabelShark::UintElement>;
-      m_CreateInstructionFuncMap["BOOL"] = &StaticTreeVisitor::CreateInstruction<BabelShark::BoolElement>;
-      m_CreateInstructionFuncMap["FLOAT"] = &StaticTreeVisitor::CreateInstruction<BabelShark::FloatElement>;
-      m_CreateInstructionFuncMap["ASCII"] = &StaticTreeVisitor::CreateInstruction<BabelShark::AsciiElement>;
-      m_CreateInstructionFuncMap["PAD"] = &StaticTreeVisitor::CreateInstruction<BabelShark::PadElement>;
-   }
 
-   /** GetInstruction() returns a pointer to an instruction.
-     *
-     ***/
-   BabelShark::Instruction* GetInstruction() { return m_pInstruction; }
+   }
 
 private:
-   /** CreateInstruction() uses a template to reduce code size and to make it easier to
-     * add new types.  There are 3 pieces of data that an instruction needs: name, type, size.
-     * Size and name are passed in as parameters.  The Type is known because this is a template function
-     * and it is InstructionTypeT.
-     *
-     * @param sSize
-     * @param sName
-     ***/
-   template <typename InstructionTypeT>
-   BabelShark::Instruction* CreateInstruction(const std::string& sSize, const std::string& sName, const std::string& sVariable)
-   {
-      return new InstructionTypeT(sSize, sName, sVariable);
-   }
-
-   /** Visit() uses iterates over all items in the array. It calls a visit function
+  
+   /** Visit() iterates over all items in the array. It calls a visit function
      * on each item.  It passes in the name of the array for the same reason that we needed to pass the name of
-     * the root node into the constructor.  So that it would be available to use when we create the instruction.
+     * the root node into the constructor, so that it would be available to use when we create the instruction.
      *
      * Each item in the array is added to an instruction set.
+     *
+     * This function is a duplicate of the TreeVisitor Visit function on an array, however, with two 
+     * differences.  The InstructionSet is added to the DataDictionary at the end of the function.
+     * Also this function does not call itself when an array is inside an array.  Instead
+     * it calls the TreeVisitor function this is because we don't want to add the internal array
+     * to the DataDictionary.
      ***/
    virtual void Visit(const PDI::Array& array) 
    {
@@ -114,7 +99,7 @@ private:
                                    itEnd(array.End());
       for (; it != itEnd; ++it)
       {
-         StaticTreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);
+         TreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);
          it->Accept(visitor);
 
          pInstructionSet->Add(visitor.GetInstruction());
@@ -123,101 +108,4 @@ private:
       m_pInstruction = pInstructionSet;
 		DATA_DICT.AddStatic(m_sName, pInstructionSet);
    }
-
-   /** Visit() is used to visit a DisplayElement.
-     * It creates one instruction for the DisplayElement.  It uses a template
-     * in order to reduce code.  It looks in the function map for a known type
-     * and then calls the appropriate function to create the instruction that
-     * matches the desired type.  For example, if ASCII is the type, then an
-     * AsciiElement instruction is created and added to the instruction tree.
-     ***/
-   virtual void Visit(const PDI::DisplayElement& string) {
-      std::istringstream ss(string);
-
-      // DISPLAY_ELEMENT can be any one of the following formats:
-      // "NameSimple" : "Type Size"
-      // "NameSimple" : "Type Size $Optional_Variable"
-      // "NameStaticTypeUsage" : "&Alias Size"
-      // "NameDynamicTypeUsage" : "&Alias($Variable) Size"
-
-      char cPeekCharacter = ss.peek();
-
-      if (cPeekCharacter == '&')
-      {
-         // This is either a StaticType usage or a DynamicType usage:
-         // "NameStaticTypeUsage" : "&Alias Size"
-         // "NameDynamicTypeUsage" : "&Alias($Variable) Size"
-
-         // Split the stream into two different tokens defined by a space between them.  The second one is size.
-         std::string sAlias;
-         std::string sSize;
-         ss >> sAlias >> sSize;
-
-         // The following code does this...
-         //1) Determine if this is a static or dynamic usage by looking for the (
-         //2) If this is static, then create an AliasedInstruction and pass in the nSize, sAlias.
-         //3) If this is dynamic, then
-         //3a) Split Alias into two strings (one being &Alias and the other being $Variable, and strip off the parenthesis)
-         //3b) Create an AliasedInstruction and pass in the nSize, sAlias, $Variable.
-
-         size_t nLocationOfOpenParen = sAlias.find('(');
-         size_t nLocationOfCloseParen = sAlias.find(')');
-		   if ((nLocationOfOpenParen != std::string::npos) & (nLocationOfCloseParen != std::string::npos))
-         {
-            // This is a dynamic Aliased Instruction (It has a parameter).
-            std::string sVariable = sAlias.substr(nLocationOfOpenParen+1, nLocationOfCloseParen-nLocationOfOpenParen-1);
-            sAlias = sAlias.substr(0, nLocationOfOpenParen);
-			m_pInstruction = new BabelShark::AliasedInstruction(sSize, m_sName, sAlias, sVariable);
-         }
-         else
-         {
-            // This is a static Aliased Instruction (It does not have a parameter).
-            m_pInstruction = new BabelShark::AliasedInstruction(sSize, m_sName, sAlias);
-         }
-
-      }
-      else
-      {
-         // This is a Simple Display Element in one of the following layouts:
-         // "NameSimple" : "Type Size"
-         // "NameSimple" : "Type Size $Optional_Variable"
-
-         std::string sType;
-         std::string sSize;
-         std::string sVariableName;
-         ss >> sType >> sSize >> sVariableName;
-
-         CreateInstructionFuncMap::const_iterator it = m_CreateInstructionFuncMap.find(sType);
-         if (it == m_CreateInstructionFuncMap.end())
-         {
-            std::string sException = "use of undefined type: " + sType;
-            throw std::exception(sException.c_str());
-         }
-         else
-         {
-            if (m_bDisplayOutputToScreen)
-            {
-               std::cout << "This leaf node has been visited " << m_sName << " " << sType << " " << sSize << " " << sVariableName << std::endl;
-            }
-         }
-
-         CreateInstructionFunc func = it->second;
-         m_pInstruction = (this->*func)(sSize, m_sName, sVariableName);
-      }
-   }
-
-   /** Visit() is used to visit a NULL_ELEMENT.  This was kept in for completeness.
-     * It's a good idea to still have the NULL_ELEMENT enum value so we can default the type of a new element to
-     * NULL_ELEMENT.  However, we should never be visiting a NULL_ELEMENT, so an exception in thrown.
-     ***/
-   virtual void Visit(const PDI::Null& null) { throw std::runtime_error("ERROR: should never see NULL element"); }
-
-   typedef BabelShark::Instruction* (StaticTreeVisitor::*CreateInstructionFunc)(const std::string&, const std::string&, const std::string&);
-   typedef std::map<std::string, CreateInstructionFunc> CreateInstructionFuncMap;
-
-   CreateInstructionFuncMap m_CreateInstructionFuncMap;
-
-   std::string m_sName;
-   BabelShark::Instruction* m_pInstruction;  // This is used so that one visit function may see the instruction from another.
-   bool m_bDisplayOutputToScreen;
 };
