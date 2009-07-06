@@ -7,9 +7,8 @@
 namespace BabelShark
 {
     IntElement::IntElement(std::string size, std::string name, std::string variable)
-        :InstructionElement(size, name)
+        :InstructionElement(size, name, variable)
     {
-        DATA_DICT.AddVariable(variable, this);
         _BitMask = SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }
@@ -30,8 +29,8 @@ namespace BabelShark
         memcpy(&intVal, buffer, MIN(_SizeInBytes, sizeof(intVal)));
 
 		// do 2's compliment stuff manually
-		// unless this is already a long, then let compiler do it for us
-		if ( _Size < 32 )
+		// unless this is already a long long, then let compiler do it for us
+		if ( _SizeInBytes < sizeof(intVal) )
 		{
 			unsigned long long negative = 0;
 			unsigned long long negMask = _BitMask;

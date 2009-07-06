@@ -14,7 +14,7 @@ TEST(FloatDeterminingByteSize)
 	std::stringstream ss;
 	ss << size;
 	BabelShark::FloatElement UT1(ss.str(), "UtilityTest");
-	CHECK_EQUAL(1, UT1.GetSizeInBytes());
+	CHECK_EQUAL(4, UT1.GetSizeInBytes());
 }
 
 TEST(FloatInterpretingData)
@@ -34,7 +34,7 @@ TEST(FloatInterpretingData)
 	CHECK_EQUAL("InterpretTest2 : 3.14", UT2.Display());
 	UT2.Interpret("\x49\x2D\xA7\x44");
 	CHECK_EQUAL("InterpretTest2 : 1337.42", UT2.Display());
-	
+
 	// UT3
 	UT3.Interpret("\x18\x2D\x44\x54\xFB\x21\x09\x40");
 	CHECK_EQUAL("InterpretTest3 : 3.14159", UT3.Display());
