@@ -299,7 +299,7 @@ namespace BabelShark
                 DissectInstructions(in, tvb, sub_tree, buffer, offset);
             }
         }
-        else
+        else if (size == 1)
         {
             // only one instance, just put it directly under the subtree
             DissectInstructions(in, tvb, tree, buffer, offset);

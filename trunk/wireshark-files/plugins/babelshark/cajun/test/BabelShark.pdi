@@ -29,7 +29,8 @@
      "Room"         : "UINT 16",
      "NumAvatars"   : "UINT 16 $N_AVS",
      "SequenceNum"  : "UINT 8",
-     "TotalMsgs"    :  " UINT 8",
+     "TotalMsgs"    : "UINT 8",
+     "Padding?"     : "PAD 16",
      "AvatarList"   : [
         "Name"   : "ASCII 16"
      ] "$N_AVS"
@@ -38,7 +39,7 @@
   statictype "&Game_List_Msg" [
      "NumGames"    : "UINT 16 $N_GAMES",
      "SequenceNum" : "UINT 8",
-     "TotalMsgs"   :  " UINT 8",
+     "TotalMsgs"   : "UINT 8",
      "GameList"    : [
         "Name"   : "ASCII 16"
      ] "$N_GAMES"
@@ -109,7 +110,7 @@
      "8 &Query_For_Items_Msg",
      "9 &Avatar_List_Msg",
      "10 &Game_List_Msg",
-     "11 &Avatar_List_Msg",
+     "11 &Room_List_Msg",
      "12 &Item_List_Msg",
      "13 &Game_Start_Msg",
      "14 &Game_End_Msg",
