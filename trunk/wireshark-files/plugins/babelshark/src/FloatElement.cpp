@@ -56,7 +56,7 @@ namespace BabelShark
 
 	}
 
-	//Will be used to read in data from packet (I think??)
+	/**Used to read in data from packet */
     unsigned int FloatElement::Interpret(char* buffer)
 	{
         std::stringstream result;
