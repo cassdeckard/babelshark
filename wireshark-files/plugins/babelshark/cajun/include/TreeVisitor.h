@@ -89,7 +89,7 @@ public:
      ***/
    BabelShark::Instruction* GetInstruction() { return m_pInstruction; }
 
-private:
+protected:
    /** CreateInstruction() uses a template to reduce code size and to make it easier to
      * add new types.  There are 3 pieces of data that an instruction needs: name, type, size.
      * Size and name are passed in as parameters.  The Type is known because this is a template function
