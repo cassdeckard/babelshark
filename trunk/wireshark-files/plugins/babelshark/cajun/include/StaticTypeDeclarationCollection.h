@@ -31,7 +31,7 @@ namespace PDI
 			 * call will be made to add it to the DataDictionary.  The function
 			 * call will be DataDictionary::AddDynamic(std::string alias,
 			 *    std::string parameter, std::string typeName)
-			 * where alias is the name field from DynamicTypeElement,
+			 * where alias is the name field from DynamicTypeDeclarationElement,
 			 * parameter is the first field inside DynamicTypeEntry, and
 			 * typeName is the seconed field inside DynamicTypeEntry.
 			 ***/

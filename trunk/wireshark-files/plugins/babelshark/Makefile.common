@@ -80,7 +80,7 @@ DISSECTOR_SUPPORT_SRC = \
 	reader.cpp \
 	writer.cpp \
 	BabelSharkSupport.cpp \
-	DynamicTypeCollection.cpp \
-	DynamicTypeElement.cpp \
+	DynamicTypeDeclarationCollection.cpp \
+	DynamicTypeDeclarationElement.cpp \
 	StaticTypeDeclarationCollection.cpp \
 	StaticTypeDeclarationElement.cpp

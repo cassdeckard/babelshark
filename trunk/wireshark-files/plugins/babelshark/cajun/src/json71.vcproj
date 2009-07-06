@@ -114,10 +114,10 @@
 				RelativePath="..\include\cast.inl">
 			</File>
 			<File
-				RelativePath=".\DynamicTypeCollection.cpp">
+				RelativePath=".\DynamicTypeDeclarationCollection.cpp">
 			</File>
 			<File
-				RelativePath=".\DynamicTypeElement.cpp">
+				RelativePath=".\DynamicTypeDeclarationElement.cpp">
 			</File>
 			<File
 				RelativePath=".\elements.cpp">
@@ -146,10 +146,10 @@
 				RelativePath="..\include\cast.h">
 			</File>
 			<File
-				RelativePath="..\include\DynamicTypeCollection.h">
+				RelativePath="..\include\DynamicTypeDeclarationCollection.h">
 			</File>
 			<File
-				RelativePath="..\include\DynamicTypeElement.h">
+				RelativePath="..\include\DynamicTypeDeclarationElement.h">
 			</File>
 			<File
 				RelativePath="..\include\elements.h">

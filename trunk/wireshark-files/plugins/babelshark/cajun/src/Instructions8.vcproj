@@ -2,10 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="json"
-	ProjectGUID="{18FBC8EF-A800-43E1-A7D8-641996092EC5}"
-	RootNamespace="json"
-	Keyword="Win32Proj"
+	Name="Instructions8"
+	ProjectGUID="{92F4190C-A953-4077-9CC6-D8C70552D66E}"
 	>
 	<Platforms>
 		<Platform
@@ -17,11 +15,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)\lib8"
-			IntermediateDirectory="$(SolutionDir)\obj8\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -40,17 +36,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="0"
 				AdditionalIncludeDirectories="$(SolutionDir)\include; $(SolutionDir)\..\include;$(SolutionDir)\..\src;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				RuntimeTypeInfo="false"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="4"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -62,11 +48,13 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName)D.lib"
+				Name="VCLinkerTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -76,6 +64,12 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -83,12 +77,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)\lib8"
-			IntermediateDirectory="$(SolutionDir)\obj8\$(ProjectName)\$(ConfigurationName)"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
-			WholeProgramOptimization="1"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -107,17 +97,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="true"
 				AdditionalIncludeDirectories="$(SolutionDir)\include; $(SolutionDir)\..\include;$(SolutionDir)\..\src;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -129,10 +109,13 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -142,6 +125,12 @@
 			/>
 			<Tool
 				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -153,43 +142,75 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\BabelSharkSupport.cpp"
+				RelativePath="..\..\src\AliasedInstruction.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cast.inl"
+				RelativePath="..\..\src\AsciiElement.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DynamicTypeDeclarationCollection.cpp"
+				RelativePath="..\..\src\BoolElement.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DynamicTypeDeclarationElement.cpp"
+				RelativePath="..\..\src\DataDictionary.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\elements.cpp"
+				RelativePath="..\..\src\DynamicDefinition.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\reader.cpp"
+				RelativePath="..\..\src\FloatElement.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\StaticTypeDeclarationCollection.cpp"
+				RelativePath="..\..\src\Instruction.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\StaticTypeDeclarationElement.cpp"
+				RelativePath="..\..\src\InstructionElement.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\writer.cpp"
+				RelativePath="..\..\src\InstructionSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\IntElement.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\Iterator.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ListIterator.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\NullIterator.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\PadElement.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\StaticDefinition.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\Subject.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\UintElement.cpp"
 				>
 			</File>
 		</Filter>
@@ -199,59 +220,87 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\include\BabelSharkSupport.h"
+				RelativePath="..\..\include\AliasedInstruction.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\cast.h"
+				RelativePath="..\..\include\AsciiElement.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\DynamicTypeDeclarationCollection.h"
+				RelativePath="..\..\include\BoolElement.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\DynamicTypeDeclarationElement.h"
+				RelativePath="..\..\include\DataDictionary.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\elements.h"
+				RelativePath="..\..\include\DynamicDefinition.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\exception.h"
+				RelativePath="..\..\include\FloatElement.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\quick.h"
+				RelativePath="..\..\include\Instruction.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\reader.h"
+				RelativePath="..\..\include\InstructionElement.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\StaticTreeVisitor.h"
+				RelativePath="..\..\include\InstructionNode.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\StaticTypeDeclarationCollection.h"
+				RelativePath="..\..\include\InstructionSet.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\StaticTypeDeclarationElement.h"
+				RelativePath="..\..\include\IntElement.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\TreeVisitor.h"
+				RelativePath="..\..\include\Iterator.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\visitor.h"
+				RelativePath="..\..\include\ListIterator.h"
 				>
 			</File>
 			<File
-				RelativePath="..\include\writer.h"
+				RelativePath="..\..\include\NullIterator.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\Observer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\PadElement.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\Singleton.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\StaticDefinition.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\Subject.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\TypeDefinition.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\UintElement.h"
 				>
 			</File>
 		</Filter>

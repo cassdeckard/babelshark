@@ -1,5 +1,5 @@
 /***********************************************
-File : DynamicTypeElement.h
+File : DynamicTypeDeclarationElement.h
 *************************************************/
 
 #pragma once
@@ -16,7 +16,7 @@ struct DynamicTypeEntry {
    std::string second;
 };
 
-/** The DynamicTypeElement class holds one "dynamictype" read in from a PDI file.
+/** The DynamicTypeDeclarationElement class holds one "dynamictype" read in from a PDI file.
   * An example dynamictype in PDI file format follows:
   * <pre>
   * dynamictype BODY {
@@ -24,7 +24,7 @@ struct DynamicTypeEntry {
   *    2 &INIT
   *  }
   * </pre>
-  * where BODY is stored in the Name field in the DynamicTypeElement class
+  * where BODY is stored in the Name field in the DynamicTypeDeclarationElement class
   * and 1 &ACK is one entry in the DynamicTypeList.  Each entry is
   * stored in a DynamicTypeEntry object, which is just a struct with
   * two std::string fields.  The first field is a string instead of
@@ -36,7 +36,7 @@ struct DynamicTypeEntry {
   * we just want to iterate over every item in the list, rather than
   * look-up an item by passing in the first value.
   */
-class DynamicTypeElement
+class DynamicTypeDeclarationElement
 {
 public:
    /** The SetName function is used to set the m_sName member variable
@@ -58,7 +58,7 @@ public:
    const_iterator End() const;
 
    /** The Insert function is used to insert a DynamicTypeEntry into
-   a DynamicTypeElement.  There will be one call to the insert
+   a DynamicTypeDeclarationElement.  There will be one call to the insert
    function for each row inside a dynamictype found in the PDI File.
      ***/
    iterator Insert(const DynamicTypeEntry& entry);
@@ -66,7 +66,7 @@ public:
    //iterator FindNext(const std::string& name);
    //const_iterator FindNext(const std::string& name) const;
 
-   /** The Clear function is used to empty the DynamicTypeElement list.
+   /** The Clear function is used to empty the DynamicTypeDeclarationElement list.
      ***/
    void Clear();
 
