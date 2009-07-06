@@ -51,7 +51,7 @@ namespace BabelShark
 
     unsigned long long InstructionElement::SetupBitMask(unsigned int val)
     {
-    	unsigned long long result = 0xFFFFFFFF;
+    	unsigned long long result = 0xFFFFFFFFFFFFFFFF;
     	if (val > 64) return result;
     	result = result << val;
     	return ~result;
