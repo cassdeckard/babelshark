@@ -14,7 +14,7 @@ namespace BabelShark
         std::stringstream ss;
         ss << "IntElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
         printf(ss.str().c_str());
-        DataDictionary::Instance()->AddVariable(variable, this);
+        DATA_DICT.AddVariable(variable, this);
         _BitMask = SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(size);
     }
@@ -34,7 +34,7 @@ namespace BabelShark
         std::stringstream ss;
         ss << "IntElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
         printf(ss.str().c_str());
-        DataDictionary::Instance()->AddVariable(variable, this);
+        DATA_DICT.AddVariable(variable, this);
         _BitMask = SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }

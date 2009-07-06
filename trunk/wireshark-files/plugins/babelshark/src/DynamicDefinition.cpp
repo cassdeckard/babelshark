@@ -34,7 +34,7 @@ namespace BabelShark
 
        // the target will be updated when parameter changes and Notify()s us
        // but go ahead and start it off with a NullInstruction
-       *target = DataDictionary::Instance()->NullInstruction();
+       *target = DATA_DICT.NullInstruction();
 
    }
 
@@ -74,7 +74,7 @@ namespace BabelShark
 
        if ( result == NULL )
        {
-           *(_Subjects[subjElem]) = DataDictionary::Instance()->NullInstruction();
+           *(_Subjects[subjElem]) = DATA_DICT.NullInstruction();
        }
        else
        {
