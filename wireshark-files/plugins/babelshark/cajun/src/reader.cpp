@@ -18,8 +18,8 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include <set>
 #include <sstream>
 
-#include "DynamicTypeElement.h"
-#include "DynamicTypeCollection.h"
+#include "DynamicTypeDeclarationElement.h"
+#include "DynamicTypeDeclarationCollection.h"
 #include "StaticTypeDeclarationElement.h"
 #include "StaticTypeDeclarationCollection.h"
 
@@ -481,7 +481,7 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
 
    // Finally, look for the dimension of this array.
    // We are now looking for a string (instead of a number) so we can support variable length arrays.
-   std::string sNumber = MatchExpectedToken(TOKEN_STRING, tokenStream);
+   std::string sNumber = MatchExpectedToken(TOKEN_NUMBER, tokenStream);
 
    array.SetDimension(sNumber);
 }
@@ -489,7 +489,7 @@ void Reader::Parse(Array& array, Reader::TokenStream& tokenStream)
 
 void Reader::ParseDynamicTypeDeclaration(const std::string& sName, Reader::TokenStream& tokenStream)
 {
-   DynamicTypeElement element;
+   DynamicTypeDeclarationElement element;
    element.SetName(sName);
 
    MatchExpectedToken(TOKEN_DYNAMICTYPE_BEGIN, tokenStream);
@@ -512,7 +512,7 @@ void Reader::ParseDynamicTypeDeclaration(const std::string& sName, Reader::Token
          MatchExpectedToken(TOKEN_NEXT_ELEMENT, tokenStream);
    }
 
-   DynamicTypeCollection::Instance().Insert(element);
+   DynamicTypeDeclarationCollection::Instance().Insert(element);
    MatchExpectedToken(TOKEN_DYNAMICTYPE_END, tokenStream);
 
 }

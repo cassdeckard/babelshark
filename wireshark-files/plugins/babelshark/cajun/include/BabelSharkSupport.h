@@ -23,12 +23,12 @@ namespace PDI
    * First it will call the StaticTypeCollection::FillDataDictionary
    * function to fill the Data Dictionary with all the statictypes that were
    * in the PDI File.
-   * Then it will call the DynamicTypeCollection::FillDataDictionary function
+   * Then it will call the DynamicTypeDeclarationCollection::FillDataDictionary function
    * to fill the data dictionary with all of the dynamictypes that were
    * in the PDI File.
    * Then it will instantiate the a TreeVisitor to create the Instruction Tree.
    * Then it will call singleton destructors to delete the StaticTypeCollection
-   * singleton and the DynamicTypeCollection singleton.
+   * singleton and the DynamicTypeDeclarationCollection singleton.
    * Finally, it will return a pointer to the instruction tree.
    *
    * The two paramters passed into this function are needed by the TreeVisitor

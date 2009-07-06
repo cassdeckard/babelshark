@@ -23,8 +23,8 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 
 // These are just included in Main so that we can use reverse engineering
 // to get the class diagram.
-#include "DynamicTypeElement.h"
-#include "DynamicTypeCollection.h"
+#include "DynamicTypeDeclarationElement.h"
+#include "DynamicTypeDeclarationCollection.h"
 
 
 #include <iostream>
