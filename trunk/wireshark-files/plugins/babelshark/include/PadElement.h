@@ -24,11 +24,7 @@ namespace BabelShark
 				then sets up the size in bytes
 				Does not need to setup bitmask since we just throw away the contents
                 */
-            PadElement(unsigned int size, char* name, std::string variable);
-            PadElement(unsigned int size, char* name);
-
-            PadElement(std::string size, std::string name, std::string variable);
-            PadElement(std::string size, std::string name); // new constructor
+            PadElement(std::string size, std::string name, std::string variable = "");
 
 			/** Destructor
 				Does nothing

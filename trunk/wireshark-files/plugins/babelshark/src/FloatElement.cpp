@@ -8,46 +8,11 @@
 
 namespace BabelShark
 {
-
-    // OLD AND BUSTED
-    FloatElement::FloatElement(unsigned int size, char* name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "FloatElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _Size = ROUND32(_Size);
-        _SizeInBytes = DetermineSizeInBytes(size);
-    }
-
-    // OLD AND BUSTED
-    FloatElement::FloatElement(unsigned int size, char* name)
-        :InstructionElement(size, name)
-    {
-        _Size = ROUND32(_Size);
-        _SizeInBytes = DetermineSizeInBytes(size);
-    }
-
-    // NEW HOTNESS
     FloatElement::FloatElement(std::string size, std::string name, std::string variable)
         :InstructionElement(size, name)
     {
-        std::stringstream ss;
-        ss << "FloatElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
         DATA_DICT.AddVariable(variable, this);
         _Size = ROUND32(_Size);
-        SetupBitMask(_Size);
-        _SizeInBytes = DetermineSizeInBytes(_Size);
-    }
-
-    // NEW HOTNESS
-    FloatElement::FloatElement(std::string size, std::string name)
-        :InstructionElement(size, name)
-    {
-        _Size = ROUND32(_Size);
-        SetupBitMask(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }
 

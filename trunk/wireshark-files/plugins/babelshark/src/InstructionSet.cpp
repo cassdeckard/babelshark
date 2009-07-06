@@ -8,15 +8,6 @@ namespace BabelShark
 	/**
 	 *Constructor
 	 */
-
-    // OLD AND BUSTED
-	InstructionSet::InstructionSet(unsigned int size, char* name)
-		:InstructionNode(size, name)
-	{
-
-    }
-
-    // NEW HOTNESS
     InstructionSet::InstructionSet(std::string size, std::string name)
         :InstructionNode(size, name)
     {

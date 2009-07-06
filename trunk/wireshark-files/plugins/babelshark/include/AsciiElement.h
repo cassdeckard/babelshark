@@ -23,11 +23,7 @@ namespace BabelShark
 			/**
 			 * Constructor
              */
-            AsciiElement(unsigned int size, char* name, std::string variable);
-            AsciiElement(unsigned int size, char* name);
-
-            AsciiElement(std::string size, std::string name, std::string variable);
-            AsciiElement(std::string size, std::string name); // new constructor
+            AsciiElement(std::string size, std::string name, std::string variable = "");
 
 			/**
 			 * Destructor

@@ -21,9 +21,7 @@ namespace BabelShark
 			/** Constructor
 				Just calls parent constructor, nothing specific to this class
 			*/
-			InstructionSet(unsigned int size, char* name);
-
-            InstructionSet(std::string size, std::string name); // new constructor
+            InstructionSet(std::string size, std::string name);
 
 			/** Destructor
 				Empty desctructor class

@@ -6,39 +6,8 @@
 
 namespace BabelShark
 {
-
-    // OLD AND BUSTED
-    PadElement::PadElement(unsigned int size, char* name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "PadElement(" << size << ", " << name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _SizeInBytes = DetermineSizeInBytes(size);
-    }
-
-    // OLD AND BUSTED
-    PadElement::PadElement(unsigned int size, char* name)
-        :InstructionElement(size, name)
-    {
-        _SizeInBytes = DetermineSizeInBytes(size);
-    }
-
-    // NEW HOTNESS
     PadElement::PadElement(std::string size, std::string name, std::string variable)
-        :InstructionElement(size, name)
-    {
-        std::stringstream ss;
-        ss << "PadElement(" << _Size << ", " << _Name << ", " << variable.c_str() << ")\n";
-        printf(ss.str().c_str());
-        DATA_DICT.AddVariable(variable, this);
-        _SizeInBytes = DetermineSizeInBytes(_Size);
-    }
-
-    // NEW HOTNESS
-    PadElement::PadElement(std::string size, std::string name)
-        :InstructionElement(size, name)
+        :InstructionElement(size, name, variable)
     {
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }

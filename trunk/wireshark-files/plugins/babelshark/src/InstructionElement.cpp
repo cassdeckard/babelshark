@@ -3,42 +3,14 @@
 #include "InstructionElement.h"
 #include "DataDictionary.h"
 #include "NullIterator.h"
-#include <sstream>
 
 namespace BabelShark
 {
-    // OLD AND BUSTED
-    InstructionElement::InstructionElement(unsigned int size, char* name)
-        :Instruction(size, name)
-    {
-
-    }
-
-    // OLD AND BUSTED
-    InstructionElement::InstructionElement(unsigned int size, char* name, std::string variable = "")
-		:Instruction(size, name)
-	{
-        if (variable != "")
-        {
-            printf("InstructionElement()\n");
-            DATA_DICT.AddVariable(variable, this);
-        }
-    }
-
-    // NEW HOTNESS
-    InstructionElement::InstructionElement(std::string size, std::string name)
-        :Instruction(size, name)
-    {
-
-    }
-
-    // NEW HOTNESS
-    InstructionElement::InstructionElement(std::string size, std::string name, std::string variable = "")
+    InstructionElement::InstructionElement(std::string size, std::string name, std::string variable)
         :Instruction(size, name)
     {
         if (variable != "")
         {
-            printf("InstructionElement()\n");
             DATA_DICT.AddVariable(variable, this);
         }
     }
