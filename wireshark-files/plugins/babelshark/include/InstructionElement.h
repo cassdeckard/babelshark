@@ -3,8 +3,9 @@
 #ifndef INSTRUCTION_ELEMENT_H
 #define INSTRUCTION_ELEMENT_H
 
-// gmacros.h used for MIN macro
-#include "glib/gmacros.h"
+#ifndef MIN
+#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+#endif
 
 #include <bitset>
 #include <list>
