@@ -19,8 +19,6 @@
 // _TestInstruction : use instruction built in Test()
 #define ROOT_INSTRUCTION _RootInstruction
 
-BabelShark::Instruction* Parse(std::string inFile); // delcaration; this is defined in PdiParser.cpp
-
 namespace BabelShark
 {
 
@@ -306,7 +304,7 @@ namespace BabelShark
 	    std::ifstream fin(inFile.c_str());
 	    if (fin.fail())
 	    {
-           return new Instruction(0, "ERR_FILE_NOT_FOUND");
+           return new Instruction("0", "ERR_FILE_NOT_FOUND");
 	    }
 		
 		PDI::Element elemRoot = PDI::DisplayElement();
