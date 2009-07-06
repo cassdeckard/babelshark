@@ -4,7 +4,7 @@
 
 TEST(AsciiInterpreter)
 {
-	BabelShark::AsciiElement UT1(5, "unitTest1");
+	BabelShark::AsciiElement UT1("5", "unitTest1");
 	char* buffer = new char[10];
 	buffer = "zomgtest1!";
 	UT1.Interpret(buffer);

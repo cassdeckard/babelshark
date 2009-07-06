@@ -1,16 +1,19 @@
 #include <unittest++/unittest++.h>
 #include <FloatElement.h>
+#include <sstream>
 
 TEST(FloatConstruction)
 {
-	BabelShark::FloatElement UT1(15, "test1!!!");
+	BabelShark::FloatElement UT1("15", "test1!!!");
 	CHECK_EQUAL("test1!!!", UT1.GetName());
 }
 
 TEST(FloatDeterminingByteSize)
 {
 	size_t size = 5;
-	BabelShark::FloatElement UT1(size, "UtilityTest");
+	std::stringstream ss;
+	ss << size;
+	BabelShark::FloatElement UT1(ss.str(), "UtilityTest");
 	CHECK_EQUAL(1, UT1.GetSizeInBytes());
 }
 
