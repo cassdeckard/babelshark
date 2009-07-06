@@ -29,7 +29,7 @@ namespace BabelShark
         memcpy(&intVal, buffer, MIN(_SizeInBytes, sizeof(intVal)));
 
 		// do 2's compliment stuff manually
-		// unless this is already a long, then let compiler do it for us
+		// unless this is already a long long, then let compiler do it for us
 		if ( _SizeInBytes < sizeof(intVal) )
 		{
 			unsigned long long negative = 0;
