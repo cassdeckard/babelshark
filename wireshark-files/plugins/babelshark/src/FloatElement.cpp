@@ -9,9 +9,8 @@
 namespace BabelShark
 {
     FloatElement::FloatElement(std::string size, std::string name, std::string variable)
-        :InstructionElement(size, name)
+        :InstructionElement(size, name, variable)
     {
-        DATA_DICT.AddVariable(variable, this);
         _Size = ROUND32(_Size);
         _SizeInBytes = DetermineSizeInBytes(_Size);
     }
