@@ -32,6 +32,9 @@ Global
 		{7F568307-02BB-4C30-9CE0-0A3B7AC170A8}.Release.ActiveCfg = Release|Win32
 		{7F568307-02BB-4C30-9CE0-0A3B7AC170A8}.Release.Build.0 = Release|Win32
 	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		..\..\..\..\design\BabelShark.vsd = ..\..\..\..\design\BabelShark.vsd
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
