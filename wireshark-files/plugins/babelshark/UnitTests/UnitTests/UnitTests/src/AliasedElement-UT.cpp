@@ -74,9 +74,13 @@ TEST_FIXTURE(AliasedInstruction, DynamicDefinition)
 	//Create aliased instruction
 	BabelShark::AliasedInstruction TestAlias("1", "Body", "&DynamicTest", "$MyInt");
 
+	DATA_DICT.Initialize();
+
 	//Update value of variable, then verify children
-	child3->Interpret("1");
-	BabelShark::Iterator* iter = T1.CreateIterator();
+	child3->Interpret("\x1");
+	CHECK_EQUAL("Body : test1", TestAlias.Display());
+	CHECK_EQUAL("child3 : 1", child3->Display());
+	BabelShark::Iterator* iter = TestAlias.CreateIterator();
 	CHECK_EQUAL(child1, (*iter).CurrentItem());
 	iter->Next();
 	CHECK_EQUAL(child2, (*iter).CurrentItem());
@@ -84,9 +88,10 @@ TEST_FIXTURE(AliasedInstruction, DynamicDefinition)
 	//Update value of variable to a differrent value, then verify children have changed
 	//The below statement has valid syntax,  but doesn't appear to be triggering the change
 	//in children
-	//TODO  fix this
-	child3->Interpret("2");
-	iter = T1.CreateIterator();
+	child3->Interpret("\x2");
+	CHECK_EQUAL("child3 : 2", child3->Display());
+	CHECK_EQUAL("Body : test2", TestAlias.Display());
+	iter = TestAlias.CreateIterator();
 	CHECK_EQUAL(child3, (*iter).CurrentItem());
 	iter->Next();
 	CHECK_EQUAL(child4, (*iter).CurrentItem());

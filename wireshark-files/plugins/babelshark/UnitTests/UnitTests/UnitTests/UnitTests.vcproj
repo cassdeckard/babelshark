@@ -204,6 +204,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\PadElement-UT.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\UintElement-UT.cpp"
 				>
 			</File>
