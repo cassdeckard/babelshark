@@ -131,9 +131,6 @@
 			<File
 				RelativePath=".\StaticTypeDeclarationElement.cpp">
 			</File>
-			<File
-				RelativePath=".\writer.cpp">
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -158,9 +155,6 @@
 				RelativePath="..\include\exception.h">
 			</File>
 			<File
-				RelativePath="..\include\quick.h">
-			</File>
-			<File
 				RelativePath="..\include\reader.h">
 			</File>
 			<File
@@ -177,9 +171,6 @@
 			</File>
 			<File
 				RelativePath="..\include\visitor.h">
-			</File>
-			<File
-				RelativePath="..\include\writer.h">
 			</File>
 		</Filter>
 		<Filter

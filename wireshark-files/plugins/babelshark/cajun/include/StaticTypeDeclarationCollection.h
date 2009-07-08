@@ -3,6 +3,7 @@
 
 #include "singleton.h"
 #include "StaticTypeDeclarationElement.h"
+
 #include <list>
 
 namespace PDI

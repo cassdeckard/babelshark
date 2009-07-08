@@ -10,11 +10,6 @@ File : BabelSharkSupport.cpp
 #include "DynamicTypeDeclarationCollection.h"
 #include "StaticTypeDeclarationCollection.h"
 
-//TODO: After we clean-up the test code out of here, remove these includes.
-#include "InstructionSet.h"
-#include "DynamicTypeDeclarationElement.h"
-#include "DataDictionary.h"
-
 namespace PDI
 {
    BabelShark::Instruction* CreateInstructionTreeAndFillDataDictionary(const Element& elemRoot, bool bDisplayOutputToScreen)

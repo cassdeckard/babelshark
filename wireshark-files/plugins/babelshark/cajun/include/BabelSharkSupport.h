@@ -14,6 +14,9 @@ namespace PDI
    * dissector.cpp file in babelshark include folder) after the PDI file
    * has been read by the Read function.
    *
+   * Design Pattern : None
+   * Design Pattern Role : None
+   *
    * The purpose of this function is to simplify the calling code, so
    * it doesn't need to know the details about creating the instruction
    * tree or about about filling the data dictionary.  For example, it

@@ -5,7 +5,6 @@ File : DynamicTypeDeclarationCollection.cpp
 #pragma once
 
 #include "DynamicTypeDeclarationCollection.h"
-#include "DynamicTypeDeclarationElement.h"
 #include "DataDictionary.h"
 
 namespace PDI

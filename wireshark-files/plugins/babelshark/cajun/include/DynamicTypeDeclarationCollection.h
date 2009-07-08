@@ -7,6 +7,7 @@ File : DynamicTypeDeclarationCollection.h
 #include <list>
 #include <string>
 #include "Singleton.h"
+#include "DynamicTypeDeclarationElement.h"
 
 namespace PDI
 {
