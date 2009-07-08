@@ -39,10 +39,27 @@ of the StaticTreeVisitor class.
   * forming an Instruction Tree.  The Wireshark dissector will use the instruction tree created 
   * by this class when it is referred to by its alias in another instruction.
   *
+  * This class is derived from ConstVisitor, so likewise, its functions do not modify the nodes
+  * that it is visiting.  If you need to extend the functionality of this class to modify the nodes,
+  * then change this class to be derived from the Visitor class.
+  *
+  * <pre>
+  * Design Pattern: Visitor
+  * Design Pattern Role: ConcreteVisitor
+  * Other Participants: 
+  *    The ConstVisitor class plays the Visitor role.
+  *    The TreeVisitor class plays the ConcreteVisitor role.
+  *    The abstract Element class plays the Element role.
+  *    The Array class plays the ConcreteElement role.
+  *    The DisplayElement class plays the ConcreteElement role.
+  *    The Null class plays the ConcreteElement role.
+  * </pre>
+  *
   * Usage: After a file has been read in by calling the following parser functions...
   *       Element elemRoot = DisplayElement();
   *       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));
-  * then the following function can be called to create a statictype instruction tree.
+  * then the following function can be called to create a statictype instruction tree
+  * and add it to the DataDictionary:
   *       StaticTreeVisitor StaticTreeVisitor(elemRoot.Name());
   * Note that the root element name must be passed into the StaticTreeVisitor in order to get the 
   * name of the statictype to be included in the first instruction in the instruction tree.
@@ -51,9 +68,11 @@ of the StaticTreeVisitor class.
   * unit test / debug data should be written to cout.  If the parameter is true then data will
   * be displayed.  If the parameter is false, or is not provided, then data will not be displayed.
   *
-  * StaticTreeVisitor inherits from TreeVisitor.  The only difference is that when the StaticTreeVisitor
+  * StaticTreeVisitor inherits from TreeVisitor.  The major difference is that when the StaticTreeVisitor
   * Visit function is called on an array, the resultant InstructionSet is added to the DataDictionary.
-  ***/
+  * A minor difference is that the StaticTreeVisitor Visit(Array) function does create a StaticTreeVisitor
+  * recursively, instead it creates a TreeVisitor.
+  */
 class StaticTreeVisitor : public TreeVisitor
 {
 public:
@@ -64,9 +83,7 @@ public:
       * @param bDisplayOutputToScreen
       *   (optional) should be true if you want output to the screen for testing
       *
-      * A function map is initialized in the constructor using a template.
-      * This will make the addition of new types easier.
-      ***/
+      */
    StaticTreeVisitor(const std::string& sName, bool bDisplayOutputToScreen = false) :
       TreeVisitor(sName, bDisplayOutputToScreen)
    {
@@ -82,11 +99,11 @@ private:
      * Each item in the array is added to an instruction set.
      *
      * This function is a duplicate of the TreeVisitor Visit function on an array, however, with two 
-     * differences.  The InstructionSet is added to the DataDictionary at the end of the function.
-     * Also this function does not call itself when an array is inside an array.  Instead
-     * it calls the TreeVisitor function this is because we don't want to add the internal array
-     * to the DataDictionary.
-     ***/
+     * differences.  The InstructionSet is added to the DataDictionary at the end of this function.
+     * Also this function does not create a new StaticTreeVisitor when it discovers an array inside an array.  
+     * Instead instead it creates a TreeVisitor. This is because we don't want to add any internal arrays
+     * to the DataDictionary on their own.  We want them to be a part of the one entry for this statictype.
+     */
    virtual void Visit(const PDI::Array& array) 
    {
       if (m_bDisplayOutputToScreen)
@@ -99,13 +116,13 @@ private:
                                    itEnd(array.End());
       for (; it != itEnd; ++it)
       {
-         TreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);
+         TreeVisitor visitor(it->Name(), m_bDisplayOutputToScreen);  // Use base class.
          it->Accept(visitor);
 
          pInstructionSet->Add(visitor.GetInstruction());
       }
 
       m_pInstruction = pInstructionSet;
-		DATA_DICT.AddStatic(m_sName, pInstructionSet);
+		DATA_DICT.AddStatic(m_sName, pInstructionSet);  // Add InstructionSet to Data Dictionary.
    }
 };

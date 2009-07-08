@@ -24,6 +24,7 @@ struct DynamicTypeEntry {
   *    2 &INIT
   *  }
   * </pre>
+  *
   * where BODY is stored in the Name field in the DynamicTypeDeclarationElement class
   * and 1 &ACK is one entry in the DynamicTypeList.  Each entry is
   * stored in a DynamicTypeEntry object, which is just a struct with

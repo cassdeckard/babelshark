@@ -52,6 +52,16 @@ class ElementImp;
   * The actual member variable that holds the Name is not in the Element class.  It is in the
   * ElementImp_T class.  This was done because the Element class did not need to know about the
   * member variable.
+  *
+  * <pre>
+  * Design Pattern: Composite
+  * Design Pattern Role: Component
+  * Other Participants: 
+  *    The Array class plays the Composite role.
+  *    The DisplayElement class plays the Leaf role.
+  *    The Null class plays the Leaf role.
+  * </pre>
+  *
   ***/
 class Element
 {
@@ -128,6 +138,16 @@ class ArrayImp;
   * it was more efficient just to store the dimension read in from the file.  When an InstructionSet is created
   * from the Array element, the dimension will be passed into its constructor and it will appropriately handle
   * dealing with the buffer of bits being sniffed by Wireshark.
+  *
+  * <pre>
+  * Design Pattern: Composite
+  * Design Pattern Role: Composite
+  * Other Participants: 
+  *    The Element class plays the Component role.
+  *    The DisplayElement class plays the Leaf role.
+  *    The Null class plays the Leaf role.
+  * </pre>
+  *
   ***/
 class Array : public Element_T<ArrayImp>
 {
@@ -172,6 +192,16 @@ class DisplayElementImp;
   * The class has a very similar interface as before, however, the names of the class and the functions have
   * been changed to be more clear about the new functionality of the class, to support DisplayElements which
   * consist of a display type and size.
+  *
+  * <pre>
+  * Design Pattern: Composite
+  * Design Pattern Role: Leaf
+  * Other Participants: 
+  *    The Element class plays the Component role.
+  *    The Array class plays the Composite role.
+  *    The Null class plays the Leaf role.
+  * </pre>
+  *
   ***/
 class DisplayElement : public Element_T<DisplayElementImp>
 {
@@ -191,6 +221,16 @@ class NullImp;
   *
   * JSON supported Null elements.  However, our PDI language does not.  However, this class was
   * retained so that it could be used as a default type prior to us knowing the element type.
+  *
+  * <pre>
+  * Design Pattern: Composite
+  * Design Pattern Role: Leaf
+  * Other Participants: 
+  *    The Element class plays the Component role.
+  *    The Array class plays the Composite role.
+  *    The DisplayElement class plays the Leaf role.
+  * </pre>
+  *
   ***/
 class Null : public Element_T<NullImp>
 {};

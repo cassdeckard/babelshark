@@ -18,6 +18,26 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 namespace PDI
 {
 
+/** The Reader class is used to read in a file in PDI Format.
+* The overall design of this class remains consitent with the code from SourceForge.
+* However, changes have been made to read in the new format.
+*
+* <pre>
+* Design Pattern: None
+* Design Pattern Role: None
+* </pre>
+*
+* This class provides a public function named Read.
+* There are two primary steps which occur in the Read function.
+* First, the file is scanned for tokens and a token stream is created.
+* Second, the token stream is parsed.
+*
+* While the token stream is being parsed, one of three actions will occur:
+* 1) If a statictype is being parsed, then a StaticTypeDeclarationElement will be added to the StaticTypeDeclarationCollection.
+* 2) If a dynamictype is being parsed, then a DynamicTypeDeclarationElement will be added to the DynamicTypeDeclarationCollection.
+* 1) If a message is being parsed, then a PDI Tree will be created using the elementRoot passed into the Read function.
+*
+***/
 class Reader
 {
 public:

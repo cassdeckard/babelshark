@@ -37,6 +37,22 @@ of the TreeVisitor class.
   * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created
   * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
   *
+  * This class is derived from ConstVisitor, so likewise, its functions do not modify the nodes
+  * that it is visiting.  If you need to extend the functionality of this class to modify the nodes,
+  * then change this class to be derived from the Visitor class.
+  *
+  * <pre>
+  * Design Pattern: Visitor
+  * Design Pattern Role: ConcreteVisitor
+  * Other Participants: 
+  *    The ConstVisitor class plays the Visitor role.
+  *    The StaticTreeVisitor class plays the ConcreteVisitor role.
+  *    The abstract Element class plays the Element role.
+  *    The Array class plays the ConcreteElement role.
+  *    The DisplayElement class plays the ConcreteElement role.
+  *    The Null class plays the ConcreteElement role.
+  * </pre>
+  *
   * Usage: After a file has been read in by calling the following parser functions...
   *       Element elemRoot = DisplayElement();
   *       Reader::Read(elemRoot, std::ifstream("AvatarsInRoom.txt"));

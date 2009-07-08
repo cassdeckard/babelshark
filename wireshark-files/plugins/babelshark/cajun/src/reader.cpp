@@ -23,15 +23,6 @@ course CSE 533S: Pattern Oriented Software Design and Development, Summer 2009.
 #include "StaticTypeDeclarationElement.h"
 #include "StaticTypeDeclarationCollection.h"
 
-
-/*  
-
-TODO:
-* better documentation
-* unicode character decoding
-
-***/
-
 namespace PDI
 {
 

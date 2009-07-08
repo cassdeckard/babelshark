@@ -7,21 +7,18 @@
 namespace PDI
 {
 
-/** The StaticTypeDefinition class holds one "statictype" read in from a PDI file.
-  * An example dynamictype in PDI file format follows:
-  * statictype HEADER {
-  *    "MessageID" : "UINT 8 $MSG_ID",
-  *    "Pad"       : "PAD 8",
-  *    "EventID"   : "UINT 16",
-  *    "Name"      : "ASCII 16",
-  *    "Pad2"      : "PAD 32"
-  * }
-  * where MessageID has a special mapping to our DataDictionary
-  * through the alias $MSG_ID
-  *
-  ***/
-
-
+   /** The StaticTypeDefinition class holds one "statictype" read in from a PDI file.
+   * An example dynamictype in PDI file format follows:
+   * statictype HEADER {
+   *    "MessageID" : "UINT 8 $MSG_ID",
+   *    "Pad"       : "PAD 8",
+   *    "EventID"   : "UINT 16",
+   *    "Name"      : "ASCII 16",
+   *    "Pad2"      : "PAD 32"
+   * }
+   * where MessageID has a special mapping to our DataDictionary
+   * through the alias $MSG_ID
+   ***/
 
 	class StaticTypeDeclaration : public Array
 	{

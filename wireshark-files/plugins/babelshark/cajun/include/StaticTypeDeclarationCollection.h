@@ -8,6 +8,23 @@
 
 namespace PDI
 {
+/** The StaticTypeDeclarationCollection class is a singleton that holds a list 
+  * of StaticTypeDeclarationElement objects. This is a singleton because we will only
+  * have one collection of these, and also because we want to make
+  * it easier to access the data.  We don't want to have to pass
+  * a pointer out to the calling program (the Main.cpp file in the
+  * cajun test folder, or the dissector.cpp file in babelshark include
+  * folder).
+  *
+  * <pre>
+  * Design Pattern: Singleton
+  * Design Pattern Role: Singleton
+  * Other Participants: 
+  *    The Singleton class is actually what implements the features of the Singleton
+  *    design pattern.  This class inherits from the Singleton class.
+  * </pre>
+  *
+  */
 	class StaticTypeDeclarationCollection : public Singleton<StaticTypeDeclarationCollection>
 	{
 		public:
