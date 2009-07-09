@@ -192,6 +192,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\DataDictionary-UT.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\FloatElement-UT.cpp"
 				>
 			</File>
