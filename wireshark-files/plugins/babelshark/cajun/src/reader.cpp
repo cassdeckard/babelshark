@@ -50,6 +50,23 @@ enum Reader::TokenType
 };
 
 
+std::string sTokenString[12] =
+{
+   "TOKEN_ARRAY_BEGIN [",
+   "TOKEN_ARRAY_END  ]",
+   "TOKEN_DYNAMICTYPE_BEGIN  {",
+   "TOKEN_DYNAMICTYPE_END  }",
+   "TOKEN_DYNAMICTYPE  dynamictype",
+   "TOKEN_STATICTYPE  statictype",
+   "TOKEN_NEXT_ELEMENT  ,",
+   "TOKEN_MEMBER_ASSIGN  :",
+   "TOKEN_STRING  \"xxx\" ",
+   "TOKEN_NUMBER  000",
+   "TOKEN_NULL  null",
+   "TOKEN_COMMENT //"
+};
+
+
 //////////////////////
 // Reader::InputStream
 
@@ -438,7 +455,7 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
 
          default:
          {
-            std::string sMessage = "Unexpected token: " + token.sValue;
+            std::string sMessage = "Unexpected token. Expected " + sTokenString[token.nType] ;
             throw ParseException(sMessage, token.locBegin, token.locEnd);
          }
       }
@@ -549,7 +566,8 @@ const std::string& Reader::MatchExpectedToken(TokenType nExpected, Reader::Token
    const Token& token = tokenStream.Get();
    if (token.nType != nExpected)
    {
-      std::string sMessage = "Unexpected token: " + token.sValue;
+      std::string sToken = token.sValue;
+      std::string sMessage = "Unexpected token.  Found this token when another token was expected: " + sTokenString[token.nType];
       throw ParseException(sMessage, token.locBegin, token.locEnd);
    }
 
