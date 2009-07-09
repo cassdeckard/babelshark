@@ -45,6 +45,17 @@
      ] "$N_GAMES"
   ] "1"
   
+  // lists avatars active in a game
+  statictype "&Active_Game_List_Msg" [
+     "NumGames"       : "UINT 16 $N_GAMES2",
+     "SequenceNum"    : "UINT 8",
+     "TotalMsgs"      : "UINT 8",
+     "ActiveAvatars"  : [
+        "Name"      : "ASCII 16",
+        "GameState" : "ASCII 16"
+     ] "$N_GAMES2"
+  ] "1"
+
   statictype "&Room_List_Msg" [
      "NumRooms" : "UINT 16"
   ] "1"
@@ -68,6 +79,9 @@
   ] "1"
 
   statictype "&Query_For_Items_Msg" [
+  ] "1"
+
+  statictype "&Query_Active_Games_Msg" [
   ] "1"
 
   statictype "&Game_Start_Msg" [
@@ -106,22 +120,23 @@
      "4 &Terminate_Message",
      "5 &Query_Room_Msg",
      "6 &Query_Games_Msg",
-     "7 &Query_World_Msg",
-     "8 &Query_For_Items_Msg",
-     "9 &Avatar_List_Msg",
-     "10 &Game_List_Msg",
-     "11 &Room_List_Msg",
-     "12 &Item_List_Msg",
-     "13 &Game_Start_Msg",
-     "14 &Game_End_Msg",
-     "15 &Game_Cmd_Msg",
-     "16 &Drop_Item_Msg",
-     "17 &Pickup_Item_Msg",
-     "18 &Test_Message"
+     "7 &Query_Active_Games_Msg",
+     "8 &Query_World_Msg",
+     "9 &Query_For_Items_Msg",
+     "10 &Avatar_List_Msg",
+     "11 &Game_List_Msg",
+     "12 &Active_Game_List_Msg",
+     "13 &Room_List_Msg",
+     "14 &Item_List_Msg",
+     "15 &Game_Start_Msg",
+     "16 &Game_End_Msg",
+     "17 &Game_Cmd_Msg",
+     "18 &Drop_Item_Msg",
+     "19 &Pickup_Item_Msg",
+     "20 &Test_Message"
   }
 
   "ClientServer Packet" : [
      "Header"  : "&HEADER 1",
      "Body"    : "&BODY($MSG_ID) 1"
   ] "1"
-  
