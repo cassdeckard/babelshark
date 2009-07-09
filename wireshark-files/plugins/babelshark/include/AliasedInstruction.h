@@ -93,6 +93,14 @@ namespace BabelShark
               */
             unsigned int NumSubtrees() { return _RealSubject->NumSubtrees(); }
 
+            /** Initialize
+              * Performs any initialization that depends on all user-defined data being
+              * declared. This will be called by DataDictionary after all user-defined
+              * data is declared.
+              *
+              * <b>Pattern roles:</b>
+              *  - Proxy::Request()
+              */
             void Initialize();
 
 		private:

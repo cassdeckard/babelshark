@@ -12,7 +12,7 @@ namespace BabelShark
 		Class: UintElement
 		Parent: InstructionElement
 		One of the Leaf(s) in the Composite Structure.
-		Processes Uint type elements
+		Processes UINT type elements
 	*/
 	class UintElement: public InstructionElement
 	{

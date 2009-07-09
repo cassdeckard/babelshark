@@ -31,6 +31,11 @@ namespace BabelShark
              */
            void Fetch(InstructionNode** target, InstructionElement* parameter = NULL);
 
+           /** Define redefines this static definition with a new InstructionNode*
+             *
+             * @param type
+             *   new definition for this static type
+             */
            void Define(InstructionNode* type);
 
 		protected:

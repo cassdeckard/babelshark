@@ -33,15 +33,6 @@ namespace BabelShark
 	class DataDictionary : public Singleton<DataDictionary>
 	{
         public:
-            /** Instance returns reference to single instantiation
-              * of the DataDictionary, creating it if need be.
-              *
-              * <b>Pattern roles:</b>
-              *  - Singleton::Instance
-              *
-              * @return instance of DataDictionary
-              */
-           //static DataDictionary* Instance();
 
            /** AddVariable adds a declaration of a protocol variable
              * to the DataDictionary. A protocol variable is stored as
@@ -131,24 +122,14 @@ namespace BabelShark
              */
            void Initialize();
 
+           /** NullInstruction() is the accessor for _NullInstruction
+             * which represents an undefined static type
+             */
            InstructionNode* NullInstruction() { return _NullInstruction; }
 
         protected:
-           /** DataDictionary's constructor is only called by its static
-             * Instance() method when the instance has not yet been created.
-             */
-           //DataDictionary();
-
-           //~DataDictionary();
 
         private:
-           /** _Instance stores the reference to the single instantiation
-             * of DataDictionary.
-             *
-             * <b>Pattern roles:</b>
-             *  - Singleton::uniqueInstance
-             */
-           //static DataDictionary* _Instance;
 
            /** _Variables stores the mapping of aliases to protocol variables
              *
@@ -164,12 +145,14 @@ namespace BabelShark
              */
            std::map<std::string, TypeDefinition*> _Types;
 
-
            /** _ToInitialize is a list of Instructions that need to be
              * initialized
              */
            std::list<Instruction*> _ToInitialize;
 
+           /** _NullInstruction represents an undefined static type and
+             * is returned whenever a type is requested that does not exist.
+             */
            InstructionNode* _NullInstruction;
 	};
 

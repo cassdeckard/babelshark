@@ -192,10 +192,6 @@ namespace BabelShark
 
     char* Dissector::ShiftBits(char* buffer, unsigned int size, unsigned int offset)
     {
-        /** This is the ever important code to handle shared bytes
-          * This code allows for a user to define a UINT 7 bit and a bool 1 bit immediately following so that it only
-          * takes up one byte of transmission space.
-          */
         char *result;
         result = new char[size];
         char mask = 0xFF << offset;
@@ -323,7 +319,7 @@ namespace BabelShark
 	    {
            return new Instruction("0", "ERROR: PDI file not found: " + inFile);
 	    }
-		
+
     	// Exception block
 	    try
 	    {

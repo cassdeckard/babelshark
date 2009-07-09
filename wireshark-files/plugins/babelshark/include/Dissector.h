@@ -149,8 +149,35 @@ namespace BabelShark
                           gint &offset);
 
 
+            /** ShiftBits() takes the current packet buffer and shifts it by the
+              * number of bits specified in offset, then returns a shifted buffer of
+              * the specified size in bytes. It is used to feed Instructions that
+              * need to start reading from the middle of a byte in the buffer, because
+              * a previous Instruction did not Interpret the entire byte.
+              *
+              * @param buffer
+              *   the input buffer
+              * @param size
+              *   number of bytes to return
+              * @param offset
+              *   number of bits to shift
+              */
             char* ShiftBits(char* buffer, unsigned int size, unsigned int offset);
 
+            /** ParsePDI() makes the calls to the PDI Parser subsystem to read in
+              * the file supplied by the plugin and construct the _RootInstruction
+              * tree from it.
+              *
+              * ParsePDI() also performs exception handling. If it encounters
+              * any exceptions thrown from PDI Parser it creates a single Instruction
+              * of zero Size whose Name is whatever information was passed in the
+              * exception. The Dissector will recognize this as represnting an error
+              * and pass the message to Wireshark's error handling system rather than
+              * attempt to use the Instruction to dissect.
+              *
+              * @param inFile
+              *   the name of the file to read in
+              */
             Instruction* ParsePDI(std::string inFile);
 
             /** _RootInstruction holds the root node of the Instruction tree
@@ -174,10 +201,14 @@ namespace BabelShark
               */
             bool         _nameChanged;
 
+            /** _nameChanged is set to true if the name of our protocol has
+              * changed and needs to be updated in the Wireshark GUI
+              */
             unsigned int _bitOffset;
 
             /** TODO: REMOVE **/
             AliasedInstruction* _TestAliased;
+            /** TODO: REMOVE **/
             Instruction* _TestInstruction;
 	};
 }
