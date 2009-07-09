@@ -32,7 +32,6 @@ int main()
    using namespace PDI;
 
    {
-
       std::string inFile("BabelShark.pdi");
       std::ifstream fin(inFile.c_str());
 
@@ -52,10 +51,6 @@ int main()
       CreateInstructionTreeAndFillDataDictionary(elemRoot, true);
       std::cout << "Done." << std::endl << std::endl;
 
-	    	// Try to parse PDI into root instruction
-	    	//PDI::Element elemRoot = PDI::DisplayElement();
-	    	//PDI::Reader::Read(elemRoot,fin);
-	    	//pRootInstruction = PDI::CreateInstructionTreeAndFillDataDictionary(elemRoot, false);
 	    }
 	    catch (PDI::ParseException& e)
 	    {
@@ -96,9 +91,7 @@ int main()
 	    catch (...)
 	    {
          std::cout << "Unhandled exception." << std::endl << std::endl;
-	    	//return new Instruction("0", "ERROR: Unknown PDI error");
 	    }
-	    //return pRootInstruction;
    }
 
    return 0;

@@ -455,7 +455,7 @@ void Reader::Parse(Element& element, Reader::TokenStream& tokenStream)
 
          default:
          {
-            std::string sMessage = "Unexpected token. Expected " + sTokenString[token.nType] ;
+            std::string sMessage = "Unexpected token. Expected token was" + sTokenString[token.nType] ;
             throw ParseException(sMessage, token.locBegin, token.locEnd);
          }
       }
@@ -559,7 +559,7 @@ const std::string& Reader::MatchExpectedToken(TokenType nExpected, Reader::Token
 {
    if (tokenStream.EOS())
    {
-      std::string sMessage = "Unexpected End of token stream";
+      std::string sMessage = "Unexpected end of token stream";
       throw ParseException(sMessage, Location(), Location()); // nowhere to point to
    }
 
