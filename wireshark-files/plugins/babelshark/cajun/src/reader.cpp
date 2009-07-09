@@ -271,7 +271,8 @@ void Reader::Scan(Tokens& tokens, InputStream& inputStream)
 
          default:
          {
-            std::string sErrorMessage = "Unexpected character in stream: " + sChar[0];
+            std::string sCharacter(sChar);
+            std::string sErrorMessage = "Unexpected character in stream: " + sCharacter;
             throw ScanException(sErrorMessage, inputStream.GetLocation());
          }
       }

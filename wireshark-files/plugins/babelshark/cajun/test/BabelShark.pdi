@@ -1,4 +1,4 @@
-  statictype "&HEADER" [
+  statictype : "&HEADER" [
      "MessageID" : "UINT 8 $MSG_ID",
      "Padh"      : "PAD 8",
      "EventID"   : "UINT 16",

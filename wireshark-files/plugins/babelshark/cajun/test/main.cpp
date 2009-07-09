@@ -32,10 +32,18 @@ int main()
    using namespace PDI;
 
    {
+
+      std::string inFile("BabelShark.pdi");
+      std::ifstream fin(inFile.c_str());
+
+      // Exception block
+	   try
+      {     
+          
       // Read a file in PDI Format.
       std::cout << "Read the BabelShark.pdi file..." << std::endl;
       Element elemRoot = DisplayElement();
-      Reader::Read(elemRoot, std::ifstream("BabelShark.pdi"));
+      Reader::Read(elemRoot, fin);
       std::cout << "Done." << std::endl << std::endl;
 
       // Fill the data dictionary with statictypes and dynamictypes
@@ -43,6 +51,54 @@ int main()
       std::cout << "Fill the Data Dictionary and Create the Instruction Tree..." << std::endl;
       CreateInstructionTreeAndFillDataDictionary(elemRoot, true);
       std::cout << "Done." << std::endl << std::endl;
+
+	    	// Try to parse PDI into root instruction
+	    	//PDI::Element elemRoot = PDI::DisplayElement();
+	    	//PDI::Reader::Read(elemRoot,fin);
+	    	//pRootInstruction = PDI::CreateInstructionTreeAndFillDataDictionary(elemRoot, false);
+	    }
+	    catch (PDI::ParseException& e)
+	    {
+         std::stringstream what;
+	    	what << e.what()
+	    	     << " ("
+	    	     << inFile
+	    	     << ":"
+                 << e.m_locTokenBegin.m_nLine
+                 << ")";
+         std::cout << what.str() << std::endl << std::endl;
+	    	//return new Instruction("0", "PARSE ERROR: " + what.str());
+	    }
+	    catch (PDI::ScanException& e)
+	    {
+         std::stringstream what;
+	    	what << e.what()
+	    	     << " ("
+	    	     << inFile
+	    	     << ":"
+                 << e.m_locError.m_nLine
+                 << ")";
+         std::cout << "Scan Exception: " << what.str() << std::endl << std::endl;
+	    	//return new Instruction("0", "SCAN ERROR: " + what.str());
+	    }
+	    catch (PDI::Exception& e)
+	    {
+	    	std::string what(e.what());
+         std::cout << what << std::endl << std::endl;
+	    	//return new Instruction("0", "PDI ERROR: " + what);
+	    }
+	    catch (std::runtime_error& e)
+	    {
+	    	std::string what(e.what());
+         std::cout << what << std::endl << std::endl;
+	    	//return new Instruction("0", "ERROR: " + what);
+	    }
+	    catch (...)
+	    {
+         std::cout << "Unhandled exception." << std::endl << std::endl;
+	    	//return new Instruction("0", "ERROR: Unknown PDI error");
+	    }
+	    //return pRootInstruction;
    }
 
    return 0;
