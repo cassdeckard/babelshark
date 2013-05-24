@@ -99,7 +99,7 @@ namespace BabelShark
         }
 
         // create buffer
-        int length = tvb->length;
+	int length = tvb_length(tvb);
         char* buffer = new char[length];
         const guint8* tvb_ptr = tvb_get_ptr(tvb, 0, length);
         memcpy(buffer, tvb_ptr, length);

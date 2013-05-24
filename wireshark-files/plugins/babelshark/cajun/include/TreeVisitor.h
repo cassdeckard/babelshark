@@ -33,6 +33,8 @@ of the TreeVisitor class.
 #include <iostream>
 #include <fstream>
 
+#include <stdexcept>
+
 /** The TreeVisitor class is used to visit (iterate over) each item in the Tree which is created by
   * reading in a file in PDI format.  When a node on the tree is visited, an instruction is created
   * in the Instruction Tree.  The Wireshark dissector will use the instruction tree created by this class.
@@ -224,7 +226,7 @@ protected:
          if (it == m_CreateInstructionFuncMap.end())
          {
             std::string sException = "use of undefined type: " + sType;
-            throw std::exception(sException.c_str());
+            throw std::runtime_error(sException.c_str());
          }
          else
          {

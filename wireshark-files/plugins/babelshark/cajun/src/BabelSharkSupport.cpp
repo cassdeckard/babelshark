@@ -2,8 +2,6 @@
 File : BabelSharkSupport.cpp
 *************************************************/
 
-#pragma once
-
 #include "BabelSharkSupport.h"
 #include "elements.h"
 #include "TreeVisitor.h"

@@ -4,6 +4,9 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#include <cstdio>
+#include <cstring>
+
 namespace BabelShark
 {
     AliasedInstruction::AliasedInstruction(std::string size, std::string name, std::string alias, std::string paramName)

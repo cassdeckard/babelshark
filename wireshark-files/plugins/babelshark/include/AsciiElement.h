@@ -47,7 +47,7 @@ namespace BabelShark
 			 * a string with that character stored in it.
 			 * if not, it returns a string with a single space in it.
 			 */
-            std::string AsciiElement::Printable(char inChar);
+            std::string Printable(char inChar);
 	};
 }
 

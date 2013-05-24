@@ -4,6 +4,12 @@
 
 #include <assert.h>
 
+#ifdef WIN32
+#define NOINLINE __declspec(noinline)
+#else
+#define NOINLINE __attribute__ ((noinline))
+#endif // WIN32
+
 // ================================================================================
 /**
  \class Singleton
@@ -30,7 +36,7 @@ public:
    static T& Instance();
    static void Release();
 
-   __declspec(noinline) static SingletonHelper& HelperInstance();
+   NOINLINE static SingletonHelper& HelperInstance();
 
 private:
    static void Create(T* volatile& pT );
@@ -235,4 +241,4 @@ void Singleton<T>::SingletonHelper::Release()
 }
 
 
-#endif
+#endif // SINGLETON_H

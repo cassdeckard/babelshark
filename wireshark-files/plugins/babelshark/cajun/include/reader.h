@@ -63,7 +63,22 @@ public:
 private:
    class InputStream;
 
-   enum TokenType;
+   enum TokenType
+   {
+      TOKEN_ARRAY_BEGIN,         //    [
+      TOKEN_ARRAY_END,           //    ]
+      TOKEN_DYNAMICTYPE_BEGIN,   //    {
+      TOKEN_DYNAMICTYPE_END,     //    }
+      TOKEN_DYNAMICTYPE,         //    dynamictype
+      TOKEN_STATICTYPE,          //    statictype
+      TOKEN_NEXT_ELEMENT,  //    ,
+      TOKEN_MEMBER_ASSIGN, //    :
+      TOKEN_STRING,        //    "xxx"
+      TOKEN_NUMBER,        //    000
+      TOKEN_NULL,          //    null
+      TOKEN_COMMENT        //    // ......
+   };
+
    struct Token;
    typedef std::vector<Token> Tokens;
    class TokenStream;

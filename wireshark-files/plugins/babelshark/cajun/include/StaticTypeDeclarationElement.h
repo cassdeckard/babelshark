@@ -2,7 +2,7 @@
 #define STATIC_TYPE_DECLARATION_H
 
 #include <string>
-#include "Elements.h"
+#include "elements.h"
 
 namespace PDI
 {

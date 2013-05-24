@@ -3,6 +3,8 @@
 #include "StaticDefinition.h"
 #include <sstream>
 
+#include <cstdio>
+
 namespace BabelShark
 {
 

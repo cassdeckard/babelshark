@@ -1,7 +1,7 @@
 #ifndef STATIC_TYPE_DEFINITION_COLLECTION_H
 #define STATIC_TYPE_DEFINITION_COLLECTION_H
 
-#include "singleton.h"
+#include "Singleton.h"
 #include "StaticTypeDeclarationElement.h"
 
 #include <list>

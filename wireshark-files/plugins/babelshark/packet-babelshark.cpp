@@ -36,6 +36,8 @@ extern "C" {
 // C++ headers
 #include "packet-babelshark.h"
 
+#include <cstdio>
+
 static int proto_babelshark = -1;
 
 static struct _babelshark_prefs babelshark_preferences = { BABELSHARK_UDP_PORT,
@@ -91,13 +93,13 @@ proto_reg_handoff_babelshark(void)
    }
    else
    {
-       dissector_delete("udp.port", prev_prefs.udp_port, babelshark_handle);
+       dissector_delete_uint("udp.port", prev_prefs.udp_port, babelshark_handle);
        update_dissector(babelshark_preferences.in_file);
    }
 
    printf("proto_reg_handoff_babelshark\n");
    printf("udp_port : %u\n", babelshark_preferences.udp_port);
-   dissector_add("udp.port", babelshark_preferences.udp_port, babelshark_handle);
+   dissector_add_uint("udp.port", babelshark_preferences.udp_port, babelshark_handle);
 
    // save previous udp port
    prev_prefs.udp_port = babelshark_preferences.udp_port;

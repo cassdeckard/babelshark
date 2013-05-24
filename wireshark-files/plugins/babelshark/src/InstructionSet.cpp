@@ -2,6 +2,9 @@
 
 #include "InstructionSet.h"
 
+#include <cstdio>
+#include <cstring>
+
 namespace BabelShark
 {
 

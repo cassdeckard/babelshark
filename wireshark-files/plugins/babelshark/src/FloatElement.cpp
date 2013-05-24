@@ -4,6 +4,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#include <cstring>
+
 #define ROUND32(x) ((x) <= 32 ? 32 : 64)
 
 namespace BabelShark

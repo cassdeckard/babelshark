@@ -4,6 +4,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#include <cstring>
+
 namespace BabelShark
 {
     UintElement::UintElement(std::string size, std::string name, std::string variable)

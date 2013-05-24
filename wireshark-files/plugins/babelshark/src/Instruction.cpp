@@ -5,6 +5,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#include <cstdio>
+
 namespace BabelShark
 {
     Instruction::Instruction(std::string size, std::string name)

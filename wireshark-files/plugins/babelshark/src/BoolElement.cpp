@@ -4,6 +4,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#include <cstring>
+
 namespace BabelShark
 {
     BoolElement::BoolElement(std::string size, std::string name, std::string variable)

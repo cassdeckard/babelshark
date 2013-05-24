@@ -2,8 +2,6 @@
 File : DynamicTypeDeclarationCollection.cpp
 *************************************************/
 
-#pragma once
-
 #include "DynamicTypeDeclarationCollection.h"
 #include "DataDictionary.h"
 

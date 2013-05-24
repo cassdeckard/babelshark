@@ -4,6 +4,8 @@
 #include "DataDictionary.h"
 #include <sstream>
 
+#include <cstdio>
+
 namespace BabelShark
 {
 

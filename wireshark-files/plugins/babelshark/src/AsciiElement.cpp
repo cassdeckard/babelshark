@@ -3,6 +3,8 @@
 #include "AsciiElement.h"
 #include "DataDictionary.h"
 
+#include <cstring>
+
 namespace BabelShark
 {
     AsciiElement::AsciiElement(std::string size, std::string name, std::string variable)
