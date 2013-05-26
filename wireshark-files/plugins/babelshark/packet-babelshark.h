@@ -47,6 +47,8 @@ extern "C"
     void proto_register_babelshark(void);
     void proto_reg_handoff_babelshark(void);
     G_MODULE_EXPORT gchar version[30] = "0.1";
+    G_MODULE_EXPORT void plugin_register(void);
+    G_MODULE_EXPORT void plugin_reg_handoff(void);
 }
 
 #endif

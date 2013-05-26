@@ -117,3 +117,18 @@ proto_register_babelshark(void)
    module = prefs_register_protocol(proto_babelshark, proto_reg_handoff_babelshark);
    babelshark_prefs_register(&babelshark_preferences, module);
 }
+
+void
+plugin_register(void)
+{
+   if (proto_babelshark == -1)
+   {
+      proto_register_babelshark();
+   }
+}
+
+void
+plugin_reg_handoff(void)
+{
+   proto_reg_handoff_babelshark();
+}
