@@ -188,10 +188,6 @@ namespace BabelShark
               */
             int*         _proto;
 
-            /** _ett is used by Wireshark to keep the expanded state of subtrees
-              */
-            gint**       _ett;
-
             /** _protoName contains the name of our protocol
               */
             std::string  _protoName;

@@ -22,6 +22,8 @@
 namespace BabelShark
 {
 
+    static gint ett_babelshark = -1;
+
     Dissector::Dissector(const char* inFile, int* proto)
         : _proto(proto),
           _nameChanged(true),
@@ -42,22 +44,15 @@ namespace BabelShark
     	}
 
         /* Setup protocol subtree array */
-        _ett = new gint*[1]; // TODO: size array to number of InstructionSets
-        *_ett[0] = -1;
+	static gint *ett[] = { &ett_babelshark };
 
         *_proto = proto_register_protocol(_protoName.c_str(),  /* name       */
                                           "Babelshark",        /* short name */
                                           "babelshark");       /* abbrev     */
 
         proto_register_field_array(*_proto, NULL, 0);
-        proto_register_subtree_array(_ett, array_length(_ett));
+        proto_register_subtree_array(ett, array_length(ett));
 
-	}
-
-    Dissector::~Dissector()
-    {
-        // free dynamically allocated memory
-        delete [] *_ett;
 	}
 
     void Dissector::ReparseTree(const char* inFile)
@@ -117,7 +112,7 @@ namespace BabelShark
            gint offset = 0;
 
            // Create root node
-           babelshark_tree = proto_item_add_subtree(ti, *_ett[0]);
+           babelshark_tree = proto_item_add_subtree(ti, ett_babelshark);
 
            // Dissect it
            if (ROOT_INSTRUCTION->GetSize() > 0)
@@ -138,7 +133,7 @@ namespace BabelShark
 
     void Dissector::Test()
     {
-        //printf("Dissector::Test\n _ett: %i\n _proto: %u\n", _ett[0], *_proto);
+        //printf("Dissector::Test\n ett: %i\n _proto: %u\n", ett_babelshark, *_proto);
 
         _TestInstruction = new InstructionSet("1", "TestProtocol");
         InstructionSet* tempTree;
@@ -260,7 +255,7 @@ namespace BabelShark
                                                          );
 
                // create a new subtree
-               proto_tree *sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
+               proto_tree *sub_tree = proto_item_add_subtree(sub_node, ett_babelshark);
 
                // parse this set
                DissectSet(currentIns, tvb, sub_tree, buffer, offset);
@@ -289,7 +284,7 @@ namespace BabelShark
                                                in->GetSizeInBytes(),
                                                treeDisplay.str().c_str()
                                               );
-                sub_tree = proto_item_add_subtree(sub_node, *_ett[0]);
+                sub_tree = proto_item_add_subtree(sub_node, ett_babelshark);
 
                 // parse the children
                 DissectInstructions(in, tvb, sub_tree, buffer, offset);
