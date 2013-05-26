@@ -11,13 +11,33 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLIB_PKG glib-2.0)
 include_directories(${GLIB_PKG_INCLUDE_DIRS})
 include_directories(include)
-
-add_subdirectory(src)
-add_subdirectory(cajun/src)
-
-link_directories(${packet-bableshark_BINARY_DIR}/src)
+include_directories(cajun/include)
 
 add_library(packet-babelshark SHARED
-	    packet-babelshark.cpp)
-
-target_link_libraries(packet-babelshark babelshark)
+	    packet-babelshark.cpp
+            src/AliasedInstruction.cpp
+            src/AsciiElement.cpp
+            src/BoolElement.cpp
+            src/DataDictionary.cpp
+            src/Dissector.cpp
+            src/DynamicDefinition.cpp
+            src/FloatElement.cpp
+            src/Instruction.cpp
+            src/InstructionElement.cpp
+            src/InstructionSet.cpp
+            src/IntElement.cpp
+            src/Iterator.cpp
+            src/ListIterator.cpp
+            src/NullIterator.cpp
+            src/PadElement.cpp
+            src/StaticDefinition.cpp
+            src/Subject.cpp
+            src/UintElement.cpp
+            cajun/src/BabelSharkSupport.cpp
+            cajun/src/DynamicTypeDeclarationCollection.cpp
+            cajun/src/DynamicTypeDeclarationElement.cpp
+            cajun/src/elements.cpp
+            cajun/src/reader.cpp
+            cajun/src/StaticTypeDeclarationCollection.cpp
+            cajun/src/StaticTypeDeclarationElement.cpp
+)
