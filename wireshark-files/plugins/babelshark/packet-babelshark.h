@@ -29,6 +29,8 @@
 
 #include "Dissector.h"
 
+#include <gmodule.h>
+
 static BabelShark::Dissector* babelshark_dissector;
 
 struct _babelshark_prefs
@@ -44,6 +46,7 @@ extern "C"
 {
     void proto_register_babelshark(void);
     void proto_reg_handoff_babelshark(void);
+    G_MODULE_EXPORT gchar version[30] = "0.1";
 }
 
 #endif
