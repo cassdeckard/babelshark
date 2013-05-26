@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(packet-babelshark)
+project(babelshark)
 
 # TODO: find this rather than hardcoding it
 include_directories(../../../../wireshark)
@@ -13,7 +13,7 @@ include_directories(${GLIB_PKG_INCLUDE_DIRS})
 include_directories(include)
 include_directories(cajun/include)
 
-add_library(packet-babelshark SHARED
+add_library(babelshark SHARED
 	    packet-babelshark.cpp
             src/AliasedInstruction.cpp
             src/AsciiElement.cpp
