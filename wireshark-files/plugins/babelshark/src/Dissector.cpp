@@ -9,7 +9,6 @@
 #include "elements.h"
 #include "reader.h"
 #include "exception.h"
-#include "TreeVisitor.h"
 
 // STL includes
 #include <fstream>
