@@ -23,15 +23,14 @@ namespace BabelShark
 
    void DynamicDefinition::Fetch(InstructionNode** target, InstructionElement* parameter)
    {
-       int size = (int)_Subjects.size();
-
        // add to _Subjects
-       _Subjects[parameter] = target;
-
-       if ( (int)_Subjects.size() > size)
+       if (_Subjects.count(parameter) == 0)
        {
-           // Attach() to parameter
+           _Subjects.insert(std::make_pair(parameter, target));
            parameter->Attach(this);
+       }
+       else // TODO: what to do here? Throw an exception?
+       {
        }
 
        // the target will be updated when parameter changes and Notify()s us
@@ -45,7 +44,13 @@ namespace BabelShark
       std::stringstream ss;
       ss << "DynamicDefinition.Add( {" << typeDef << "}, " << parameter.c_str() << ")\n";
       printf(ss.str().c_str());
-      _Definitions[parameter] = typeDef;
+      if (_Definitions.count(parameter) == 0)
+      {
+          _Definitions.insert(std::make_pair(parameter, typeDef));
+      }
+      else // TODO: what to do here? Throw an exception?
+      {
+      }
    }
 
 
@@ -71,20 +76,27 @@ namespace BabelShark
       ss << "parameter('" << parameter << "') => ";
 
        InstructionNode* result = NULL;
-       TypeDefinition* def = _Definitions[parameter];
-       if ( def != NULL ) def->Fetch(&result);
-
-       if ( result == NULL )
+       if (_Definitions.count(parameter))
        {
-           *(_Subjects[subjElem]) = DATA_DICT.NullInstruction();
-       }
-       else
-       {
-           // update pointer to appropriate InstructionSet
-           *(_Subjects[subjElem]) = result;
-       }
+           TypeDefinition* def = _Definitions[parameter];
+           if (def) def->Fetch(&result);
 
-      ss << "{" << *(_Subjects[subjElem]) << "}\n";
+           if (!result)
+           {
+               *(_Subjects[subjElem]) = DATA_DICT.NullInstruction();
+           }
+           else
+           {
+               // update pointer to appropriate InstructionSet
+               *(_Subjects[subjElem]) = result;
+           }
+
+           ss << "{" << *(_Subjects[subjElem]) << "}\n";
+       }
+       else // TODO: what??
+       {
+           ss << "{ NOT FOUND }\n";
+       }
 
       printf(ss.str().c_str());
    }
