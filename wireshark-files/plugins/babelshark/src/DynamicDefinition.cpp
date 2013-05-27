@@ -61,6 +61,7 @@ namespace BabelShark
 
        // look up subject in our list
       InstructionElement* subjElem;
+      // TODO: figure out better way to do this. Maybe have an inverse of the _Subjects map?
       for (std::map<InstructionElement*, InstructionNode**>::iterator it = _Subjects.begin(); it != _Subjects.end(); it++)
       {
     	  if ( (*it).first == subject )
