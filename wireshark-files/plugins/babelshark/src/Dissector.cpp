@@ -31,6 +31,7 @@ namespace BabelShark
 
     	// get root instruction from PDI parser
     	_RootInstruction = ParsePDI(inFile);
+        //Test(); // TODO: REMOVE
 
     	// get protocol name
     	if (_RootInstruction->GetSize() > 0)
@@ -72,8 +73,6 @@ namespace BabelShark
     	}
 
         _nameChanged     = true;
-
-        Test(); // TODO: REMOVE
     }
 
     void Dissector::Dissect(tvbuff_t *tvb, packet_info *pinfo, proto_tree *tree)
