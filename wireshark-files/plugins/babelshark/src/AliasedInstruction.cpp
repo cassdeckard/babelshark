@@ -26,7 +26,7 @@ namespace BabelShark
 			//TODO: DAN  pass in the Dynamic variable usage into the LookupType function
             std::stringstream ss;
             DATA_DICT.LookupType(&_RealSubject, _Alias);
-            ss << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}";
+            ss << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}\n";
             printf(ss.str().c_str());
         }
     }
