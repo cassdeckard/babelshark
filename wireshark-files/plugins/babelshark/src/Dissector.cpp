@@ -20,7 +20,6 @@
 
 namespace BabelShark
 {
-
     static gint ett_babelshark = -1;
 
     Dissector::Dissector(const char* inFile, int* proto)
@@ -364,4 +363,3 @@ namespace BabelShark
     }
 
 } // namespace BabelShark
-
