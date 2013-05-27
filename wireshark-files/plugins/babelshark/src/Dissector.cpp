@@ -322,6 +322,9 @@ namespace BabelShark
 	    	PDI::Element elemRoot = PDI::DisplayElement();
 	    	PDI::Reader::Read(elemRoot,fin);
 	    	pRootInstruction = PDI::CreateInstructionTreeAndFillDataDictionary(elemRoot, false);
+
+            /// \FIXME Not sure where else to put this
+            DATA_DICT.Initialize();
 	    }
 	    catch (PDI::ParseException& e)
 	    {
