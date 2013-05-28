@@ -59,7 +59,7 @@ namespace BabelShark
             	the printing out of the names/content of the children will be handled by the dissector calling
             	the display function one at a time for each child
             */
-            virtual char* Display() { return ""; }
+            virtual char* Display() = 0;
 
 			/** CreateIterator
 				This is taking the part of the ConcreteList in the iterator pattern
