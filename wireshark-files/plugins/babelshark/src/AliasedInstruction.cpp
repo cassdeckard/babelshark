@@ -2,10 +2,12 @@
 
 #include "AliasedInstruction.h"
 #include "DataDictionary.h"
-#include <sstream>
+#include <iostream>
 
-#include <cstdio>
 #include <cstring>
+
+using std::cout;
+using std::endl;
 
 namespace BabelShark
 {
@@ -24,10 +26,8 @@ namespace BabelShark
         {
             // static type; go ahead and initialize
 			//TODO: DAN  pass in the Dynamic variable usage into the LookupType function
-            std::stringstream ss;
             DATA_DICT.LookupType(&_RealSubject, _Alias);
-            ss << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}\n";
-            printf(ss.str().c_str());
+            cout << _Name << " initializing " << _Alias << ", _RealSubject = {" << _RealSubject <<  "}" << endl;
         }
     }
 
@@ -35,11 +35,9 @@ namespace BabelShark
     {
         // Attach to parameter
         InstructionElement* param = DATA_DICT.LookupVariable(_ParamName);
-        std::stringstream ss;
-        ss << _Name << " initializing " << _Alias << "(" << _ParamName << "), _RealSubject = {" << _RealSubject <<  "}";
+        cout << _Name << " initializing " << _Alias << "(" << _ParamName << "), _RealSubject = {" << _RealSubject <<  "}";
         DATA_DICT.LookupType(&_RealSubject, _Alias, param);
-        ss << " => {" << _RealSubject <<  "}\n";
-        printf(ss.str().c_str());
+        cout << " => {" << _RealSubject <<  "}" << endl;
     }
 
     char* AliasedInstruction::Display()

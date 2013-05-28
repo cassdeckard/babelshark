@@ -2,8 +2,11 @@
 
 #include "InstructionSet.h"
 
-#include <cstdio>
 #include <cstring>
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 namespace BabelShark
 {
@@ -91,11 +94,8 @@ namespace BabelShark
             result += it->CurrentItem()->NumSubtrees();
         }
 
-        printf("%s has %u arrays with %u subtrees\n",
-               this->GetName(),
-               size,
-               result
-              );
+	cout << this->GetName() << " has " << size
+             << " arrays with " << result << " subtrees" << endl;
 
         // if this array is > 1 then it has an extra subtree
         // for each element in the array

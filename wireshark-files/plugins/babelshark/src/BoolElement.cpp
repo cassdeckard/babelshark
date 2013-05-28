@@ -2,7 +2,6 @@
 
 #include "BoolElement.h"
 #include "DataDictionary.h"
-#include <sstream>
 
 #include <cstring>
 

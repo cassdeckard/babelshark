@@ -36,7 +36,10 @@ extern "C" {
 // C++ headers
 #include "packet-babelshark.h"
 
-#include <cstdio>
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 static int proto_babelshark = -1;
 
@@ -97,8 +100,8 @@ proto_reg_handoff_babelshark(void)
        update_dissector(babelshark_preferences.in_file);
    }
 
-   printf("proto_reg_handoff_babelshark\n");
-   printf("udp_port : %u\n", babelshark_preferences.udp_port);
+   cout << "proto_reg_handoff_babelshark" << endl;
+   cout << "udp_port : " << babelshark_preferences.udp_port << endl;
    dissector_add_uint("udp.port", babelshark_preferences.udp_port, babelshark_handle);
 
    // save previous udp port

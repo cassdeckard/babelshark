@@ -1,9 +1,10 @@
 // $Id$
 
 #include "StaticDefinition.h"
-#include <sstream>
+#include <iostream>
 
-#include <cstdio>
+using std::cout;
+using std::endl;
 
 namespace BabelShark
 {
@@ -11,9 +12,7 @@ namespace BabelShark
    StaticDefinition::StaticDefinition(InstructionNode* type, std::string parameter)
 //      : TypeDefinition(type, parameter)
    {
-      std::stringstream ss;
-      ss << "StaticDefinition( {" << type << "}, " << parameter.c_str() << ")\n";
-      printf(ss.str().c_str());
+      cout << "StaticDefinition( {" << type << "}, " << parameter.c_str() << ")" << endl;
       Define(type);
    }
 

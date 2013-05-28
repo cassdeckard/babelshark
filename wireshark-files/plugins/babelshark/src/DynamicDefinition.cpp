@@ -2,9 +2,10 @@
 
 #include "DynamicDefinition.h"
 #include "DataDictionary.h"
-#include <sstream>
+#include <iostream>
 
-#include <cstdio>
+using std::cout;
+using std::endl;
 
 namespace BabelShark
 {
@@ -12,9 +13,7 @@ namespace BabelShark
    DynamicDefinition::DynamicDefinition(InstructionNode* type, std::string parameter)
       : TypeDefinition(type, parameter)
    {
-      std::stringstream ss;
-      ss << "DynamicDefinition( {" << type << "}, " << parameter.c_str() << ")\n";
-      printf(ss.str().c_str());
+      cout << "DynamicDefinition( {" << type << "}, " << parameter.c_str() << ")" << endl;
    }
 
    DynamicDefinition::~DynamicDefinition()
@@ -41,9 +40,7 @@ namespace BabelShark
 
    void DynamicDefinition::Add(TypeDefinition* typeDef, std::string parameter)
    {
-      std::stringstream ss;
-      ss << "DynamicDefinition.Add( {" << typeDef << "}, " << parameter.c_str() << ")\n";
-      printf(ss.str().c_str());
+      cout << "DynamicDefinition.Add( {" << typeDef << "}, " << parameter.c_str() << ")" << endl;
       if (_Definitions.count(parameter) == 0)
       {
           _Definitions.insert(std::make_pair(parameter, typeDef));
@@ -56,8 +53,7 @@ namespace BabelShark
 
    void DynamicDefinition::Update(Subject* subject)
    {
-      std::stringstream ss;
-      ss << "DynamicDefinition.Update( {" << subject << "} : ";
+      cout << "DynamicDefinition.Update( {" << subject << "} : ";
 
        // look up subject in our list
       InstructionElement* subjElem;
@@ -74,7 +70,7 @@ namespace BabelShark
        // look up value of subject
        std::string parameter = subjElem->SimpleDisplay();
 
-      ss << "parameter('" << parameter << "') => ";
+      cout << "parameter('" << parameter << "') => ";
 
        InstructionNode* result = NULL;
        if (_Definitions.count(parameter))
@@ -92,14 +88,14 @@ namespace BabelShark
                *(_Subjects[subjElem]) = result;
            }
 
-           ss << "{" << *(_Subjects[subjElem]) << "}\n";
+           cout << "{" << *(_Subjects[subjElem]) << "}";
        }
        else // TODO: what??
        {
-           ss << "{ NOT FOUND }\n";
+           cout << "{ NOT FOUND }";
        }
 
-      printf(ss.str().c_str());
+      cout << endl;
    }
 
 }
