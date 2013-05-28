@@ -10,31 +10,6 @@ using std::endl;
 
 namespace BabelShark
 {
-    /*
-    DataDictionary* DataDictionary::_Instance = NULL;
-
-    DataDictionary::DataDictionary()
-    {
-        _NullInstruction = new InstructionSet(0, "(No instruction)");
-        std::stringstream ss;
-        ss << "DD::_NullInstruction = {" << _NullInstruction << "}\n";
-        printf(ss.str().c_str());
-	}
-
-    DataDictionary::~DataDictionary()
-    {
-    }
-
-    DataDictionary* DataDictionary::Instance()
-    {
-        if ( _Instance == NULL )
-        {
-            _Instance = new DataDictionary();
-        }
-        return _Instance;
-    }
-    */
-
     void DataDictionary::AddVariable(std::string alias, InstructionElement* variable)
     {
         _Variables[alias] = variable;
@@ -43,7 +18,6 @@ namespace BabelShark
 
     void DataDictionary::AddStatic(std::string alias, InstructionNode* type)
     {
-
         if (_Types.count(alias) == 0)
         {
             // type doesn't exist yet; create it

@@ -10,7 +10,6 @@ namespace BabelShark
 {
 
    StaticDefinition::StaticDefinition(InstructionNode* type, std::string parameter)
-//      : TypeDefinition(type, parameter)
    {
       cout << "StaticDefinition( {" << type << "}, " << parameter.c_str() << ")" << endl;
       Define(type);
