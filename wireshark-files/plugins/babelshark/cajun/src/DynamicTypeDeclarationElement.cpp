@@ -2,8 +2,6 @@
 File : DynamicTypeDeclarationElement.cpp
 *************************************************/
 
-#pragma once
-
 #include "DynamicTypeDeclarationElement.h"
 
 namespace PDI
