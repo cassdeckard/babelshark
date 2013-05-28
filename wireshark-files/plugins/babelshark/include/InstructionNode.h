@@ -41,18 +41,18 @@ namespace BabelShark
 
                 Does not match the standard pattern definition since we're using an iterator instead
             */
-            virtual Instruction* GetChild() { return NULL; }
+            virtual Instruction* GetChild() = 0;
 
             /** Add
                 Adds a child Instruction to the list.
                 Standard add of the composite pattern
                 */
-            virtual void Add(Instruction*) { }
+            virtual void Add(Instruction*) = 0;
 
             /** Interpret
                 Currently an empty function since the dissector will just look directly at the children
                 */
-            virtual unsigned int Interpret(char* buffer) { return 0; }
+            virtual unsigned int Interpret(char* buffer) = 0;
 
             /** Display
                 For the instruction set this just prints out the name of the set
@@ -66,19 +66,19 @@ namespace BabelShark
                 Although we haven't done append/remove we don't need to since our list is static when we are iterating
                 over it
             */
-            virtual Iterator* CreateIterator() { return new NullIterator(this); }
+            virtual Iterator* CreateIterator() = 0;
 
             /** GetSizeInBytes
                 Returns the sum of calling GetSizeInBytes on all children
                 Override the function defined in instruction
                 */
-            virtual unsigned int GetSizeInBytes() { return 0; }
+            virtual unsigned int GetSizeInBytes() = 0;
 
             /** NumSubTrees
                 Returns the sum of calling NumSubTrees on all children
                 Override the [dummy] function defined in instruction
                 */
-            virtual unsigned int NumSubtrees() { return 0; }
+            virtual unsigned int NumSubtrees() = 0;
 
         private:
     };
